@@ -29,8 +29,9 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wulizhaoch.github.io/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/%E5%8D%87%E7%BA%A7%E5%9B%BE%E8%A7%A3.png">
 <meta property="og:image" content="https://wulizhaoch.github.io/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png">
 <meta property="article:published_time" content="2020-06-06T14:23:23.000Z">
-<meta property="article:modified_time" content="2020-06-06T16:30:03.586Z">
+<meta property="article:modified_time" content="2020-06-06T16:33:21.046Z">
 <meta property="article:author" content="赵晨辉">
 <meta property="article:tag" content="Nordic">
 <meta property="article:tag" content="Bluetooth">
@@ -205,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-07 00:30:03" itemprop="dateModified" datetime="2020-06-07T00:30:03+08:00">2020-06-07</time>
+                <time title="Modified: 2020-06-07 00:33:21" itemprop="dateModified" datetime="2020-06-07T00:33:21+08:00">2020-06-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -263,11 +264,8 @@
 </li>
 </ul>
 <p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/%E5%8D%87%E7%BA%A7%E5%9B%BE%E8%A7%A3.png" alt></p>
-<h4 id="二、Nordic-SDK-DFU工作原理"><a href="#二、Nordic-SDK-DFU工作原理" class="headerlink" title="二、Nordic SDK DFU工作原理"></a>二、Nordic SDK DFU工作原理</h4><figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="section">&lt;center&gt;</span></span><br></pre></td></tr></table></figure>
-
+<h4 id="二、Nordic-SDK-DFU工作原理"><a href="#二、Nordic-SDK-DFU工作原理" class="headerlink" title="二、Nordic SDK DFU工作原理"></a>二、Nordic SDK DFU工作原理</h4><p>‘<img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png" alt>‘</p>
 <p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png" alt></p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="section">&lt;/center&gt;</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p><strong>采用双区模式：</strong>Bank0存放的是D程序（老固件），Bank1存放的是新固件。应用程序只在Bank0里跑，Bank1平时为空或者忽略，升级时，先跳转到Bootloader，然后接收新固件并放在Bank1中，最后把Bank1里边的固件拷贝到Bank0中。</p>
 </li>
