@@ -28,8 +28,9 @@
 <meta property="og:description" content="😊 转载请全文转载，并标明文章出处">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wulizhaoch.github.io/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/%E5%8D%87%E7%BA%A7%E5%9B%BE%E8%A7%A3.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png">
 <meta property="article:published_time" content="2020-06-06T14:23:23.000Z">
-<meta property="article:modified_time" content="2020-06-06T15:43:29.353Z">
+<meta property="article:modified_time" content="2020-06-06T16:11:42.244Z">
 <meta property="article:author" content="赵晨辉">
 <meta property="article:tag" content="Nordic">
 <meta property="article:tag" content="Bluetooth">
@@ -196,10 +197,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-06-06 22:23:23 / Modified: 23:43:29" itemprop="dateCreated datePublished" datetime="2020-06-06T22:23:23+08:00">2020-06-06</time>
+              <time title="Created: 2020-06-06 22:23:23" itemprop="dateCreated datePublished" datetime="2020-06-06T22:23:23+08:00">2020-06-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-07 00:11:42" itemprop="dateModified" datetime="2020-06-07T00:11:42+08:00">2020-06-07</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -256,7 +263,8 @@
 </li>
 </ul>
 <p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/%E5%8D%87%E7%BA%A7%E5%9B%BE%E8%A7%A3.png" alt></p>
-<h4 id="二、Nordic-SDK-DFU工作原理"><a href="#二、Nordic-SDK-DFU工作原理" class="headerlink" title="二、Nordic SDK DFU工作原理"></a>二、Nordic SDK DFU工作原理</h4><ul>
+<h4 id="二、Nordic-SDK-DFU工作原理"><a href="#二、Nordic-SDK-DFU工作原理" class="headerlink" title="二、Nordic SDK DFU工作原理"></a>二、Nordic SDK DFU工作原理</h4><p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png" alt></p>
+<ul>
 <li><p><strong>采用双区模式：</strong>Bank0存放的是D程序（老固件），Bank1存放的是新固件。应用程序只在Bank0里跑，Bank1平时为空或者忽略，升级时，先跳转到Bootloader，然后接收新固件并放在Bank1中，最后把Bank1里边的固件拷贝到Bank0中。</p>
 </li>
 <li><p><strong>采用单区模式：</strong>单区模式则没有Bank1存储区，系统只跑Bank0里面的代码，升级的时候，先跳转到Bootloader，先擦除Bank0里面的程序（老固件），并把新固件直接放在Bank0中。</p>
@@ -266,8 +274,8 @@
 <p>  ​        Nordic SDK 将DFU分为按键式DFU和非按键式DFU，按键式DFU是上电时长按某按键进入Bootloader模式。非按键式是整个DFU过程中设备端无任何人工干预，通过BLE/UART/USB接口给应用程序发送一条指令，应用程序收到指令后自动进入Bootloader模式。不管是什么方式进入Bootloader，Bootloader工作过程都是一样的。</p>
 <p>  <strong>跳转到Bootloader后的执行操作</strong></p>
 <p>  ​        程序跳转到Bootloader后，根据Bootloader需不需要对新固件进行验签。（DFU分为开放式DFU和安全式DFU）</p>
-<p>  ​        <strong>开放式DFU：</strong>Bootloader不做任何验证，直接把新固件进行升级。</p>
-<p>  ​        <strong>安全式DFU：</strong>Bootloader存有一把公钥，Bootloader会先把公钥验证新固件的签名，验签通过，允许后续的工作。（如果验签失败，BootLoader将拒绝升级，重新跳回应用程序）</p>
+<p>  ​        <strong>开放式DFU：</strong> Bootloader不做任何验证，直接把新固件进行升级。</p>
+<p>  ​        <strong>安全式DFU：</strong> Bootloader存有一把公钥，Bootloader会先把公钥验证新固件的签名，验签通过，允许后续的工作。（如果验签失败，Bootloader将拒绝升级，重新跳回应用程序）</p>
 
     </div>
 
