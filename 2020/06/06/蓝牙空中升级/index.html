@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://wulizhaoch.github.io/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/%E5%8D%87%E7%BA%A7%E5%9B%BE%E8%A7%A3.png">
 <meta property="og:image" content="https://wulizhaoch.github.io/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png">
 <meta property="article:published_time" content="2020-06-06T14:23:23.000Z">
-<meta property="article:modified_time" content="2020-06-06T16:11:42.244Z">
+<meta property="article:modified_time" content="2020-06-06T16:26:01.720Z">
 <meta property="article:author" content="赵晨辉">
 <meta property="article:tag" content="Nordic">
 <meta property="article:tag" content="Bluetooth">
@@ -205,7 +205,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-07 00:11:42" itemprop="dateModified" datetime="2020-06-07T00:11:42+08:00">2020-06-07</time>
+                <time title="Modified: 2020-06-07 00:26:01" itemprop="dateModified" datetime="2020-06-07T00:26:01+08:00">2020-06-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -263,7 +263,9 @@
 </li>
 </ul>
 <p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/%E5%8D%87%E7%BA%A7%E5%9B%BE%E8%A7%A3.png" alt></p>
-<h4 id="二、Nordic-SDK-DFU工作原理"><a href="#二、Nordic-SDK-DFU工作原理" class="headerlink" title="二、Nordic SDK DFU工作原理"></a>二、Nordic SDK DFU工作原理</h4><p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png" alt></p>
+<h4 id="二、Nordic-SDK-DFU工作原理"><a href="#二、Nordic-SDK-DFU工作原理" class="headerlink" title="二、Nordic SDK DFU工作原理"></a>二、Nordic SDK DFU工作原理</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">center</span>&gt;</span></span><br><span class="line">![](蓝牙空中升级/nRF_SDK软件架构.png)</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png" alt></p>
 <ul>
 <li><p><strong>采用双区模式：</strong>Bank0存放的是D程序（老固件），Bank1存放的是新固件。应用程序只在Bank0里跑，Bank1平时为空或者忽略，升级时，先跳转到Bootloader，然后接收新固件并放在Bank1中，最后把Bank1里边的固件拷贝到Bank0中。</p>
 </li>
@@ -276,6 +278,7 @@
 <p>  ​        程序跳转到Bootloader后，根据Bootloader需不需要对新固件进行验签。（DFU分为开放式DFU和安全式DFU）</p>
 <p>  ​        <strong>开放式DFU：</strong> Bootloader不做任何验证，直接把新固件进行升级。</p>
 <p>  ​        <strong>安全式DFU：</strong> Bootloader存有一把公钥，Bootloader会先把公钥验证新固件的签名，验签通过，允许后续的工作。（如果验签失败，Bootloader将拒绝升级，重新跳回应用程序）</p>
+<p>  目前SDK支持Bluetooth、UART、USB三种方式接受新固件，官方SDK中可以找到此三种方式的工程目录。</p>
 
     </div>
 
