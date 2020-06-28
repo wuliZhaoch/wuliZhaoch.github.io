@@ -22,7 +22,7 @@
 
   <meta name="description" content="😊 转载请全文转载，并标明文章出处">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Altium Designer 导出 Gerber文件教程">
+<meta property="og:title" content="Altium Designer 导出 Gerber 文件教程">
 <meta property="og:url" content="https://wulizhaoch.github.io/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/index.html">
 <meta property="og:site_name" content="Zhao_ch Personal_Blog">
 <meta property="og:description" content="😊 转载请全文转载，并标明文章出处">
@@ -70,7 +70,7 @@
   };
 </script>
 
-  <title>Altium Designer 导出 Gerber文件教程 | Zhao_ch Personal_Blog</title>
+  <title>Altium Designer 导出 Gerber 文件教程 | Zhao_ch Personal_Blog</title>
   
 
 
@@ -204,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Altium Designer 导出 Gerber文件教程
+          Altium Designer 导出 Gerber 文件教程
         </h1>
 
         <div class="post-meta">
@@ -244,7 +244,7 @@
         <p>😊 转载请全文转载，并标明文章出处</p>
 <a id="more"></a>
 
-<h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>​        输出的Gerber不是一个文件，而是一个文件集合，通常需要打包发送给厂家，厂家根据你输出的要求进行打样。基本输出的文件大概有这几个流程 Gerber Files、NC Drill Files(钻孔文件)、BOM(元器件BOM)、Generates Pick and Place Files(坐标文件)，具体步骤如下。</p>
+<h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>输出的Gerber不是一个文件，而是一个文件集合，通常需要打包发送给厂家，厂家根据你输出的要求进行打样。基本输出的文件大概有这几个流程 Gerber Files、NC Drill Files(钻孔文件)、BOM(元器件BOM)、Generates Pick and Place Files(坐标文件)，具体步骤如下。</p>
 <h4 id="2-添加钻孔表"><a href="#2-添加钻孔表" class="headerlink" title="2. 添加钻孔表"></a>2. 添加钻孔表</h4><h5 id="2-1-选中-Drill-Drawing-层"><a href="#2-1-选中-Drill-Drawing-层" class="headerlink" title="2.1 选中 Drill Drawing 层"></a>2.1 选中 Drill Drawing 层</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/DrillDrawing.png" alt></p>
 <h5 id="2-2-在此层放置“-legend-”-字符"><a href="#2-2-在此层放置“-legend-”-字符" class="headerlink" title="2.2 在此层放置“ .legend ” 字符"></a>2.2 在此层放置“ .legend ” 字符</h5><ul>
 <li><p>单击放置字符串</p>
@@ -257,22 +257,22 @@
 <h5 id="2-3-字符放置效果"><a href="#2-3-字符放置效果" class="headerlink" title="2.3 字符放置效果"></a>2.3 字符放置效果</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Placetheeffect.png" alt="Place the effect"></p>
 <h4 id="3-第一次输出（Gerber-Files）"><a href="#3-第一次输出（Gerber-Files）" class="headerlink" title="3. 第一次输出（Gerber Files）"></a>3. 第一次输出（Gerber Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; Gerber Files。</p>
 <p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/File-Fabrication-Gerber.png" alt="File-Fabrication-Gerber"></p>
-<h5 id="3-1-Gerber-Setup-gt-General-设置"><a href="#3-1-Gerber-Setup-gt-General-设置" class="headerlink" title="3.1 Gerber Setup -&gt; General 设置"></a>3.1 Gerber Setup -&gt; General 设置</h5><p>​        Units (单位) 选择 <strong>Inches (英寸)</strong>；Formal (格式) 选择 <strong>2:5</strong>；根据介绍 <strong>2:3</strong> 分辨率 1mil，<strong>2:4</strong> 分辨率 0.1mil，<strong>2:5</strong> 分辨率 0.01mil；2:5 精度相对较高，本人用这个设置在多个厂家打样都没有任何问题。</p>
+<h5 id="3-1-Gerber-Setup-gt-General-设置"><a href="#3-1-Gerber-Setup-gt-General-设置" class="headerlink" title="3.1 Gerber Setup -&gt; General 设置"></a>3.1 Gerber Setup -&gt; General 设置</h5><p>Units (单位) 选择 <strong>Inches (英寸)</strong>；Formal (格式) 选择 <strong>2:5</strong>；根据介绍 <strong>2:3</strong> 分辨率 1mil，<strong>2:4</strong> 分辨率 0.1mil，<strong>2:5</strong> 分辨率 0.01mil；2:5 精度相对较高，本人用这个设置在多个厂家打样都没有任何问题。</p>
 <p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/General.png" alt="General"></p>
 <h5 id="3-2-Gerber-Setup-gt-Layers-设置"><a href="#3-2-Gerber-Setup-gt-Layers-设置" class="headerlink" title="3.2 Gerber Setup -&gt; Layers 设置"></a>3.2 Gerber Setup -&gt; Layers 设置</h5><p>​        单击 Plot Layers 选择 Used no 后，只要在 Layers To Plot 栏里的层都会被选中，勾选掉 Top Pad Master、Bottom Pad Master 两层，然后根据自己需要导出的层进行选择 <strong>(嘉立创现在识别版边框为 Mechanical 1 机械1层)</strong>，所以导出要选择 Mechanical 1 层；勾选 <strong>Include unconnected mid-layer pads</strong>。</p>
 <p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Layers.png" alt="Layers"></p>
-<h5 id="3-3-Gerber-Setup-gt-Drill-Drawing-设置"><a href="#3-3-Gerber-Setup-gt-Drill-Drawing-设置" class="headerlink" title="3.3 Gerber Setup -&gt; Drill Drawing 设置"></a>3.3 Gerber Setup -&gt; Drill Drawing 设置</h5><p>​        Drill Drawing选项卡中 需要在 <strong>Drill Drawing Plots</strong> 和 <strong>Drill Guide Plots</strong> 两个区域勾选 <strong>Plot all used drill pairs</strong></p>
+<h5 id="3-3-Gerber-Setup-gt-Drill-Drawing-设置"><a href="#3-3-Gerber-Setup-gt-Drill-Drawing-设置" class="headerlink" title="3.3 Gerber Setup -&gt; Drill Drawing 设置"></a>3.3 Gerber Setup -&gt; Drill Drawing 设置</h5><p>Drill Drawing选项卡中 需要在 <strong>Drill Drawing Plots</strong> 和 <strong>Drill Guide Plots</strong> 两个区域勾选 <strong>Plot all used drill pairs</strong></p>
 <p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Drill.png" alt="Drill"></p>
-<h5 id="3-4-Gerber-Setup-gt-Apertures-设置"><a href="#3-4-Gerber-Setup-gt-Apertures-设置" class="headerlink" title="3.4 Gerber Setup -&gt; Apertures 设置"></a>3.4 Gerber Setup -&gt; Apertures 设置</h5><p>​        在 Apertures (光圈)选项卡中勾选 Embedded apertures (RS274X) 即可。</p>
+<h5 id="3-4-Gerber-Setup-gt-Apertures-设置"><a href="#3-4-Gerber-Setup-gt-Apertures-设置" class="headerlink" title="3.4 Gerber Setup -&gt; Apertures 设置"></a>3.4 Gerber Setup -&gt; Apertures 设置</h5><p>在 Apertures (光圈)选项卡中勾选 Embedded apertures (RS274X) 即可。</p>
 <p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Apertures.png" alt="Apertures"></p>
-<h5 id="3-5-Gerber-Setup-gt-Advanced-设置"><a href="#3-5-Gerber-Setup-gt-Advanced-设置" class="headerlink" title="3.5 Gerber Setup -&gt; Advanced 设置"></a>3.5 Gerber Setup -&gt; Advanced 设置</h5><p>​        在 Advanced 选项卡中需要在 Film Size 区域中的每个选项中添加一个0; 其他的默认即合。</p>
+<h5 id="3-5-Gerber-Setup-gt-Advanced-设置"><a href="#3-5-Gerber-Setup-gt-Advanced-设置" class="headerlink" title="3.5 Gerber Setup -&gt; Advanced 设置"></a>3.5 Gerber Setup -&gt; Advanced 设置</h5><p>在 Advanced 选项卡中需要在 Film Size 区域中的每个选项中添加一个0; 其他的默认即合。</p>
 <p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Advanced.png" alt="Advanced"></p>
-<h5 id="3-6-Gerber-Files-输出结束后效果"><a href="#3-6-Gerber-Files-输出结束后效果" class="headerlink" title="3.6 Gerber Files 输出结束后效果"></a>3.6 Gerber Files 输出结束后效果</h5><p>​        第一次输出结束后自动生成 CAMtastic1.Cam*的 CAM加工文件，不用保存可以立即关闭并丢弃。</p>
+<h5 id="3-6-Gerber-Files-输出结束后效果"><a href="#3-6-Gerber-Files-输出结束后效果" class="headerlink" title="3.6 Gerber Files 输出结束后效果"></a>3.6 Gerber Files 输出结束后效果</h5><p>第一次输出结束后自动生成 CAMtastic1.Cam*的 CAM加工文件，不用保存可以立即关闭并丢弃。</p>
 <p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/CAM.png" alt="CAM"></p>
 <h4 id="4-第二次输出（NC-Drill-Files）"><a href="#4-第二次输出（NC-Drill-Files）" class="headerlink" title="4. 第二次输出（NC Drill Files）"></a>4. 第二次输出（NC Drill Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; NC Drill Files。</p>
 <h5 id="4-1-NC-Drill-Setup-选项卡设置"><a href="#4-1-NC-Drill-Setup-选项卡设置" class="headerlink" title="4.1 NC Drill Setup 选项卡设置"></a>4.1 NC Drill Setup 选项卡设置</h5><p>通常默认设置即可，只有两个地方需要修改 —-&gt; Leading/Trailing Zeroes 区域选择 <strong>Suppress leading zeroes</strong>，默认 Suppress trailing zeroes；Other 区域勾选 <strong>Generate EIA Binary Drill File (.DRL)</strong>。</p>
 <p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/NCDrill.png" alt="NC Drill"></p>
-<h5 id="4-2-Import-Drill-Data-导入钻孔数据-窗口"><a href="#4-2-Import-Drill-Data-导入钻孔数据-窗口" class="headerlink" title="4.2 Import Drill Data (导入钻孔数据)窗口"></a>4.2 Import Drill Data (导入钻孔数据)窗口</h5><p>​        默认即可，不用修改，直接点击OK进行输出</p>
+<h5 id="4-2-Import-Drill-Data-导入钻孔数据-窗口"><a href="#4-2-Import-Drill-Data-导入钻孔数据-窗口" class="headerlink" title="4.2 Import Drill Data (导入钻孔数据)窗口"></a>4.2 Import Drill Data (导入钻孔数据)窗口</h5><p>默认即可，不用修改，直接点击OK进行输出</p>
 <p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/ImportDrillData.png" alt="Import Drill Data"></p>
 <h4 id="5-第三次输出（Generates-Pick-and-Place-Files）"><a href="#5-第三次输出（Generates-Pick-and-Place-Files）" class="headerlink" title="5. 第三次输出（Generates Pick and Place Files）"></a>5. 第三次输出（Generates Pick and Place Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Assembly(输出装配文件) -&gt; Generates Pick and Place Files。</p>
 <p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates.png" alt="Generates"></p>
