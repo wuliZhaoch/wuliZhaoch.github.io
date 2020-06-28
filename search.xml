@@ -1,119 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Git 初次运行前的配置</title>
-    <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h2 id="Git初次运行配置"><a href="#Git初次运行配置" class="headerlink" title="Git初次运行配置"></a>Git初次运行配置</h2><h3 id="1-用户信息"><a href="#1-用户信息" class="headerlink" title="1.    用户信息"></a>1.    用户信息</h3><ul>
-<li>安装完Git应该做的第一件事就是设置自己的用户名称和邮件地址.</li>
-<li>命令如下:<ul>
-<li><code>$ git config --global user.name &quot;Zhao_ch&quot;</code> </li>
-<li><code>$ git config --global user.email &quot;Zhao_ch@163.com&quot;</code></li>
-</ul>
-</li>
-<li>如果使用了–global选项，那么该命令是需要运行一次，因为之后无论你在系统上做任何事情，Git都会使用这些信息  </li>
-</ul>
-<h3 id="2-文本编辑器"><a href="#2-文本编辑器" class="headerlink" title="2.   文本编辑器"></a>2.   文本编辑器</h3><ul>
-<li>用户信息设置完毕，可以设置默认文本编辑器  </li>
-<li>如果没有设置，Git会使用操作系统默认的文本编辑器，通常是Vim </li>
-<li>例如设置文本编辑器为Notepad++  <ul>
-<li>命令如下：    <ul>
-<li>`$ git config –global core.editor Notepad++</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-检查配置信息"><a href="#3-检查配置信息" class="headerlink" title="3.   检查配置信息"></a>3.   检查配置信息</h3><ul>
-<li>如果查询配置信息可以使用 $ git config –list 命令列出所有配置信息。</li>
-</ul>
-<h3 id="4-生成密钥"><a href="#4-生成密钥" class="headerlink" title="4.   生成密钥"></a>4.   生成密钥</h3><ul>
-<li>命令如下:<ul>
-<li><code>$ ssh-keygen -t rsa -C &quot;Zhao_ch@163.com&quot;</code></li>
-</ul>
-</li>
-<li>如果不设置密码的话 连续 3 个回车。然后生成 id_rsa 和 id_rsa.pub 两个文件。<ul>
-<li><strong>Hosts文件配置 文件位置</strong> <strong>C:\Windows\System32\drivers\etc\hosts</strong>     </li>
-<li>添加 35.231.145.151 <a href="http://gitlab.com/" target="_blank" rel="noopener">gitlab.com</a>   </li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-        <tag>Gitlab</tag>
-        <tag>Gitee</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Altium Designer 导出 Gerber 文件教程</title>
-    <url>/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>输出的Gerber不是一个文件，而是一个文件集合，通常需要打包发送给厂家，厂家根据你输出的要求进行打样。基本输出的文件大概有这几个流程 Gerber Files、NC Drill Files(钻孔文件)、BOM(元器件BOM)、Generates Pick and Place Files(坐标文件)，具体步骤如下。</p>
-<h4 id="2-添加钻孔表"><a href="#2-添加钻孔表" class="headerlink" title="2. 添加钻孔表"></a>2. 添加钻孔表</h4><h5 id="2-1-选中-Drill-Drawing-层"><a href="#2-1-选中-Drill-Drawing-层" class="headerlink" title="2.1 选中 Drill Drawing 层"></a>2.1 选中 Drill Drawing 层</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/DrillDrawing.png" alt></p>
-<h5 id="2-2-在此层放置“-legend-”-字符"><a href="#2-2-在此层放置“-legend-”-字符" class="headerlink" title="2.2 在此层放置“ .legend ” 字符"></a>2.2 在此层放置“ .legend ” 字符</h5><ul>
-<li><p>单击放置字符串</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/String.png" alt="String"></p>
-</li>
-<li><p>放置 “ .legend ” 字符 </p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Legend.png" alt="legend"></p>
-</li>
-</ul>
-<h5 id="2-3-字符放置效果"><a href="#2-3-字符放置效果" class="headerlink" title="2.3 字符放置效果"></a>2.3 字符放置效果</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Placetheeffect.png" alt="Place the effect"></p>
-<h4 id="3-第一次输出（Gerber-Files）"><a href="#3-第一次输出（Gerber-Files）" class="headerlink" title="3. 第一次输出（Gerber Files）"></a>3. 第一次输出（Gerber Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; Gerber Files。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/File-Fabrication-Gerber.png" alt="File-Fabrication-Gerber"></p>
-<h5 id="3-1-Gerber-Setup-gt-General-设置"><a href="#3-1-Gerber-Setup-gt-General-设置" class="headerlink" title="3.1 Gerber Setup -&gt; General 设置"></a>3.1 Gerber Setup -&gt; General 设置</h5><p>Units (单位) 选择 <strong>Inches (英寸)</strong>；Formal (格式) 选择 <strong>2:5</strong>；根据介绍 <strong>2:3</strong> 分辨率 1mil，<strong>2:4</strong> 分辨率 0.1mil，<strong>2:5</strong> 分辨率 0.01mil；2:5 精度相对较高，本人用这个设置在多个厂家打样都没有任何问题。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/General.png" alt="General"></p>
-<h5 id="3-2-Gerber-Setup-gt-Layers-设置"><a href="#3-2-Gerber-Setup-gt-Layers-设置" class="headerlink" title="3.2 Gerber Setup -&gt; Layers 设置"></a>3.2 Gerber Setup -&gt; Layers 设置</h5><p>​        单击 Plot Layers 选择 Used no 后，只要在 Layers To Plot 栏里的层都会被选中，勾选掉 Top Pad Master、Bottom Pad Master 两层，然后根据自己需要导出的层进行选择 <strong>(嘉立创现在识别版边框为 Mechanical 1 机械1层)</strong>，所以导出要选择 Mechanical 1 层；勾选 <strong>Include unconnected mid-layer pads</strong>。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Layers.png" alt="Layers"></p>
-<h5 id="3-3-Gerber-Setup-gt-Drill-Drawing-设置"><a href="#3-3-Gerber-Setup-gt-Drill-Drawing-设置" class="headerlink" title="3.3 Gerber Setup -&gt; Drill Drawing 设置"></a>3.3 Gerber Setup -&gt; Drill Drawing 设置</h5><p>Drill Drawing选项卡中 需要在 <strong>Drill Drawing Plots</strong> 和 <strong>Drill Guide Plots</strong> 两个区域勾选 <strong>Plot all used drill pairs</strong></p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Drill.png" alt="Drill"></p>
-<h5 id="3-4-Gerber-Setup-gt-Apertures-设置"><a href="#3-4-Gerber-Setup-gt-Apertures-设置" class="headerlink" title="3.4 Gerber Setup -&gt; Apertures 设置"></a>3.4 Gerber Setup -&gt; Apertures 设置</h5><p>在 Apertures (光圈)选项卡中勾选 Embedded apertures (RS274X) 即可。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Apertures.png" alt="Apertures"></p>
-<h5 id="3-5-Gerber-Setup-gt-Advanced-设置"><a href="#3-5-Gerber-Setup-gt-Advanced-设置" class="headerlink" title="3.5 Gerber Setup -&gt; Advanced 设置"></a>3.5 Gerber Setup -&gt; Advanced 设置</h5><p>在 Advanced 选项卡中需要在 Film Size 区域中的每个选项中添加一个0; 其他的默认即合。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Advanced.png" alt="Advanced"></p>
-<h5 id="3-6-Gerber-Files-输出结束后效果"><a href="#3-6-Gerber-Files-输出结束后效果" class="headerlink" title="3.6 Gerber Files 输出结束后效果"></a>3.6 Gerber Files 输出结束后效果</h5><p>第一次输出结束后自动生成 CAMtastic1.Cam*的 CAM加工文件，不用保存可以立即关闭并丢弃。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/CAM.png" alt="CAM"></p>
-<h4 id="4-第二次输出（NC-Drill-Files）"><a href="#4-第二次输出（NC-Drill-Files）" class="headerlink" title="4. 第二次输出（NC Drill Files）"></a>4. 第二次输出（NC Drill Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; NC Drill Files。</p>
-<h5 id="4-1-NC-Drill-Setup-选项卡设置"><a href="#4-1-NC-Drill-Setup-选项卡设置" class="headerlink" title="4.1 NC Drill Setup 选项卡设置"></a>4.1 NC Drill Setup 选项卡设置</h5><p>通常默认设置即可，只有两个地方需要修改 —-&gt; Leading/Trailing Zeroes 区域选择 <strong>Suppress leading zeroes</strong>，默认 Suppress trailing zeroes；Other 区域勾选 <strong>Generate EIA Binary Drill File (.DRL)</strong>。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/NCDrill.png" alt="NC Drill"></p>
-<h5 id="4-2-Import-Drill-Data-导入钻孔数据-窗口"><a href="#4-2-Import-Drill-Data-导入钻孔数据-窗口" class="headerlink" title="4.2 Import Drill Data (导入钻孔数据)窗口"></a>4.2 Import Drill Data (导入钻孔数据)窗口</h5><p>默认即可，不用修改，直接点击OK进行输出</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/ImportDrillData.png" alt="Import Drill Data"></p>
-<h4 id="5-第三次输出（Generates-Pick-and-Place-Files）"><a href="#5-第三次输出（Generates-Pick-and-Place-Files）" class="headerlink" title="5. 第三次输出（Generates Pick and Place Files）"></a>5. 第三次输出（Generates Pick and Place Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Assembly(输出装配文件) -&gt; Generates Pick and Place Files。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates.png" alt="Generates"></p>
-<h5 id="5-1-Pick-and-Place-Setup-设置"><a href="#5-1-Pick-and-Place-Setup-设置" class="headerlink" title="5.1 Pick and Place Setup 设置"></a>5.1 Pick and Place Setup 设置</h5><p>左边选项卡中必须要勾选的几个参数 <strong>Center-X</strong> 、<strong>Center-Y</strong>、<strong>Pad-X</strong>、<strong>Pad-Y</strong>、<strong>Ref-X</strong>、<strong>Ref-Y</strong>、<strong>Rotation</strong>，其他根据需求选择。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates1.png" alt="Generates1"></p>
-<h5 id="5-2-坐标文件-csv-修改"><a href="#5-2-坐标文件-csv-修改" class="headerlink" title="5.2 坐标文件 .csv 修改"></a>5.2 坐标文件 .csv 修改</h5><p>删除表头文件设计信息<strong>（红线以上全部删除Delete）</strong></p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/%E5%9D%90%E6%A0%87csv%E6%96%87%E4%BB%B6.png" alt="坐标csv文件"></p>
-<h4 id="6-第四次输出（PCB-BOM表）"><a href="#6-第四次输出（PCB-BOM表）" class="headerlink" title="6. 第四次输出（PCB BOM表）"></a>6. 第四次输出（PCB BOM表）</h4><p>在 Altium Designer 的菜单中选择 Reports(报告) -&gt; Bill of Materials。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Reports.png" alt="Reports"></p>
-<h5 id="6-1-Properties-gt-General-设置"><a href="#6-1-Properties-gt-General-设置" class="headerlink" title="6.1 Properties -&gt; General 设置"></a>6.1 Properties -&gt; General 设置</h5><p>设置输出文件格式</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/BOM-General.png" alt="BOM_General"></p>
-<h5 id="6-2-Properties-gt-Columns设置"><a href="#6-2-Properties-gt-Columns设置" class="headerlink" title="6.2 Properties -&gt; Columns设置"></a>6.2 Properties -&gt; Columns设置</h5><p>添加<strong>Pins</strong>参数信息</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/BOM-Columns.png" alt="BOM-Columns"></p>
-<h4 id="7-Gerber-文件整理"><a href="#7-Gerber-文件整理" class="headerlink" title="7. Gerber 文件整理"></a>7. Gerber 文件整理</h4><h5 id="7-1-PCB工程文件夹下创建两个文件夹-SMT-、Gerber"><a href="#7-1-PCB工程文件夹下创建两个文件夹-SMT-、Gerber" class="headerlink" title="7.1 PCB工程文件夹下创建两个文件夹 SMT 、Gerber"></a>7.1 PCB工程文件夹下创建两个文件夹 SMT 、Gerber</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/folder.png" alt="folder"></p>
-<h5 id="7-2-输出Gerber文件添加到Gerber文件夹"><a href="#7-2-输出Gerber文件添加到Gerber文件夹" class="headerlink" title="7.2 输出Gerber文件添加到Gerber文件夹"></a>7.2 输出Gerber文件添加到Gerber文件夹</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Gerberfoler.png" alt="Gerberfoler"></p>
-<h5 id="7-3-坐标文件、BOM、钢网层添加到SMT文件夹"><a href="#7-3-坐标文件、BOM、钢网层添加到SMT文件夹" class="headerlink" title="7.3 坐标文件、BOM、钢网层添加到SMT文件夹"></a>7.3 坐标文件、BOM、钢网层添加到SMT文件夹</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/SMTPaste.png" alt="SMTPaste"></p>
-<h4 id="8-Altium-Designer-导出-Gerber文件教程完毕"><a href="#8-Altium-Designer-导出-Gerber文件教程完毕" class="headerlink" title="8. Altium Designer 导出 Gerber文件教程完毕"></a>8. Altium Designer 导出 Gerber文件教程完毕</h4><p> <a href="http://www.linelayout.com/bbs/bbs/uploadfile/image/20140917154916101610.pdf" target="_blank" rel="noopener">参考连接</a></p>
-]]></content>
-      <categories>
-        <category>Altium Designer</category>
-        <category>Gerber</category>
-      </categories>
-      <tags>
-        <tag>Gerber</tag>
-        <tag>PCB_Design</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git 分支管理 (Git_Flow)</title>
     <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -194,28 +81,116 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
-    <url>/2020/05/06/Nordic-development-environment/</url>
+    <title>Altium Designer 导出 Gerber 文件教程</title>
+    <url>/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <a id="more"></a>
 
-<h3 id="1-强制安装项"><a href="#1-强制安装项" class="headerlink" title="1. 强制安装项"></a>1. 强制安装项</h3><p>​            如下工具必须安装,否则无法开发 nRF51 &amp; nRF52 Series 产品</p>
-<h4 id="1-1-安装IDE"><a href="#1-1-安装IDE" class="headerlink" title="1.1   安装IDE"></a>1.1   安装IDE</h4><p>​            Nordic nRF51/52支持Keil，GCC，IAR 和 SES（Segger Embedded Studio）四种IDE，大家随便选择其中一种安装即可。</p>
-<h4 id="1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）"><a href="#1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）" class="headerlink" title="1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）"></a>1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）</h4><p>​            nRF Command Line Tools ( Nordic官方自己开发的命令行工具 ) , 安装过程中具体组件包括 J-link驱动、nrfjprog、nrfutil、mergehex等。</p>
-<p>​            下载连接:  <a href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs" target="_blank" rel="noopener">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs</a></p>
-<p>​            选择自己的桌面平台及需要的版本 (推荐最新发布的版本):</p>
-<p><img src="/2020/05/06/Nordic-development-environment/nRF-Command-Line-Tools.png" alt></p>
+<h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>输出的Gerber不是一个文件，而是一个文件集合，通常需要打包发送给厂家，厂家根据你输出的要求进行打样。基本输出的文件大概有这几个流程 Gerber Files、NC Drill Files(钻孔文件)、BOM(元器件BOM)、Generates Pick and Place Files(坐标文件)，具体步骤如下。</p>
+<h4 id="2-添加钻孔表"><a href="#2-添加钻孔表" class="headerlink" title="2. 添加钻孔表"></a>2. 添加钻孔表</h4><h5 id="2-1-选中-Drill-Drawing-层"><a href="#2-1-选中-Drill-Drawing-层" class="headerlink" title="2.1 选中 Drill Drawing 层"></a>2.1 选中 Drill Drawing 层</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/DrillDrawing.png" alt></p>
+<h5 id="2-2-在此层放置“-legend-”-字符"><a href="#2-2-在此层放置“-legend-”-字符" class="headerlink" title="2.2 在此层放置“ .legend ” 字符"></a>2.2 在此层放置“ .legend ” 字符</h5><ul>
+<li><p>单击放置字符串</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/String.png" alt="String"></p>
+</li>
+<li><p>放置 “ .legend ” 字符 </p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Legend.png" alt="legend"></p>
+</li>
+</ul>
+<h5 id="2-3-字符放置效果"><a href="#2-3-字符放置效果" class="headerlink" title="2.3 字符放置效果"></a>2.3 字符放置效果</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Placetheeffect.png" alt="Place the effect"></p>
+<h4 id="3-第一次输出（Gerber-Files）"><a href="#3-第一次输出（Gerber-Files）" class="headerlink" title="3. 第一次输出（Gerber Files）"></a>3. 第一次输出（Gerber Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; Gerber Files。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/File-Fabrication-Gerber.png" alt="File-Fabrication-Gerber"></p>
+<h5 id="3-1-Gerber-Setup-gt-General-设置"><a href="#3-1-Gerber-Setup-gt-General-设置" class="headerlink" title="3.1 Gerber Setup -&gt; General 设置"></a>3.1 Gerber Setup -&gt; General 设置</h5><p>Units (单位) 选择 <strong>Inches (英寸)</strong>；Formal (格式) 选择 <strong>2:5</strong>；根据介绍 <strong>2:3</strong> 分辨率 1mil，<strong>2:4</strong> 分辨率 0.1mil，<strong>2:5</strong> 分辨率 0.01mil；2:5 精度相对较高，本人用这个设置在多个厂家打样都没有任何问题。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/General.png" alt="General"></p>
+<h5 id="3-2-Gerber-Setup-gt-Layers-设置"><a href="#3-2-Gerber-Setup-gt-Layers-设置" class="headerlink" title="3.2 Gerber Setup -&gt; Layers 设置"></a>3.2 Gerber Setup -&gt; Layers 设置</h5><p>​        单击 Plot Layers 选择 Used no 后，只要在 Layers To Plot 栏里的层都会被选中，勾选掉 Top Pad Master、Bottom Pad Master 两层，然后根据自己需要导出的层进行选择 <strong>(嘉立创现在识别版边框为 Mechanical 1 机械1层)</strong>，所以导出要选择 Mechanical 1 层；勾选 <strong>Include unconnected mid-layer pads</strong>。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Layers.png" alt="Layers"></p>
+<h5 id="3-3-Gerber-Setup-gt-Drill-Drawing-设置"><a href="#3-3-Gerber-Setup-gt-Drill-Drawing-设置" class="headerlink" title="3.3 Gerber Setup -&gt; Drill Drawing 设置"></a>3.3 Gerber Setup -&gt; Drill Drawing 设置</h5><p>Drill Drawing选项卡中 需要在 <strong>Drill Drawing Plots</strong> 和 <strong>Drill Guide Plots</strong> 两个区域勾选 <strong>Plot all used drill pairs</strong></p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Drill.png" alt="Drill"></p>
+<h5 id="3-4-Gerber-Setup-gt-Apertures-设置"><a href="#3-4-Gerber-Setup-gt-Apertures-设置" class="headerlink" title="3.4 Gerber Setup -&gt; Apertures 设置"></a>3.4 Gerber Setup -&gt; Apertures 设置</h5><p>在 Apertures (光圈)选项卡中勾选 Embedded apertures (RS274X) 即可。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Apertures.png" alt="Apertures"></p>
+<h5 id="3-5-Gerber-Setup-gt-Advanced-设置"><a href="#3-5-Gerber-Setup-gt-Advanced-设置" class="headerlink" title="3.5 Gerber Setup -&gt; Advanced 设置"></a>3.5 Gerber Setup -&gt; Advanced 设置</h5><p>在 Advanced 选项卡中需要在 Film Size 区域中的每个选项中添加一个0; 其他的默认即合。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Advanced.png" alt="Advanced"></p>
+<h5 id="3-6-Gerber-Files-输出结束后效果"><a href="#3-6-Gerber-Files-输出结束后效果" class="headerlink" title="3.6 Gerber Files 输出结束后效果"></a>3.6 Gerber Files 输出结束后效果</h5><p>第一次输出结束后自动生成 CAMtastic1.Cam*的 CAM加工文件，不用保存可以立即关闭并丢弃。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/CAM.png" alt="CAM"></p>
+<h4 id="4-第二次输出（NC-Drill-Files）"><a href="#4-第二次输出（NC-Drill-Files）" class="headerlink" title="4. 第二次输出（NC Drill Files）"></a>4. 第二次输出（NC Drill Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; NC Drill Files。</p>
+<h5 id="4-1-NC-Drill-Setup-选项卡设置"><a href="#4-1-NC-Drill-Setup-选项卡设置" class="headerlink" title="4.1 NC Drill Setup 选项卡设置"></a>4.1 NC Drill Setup 选项卡设置</h5><p>通常默认设置即可，只有两个地方需要修改 —-&gt; Leading/Trailing Zeroes 区域选择 <strong>Suppress leading zeroes</strong>，默认 Suppress trailing zeroes；Other 区域勾选 <strong>Generate EIA Binary Drill File (.DRL)</strong>。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/NCDrill.png" alt="NC Drill"></p>
+<h5 id="4-2-Import-Drill-Data-导入钻孔数据-窗口"><a href="#4-2-Import-Drill-Data-导入钻孔数据-窗口" class="headerlink" title="4.2 Import Drill Data (导入钻孔数据)窗口"></a>4.2 Import Drill Data (导入钻孔数据)窗口</h5><p>默认即可，不用修改，直接点击OK进行输出</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/ImportDrillData.png" alt="Import Drill Data"></p>
+<h4 id="5-第三次输出（Generates-Pick-and-Place-Files）"><a href="#5-第三次输出（Generates-Pick-and-Place-Files）" class="headerlink" title="5. 第三次输出（Generates Pick and Place Files）"></a>5. 第三次输出（Generates Pick and Place Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Assembly(输出装配文件) -&gt; Generates Pick and Place Files。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates.png" alt="Generates"></p>
+<h5 id="5-1-Pick-and-Place-Setup-设置"><a href="#5-1-Pick-and-Place-Setup-设置" class="headerlink" title="5.1 Pick and Place Setup 设置"></a>5.1 Pick and Place Setup 设置</h5><p>左边选项卡中必须要勾选的几个参数 <strong>Center-X</strong> 、<strong>Center-Y</strong>、<strong>Pad-X</strong>、<strong>Pad-Y</strong>、<strong>Ref-X</strong>、<strong>Ref-Y</strong>、<strong>Rotation</strong>，其他根据需求选择。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates1.png" alt="Generates1"></p>
+<h5 id="5-2-坐标文件-csv-修改"><a href="#5-2-坐标文件-csv-修改" class="headerlink" title="5.2 坐标文件 .csv 修改"></a>5.2 坐标文件 .csv 修改</h5><p>删除表头文件设计信息<strong>（红线以上全部删除Delete）</strong></p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/%E5%9D%90%E6%A0%87csv%E6%96%87%E4%BB%B6.png" alt="坐标csv文件"></p>
+<h4 id="6-第四次输出（PCB-BOM表）"><a href="#6-第四次输出（PCB-BOM表）" class="headerlink" title="6. 第四次输出（PCB BOM表）"></a>6. 第四次输出（PCB BOM表）</h4><p>在 Altium Designer 的菜单中选择 Reports(报告) -&gt; Bill of Materials。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Reports.png" alt="Reports"></p>
+<h5 id="6-1-Properties-gt-General-设置"><a href="#6-1-Properties-gt-General-设置" class="headerlink" title="6.1 Properties -&gt; General 设置"></a>6.1 Properties -&gt; General 设置</h5><p>设置输出文件格式</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/BOM-General.png" alt="BOM_General"></p>
+<h5 id="6-2-Properties-gt-Columns设置"><a href="#6-2-Properties-gt-Columns设置" class="headerlink" title="6.2 Properties -&gt; Columns设置"></a>6.2 Properties -&gt; Columns设置</h5><p>添加<strong>Pins</strong>参数信息</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/BOM-Columns.png" alt="BOM-Columns"></p>
+<h4 id="7-Gerber-文件整理"><a href="#7-Gerber-文件整理" class="headerlink" title="7. Gerber 文件整理"></a>7. Gerber 文件整理</h4><h5 id="7-1-PCB工程文件夹下创建两个文件夹-SMT-、Gerber"><a href="#7-1-PCB工程文件夹下创建两个文件夹-SMT-、Gerber" class="headerlink" title="7.1 PCB工程文件夹下创建两个文件夹 SMT 、Gerber"></a>7.1 PCB工程文件夹下创建两个文件夹 SMT 、Gerber</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/folder.png" alt="folder"></p>
+<h5 id="7-2-输出Gerber文件添加到Gerber文件夹"><a href="#7-2-输出Gerber文件添加到Gerber文件夹" class="headerlink" title="7.2 输出Gerber文件添加到Gerber文件夹"></a>7.2 输出Gerber文件添加到Gerber文件夹</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Gerberfoler.png" alt="Gerberfoler"></p>
+<h5 id="7-3-坐标文件、BOM、钢网层添加到SMT文件夹"><a href="#7-3-坐标文件、BOM、钢网层添加到SMT文件夹" class="headerlink" title="7.3 坐标文件、BOM、钢网层添加到SMT文件夹"></a>7.3 坐标文件、BOM、钢网层添加到SMT文件夹</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/SMTPaste.png" alt="SMTPaste"></p>
+<h4 id="8-Altium-Designer-导出-Gerber文件教程完毕"><a href="#8-Altium-Designer-导出-Gerber文件教程完毕" class="headerlink" title="8. Altium Designer 导出 Gerber文件教程完毕"></a>8. Altium Designer 导出 Gerber文件教程完毕</h4><p> <a href="http://www.linelayout.com/bbs/bbs/uploadfile/image/20140917154916101610.pdf" target="_blank" rel="noopener">参考连接</a></p>
 ]]></content>
       <categories>
-        <category>Nordic</category>
+        <category>Altium Designer</category>
+        <category>Gerber</category>
       </categories>
       <tags>
-        <tag>Nordic</tag>
-        <tag>Bluetooth</tag>
-        <tag>nRF connect</tag>
-        <tag>nrfutil</tag>
-        <tag>nRF51</tag>
-        <tag>nRF52</tag>
+        <tag>Gerber</tag>
+        <tag>PCB_Design</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git 初次运行前的配置</title>
+    <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h2 id="Git初次运行配置"><a href="#Git初次运行配置" class="headerlink" title="Git初次运行配置"></a>Git初次运行配置</h2><h3 id="1-用户信息"><a href="#1-用户信息" class="headerlink" title="1.    用户信息"></a>1.    用户信息</h3><ul>
+<li>安装完Git应该做的第一件事就是设置自己的用户名称和邮件地址.</li>
+<li>命令如下:<ul>
+<li><code>$ git config --global user.name &quot;Zhao_ch&quot;</code> </li>
+<li><code>$ git config --global user.email &quot;Zhao_ch@163.com&quot;</code></li>
+</ul>
+</li>
+<li>如果使用了–global选项，那么该命令是需要运行一次，因为之后无论你在系统上做任何事情，Git都会使用这些信息  </li>
+</ul>
+<h3 id="2-文本编辑器"><a href="#2-文本编辑器" class="headerlink" title="2.   文本编辑器"></a>2.   文本编辑器</h3><ul>
+<li>用户信息设置完毕，可以设置默认文本编辑器  </li>
+<li>如果没有设置，Git会使用操作系统默认的文本编辑器，通常是Vim </li>
+<li>例如设置文本编辑器为Notepad++  <ul>
+<li>命令如下：    <ul>
+<li>`$ git config –global core.editor Notepad++</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-检查配置信息"><a href="#3-检查配置信息" class="headerlink" title="3.   检查配置信息"></a>3.   检查配置信息</h3><ul>
+<li>如果查询配置信息可以使用 $ git config –list 命令列出所有配置信息。</li>
+</ul>
+<h3 id="4-生成密钥"><a href="#4-生成密钥" class="headerlink" title="4.   生成密钥"></a>4.   生成密钥</h3><ul>
+<li>命令如下:<ul>
+<li><code>$ ssh-keygen -t rsa -C &quot;Zhao_ch@163.com&quot;</code></li>
+</ul>
+</li>
+<li>如果不设置密码的话 连续 3 个回车。然后生成 id_rsa 和 id_rsa.pub 两个文件。<ul>
+<li><strong>Hosts文件配置 文件位置</strong> <strong>C:\Windows\System32\drivers\etc\hosts</strong>     </li>
+<li>添加 35.231.145.151 <a href="http://gitlab.com/" target="_blank" rel="noopener">gitlab.com</a>   </li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+        <tag>Gitlab</tag>
+        <tag>Gitee</tag>
       </tags>
   </entry>
   <entry>
@@ -298,6 +273,31 @@ Develop分支合并到Master分支命令：
 <p>  ​        <strong>安全式DFU：</strong> Bootloader存有一把公钥，Bootloader会先把公钥验证新固件的签名，验签通过，允许后续的工作。（如果验签失败，Bootloader将拒绝升级，重新跳回应用程序）</p>
 <p>  目前SDK支持Bluetooth、UART、USB三种方式接受新固件，官方SDK中可以找到此三种方式的工程目录。</p>
 <p>  nRF51/52启动流程：<br>          系统上电之后，系统先执行Softdevice，Softdevice通过读取UICR寄存器的一个值，来判断系统目前是否有Bootloader，如果没有Bootloader，系统直接跳到Application；如果有Bootloader，系统先跳到Bootloader，Bootloader再根据相关情况来决定是进入升级模式还是进入Application。<br>          <strong>Bootloader主要判断如下几种情况：<br>                  按键是否按下（按键进入Bootloader DFU）<br>                  保持寄存器GPREGRET1是否为 0xB1<br>                  上次DFU过程是否还在进行<br>                  应用程序校验是否通过</strong></p>
+]]></content>
+      <categories>
+        <category>Nordic</category>
+      </categories>
+      <tags>
+        <tag>Nordic</tag>
+        <tag>Bluetooth</tag>
+        <tag>nRF connect</tag>
+        <tag>nrfutil</tag>
+        <tag>nRF51</tag>
+        <tag>nRF52</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
+    <url>/2020/05/06/Nordic-development-environment/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="1-强制安装项"><a href="#1-强制安装项" class="headerlink" title="1. 强制安装项"></a>1. 强制安装项</h3><p>​            如下工具必须安装,否则无法开发 nRF51 &amp; nRF52 Series 产品</p>
+<h4 id="1-1-安装IDE"><a href="#1-1-安装IDE" class="headerlink" title="1.1   安装IDE"></a>1.1   安装IDE</h4><p>​            Nordic nRF51/52支持Keil，GCC，IAR 和 SES（Segger Embedded Studio）四种IDE，大家随便选择其中一种安装即可。</p>
+<h4 id="1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）"><a href="#1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）" class="headerlink" title="1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）"></a>1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）</h4><p>​            nRF Command Line Tools ( Nordic官方自己开发的命令行工具 ) , 安装过程中具体组件包括 J-link驱动、nrfjprog、nrfutil、mergehex等。</p>
+<p>​            下载连接:  <a href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs" target="_blank" rel="noopener">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs</a></p>
+<p>​            选择自己的桌面平台及需要的版本 (推荐最新发布的版本):</p>
+<p><img src="/2020/05/06/Nordic-development-environment/nRF-Command-Line-Tools.png" alt></p>
 ]]></content>
       <categories>
         <category>Nordic</category>
