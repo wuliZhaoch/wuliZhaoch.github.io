@@ -81,68 +81,6 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>Altium Designer 导出 Gerber 文件教程</title>
-    <url>/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>输出的Gerber不是一个文件，而是一个文件集合，通常需要打包发送给厂家，厂家根据你输出的要求进行打样。基本输出的文件大概有这几个流程 Gerber Files、NC Drill Files(钻孔文件)、BOM(元器件BOM)、Generates Pick and Place Files(坐标文件)，具体步骤如下。</p>
-<h4 id="2-添加钻孔表"><a href="#2-添加钻孔表" class="headerlink" title="2. 添加钻孔表"></a>2. 添加钻孔表</h4><h5 id="2-1-选中-Drill-Drawing-层"><a href="#2-1-选中-Drill-Drawing-层" class="headerlink" title="2.1 选中 Drill Drawing 层"></a>2.1 选中 Drill Drawing 层</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/DrillDrawing.png" alt></p>
-<h5 id="2-2-在此层放置“-legend-”-字符"><a href="#2-2-在此层放置“-legend-”-字符" class="headerlink" title="2.2 在此层放置“ .legend ” 字符"></a>2.2 在此层放置“ .legend ” 字符</h5><ul>
-<li><p>单击放置字符串</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/String.png" alt="String"></p>
-</li>
-<li><p>放置 “ .legend ” 字符 </p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Legend.png" alt="legend"></p>
-</li>
-</ul>
-<h5 id="2-3-字符放置效果"><a href="#2-3-字符放置效果" class="headerlink" title="2.3 字符放置效果"></a>2.3 字符放置效果</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Placetheeffect.png" alt="Place the effect"></p>
-<h4 id="3-第一次输出（Gerber-Files）"><a href="#3-第一次输出（Gerber-Files）" class="headerlink" title="3. 第一次输出（Gerber Files）"></a>3. 第一次输出（Gerber Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; Gerber Files。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/File-Fabrication-Gerber.png" alt="File-Fabrication-Gerber"></p>
-<h5 id="3-1-Gerber-Setup-gt-General-设置"><a href="#3-1-Gerber-Setup-gt-General-设置" class="headerlink" title="3.1 Gerber Setup -&gt; General 设置"></a>3.1 Gerber Setup -&gt; General 设置</h5><p>Units (单位) 选择 <strong>Inches (英寸)</strong>；Formal (格式) 选择 <strong>2:5</strong>；根据介绍 <strong>2:3</strong> 分辨率 1mil，<strong>2:4</strong> 分辨率 0.1mil，<strong>2:5</strong> 分辨率 0.01mil；2:5 精度相对较高，本人用这个设置在多个厂家打样都没有任何问题。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/General.png" alt="General"></p>
-<h5 id="3-2-Gerber-Setup-gt-Layers-设置"><a href="#3-2-Gerber-Setup-gt-Layers-设置" class="headerlink" title="3.2 Gerber Setup -&gt; Layers 设置"></a>3.2 Gerber Setup -&gt; Layers 设置</h5><p>​        单击 Plot Layers 选择 Used no 后，只要在 Layers To Plot 栏里的层都会被选中，勾选掉 Top Pad Master、Bottom Pad Master 两层，然后根据自己需要导出的层进行选择 <strong>(嘉立创现在识别版边框为 Mechanical 1 机械1层)</strong>，所以导出要选择 Mechanical 1 层；勾选 <strong>Include unconnected mid-layer pads</strong>。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Layers.png" alt="Layers"></p>
-<h5 id="3-3-Gerber-Setup-gt-Drill-Drawing-设置"><a href="#3-3-Gerber-Setup-gt-Drill-Drawing-设置" class="headerlink" title="3.3 Gerber Setup -&gt; Drill Drawing 设置"></a>3.3 Gerber Setup -&gt; Drill Drawing 设置</h5><p>Drill Drawing选项卡中 需要在 <strong>Drill Drawing Plots</strong> 和 <strong>Drill Guide Plots</strong> 两个区域勾选 <strong>Plot all used drill pairs</strong></p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Drill.png" alt="Drill"></p>
-<h5 id="3-4-Gerber-Setup-gt-Apertures-设置"><a href="#3-4-Gerber-Setup-gt-Apertures-设置" class="headerlink" title="3.4 Gerber Setup -&gt; Apertures 设置"></a>3.4 Gerber Setup -&gt; Apertures 设置</h5><p>在 Apertures (光圈)选项卡中勾选 Embedded apertures (RS274X) 即可。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Apertures.png" alt="Apertures"></p>
-<h5 id="3-5-Gerber-Setup-gt-Advanced-设置"><a href="#3-5-Gerber-Setup-gt-Advanced-设置" class="headerlink" title="3.5 Gerber Setup -&gt; Advanced 设置"></a>3.5 Gerber Setup -&gt; Advanced 设置</h5><p>在 Advanced 选项卡中需要在 Film Size 区域中的每个选项中添加一个0; 其他的默认即合。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Advanced.png" alt="Advanced"></p>
-<h5 id="3-6-Gerber-Files-输出结束后效果"><a href="#3-6-Gerber-Files-输出结束后效果" class="headerlink" title="3.6 Gerber Files 输出结束后效果"></a>3.6 Gerber Files 输出结束后效果</h5><p>第一次输出结束后自动生成 CAMtastic1.Cam*的 CAM加工文件，不用保存可以立即关闭并丢弃。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/CAM.png" alt="CAM"></p>
-<h4 id="4-第二次输出（NC-Drill-Files）"><a href="#4-第二次输出（NC-Drill-Files）" class="headerlink" title="4. 第二次输出（NC Drill Files）"></a>4. 第二次输出（NC Drill Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; NC Drill Files。</p>
-<h5 id="4-1-NC-Drill-Setup-选项卡设置"><a href="#4-1-NC-Drill-Setup-选项卡设置" class="headerlink" title="4.1 NC Drill Setup 选项卡设置"></a>4.1 NC Drill Setup 选项卡设置</h5><p>通常默认设置即可，只有两个地方需要修改 —-&gt; Leading/Trailing Zeroes 区域选择 <strong>Suppress leading zeroes</strong>，默认 Suppress trailing zeroes；Other 区域勾选 <strong>Generate EIA Binary Drill File (.DRL)</strong>。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/NCDrill.png" alt="NC Drill"></p>
-<h5 id="4-2-Import-Drill-Data-导入钻孔数据-窗口"><a href="#4-2-Import-Drill-Data-导入钻孔数据-窗口" class="headerlink" title="4.2 Import Drill Data (导入钻孔数据)窗口"></a>4.2 Import Drill Data (导入钻孔数据)窗口</h5><p>默认即可，不用修改，直接点击OK进行输出</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/ImportDrillData.png" alt="Import Drill Data"></p>
-<h4 id="5-第三次输出（Generates-Pick-and-Place-Files）"><a href="#5-第三次输出（Generates-Pick-and-Place-Files）" class="headerlink" title="5. 第三次输出（Generates Pick and Place Files）"></a>5. 第三次输出（Generates Pick and Place Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Assembly(输出装配文件) -&gt; Generates Pick and Place Files。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates.png" alt="Generates"></p>
-<h5 id="5-1-Pick-and-Place-Setup-设置"><a href="#5-1-Pick-and-Place-Setup-设置" class="headerlink" title="5.1 Pick and Place Setup 设置"></a>5.1 Pick and Place Setup 设置</h5><p>左边选项卡中必须要勾选的几个参数 <strong>Center-X</strong> 、<strong>Center-Y</strong>、<strong>Pad-X</strong>、<strong>Pad-Y</strong>、<strong>Ref-X</strong>、<strong>Ref-Y</strong>、<strong>Rotation</strong>，其他根据需求选择。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates1.png" alt="Generates1"></p>
-<h5 id="5-2-坐标文件-csv-修改"><a href="#5-2-坐标文件-csv-修改" class="headerlink" title="5.2 坐标文件 .csv 修改"></a>5.2 坐标文件 .csv 修改</h5><p>删除表头文件设计信息<strong>（红线以上全部删除Delete）</strong></p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/%E5%9D%90%E6%A0%87csv%E6%96%87%E4%BB%B6.png" alt="坐标csv文件"></p>
-<h4 id="6-第四次输出（PCB-BOM表）"><a href="#6-第四次输出（PCB-BOM表）" class="headerlink" title="6. 第四次输出（PCB BOM表）"></a>6. 第四次输出（PCB BOM表）</h4><p>在 Altium Designer 的菜单中选择 Reports(报告) -&gt; Bill of Materials。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Reports.png" alt="Reports"></p>
-<h5 id="6-1-Properties-gt-General-设置"><a href="#6-1-Properties-gt-General-设置" class="headerlink" title="6.1 Properties -&gt; General 设置"></a>6.1 Properties -&gt; General 设置</h5><p>设置输出文件格式</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/BOM-General.png" alt="BOM_General"></p>
-<h5 id="6-2-Properties-gt-Columns设置"><a href="#6-2-Properties-gt-Columns设置" class="headerlink" title="6.2 Properties -&gt; Columns设置"></a>6.2 Properties -&gt; Columns设置</h5><p>添加<strong>Pins</strong>参数信息</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/BOM-Columns.png" alt="BOM-Columns"></p>
-<h4 id="7-Gerber-文件整理"><a href="#7-Gerber-文件整理" class="headerlink" title="7. Gerber 文件整理"></a>7. Gerber 文件整理</h4><h5 id="7-1-PCB工程文件夹下创建两个文件夹-SMT-、Gerber"><a href="#7-1-PCB工程文件夹下创建两个文件夹-SMT-、Gerber" class="headerlink" title="7.1 PCB工程文件夹下创建两个文件夹 SMT 、Gerber"></a>7.1 PCB工程文件夹下创建两个文件夹 SMT 、Gerber</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/folder.png" alt="folder"></p>
-<h5 id="7-2-输出Gerber文件添加到Gerber文件夹"><a href="#7-2-输出Gerber文件添加到Gerber文件夹" class="headerlink" title="7.2 输出Gerber文件添加到Gerber文件夹"></a>7.2 输出Gerber文件添加到Gerber文件夹</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Gerberfoler.png" alt="Gerberfoler"></p>
-<h5 id="7-3-坐标文件、BOM、钢网层添加到SMT文件夹"><a href="#7-3-坐标文件、BOM、钢网层添加到SMT文件夹" class="headerlink" title="7.3 坐标文件、BOM、钢网层添加到SMT文件夹"></a>7.3 坐标文件、BOM、钢网层添加到SMT文件夹</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/SMTPaste.png" alt="SMTPaste"></p>
-<h4 id="8-Altium-Designer-导出-Gerber文件教程完毕"><a href="#8-Altium-Designer-导出-Gerber文件教程完毕" class="headerlink" title="8. Altium Designer 导出 Gerber文件教程完毕"></a>8. Altium Designer 导出 Gerber文件教程完毕</h4><p> <a href="http://www.linelayout.com/bbs/bbs/uploadfile/image/20140917154916101610.pdf" target="_blank" rel="noopener">参考连接</a></p>
-]]></content>
-      <categories>
-        <category>Altium Designer</category>
-        <category>Gerber</category>
-      </categories>
-      <tags>
-        <tag>Gerber</tag>
-        <tag>PCB_Design</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git 初次运行前的配置</title>
     <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -194,96 +132,68 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>Welcome</title>
-    <url>/2020/05/03/Personal_Blog/</url>
-    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
-  </entry>
-  <entry>
-    <title>嘉立创JLC元件库+3D封装下载</title>
-    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
+    <title>Altium Designer 导出 Gerber 文件教程</title>
+    <url>/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <a id="more"></a>
 
-<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
-<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
-</ul>
-<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
-<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
-</ul>
-<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
-      <categories>
-        <category>Altium Designer</category>
-      </categories>
-      <tags>
-        <tag>PCB_Design</tag>
-        <tag>Altium Designer</tag>
-        <tag>Layout</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>蓝牙空中升级(BLE OTA)原理与步骤</title>
-    <url>/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="蓝牙空中升级-BLE-OTA-原理与步骤"><a href="#蓝牙空中升级-BLE-OTA-原理与步骤" class="headerlink" title="蓝牙空中升级(BLE OTA)原理与步骤"></a>蓝牙空中升级(BLE OTA)原理与步骤</h3><h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><ul>
-<li><p><strong>DFU</strong>（Device Firmware Update），设备固件升级的意思。</p>
+<h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>输出的Gerber不是一个文件，而是一个文件集合，通常需要打包发送给厂家，厂家根据你输出的要求进行打样。基本输出的文件大概有这几个流程 Gerber Files、NC Drill Files(钻孔文件)、BOM(元器件BOM)、Generates Pick and Place Files(坐标文件)，具体步骤如下。</p>
+<h4 id="2-添加钻孔表"><a href="#2-添加钻孔表" class="headerlink" title="2. 添加钻孔表"></a>2. 添加钻孔表</h4><h5 id="2-1-选中-Drill-Drawing-层"><a href="#2-1-选中-Drill-Drawing-层" class="headerlink" title="2.1 选中 Drill Drawing 层"></a>2.1 选中 Drill Drawing 层</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/DrillDrawing.png" alt></p>
+<h5 id="2-2-在此层放置“-legend-”-字符"><a href="#2-2-在此层放置“-legend-”-字符" class="headerlink" title="2.2 在此层放置“ .legend ” 字符"></a>2.2 在此层放置“ .legend ” 字符</h5><ul>
+<li><p>单击放置字符串</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/String.png" alt="String"></p>
 </li>
-<li><p><strong>OTA</strong>（Over The Air）是实现DFU的一种方式，准确说OTA全称应该是OTA DFU，即通过空中无线方式实现设备固件升级。</p>
-</li>
-<li><p>通过无线通信方式实现DFU的，都可以叫OTA，比如 2G / 3G / 4G / WIFI / 蓝牙 / NFC / Zigbee，都支持OTA。</p>
-</li>
-<li><p>DFU除了可以通过无线方式（OTA）进行升级，也可以通过有线方式进行升级，比如通过UART，USB或者SPI通信接口来升级设备固件。</p>
-</li>
-<li><p>DFU分为  <strong>后台式</strong>  与  <strong>非后台式</strong></p>
-<ul>
-<li><strong>后台式DFU：</strong>又称静默式DFU（Silent DFU），升级的时候，新固件在后台悄悄下载，即新固件下载属于应用程序功能的一部分，在新固件下载过程中，应用可以正常使用，也就是说整个下载过程对用户来说是无感的，下载完成后，系统再跳到Bootloader模式，由Bootloader完成新固件覆盖老固件的操作，至此整个升级过程结束。</li>
-<li><strong>非后台式DFU：</strong>升级的时候，系统需要先从应用模式跳入到Bootloader模式，由Bootloader进行新固件下载工作，下载完成后Bootloader继续完成新固件覆盖老固件的操作，至此升级结束。早先的功能机就是采用非后台式 DFU来升级操作系统的，即用户需要先长按某些按键进入Bootloader模式，然后再进行升级，整个升级过程中手机正常功能都无法使用。</li>
-</ul>
-</li>
-<li><p><strong>双区DFU</strong>（Dual bank）和<strong>单区DFU</strong>（Single bank），<strong>双区或者单区DFU式新固件和老固件覆盖的两种方式</strong>。</p>
-<ul>
-<li><p><strong>后台式DFU（双区模式）：</strong>必须采用双区模式进行升级，即老系统（老固件）和新系统（新固件）各占一块Bank（存储区），假设老固件放在Bank0中，新固件放在Bank1中，升级的时候，应用程序先把新固件下载到Bank1中，只有当新固件下载完成并校验成功后，系统才会跳进Bootloader模式，然后擦除老固件所在的Bank0区，并把新固件拷贝到Bank0区中。</p>
-</li>
-<li><p><strong>非后台式DFU：</strong>可以采用双区模式，也可以采用单区模式</p>
-<ul>
-<li><p>非后台式DFU（双区模式）：双区模式下新老固件各占一块Bank（老固件为Bank0，新固件为Bank1），升级时，系统先跳入Bootloader模式，然后Bootloader程序把新固件下载到bank1中，只有新固件下载完成并校验成功后，才会去擦除老固件所在的bank0区，并把新固件拷贝到bank0区</p>
-</li>
-<li><p>非后台式DFU（单区模式）：单区模式的非后台式DFU只有一个Bank0，老固件和新固件分享这一个bank0，升级的时候，进入bootloader模式后<strong>立马擦除老固件</strong>，然后直接把新固件下载到同一个bank中，下载完成后校验新固件的有效性，新固件有效升级完成，否则要求重来。（跟非后台式DFU双区模式相比，单区模式节省了一个Bank的Flash空间，在系统资源比较紧张的时候，单区模式是一个不错的选择）</p>
-<p>（不管是双区模式还是单区模式，升级过程出现问题后，都可以进行二次升级，都不会出现“变砖”情况。不过双区模式有一个好处，如果升级过程中出现问题或者新固件有问题，它还可以选择之前的老固件老系统继续执行而不受其影响。而单区模式碰到这种情况就只能一直待在bootloader中，然后等待二次或者多次升级尝试，此时设备的正常功能已无法使用，从用户使用这个角度来说，你的确可以说此时设备已经“变砖”了。所以说，虽然双区模式牺牲了很多存储空间，但是换来了更好的升级体验。）</p>
+<li><p>放置 “ .legend ” 字符 </p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Legend.png" alt="legend"></p>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/%E5%8D%87%E7%BA%A7%E5%9B%BE%E8%A7%A3.png" alt></p>
-<h4 id="二、Nordic-SDK-DFU工作原理"><a href="#二、Nordic-SDK-DFU工作原理" class="headerlink" title="二、Nordic SDK DFU工作原理"></a>二、Nordic SDK DFU工作原理</h4><p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png" alt></p>
-<ul>
-<li><p><strong>采用双区模式：</strong>Bank0存放的是D程序（老固件），Bank1存放的是新固件。应用程序只在Bank0里跑，Bank1平时为空或者忽略，升级时，先跳转到Bootloader，然后接收新固件并放在Bank1中，最后把Bank1里边的固件拷贝到Bank0中。</p>
-</li>
-<li><p><strong>采用单区模式：</strong>单区模式则没有Bank1存储区，系统只跑Bank0里面的代码，升级的时候，先跳转到Bootloader，先擦除Bank0里面的程序（老固件），并把新固件直接放在Bank0中。</p>
-</li>
-</ul>
-<p>  <strong>升级时如何跳转到Bootloader？</strong></p>
-<p>  ​        Nordic SDK 将DFU分为按键式DFU和非按键式DFU，按键式DFU是上电时长按某按键进入Bootloader模式。非按键式是整个DFU过程中设备端无任何人工干预，通过BLE/UART/USB接口给应用程序发送一条指令，应用程序收到指令后自动进入Bootloader模式。不管是什么方式进入Bootloader，Bootloader工作过程都是一样的。</p>
-<p>  <strong>跳转到Bootloader后的执行操作</strong></p>
-<p>  ​        程序跳转到Bootloader后，根据Bootloader需不需要对新固件进行验签。（DFU分为开放式DFU和安全式DFU）</p>
-<p>  ​        <strong>开放式DFU：</strong> Bootloader不做任何验证，直接把新固件进行升级。</p>
-<p>  ​        <strong>安全式DFU：</strong> Bootloader存有一把公钥，Bootloader会先把公钥验证新固件的签名，验签通过，允许后续的工作。（如果验签失败，Bootloader将拒绝升级，重新跳回应用程序）</p>
-<p>  目前SDK支持Bluetooth、UART、USB三种方式接受新固件，官方SDK中可以找到此三种方式的工程目录。</p>
-<p>  nRF51/52启动流程：<br>          系统上电之后，系统先执行Softdevice，Softdevice通过读取UICR寄存器的一个值，来判断系统目前是否有Bootloader，如果没有Bootloader，系统直接跳到Application；如果有Bootloader，系统先跳到Bootloader，Bootloader再根据相关情况来决定是进入升级模式还是进入Application。<br>          <strong>Bootloader主要判断如下几种情况：<br>                  按键是否按下（按键进入Bootloader DFU）<br>                  保持寄存器GPREGRET1是否为 0xB1<br>                  上次DFU过程是否还在进行<br>                  应用程序校验是否通过</strong></p>
+<h5 id="2-3-字符放置效果"><a href="#2-3-字符放置效果" class="headerlink" title="2.3 字符放置效果"></a>2.3 字符放置效果</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Placetheeffect.png" alt="Place the effect"></p>
+<h5 id="2-4-如果以上方法不行，该如何操作？-具体原因可能是版本问题，毕竟用的破解版的"><a href="#2-4-如果以上方法不行，该如何操作？-具体原因可能是版本问题，毕竟用的破解版的" class="headerlink" title="2.4 如果以上方法不行，该如何操作？(具体原因可能是版本问题，毕竟用的破解版的)"></a>2.4 如果以上方法不行，该如何操作？(具体原因可能是版本问题，毕竟用的破解版的)</h5><p>在Altium Designer 的菜单中选择 Place (放置) -&gt; Dirll Table(钻孔表) 。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/drilltable.png" alt="drilltable"></p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/drilltable1.png" alt="drilltable1"></p>
+<h4 id="3-第一次输出（Gerber-Files）"><a href="#3-第一次输出（Gerber-Files）" class="headerlink" title="3. 第一次输出（Gerber Files）"></a>3. 第一次输出（Gerber Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; Gerber Files。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/File-Fabrication-Gerber.png" alt="File-Fabrication-Gerber"></p>
+<h5 id="3-1-Gerber-Setup-gt-General-设置"><a href="#3-1-Gerber-Setup-gt-General-设置" class="headerlink" title="3.1 Gerber Setup -&gt; General 设置"></a>3.1 Gerber Setup -&gt; General 设置</h5><p>Units (单位) 选择 <strong>Inches (英寸)</strong>；Formal (格式) 选择 <strong>2:5</strong>；根据介绍 <strong>2:3</strong> 分辨率 1mil，<strong>2:4</strong> 分辨率 0.1mil，<strong>2:5</strong> 分辨率 0.01mil；2:5 精度相对较高，本人用这个设置在多个厂家打样都没有任何问题。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/General.png" alt="General"></p>
+<h5 id="3-2-Gerber-Setup-gt-Layers-设置"><a href="#3-2-Gerber-Setup-gt-Layers-设置" class="headerlink" title="3.2 Gerber Setup -&gt; Layers 设置"></a>3.2 Gerber Setup -&gt; Layers 设置</h5><p>​        单击 Plot Layers 选择 Used no 后，只要在 Layers To Plot 栏里的层都会被选中，勾选掉 Top Pad Master、Bottom Pad Master 两层，然后根据自己需要导出的层进行选择 <strong>(嘉立创现在识别版边框为 Mechanical 1 机械1层)</strong>，所以导出要选择 Mechanical 1 层；勾选 <strong>Include unconnected mid-layer pads</strong>。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Layers.png" alt="Layers"></p>
+<h5 id="3-3-Gerber-Setup-gt-Drill-Drawing-设置"><a href="#3-3-Gerber-Setup-gt-Drill-Drawing-设置" class="headerlink" title="3.3 Gerber Setup -&gt; Drill Drawing 设置"></a>3.3 Gerber Setup -&gt; Drill Drawing 设置</h5><p>Drill Drawing选项卡中 需要在 <strong>Drill Drawing Plots</strong> 和 <strong>Drill Guide Plots</strong> 两个区域勾选 <strong>Plot all used drill pairs</strong></p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Drill.png" alt="Drill"></p>
+<h5 id="3-4-Gerber-Setup-gt-Apertures-设置"><a href="#3-4-Gerber-Setup-gt-Apertures-设置" class="headerlink" title="3.4 Gerber Setup -&gt; Apertures 设置"></a>3.4 Gerber Setup -&gt; Apertures 设置</h5><p>在 Apertures (光圈)选项卡中勾选 Embedded apertures (RS274X) 即可。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Apertures.png" alt="Apertures"></p>
+<h5 id="3-5-Gerber-Setup-gt-Advanced-设置"><a href="#3-5-Gerber-Setup-gt-Advanced-设置" class="headerlink" title="3.5 Gerber Setup -&gt; Advanced 设置"></a>3.5 Gerber Setup -&gt; Advanced 设置</h5><p>在 Advanced 选项卡中需要在 Film Size 区域中的每个选项中添加一个0; 其他的默认即合。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Advanced.png" alt="Advanced"></p>
+<h5 id="3-6-Gerber-Files-输出结束后效果"><a href="#3-6-Gerber-Files-输出结束后效果" class="headerlink" title="3.6 Gerber Files 输出结束后效果"></a>3.6 Gerber Files 输出结束后效果</h5><p>第一次输出结束后自动生成 CAMtastic1.Cam*的 CAM加工文件，不用保存可以立即关闭并丢弃。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/CAM.png" alt="CAM"></p>
+<h4 id="4-第二次输出（NC-Drill-Files）"><a href="#4-第二次输出（NC-Drill-Files）" class="headerlink" title="4. 第二次输出（NC Drill Files）"></a>4. 第二次输出（NC Drill Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; NC Drill Files。</p>
+<h5 id="4-1-NC-Drill-Setup-选项卡设置"><a href="#4-1-NC-Drill-Setup-选项卡设置" class="headerlink" title="4.1 NC Drill Setup 选项卡设置"></a>4.1 NC Drill Setup 选项卡设置</h5><p>通常默认设置即可，只有两个地方需要修改 —-&gt; Leading/Trailing Zeroes 区域选择 <strong>Suppress leading zeroes</strong>，默认 Suppress trailing zeroes；Other 区域勾选 <strong>Generate EIA Binary Drill File (.DRL)</strong>。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/NCDrill.png" alt="NC Drill"></p>
+<h5 id="4-2-Import-Drill-Data-导入钻孔数据-窗口"><a href="#4-2-Import-Drill-Data-导入钻孔数据-窗口" class="headerlink" title="4.2 Import Drill Data (导入钻孔数据)窗口"></a>4.2 Import Drill Data (导入钻孔数据)窗口</h5><p>默认即可，不用修改，直接点击OK进行输出</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/ImportDrillData.png" alt="Import Drill Data"></p>
+<h4 id="5-第三次输出（Generates-Pick-and-Place-Files）"><a href="#5-第三次输出（Generates-Pick-and-Place-Files）" class="headerlink" title="5. 第三次输出（Generates Pick and Place Files）"></a>5. 第三次输出（Generates Pick and Place Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Assembly(输出装配文件) -&gt; Generates Pick and Place Files。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates.png" alt="Generates"></p>
+<h5 id="5-1-Pick-and-Place-Setup-设置"><a href="#5-1-Pick-and-Place-Setup-设置" class="headerlink" title="5.1 Pick and Place Setup 设置"></a>5.1 Pick and Place Setup 设置</h5><p>左边选项卡中必须要勾选的几个参数 <strong>Center-X</strong> 、<strong>Center-Y</strong>、<strong>Pad-X</strong>、<strong>Pad-Y</strong>、<strong>Ref-X</strong>、<strong>Ref-Y</strong>、<strong>Rotation</strong>，其他根据需求选择。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates1.png" alt="Generates1"></p>
+<h5 id="5-2-坐标文件-csv-修改"><a href="#5-2-坐标文件-csv-修改" class="headerlink" title="5.2 坐标文件 .csv 修改"></a>5.2 坐标文件 .csv 修改</h5><p>删除表头文件设计信息<strong>（红线以上全部删除Delete）</strong></p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/%E5%9D%90%E6%A0%87csv%E6%96%87%E4%BB%B6.png" alt="坐标csv文件"></p>
+<h4 id="6-第四次输出（PCB-BOM表）"><a href="#6-第四次输出（PCB-BOM表）" class="headerlink" title="6. 第四次输出（PCB BOM表）"></a>6. 第四次输出（PCB BOM表）</h4><p>在 Altium Designer 的菜单中选择 Reports(报告) -&gt; Bill of Materials。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Reports.png" alt="Reports"></p>
+<h5 id="6-1-Properties-gt-General-设置"><a href="#6-1-Properties-gt-General-设置" class="headerlink" title="6.1 Properties -&gt; General 设置"></a>6.1 Properties -&gt; General 设置</h5><p>设置输出文件格式</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/BOM-General.png" alt="BOM_General"></p>
+<h5 id="6-2-Properties-gt-Columns设置"><a href="#6-2-Properties-gt-Columns设置" class="headerlink" title="6.2 Properties -&gt; Columns设置"></a>6.2 Properties -&gt; Columns设置</h5><p>添加<strong>Pins</strong>参数信息</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/BOM-Columns.png" alt="BOM-Columns"></p>
+<h4 id="7-Gerber-文件整理"><a href="#7-Gerber-文件整理" class="headerlink" title="7. Gerber 文件整理"></a>7. Gerber 文件整理</h4><h5 id="7-1-PCB工程文件夹下创建两个文件夹-SMT-、Gerber"><a href="#7-1-PCB工程文件夹下创建两个文件夹-SMT-、Gerber" class="headerlink" title="7.1 PCB工程文件夹下创建两个文件夹 SMT 、Gerber"></a>7.1 PCB工程文件夹下创建两个文件夹 SMT 、Gerber</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/folder.png" alt="folder"></p>
+<h5 id="7-2-输出Gerber文件添加到Gerber文件夹"><a href="#7-2-输出Gerber文件添加到Gerber文件夹" class="headerlink" title="7.2 输出Gerber文件添加到Gerber文件夹"></a>7.2 输出Gerber文件添加到Gerber文件夹</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Gerberfoler.png" alt="Gerberfoler"></p>
+<h5 id="7-3-坐标文件、BOM、钢网层添加到SMT文件夹"><a href="#7-3-坐标文件、BOM、钢网层添加到SMT文件夹" class="headerlink" title="7.3 坐标文件、BOM、钢网层添加到SMT文件夹"></a>7.3 坐标文件、BOM、钢网层添加到SMT文件夹</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/SMTPaste.png" alt="SMTPaste"></p>
+<h4 id="8-Altium-Designer-导出-Gerber文件教程完毕"><a href="#8-Altium-Designer-导出-Gerber文件教程完毕" class="headerlink" title="8. Altium Designer 导出 Gerber文件教程完毕"></a>8. Altium Designer 导出 Gerber文件教程完毕</h4><p> <a href="http://www.linelayout.com/bbs/bbs/uploadfile/image/20140917154916101610.pdf" target="_blank" rel="noopener">参考连接</a></p>
 ]]></content>
       <categories>
-        <category>Nordic</category>
+        <category>Altium Designer</category>
+        <category>Gerber</category>
       </categories>
       <tags>
-        <tag>Nordic</tag>
-        <tag>Bluetooth</tag>
-        <tag>nRF connect</tag>
-        <tag>nrfutil</tag>
-        <tag>nRF51</tag>
-        <tag>nRF52</tag>
+        <tag>Gerber</tag>
+        <tag>PCB_Design</tag>
       </tags>
   </entry>
   <entry>
@@ -310,6 +220,11 @@ Develop分支合并到Master分支命令：
         <tag>nRF51</tag>
         <tag>nRF52</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Welcome</title>
+    <url>/2020/05/03/Personal_Blog/</url>
+    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
   </entry>
   <entry>
     <title>STM32CubeMX_Usart</title>
@@ -426,6 +341,94 @@ Develop分支合并到Master分支命令：
         <tag>STM32CubeMX</tag>
         <tag>STM32</tag>
         <tag>HAL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>嘉立创JLC元件库+3D封装下载</title>
+    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
+<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
+</ul>
+<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
+<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
+</ul>
+<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
+      <categories>
+        <category>Altium Designer</category>
+      </categories>
+      <tags>
+        <tag>PCB_Design</tag>
+        <tag>Altium Designer</tag>
+        <tag>Layout</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>蓝牙空中升级(BLE OTA)原理与步骤</title>
+    <url>/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="蓝牙空中升级-BLE-OTA-原理与步骤"><a href="#蓝牙空中升级-BLE-OTA-原理与步骤" class="headerlink" title="蓝牙空中升级(BLE OTA)原理与步骤"></a>蓝牙空中升级(BLE OTA)原理与步骤</h3><h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><ul>
+<li><p><strong>DFU</strong>（Device Firmware Update），设备固件升级的意思。</p>
+</li>
+<li><p><strong>OTA</strong>（Over The Air）是实现DFU的一种方式，准确说OTA全称应该是OTA DFU，即通过空中无线方式实现设备固件升级。</p>
+</li>
+<li><p>通过无线通信方式实现DFU的，都可以叫OTA，比如 2G / 3G / 4G / WIFI / 蓝牙 / NFC / Zigbee，都支持OTA。</p>
+</li>
+<li><p>DFU除了可以通过无线方式（OTA）进行升级，也可以通过有线方式进行升级，比如通过UART，USB或者SPI通信接口来升级设备固件。</p>
+</li>
+<li><p>DFU分为  <strong>后台式</strong>  与  <strong>非后台式</strong></p>
+<ul>
+<li><strong>后台式DFU：</strong>又称静默式DFU（Silent DFU），升级的时候，新固件在后台悄悄下载，即新固件下载属于应用程序功能的一部分，在新固件下载过程中，应用可以正常使用，也就是说整个下载过程对用户来说是无感的，下载完成后，系统再跳到Bootloader模式，由Bootloader完成新固件覆盖老固件的操作，至此整个升级过程结束。</li>
+<li><strong>非后台式DFU：</strong>升级的时候，系统需要先从应用模式跳入到Bootloader模式，由Bootloader进行新固件下载工作，下载完成后Bootloader继续完成新固件覆盖老固件的操作，至此升级结束。早先的功能机就是采用非后台式 DFU来升级操作系统的，即用户需要先长按某些按键进入Bootloader模式，然后再进行升级，整个升级过程中手机正常功能都无法使用。</li>
+</ul>
+</li>
+<li><p><strong>双区DFU</strong>（Dual bank）和<strong>单区DFU</strong>（Single bank），<strong>双区或者单区DFU式新固件和老固件覆盖的两种方式</strong>。</p>
+<ul>
+<li><p><strong>后台式DFU（双区模式）：</strong>必须采用双区模式进行升级，即老系统（老固件）和新系统（新固件）各占一块Bank（存储区），假设老固件放在Bank0中，新固件放在Bank1中，升级的时候，应用程序先把新固件下载到Bank1中，只有当新固件下载完成并校验成功后，系统才会跳进Bootloader模式，然后擦除老固件所在的Bank0区，并把新固件拷贝到Bank0区中。</p>
+</li>
+<li><p><strong>非后台式DFU：</strong>可以采用双区模式，也可以采用单区模式</p>
+<ul>
+<li><p>非后台式DFU（双区模式）：双区模式下新老固件各占一块Bank（老固件为Bank0，新固件为Bank1），升级时，系统先跳入Bootloader模式，然后Bootloader程序把新固件下载到bank1中，只有新固件下载完成并校验成功后，才会去擦除老固件所在的bank0区，并把新固件拷贝到bank0区</p>
+</li>
+<li><p>非后台式DFU（单区模式）：单区模式的非后台式DFU只有一个Bank0，老固件和新固件分享这一个bank0，升级的时候，进入bootloader模式后<strong>立马擦除老固件</strong>，然后直接把新固件下载到同一个bank中，下载完成后校验新固件的有效性，新固件有效升级完成，否则要求重来。（跟非后台式DFU双区模式相比，单区模式节省了一个Bank的Flash空间，在系统资源比较紧张的时候，单区模式是一个不错的选择）</p>
+<p>（不管是双区模式还是单区模式，升级过程出现问题后，都可以进行二次升级，都不会出现“变砖”情况。不过双区模式有一个好处，如果升级过程中出现问题或者新固件有问题，它还可以选择之前的老固件老系统继续执行而不受其影响。而单区模式碰到这种情况就只能一直待在bootloader中，然后等待二次或者多次升级尝试，此时设备的正常功能已无法使用，从用户使用这个角度来说，你的确可以说此时设备已经“变砖”了。所以说，虽然双区模式牺牲了很多存储空间，但是换来了更好的升级体验。）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/%E5%8D%87%E7%BA%A7%E5%9B%BE%E8%A7%A3.png" alt></p>
+<h4 id="二、Nordic-SDK-DFU工作原理"><a href="#二、Nordic-SDK-DFU工作原理" class="headerlink" title="二、Nordic SDK DFU工作原理"></a>二、Nordic SDK DFU工作原理</h4><p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png" alt></p>
+<ul>
+<li><p><strong>采用双区模式：</strong>Bank0存放的是D程序（老固件），Bank1存放的是新固件。应用程序只在Bank0里跑，Bank1平时为空或者忽略，升级时，先跳转到Bootloader，然后接收新固件并放在Bank1中，最后把Bank1里边的固件拷贝到Bank0中。</p>
+</li>
+<li><p><strong>采用单区模式：</strong>单区模式则没有Bank1存储区，系统只跑Bank0里面的代码，升级的时候，先跳转到Bootloader，先擦除Bank0里面的程序（老固件），并把新固件直接放在Bank0中。</p>
+</li>
+</ul>
+<p>  <strong>升级时如何跳转到Bootloader？</strong></p>
+<p>  ​        Nordic SDK 将DFU分为按键式DFU和非按键式DFU，按键式DFU是上电时长按某按键进入Bootloader模式。非按键式是整个DFU过程中设备端无任何人工干预，通过BLE/UART/USB接口给应用程序发送一条指令，应用程序收到指令后自动进入Bootloader模式。不管是什么方式进入Bootloader，Bootloader工作过程都是一样的。</p>
+<p>  <strong>跳转到Bootloader后的执行操作</strong></p>
+<p>  ​        程序跳转到Bootloader后，根据Bootloader需不需要对新固件进行验签。（DFU分为开放式DFU和安全式DFU）</p>
+<p>  ​        <strong>开放式DFU：</strong> Bootloader不做任何验证，直接把新固件进行升级。</p>
+<p>  ​        <strong>安全式DFU：</strong> Bootloader存有一把公钥，Bootloader会先把公钥验证新固件的签名，验签通过，允许后续的工作。（如果验签失败，Bootloader将拒绝升级，重新跳回应用程序）</p>
+<p>  目前SDK支持Bluetooth、UART、USB三种方式接受新固件，官方SDK中可以找到此三种方式的工程目录。</p>
+<p>  nRF51/52启动流程：<br>          系统上电之后，系统先执行Softdevice，Softdevice通过读取UICR寄存器的一个值，来判断系统目前是否有Bootloader，如果没有Bootloader，系统直接跳到Application；如果有Bootloader，系统先跳到Bootloader，Bootloader再根据相关情况来决定是进入升级模式还是进入Application。<br>          <strong>Bootloader主要判断如下几种情况：<br>                  按键是否按下（按键进入Bootloader DFU）<br>                  保持寄存器GPREGRET1是否为 0xB1<br>                  上次DFU过程是否还在进行<br>                  应用程序校验是否通过</strong></p>
+]]></content>
+      <categories>
+        <category>Nordic</category>
+      </categories>
+      <tags>
+        <tag>Nordic</tag>
+        <tag>Bluetooth</tag>
+        <tag>nRF connect</tag>
+        <tag>nrfutil</tag>
+        <tag>nRF51</tag>
+        <tag>nRF52</tag>
       </tags>
   </entry>
 </search>
