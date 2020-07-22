@@ -20,17 +20,22 @@
     var CONFIG = {"hostname":"wulizhaoch.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="嵌入式硬件工程师">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zhao_ch Personal_Blog">
-<meta property="og:url" content="https://wulizhaoch.github.io/tags/HAL/index.html">
+  <meta name="description" content="😊 转载请全文转载，并标明文章出处 环境介绍 操作系统:   Window10 企业版 IDE开发环境:   ARM_MDK5 (Keil5) SDK版本:   SDK_17.0.0 硬件开发板:   官方开发板 PCA10040">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【nRF52832】学习笔记:Flash Data Storage (FDS)存储">
+<meta property="og:url" content="https://wulizhaoch.github.io/2020/07/11/Nordic-FDS/index.html">
 <meta property="og:site_name" content="Zhao_ch Personal_Blog">
-<meta property="og:description" content="嵌入式硬件工程师">
+<meta property="og:description" content="😊 转载请全文转载，并标明文章出处 环境介绍 操作系统:   Window10 企业版 IDE开发环境:   ARM_MDK5 (Keil5) SDK版本:   SDK_17.0.0 硬件开发板:   官方开发板 PCA10040">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-11T07:57:53.000Z">
+<meta property="article:modified_time" content="2020-07-11T07:57:53.000Z">
 <meta property="article:author" content="赵晨辉">
+<meta property="article:tag" content="Nordic">
+<meta property="article:tag" content="Bluetooth">
+<meta property="article:tag" content="nRF52">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://wulizhaoch.github.io/tags/HAL/">
+<link rel="canonical" href="https://wulizhaoch.github.io/2020/07/11/Nordic-FDS/">
 
 
 <script id="page-configurations">
@@ -38,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: HAL | Zhao_ch Personal_Blog</title>
+  <title>【nRF52832】学习笔记:Flash Data Storage (FDS)存储 | Zhao_ch Personal_Blog</title>
   
 
 
@@ -185,51 +190,98 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">HAL
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wulizhaoch.github.io/2020/07/11/Nordic-FDS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Author.png">
+      <meta itemprop="name" content="赵晨辉">
+      <meta itemprop="description" content="嵌入式硬件工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhao_ch Personal_Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【nRF52832】学习笔记:Flash Data Storage (FDS)存储
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-11 15:57:53" itemprop="dateCreated datePublished" datetime="2020-07-11T15:57:53+08:00">2020-07-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Nordic/" itemprop="url" rel="index"><span itemprop="name">Nordic</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <p>😊 转载请全文转载，并标明文章出处</p>
+<h3 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h3><ul>
+<li><h5 id="操作系统-Window10-企业版"><a href="#操作系统-Window10-企业版" class="headerlink" title="操作系统:   Window10 企业版"></a>操作系统:   Window10 企业版</h5></li>
+<li><h5 id="IDE开发环境-ARM-MDK5-Keil5"><a href="#IDE开发环境-ARM-MDK5-Keil5" class="headerlink" title="IDE开发环境:   ARM_MDK5 (Keil5)"></a>IDE开发环境:   ARM_MDK5 (Keil5)</h5></li>
+<li><h5 id="SDK版本-SDK-17-0-0"><a href="#SDK版本-SDK-17-0-0" class="headerlink" title="SDK版本:   SDK_17.0.0"></a>SDK版本:   SDK_17.0.0</h5></li>
+<li><h5 id="硬件开发板-官方开发板-PCA10040"><a href="#硬件开发板-官方开发板-PCA10040" class="headerlink" title="硬件开发板:   官方开发板 PCA10040"></a>硬件开发板:   官方开发板 PCA10040</h5></li>
+</ul>
+<a id="more"></a>
+
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-05T22:56:28+08:00"
-              content="2020-05-05">
-          05-05
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Nordic/" rel="tag"># Nordic</a>
+              <a href="/tags/Bluetooth/" rel="tag"># Bluetooth</a>
+              <a href="/tags/nRF52/" rel="tag"># nRF52</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/05/05/STM32CubeMX-Usart/" itemprop="url">
-            <span itemprop="name">STM32CubeMX_Usart</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/" rel="prev" title="Altium Designer 导出 Gerber 文件教程">
+      <i class="fa fa-chevron-left"></i> Altium Designer 导出 Gerber 文件教程
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -282,6 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境介绍"><span class="nav-text">环境介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统-Window10-企业版"><span class="nav-text">操作系统:   Window10 企业版</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IDE开发环境-ARM-MDK5-Keil5"><span class="nav-text">IDE开发环境:   ARM_MDK5 (Keil5)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SDK版本-SDK-17-0-0"><span class="nav-text">SDK版本:   SDK_17.0.0</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#硬件开发板-官方开发板-PCA10040"><span class="nav-text">硬件开发板:   官方开发板 PCA10040</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

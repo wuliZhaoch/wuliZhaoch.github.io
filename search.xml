@@ -149,11 +149,6 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>Welcome</title>
-    <url>/2020/05/03/Personal_Blog/</url>
-    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
-  </entry>
-  <entry>
     <title>Git 初次运行前的配置</title>
     <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -205,6 +200,28 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
+    <title>【nRF52832】学习笔记:Flash Data Storage (FDS)存储</title>
+    <url>/2020/07/11/Nordic-FDS/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<h3 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h3><ul>
+<li><h5 id="操作系统-Window10-企业版"><a href="#操作系统-Window10-企业版" class="headerlink" title="操作系统:   Window10 企业版"></a>操作系统:   Window10 企业版</h5></li>
+<li><h5 id="IDE开发环境-ARM-MDK5-Keil5"><a href="#IDE开发环境-ARM-MDK5-Keil5" class="headerlink" title="IDE开发环境:   ARM_MDK5 (Keil5)"></a>IDE开发环境:   ARM_MDK5 (Keil5)</h5></li>
+<li><h5 id="SDK版本-SDK-17-0-0"><a href="#SDK版本-SDK-17-0-0" class="headerlink" title="SDK版本:   SDK_17.0.0"></a>SDK版本:   SDK_17.0.0</h5></li>
+<li><h5 id="硬件开发板-官方开发板-PCA10040"><a href="#硬件开发板-官方开发板-PCA10040" class="headerlink" title="硬件开发板:   官方开发板 PCA10040"></a>硬件开发板:   官方开发板 PCA10040</h5></li>
+</ul>
+<a id="more"></a>
+
+]]></content>
+      <categories>
+        <category>Nordic</category>
+      </categories>
+      <tags>
+        <tag>Nordic</tag>
+        <tag>Bluetooth</tag>
+        <tag>nRF52</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
     <url>/2020/05/06/Nordic-development-environment/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -223,33 +240,16 @@ Develop分支合并到Master分支命令：
       <tags>
         <tag>Nordic</tag>
         <tag>Bluetooth</tag>
+        <tag>nRF52</tag>
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
-        <tag>nRF52</tag>
       </tags>
   </entry>
   <entry>
-    <title>嘉立创JLC元件库+3D封装下载</title>
-    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
-<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
-</ul>
-<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
-<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
-</ul>
-<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
-      <categories>
-        <category>Altium Designer</category>
-      </categories>
-      <tags>
-        <tag>PCB_Design</tag>
-        <tag>Altium Designer</tag>
-        <tag>Layout</tag>
-      </tags>
+    <title>Welcome</title>
+    <url>/2020/05/03/Personal_Blog/</url>
+    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
   </entry>
   <entry>
     <title>STM32CubeMX_Usart</title>
@@ -369,6 +369,28 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
+    <title>嘉立创JLC元件库+3D封装下载</title>
+    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
+<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
+</ul>
+<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
+<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
+</ul>
+<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
+      <categories>
+        <category>Altium Designer</category>
+      </categories>
+      <tags>
+        <tag>PCB_Design</tag>
+        <tag>Altium Designer</tag>
+        <tag>Layout</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>蓝牙空中升级(BLE OTA)原理与步骤</title>
     <url>/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -428,10 +450,10 @@ Develop分支合并到Master分支命令：
       <tags>
         <tag>Nordic</tag>
         <tag>Bluetooth</tag>
+        <tag>nRF52</tag>
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
-        <tag>nRF52</tag>
       </tags>
   </entry>
 </search>
