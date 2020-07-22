@@ -200,28 +200,6 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>【nRF52832】学习笔记:Flash Data Storage (FDS)存储</title>
-    <url>/2020/07/11/Nordic-FDS/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<h3 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h3><ul>
-<li><h5 id="操作系统-Window10-企业版"><a href="#操作系统-Window10-企业版" class="headerlink" title="操作系统:   Window10 企业版"></a>操作系统:   Window10 企业版</h5></li>
-<li><h5 id="IDE开发环境-ARM-MDK5-Keil5"><a href="#IDE开发环境-ARM-MDK5-Keil5" class="headerlink" title="IDE开发环境:   ARM_MDK5 (Keil5)"></a>IDE开发环境:   ARM_MDK5 (Keil5)</h5></li>
-<li><h5 id="SDK版本-SDK-17-0-0"><a href="#SDK版本-SDK-17-0-0" class="headerlink" title="SDK版本:   SDK_17.0.0"></a>SDK版本:   SDK_17.0.0</h5></li>
-<li><h5 id="硬件开发板-官方开发板-PCA10040"><a href="#硬件开发板-官方开发板-PCA10040" class="headerlink" title="硬件开发板:   官方开发板 PCA10040"></a>硬件开发板:   官方开发板 PCA10040</h5></li>
-</ul>
-<a id="more"></a>
-
-]]></content>
-      <categories>
-        <category>Nordic</category>
-      </categories>
-      <tags>
-        <tag>Nordic</tag>
-        <tag>Bluetooth</tag>
-        <tag>nRF52</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
     <url>/2020/05/06/Nordic-development-environment/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -240,16 +218,131 @@ Develop分支合并到Master分支命令：
       <tags>
         <tag>Nordic</tag>
         <tag>Bluetooth</tag>
-        <tag>nRF52</tag>
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
+        <tag>nRF52</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【nRF52832】学习笔记:Flash Data Storage (FDS)存储</title>
+    <url>/2020/07/11/Nordic-FDS/</url>
+    <content><![CDATA[<p><strong>😊 转载请全文转载，并标明文章出处</strong></p>
+<p><strong>环境介绍</strong></p>
+<ul>
+<li><p><strong>操作系统:   Window10 企业版</strong></p>
+</li>
+<li><p><strong>IDE开发环境:   ARM_MDK5 (Keil5)</strong></p>
+</li>
+<li><p>*<em>SDK版本:   SDK_17.0.0 *</em></p>
+</li>
+<li><p><strong>硬件开发板:   官方开发板 PCA10040</strong> </p>
+</li>
+</ul>
+<a id="more"></a>
+
+]]></content>
+      <categories>
+        <category>Nordic</category>
+      </categories>
+      <tags>
+        <tag>Nordic</tag>
+        <tag>Bluetooth</tag>
+        <tag>nRF52</tag>
       </tags>
   </entry>
   <entry>
     <title>Welcome</title>
     <url>/2020/05/03/Personal_Blog/</url>
     <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
+  </entry>
+  <entry>
+    <title>嘉立创JLC元件库+3D封装下载</title>
+    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
+<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
+</ul>
+<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
+<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
+</ul>
+<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
+      <categories>
+        <category>Altium Designer</category>
+      </categories>
+      <tags>
+        <tag>PCB_Design</tag>
+        <tag>Altium Designer</tag>
+        <tag>Layout</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>蓝牙空中升级(BLE OTA)原理与步骤</title>
+    <url>/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="蓝牙空中升级-BLE-OTA-原理与步骤"><a href="#蓝牙空中升级-BLE-OTA-原理与步骤" class="headerlink" title="蓝牙空中升级(BLE OTA)原理与步骤"></a>蓝牙空中升级(BLE OTA)原理与步骤</h3><h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><ul>
+<li><p><strong>DFU</strong>（Device Firmware Update），设备固件升级的意思。</p>
+</li>
+<li><p><strong>OTA</strong>（Over The Air）是实现DFU的一种方式，准确说OTA全称应该是OTA DFU，即通过空中无线方式实现设备固件升级。</p>
+</li>
+<li><p>通过无线通信方式实现DFU的，都可以叫OTA，比如 2G / 3G / 4G / WIFI / 蓝牙 / NFC / Zigbee，都支持OTA。</p>
+</li>
+<li><p>DFU除了可以通过无线方式（OTA）进行升级，也可以通过有线方式进行升级，比如通过UART，USB或者SPI通信接口来升级设备固件。</p>
+</li>
+<li><p>DFU分为  <strong>后台式</strong>  与  <strong>非后台式</strong></p>
+<ul>
+<li><strong>后台式DFU：</strong>又称静默式DFU（Silent DFU），升级的时候，新固件在后台悄悄下载，即新固件下载属于应用程序功能的一部分，在新固件下载过程中，应用可以正常使用，也就是说整个下载过程对用户来说是无感的，下载完成后，系统再跳到Bootloader模式，由Bootloader完成新固件覆盖老固件的操作，至此整个升级过程结束。</li>
+<li><strong>非后台式DFU：</strong>升级的时候，系统需要先从应用模式跳入到Bootloader模式，由Bootloader进行新固件下载工作，下载完成后Bootloader继续完成新固件覆盖老固件的操作，至此升级结束。早先的功能机就是采用非后台式 DFU来升级操作系统的，即用户需要先长按某些按键进入Bootloader模式，然后再进行升级，整个升级过程中手机正常功能都无法使用。</li>
+</ul>
+</li>
+<li><p><strong>双区DFU</strong>（Dual bank）和<strong>单区DFU</strong>（Single bank），<strong>双区或者单区DFU式新固件和老固件覆盖的两种方式</strong>。</p>
+<ul>
+<li><p><strong>后台式DFU（双区模式）：</strong>必须采用双区模式进行升级，即老系统（老固件）和新系统（新固件）各占一块Bank（存储区），假设老固件放在Bank0中，新固件放在Bank1中，升级的时候，应用程序先把新固件下载到Bank1中，只有当新固件下载完成并校验成功后，系统才会跳进Bootloader模式，然后擦除老固件所在的Bank0区，并把新固件拷贝到Bank0区中。</p>
+</li>
+<li><p><strong>非后台式DFU：</strong>可以采用双区模式，也可以采用单区模式</p>
+<ul>
+<li><p>非后台式DFU（双区模式）：双区模式下新老固件各占一块Bank（老固件为Bank0，新固件为Bank1），升级时，系统先跳入Bootloader模式，然后Bootloader程序把新固件下载到bank1中，只有新固件下载完成并校验成功后，才会去擦除老固件所在的bank0区，并把新固件拷贝到bank0区</p>
+</li>
+<li><p>非后台式DFU（单区模式）：单区模式的非后台式DFU只有一个Bank0，老固件和新固件分享这一个bank0，升级的时候，进入bootloader模式后<strong>立马擦除老固件</strong>，然后直接把新固件下载到同一个bank中，下载完成后校验新固件的有效性，新固件有效升级完成，否则要求重来。（跟非后台式DFU双区模式相比，单区模式节省了一个Bank的Flash空间，在系统资源比较紧张的时候，单区模式是一个不错的选择）</p>
+<p>（不管是双区模式还是单区模式，升级过程出现问题后，都可以进行二次升级，都不会出现“变砖”情况。不过双区模式有一个好处，如果升级过程中出现问题或者新固件有问题，它还可以选择之前的老固件老系统继续执行而不受其影响。而单区模式碰到这种情况就只能一直待在bootloader中，然后等待二次或者多次升级尝试，此时设备的正常功能已无法使用，从用户使用这个角度来说，你的确可以说此时设备已经“变砖”了。所以说，虽然双区模式牺牲了很多存储空间，但是换来了更好的升级体验。）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/%E5%8D%87%E7%BA%A7%E5%9B%BE%E8%A7%A3.png" alt></p>
+<h4 id="二、Nordic-SDK-DFU工作原理"><a href="#二、Nordic-SDK-DFU工作原理" class="headerlink" title="二、Nordic SDK DFU工作原理"></a>二、Nordic SDK DFU工作原理</h4><p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png" alt></p>
+<ul>
+<li><p><strong>采用双区模式：</strong>Bank0存放的是D程序（老固件），Bank1存放的是新固件。应用程序只在Bank0里跑，Bank1平时为空或者忽略，升级时，先跳转到Bootloader，然后接收新固件并放在Bank1中，最后把Bank1里边的固件拷贝到Bank0中。</p>
+</li>
+<li><p><strong>采用单区模式：</strong>单区模式则没有Bank1存储区，系统只跑Bank0里面的代码，升级的时候，先跳转到Bootloader，先擦除Bank0里面的程序（老固件），并把新固件直接放在Bank0中。</p>
+</li>
+</ul>
+<p>  <strong>升级时如何跳转到Bootloader？</strong></p>
+<p>  ​        Nordic SDK 将DFU分为按键式DFU和非按键式DFU，按键式DFU是上电时长按某按键进入Bootloader模式。非按键式是整个DFU过程中设备端无任何人工干预，通过BLE/UART/USB接口给应用程序发送一条指令，应用程序收到指令后自动进入Bootloader模式。不管是什么方式进入Bootloader，Bootloader工作过程都是一样的。</p>
+<p>  <strong>跳转到Bootloader后的执行操作</strong></p>
+<p>  ​        程序跳转到Bootloader后，根据Bootloader需不需要对新固件进行验签。（DFU分为开放式DFU和安全式DFU）</p>
+<p>  ​        <strong>开放式DFU：</strong> Bootloader不做任何验证，直接把新固件进行升级。</p>
+<p>  ​        <strong>安全式DFU：</strong> Bootloader存有一把公钥，Bootloader会先把公钥验证新固件的签名，验签通过，允许后续的工作。（如果验签失败，Bootloader将拒绝升级，重新跳回应用程序）</p>
+<p>  目前SDK支持Bluetooth、UART、USB三种方式接受新固件，官方SDK中可以找到此三种方式的工程目录。</p>
+<p>  nRF51/52启动流程：<br>          系统上电之后，系统先执行Softdevice，Softdevice通过读取UICR寄存器的一个值，来判断系统目前是否有Bootloader，如果没有Bootloader，系统直接跳到Application；如果有Bootloader，系统先跳到Bootloader，Bootloader再根据相关情况来决定是进入升级模式还是进入Application。<br>          <strong>Bootloader主要判断如下几种情况：<br>                  按键是否按下（按键进入Bootloader DFU）<br>                  保持寄存器GPREGRET1是否为 0xB1<br>                  上次DFU过程是否还在进行<br>                  应用程序校验是否通过</strong></p>
+]]></content>
+      <categories>
+        <category>Nordic</category>
+      </categories>
+      <tags>
+        <tag>Nordic</tag>
+        <tag>Bluetooth</tag>
+        <tag>nRF connect</tag>
+        <tag>nrfutil</tag>
+        <tag>nRF51</tag>
+        <tag>nRF52</tag>
+      </tags>
   </entry>
   <entry>
     <title>STM32CubeMX_Usart</title>
@@ -366,94 +459,6 @@ Develop分支合并到Master分支命令：
         <tag>STM32CubeMX</tag>
         <tag>STM32</tag>
         <tag>HAL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>嘉立创JLC元件库+3D封装下载</title>
-    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
-<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
-</ul>
-<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
-<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
-</ul>
-<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
-      <categories>
-        <category>Altium Designer</category>
-      </categories>
-      <tags>
-        <tag>PCB_Design</tag>
-        <tag>Altium Designer</tag>
-        <tag>Layout</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>蓝牙空中升级(BLE OTA)原理与步骤</title>
-    <url>/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="蓝牙空中升级-BLE-OTA-原理与步骤"><a href="#蓝牙空中升级-BLE-OTA-原理与步骤" class="headerlink" title="蓝牙空中升级(BLE OTA)原理与步骤"></a>蓝牙空中升级(BLE OTA)原理与步骤</h3><h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><ul>
-<li><p><strong>DFU</strong>（Device Firmware Update），设备固件升级的意思。</p>
-</li>
-<li><p><strong>OTA</strong>（Over The Air）是实现DFU的一种方式，准确说OTA全称应该是OTA DFU，即通过空中无线方式实现设备固件升级。</p>
-</li>
-<li><p>通过无线通信方式实现DFU的，都可以叫OTA，比如 2G / 3G / 4G / WIFI / 蓝牙 / NFC / Zigbee，都支持OTA。</p>
-</li>
-<li><p>DFU除了可以通过无线方式（OTA）进行升级，也可以通过有线方式进行升级，比如通过UART，USB或者SPI通信接口来升级设备固件。</p>
-</li>
-<li><p>DFU分为  <strong>后台式</strong>  与  <strong>非后台式</strong></p>
-<ul>
-<li><strong>后台式DFU：</strong>又称静默式DFU（Silent DFU），升级的时候，新固件在后台悄悄下载，即新固件下载属于应用程序功能的一部分，在新固件下载过程中，应用可以正常使用，也就是说整个下载过程对用户来说是无感的，下载完成后，系统再跳到Bootloader模式，由Bootloader完成新固件覆盖老固件的操作，至此整个升级过程结束。</li>
-<li><strong>非后台式DFU：</strong>升级的时候，系统需要先从应用模式跳入到Bootloader模式，由Bootloader进行新固件下载工作，下载完成后Bootloader继续完成新固件覆盖老固件的操作，至此升级结束。早先的功能机就是采用非后台式 DFU来升级操作系统的，即用户需要先长按某些按键进入Bootloader模式，然后再进行升级，整个升级过程中手机正常功能都无法使用。</li>
-</ul>
-</li>
-<li><p><strong>双区DFU</strong>（Dual bank）和<strong>单区DFU</strong>（Single bank），<strong>双区或者单区DFU式新固件和老固件覆盖的两种方式</strong>。</p>
-<ul>
-<li><p><strong>后台式DFU（双区模式）：</strong>必须采用双区模式进行升级，即老系统（老固件）和新系统（新固件）各占一块Bank（存储区），假设老固件放在Bank0中，新固件放在Bank1中，升级的时候，应用程序先把新固件下载到Bank1中，只有当新固件下载完成并校验成功后，系统才会跳进Bootloader模式，然后擦除老固件所在的Bank0区，并把新固件拷贝到Bank0区中。</p>
-</li>
-<li><p><strong>非后台式DFU：</strong>可以采用双区模式，也可以采用单区模式</p>
-<ul>
-<li><p>非后台式DFU（双区模式）：双区模式下新老固件各占一块Bank（老固件为Bank0，新固件为Bank1），升级时，系统先跳入Bootloader模式，然后Bootloader程序把新固件下载到bank1中，只有新固件下载完成并校验成功后，才会去擦除老固件所在的bank0区，并把新固件拷贝到bank0区</p>
-</li>
-<li><p>非后台式DFU（单区模式）：单区模式的非后台式DFU只有一个Bank0，老固件和新固件分享这一个bank0，升级的时候，进入bootloader模式后<strong>立马擦除老固件</strong>，然后直接把新固件下载到同一个bank中，下载完成后校验新固件的有效性，新固件有效升级完成，否则要求重来。（跟非后台式DFU双区模式相比，单区模式节省了一个Bank的Flash空间，在系统资源比较紧张的时候，单区模式是一个不错的选择）</p>
-<p>（不管是双区模式还是单区模式，升级过程出现问题后，都可以进行二次升级，都不会出现“变砖”情况。不过双区模式有一个好处，如果升级过程中出现问题或者新固件有问题，它还可以选择之前的老固件老系统继续执行而不受其影响。而单区模式碰到这种情况就只能一直待在bootloader中，然后等待二次或者多次升级尝试，此时设备的正常功能已无法使用，从用户使用这个角度来说，你的确可以说此时设备已经“变砖”了。所以说，虽然双区模式牺牲了很多存储空间，但是换来了更好的升级体验。）</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/%E5%8D%87%E7%BA%A7%E5%9B%BE%E8%A7%A3.png" alt></p>
-<h4 id="二、Nordic-SDK-DFU工作原理"><a href="#二、Nordic-SDK-DFU工作原理" class="headerlink" title="二、Nordic SDK DFU工作原理"></a>二、Nordic SDK DFU工作原理</h4><p><img src="/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/nRF_SDK%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84.png" alt></p>
-<ul>
-<li><p><strong>采用双区模式：</strong>Bank0存放的是D程序（老固件），Bank1存放的是新固件。应用程序只在Bank0里跑，Bank1平时为空或者忽略，升级时，先跳转到Bootloader，然后接收新固件并放在Bank1中，最后把Bank1里边的固件拷贝到Bank0中。</p>
-</li>
-<li><p><strong>采用单区模式：</strong>单区模式则没有Bank1存储区，系统只跑Bank0里面的代码，升级的时候，先跳转到Bootloader，先擦除Bank0里面的程序（老固件），并把新固件直接放在Bank0中。</p>
-</li>
-</ul>
-<p>  <strong>升级时如何跳转到Bootloader？</strong></p>
-<p>  ​        Nordic SDK 将DFU分为按键式DFU和非按键式DFU，按键式DFU是上电时长按某按键进入Bootloader模式。非按键式是整个DFU过程中设备端无任何人工干预，通过BLE/UART/USB接口给应用程序发送一条指令，应用程序收到指令后自动进入Bootloader模式。不管是什么方式进入Bootloader，Bootloader工作过程都是一样的。</p>
-<p>  <strong>跳转到Bootloader后的执行操作</strong></p>
-<p>  ​        程序跳转到Bootloader后，根据Bootloader需不需要对新固件进行验签。（DFU分为开放式DFU和安全式DFU）</p>
-<p>  ​        <strong>开放式DFU：</strong> Bootloader不做任何验证，直接把新固件进行升级。</p>
-<p>  ​        <strong>安全式DFU：</strong> Bootloader存有一把公钥，Bootloader会先把公钥验证新固件的签名，验签通过，允许后续的工作。（如果验签失败，Bootloader将拒绝升级，重新跳回应用程序）</p>
-<p>  目前SDK支持Bluetooth、UART、USB三种方式接受新固件，官方SDK中可以找到此三种方式的工程目录。</p>
-<p>  nRF51/52启动流程：<br>          系统上电之后，系统先执行Softdevice，Softdevice通过读取UICR寄存器的一个值，来判断系统目前是否有Bootloader，如果没有Bootloader，系统直接跳到Application；如果有Bootloader，系统先跳到Bootloader，Bootloader再根据相关情况来决定是进入升级模式还是进入Application。<br>          <strong>Bootloader主要判断如下几种情况：<br>                  按键是否按下（按键进入Bootloader DFU）<br>                  保持寄存器GPREGRET1是否为 0xB1<br>                  上次DFU过程是否还在进行<br>                  应用程序校验是否通过</strong></p>
-]]></content>
-      <categories>
-        <category>Nordic</category>
-      </categories>
-      <tags>
-        <tag>Nordic</tag>
-        <tag>Bluetooth</tag>
-        <tag>nRF52</tag>
-        <tag>nRF connect</tag>
-        <tag>nrfutil</tag>
-        <tag>nRF51</tag>
       </tags>
   </entry>
 </search>
