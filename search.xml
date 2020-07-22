@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Git 分支管理 (Git_Flow)</title>
+    <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<ul>
+<li><p>主分支Master：</p>
+<pre><code>代码库应该有一个，且仅有一个主分支。(提供给用户的正式版本，都在主分支上发布(有版本标签))</code></pre></li>
+<li><p>开发分支Develop：</p>
+<pre><code>主分支只用来发布重大版本，日常开发应该在另一条分支(即开发分支（Develop))
+Git创建Develop分支命令：
+    git checkout -b develop master
+Develop分支合并到Master分支命令：
+# 切换到Master分支：
+    git checkout master
+# 对Develop分支进行合并
+    git merge --no-ff develop
+（--no-ff参数：默认情况下，Git执行&quot;快进式合并&quot; Fast-Farward merge 直接将Master分支指向Develop分支）</code></pre></li>
+<li><p>临时性分支：</p>
+<pre><code>Master 和 Develop，前者用于正式发布，后者用于日常开发。除了常设分支以外，还有一些临时分支，用于应用一些特定目的的版本开发。临时性分支有三种：
+    功能（feature）分支
+    预发布（release）分支
+    修补bug（fixbug）分支
+（这三种分支属于临时性需要，使用完成之后，应该删除，使得代码库的常设分支始终只有Master和Develop分支）
+
+1. 功能分支：
+    功能分支，是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要合并到Develop分支上。(功能分支的名字，可以采用feature-*的形式命名)
+    Git 创建一个功能分支：
+        git checkout -b feature-x develop
+    开发完成后，将功能分支合并到develop分支：
+        git checkout develop
+        git merge --no-ff feature-x
+    删除featur-x分支：
+        git branch -d feature-x
+
+2. 预发布分支：
+    指发布正式版本之前（即合并Master分支之前），可能需要有一个预发布的版本进行测试。
+    预发布分支是从Develop分支上边分出来的，预发布结束后，必须合并进Develop和Master分支上。
+    命名采用release-*的形式：
+    创建一个预发布分支：
+    git checkout -b release-1.2 develop
+确认没有问题后，合并Master分支：
+    git checkout master
+    git merge --no-ff release-1.2
+    # 对合并生成的新节点，做一个标签
+    git tag -a 1.2
+然后合并到develop分支：
+    git checkout develop
+    git merge --no-ff release-1.2
+最后删除预发布分支：
+    git branch -d release-1.2
+
+3. 修补bug分支：
+        软件正式发布以后，难免回出现bug。这是就需要创建一个分支，进行bug修补.
+        修补bug分支是从Master分支上面分出来的。修补结束后，再合并进Master和Develop分支。
+    命名采用fixbug-*的形式:
+        创建一个修补bug分支：
+            git checkout -b fixbug-0.1 master
+        修补结束后，合并到master分支：
+            git checkout master
+            git merge --no-ff fixbug-0.1
+            git tag -a 0.1.1
+        再合并到develop分支：
+            git checkout develop
+            git merge --no-ff fixbug-0.1
+    最后，删除&quot;修补bug分支&quot;：
+        git branch -d fixbug-0.1</code></pre></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+        <tag>Gitlab</tag>
+        <tag>Gitee</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Altium Designer 导出 Gerber 文件教程</title>
     <url>/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -120,116 +200,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git 分支管理 (Git_Flow)</title>
-    <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<ul>
-<li><p>主分支Master：</p>
-<pre><code>代码库应该有一个，且仅有一个主分支。(提供给用户的正式版本，都在主分支上发布(有版本标签))</code></pre></li>
-<li><p>开发分支Develop：</p>
-<pre><code>主分支只用来发布重大版本，日常开发应该在另一条分支(即开发分支（Develop))
-Git创建Develop分支命令：
-    git checkout -b develop master
-Develop分支合并到Master分支命令：
-# 切换到Master分支：
-    git checkout master
-# 对Develop分支进行合并
-    git merge --no-ff develop
-（--no-ff参数：默认情况下，Git执行&quot;快进式合并&quot; Fast-Farward merge 直接将Master分支指向Develop分支）</code></pre></li>
-<li><p>临时性分支：</p>
-<pre><code>Master 和 Develop，前者用于正式发布，后者用于日常开发。除了常设分支以外，还有一些临时分支，用于应用一些特定目的的版本开发。临时性分支有三种：
-    功能（feature）分支
-    预发布（release）分支
-    修补bug（fixbug）分支
-（这三种分支属于临时性需要，使用完成之后，应该删除，使得代码库的常设分支始终只有Master和Develop分支）
-
-1. 功能分支：
-    功能分支，是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要合并到Develop分支上。(功能分支的名字，可以采用feature-*的形式命名)
-    Git 创建一个功能分支：
-        git checkout -b feature-x develop
-    开发完成后，将功能分支合并到develop分支：
-        git checkout develop
-        git merge --no-ff feature-x
-    删除featur-x分支：
-        git branch -d feature-x
-
-2. 预发布分支：
-    指发布正式版本之前（即合并Master分支之前），可能需要有一个预发布的版本进行测试。
-    预发布分支是从Develop分支上边分出来的，预发布结束后，必须合并进Develop和Master分支上。
-    命名采用release-*的形式：
-    创建一个预发布分支：
-    git checkout -b release-1.2 develop
-确认没有问题后，合并Master分支：
-    git checkout master
-    git merge --no-ff release-1.2
-    # 对合并生成的新节点，做一个标签
-    git tag -a 1.2
-然后合并到develop分支：
-    git checkout develop
-    git merge --no-ff release-1.2
-最后删除预发布分支：
-    git branch -d release-1.2
-
-3. 修补bug分支：
-        软件正式发布以后，难免回出现bug。这是就需要创建一个分支，进行bug修补.
-        修补bug分支是从Master分支上面分出来的。修补结束后，再合并进Master和Develop分支。
-    命名采用fixbug-*的形式:
-        创建一个修补bug分支：
-            git checkout -b fixbug-0.1 master
-        修补结束后，合并到master分支：
-            git checkout master
-            git merge --no-ff fixbug-0.1
-            git tag -a 0.1.1
-        再合并到develop分支：
-            git checkout develop
-            git merge --no-ff fixbug-0.1
-    最后，删除&quot;修补bug分支&quot;：
-        git branch -d fixbug-0.1</code></pre></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-        <tag>Gitlab</tag>
-        <tag>Gitee</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Welcome</title>
-    <url>/2020/05/03/Personal_Blog/</url>
-    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
-  </entry>
-  <entry>
-    <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
-    <url>/2020/05/06/Nordic-development-environment/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="1-强制安装项"><a href="#1-强制安装项" class="headerlink" title="1. 强制安装项"></a>1. 强制安装项</h3><p>​            如下工具必须安装,否则无法开发 nRF51 &amp; nRF52 Series 产品</p>
-<h4 id="1-1-安装IDE"><a href="#1-1-安装IDE" class="headerlink" title="1.1   安装IDE"></a>1.1   安装IDE</h4><p>​            Nordic nRF51/52支持Keil，GCC，IAR 和 SES（Segger Embedded Studio）四种IDE，大家随便选择其中一种安装即可。</p>
-<h4 id="1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）"><a href="#1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）" class="headerlink" title="1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）"></a>1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）</h4><p>​            nRF Command Line Tools ( Nordic官方自己开发的命令行工具 ) , 安装过程中具体组件包括 J-link驱动、nrfjprog、nrfutil、mergehex等。</p>
-<p>​            下载连接:  <a href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs" target="_blank" rel="noopener">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs</a></p>
-<p>​            选择自己的桌面平台及需要的版本 (推荐最新发布的版本):</p>
-<p><img src="/2020/05/06/Nordic-development-environment/nRF-Command-Line-Tools.png" alt></p>
-]]></content>
-      <categories>
-        <category>Nordic</category>
-      </categories>
-      <tags>
-        <tag>Nordic</tag>
-        <tag>Bluetooth</tag>
-        <tag>nRF connect</tag>
-        <tag>nrfutil</tag>
-        <tag>nRF51</tag>
-        <tag>nRF52</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【nRF52832】学习笔记:Flash Data Storage (FDS)存储</title>
     <url>/2020/07/11/Nordic-FDS/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -257,6 +227,36 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
+    <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
+    <url>/2020/05/06/Nordic-development-environment/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="1-强制安装项"><a href="#1-强制安装项" class="headerlink" title="1. 强制安装项"></a>1. 强制安装项</h3><p>​            如下工具必须安装,否则无法开发 nRF51 &amp; nRF52 Series 产品</p>
+<h4 id="1-1-安装IDE"><a href="#1-1-安装IDE" class="headerlink" title="1.1   安装IDE"></a>1.1   安装IDE</h4><p>​            Nordic nRF51/52支持Keil，GCC，IAR 和 SES（Segger Embedded Studio）四种IDE，大家随便选择其中一种安装即可。</p>
+<h4 id="1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）"><a href="#1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）" class="headerlink" title="1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）"></a>1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）</h4><p>​            nRF Command Line Tools ( Nordic官方自己开发的命令行工具 ) , 安装过程中具体组件包括 J-link驱动、nrfjprog、nrfutil、mergehex等。</p>
+<p>​            下载连接:  <a href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs" target="_blank" rel="noopener">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs</a></p>
+<p>​            选择自己的桌面平台及需要的版本 (推荐最新发布的版本):</p>
+<p><img src="/2020/05/06/Nordic-development-environment/nRF-Command-Line-Tools.png" alt></p>
+]]></content>
+      <categories>
+        <category>Nordic</category>
+      </categories>
+      <tags>
+        <tag>Nordic</tag>
+        <tag>Bluetooth</tag>
+        <tag>nRF52</tag>
+        <tag>nRF connect</tag>
+        <tag>nrfutil</tag>
+        <tag>nRF51</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Welcome</title>
+    <url>/2020/05/03/Personal_Blog/</url>
+    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
+  </entry>
+  <entry>
     <title>嘉立创JLC元件库+3D封装下载</title>
     <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -276,6 +276,123 @@ Develop分支合并到Master分支命令：
         <tag>PCB_Design</tag>
         <tag>Altium Designer</tag>
         <tag>Layout</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>STM32CubeMX-Usart</title>
+    <url>/2020/05/05/STM32CubeMX-Usart/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h4 id="1-打开-STM32CubeMX"><a href="#1-打开-STM32CubeMX" class="headerlink" title="1. 打开 STM32CubeMX"></a>1. 打开 STM32CubeMX</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/0.png" alt></p>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/1.png" alt></p>
+<h4 id="2-创建工程Project"><a href="#2-创建工程Project" class="headerlink" title="2. 创建工程Project"></a>2. 创建工程Project</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/2.png" alt></p>
+<h4 id="3-选择自己MCU的型号"><a href="#3-选择自己MCU的型号" class="headerlink" title="3. 选择自己MCU的型号"></a>3. 选择自己MCU的型号</h4><ul>
+<li><strong>本人MCU型号：STM32H743IITx</strong></li>
+<li><strong>双击红色区域直接进入配置界面</strong></li>
+</ul>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/3.png" alt></p>
+<h4 id="4-RCC-配置"><a href="#4-RCC-配置" class="headerlink" title="4. RCC 配置"></a>4. RCC 配置</h4><ul>
+<li>单击 System Core -&gt; 单击RCC<ul>
+<li>RCC Mode and Configuration<ul>
+<li>High Speed Clock (HSE) -&gt; Crystal/Ceramic Resonator</li>
+<li>Low Speed Clock (LSE) -&gt; Crystal/Ceramic Resonator</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/4.png" alt></p>
+<h4 id="5-串口USART配置"><a href="#5-串口USART配置" class="headerlink" title="5. 串口USART配置"></a>5. 串口USART配置</h4><ul>
+<li><p>单击 Connectivity -&gt; 单击 USART1</p>
+<ul>
+<li><p>USART1 Mode</p>
+<ul>
+<li>Mode：Asynchronous</li>
+</ul>
+</li>
+<li><p>USART1 Configuration</p>
+<ul>
+<li>Parameter Settings（基础配置）<ul>
+<li><img src="/2020/05/05/STM32CubeMX-Usart/5.png" alt></li>
+</ul>
+</li>
+<li>NVIC Settings（中断配置）勾选Enabled<ul>
+<li><img src="/2020/05/05/STM32CubeMX-Usart/6.png" alt></li>
+</ul>
+</li>
+<li>GPIO Settings （I/O配置）<ul>
+<li><strong>PA9</strong> -&gt; USART1_TX  /  <strong>PA10</strong> -&gt; UASRT1_RX</li>
+<li>I/O 空闲状态全部上拉（Pull-Up）</li>
+<li><img src="/2020/05/05/STM32CubeMX-Usart/7.png" alt></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-时钟树配置（Clock-Configuration）"><a href="#6-时钟树配置（Clock-Configuration）" class="headerlink" title="6. 时钟树配置（Clock Configuration）"></a>6. 时钟树配置（Clock Configuration）</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/8.png" alt></p>
+<h4 id="7-生成路径及IDE选择配置"><a href="#7-生成路径及IDE选择配置" class="headerlink" title="7. 生成路径及IDE选择配置"></a>7. 生成路径及IDE选择配置</h4><ul>
+<li><p><strong>Project</strong></p>
+<ul>
+<li><p>Project Name：工程名（根据自己要求来写）</p>
+</li>
+<li><p>Project Location：生成工程路径（选择自己常用路径）</p>
+</li>
+<li><p>Toolchain / IDE：开发环境选择（本工程选择STM32CubeIDE开发环境）</p>
+<ul>
+<li>EWARM</li>
+<li>MDK_ARM</li>
+<li>SW4STM32</li>
+<li>TrueSTUDIO</li>
+<li><strong>STM32CubeIDE</strong></li>
+<li>MakeFile</li>
+</ul>
+</li>
+<li><p>Mcu and Firmware Package (STM32Cube FW_H7 V1.5.0)</p>
+<ul>
+<li>MCU Reference：STM32H743IITx</li>
+<li>Firmware Package Name and Version：<strong>STM32Cube FW_H7 V1.5.0</strong> （版本不同，生成的工程可能会有点差异）</li>
+</ul>
+</li>
+<li><p><img src="/2020/05/05/STM32CubeMX-Usart/9.png" alt></p>
+</li>
+</ul>
+</li>
+<li><p><strong>Code Generator 配置选择</strong> </p>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/10.png" alt></p>
+</li>
+</ul>
+<p><strong>至此工程配置基本完成</strong>（单击 GENERATE CODE 生成工程）</p>
+<h4 id="8-打开-STM32CubeIDE-编译生成工程"><a href="#8-打开-STM32CubeIDE-编译生成工程" class="headerlink" title="8. 打开 STM32CubeIDE 编译生成工程"></a>8. 打开 STM32CubeIDE 编译生成工程</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/11.png" alt></p>
+<h4 id="9-Printf-打印配置"><a href="#9-Printf-打印配置" class="headerlink" title="9. Printf 打印配置"></a>9. Printf 打印配置</h4><ul>
+<li><strong>usart.h 添加代码</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>usart.c 添加代码</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Private function prototypes -----------------------------------------------*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __GNUC__</span></span><br><span class="line"><span class="comment">/* With GCC/RAISONANCE, small printf (option LD Linker-&gt;Libraries-&gt;Small printf</span></span><br><span class="line"><span class="comment">   set to 'Yes') calls __io_putchar() */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int __io_putchar(int ch)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __GNUC__ */</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  Retargets the C library printf function to the USART.</span></span><br><span class="line"><span class="comment">  * @param  None</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">PUTCHAR_PROTOTYPE</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Place your implementation of fputc here */</span></span><br><span class="line">    <span class="comment">/* e.g. write a character to the USART1 and Loop until the end of transmission */</span></span><br><span class="line">    HAL_UART_Transmit(&amp;huart1, (<span class="keyword">uint8_t</span> *)&amp;ch, <span class="number">1</span>, <span class="number">0xFFFF</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/05/05/STM32CubeMX-Usart/12.png" alt></p>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/13.png" alt></p>
+<h4 id="10-STM32H743IITx-工程模板"><a href="#10-STM32H743IITx-工程模板" class="headerlink" title="10.  STM32H743IITx 工程模板"></a>10.  STM32H743IITx 工程模板</h4><ul>
+<li>工程模板  <a href="https://gitee.com/Zhao_ch/STM32H743_Template_Cubeide" target="_blank" rel="noopener">下载连接</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>STM32CubeMX</category>
+      </categories>
+      <tags>
+        <tag>STM32CubeMX</tag>
+        <tag>STM32</tag>
+        <tag>HAL</tag>
       </tags>
   </entry>
   <entry>
@@ -338,10 +455,10 @@ Develop分支合并到Master分支命令：
       <tags>
         <tag>Nordic</tag>
         <tag>Bluetooth</tag>
+        <tag>nRF52</tag>
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
-        <tag>nRF52</tag>
       </tags>
   </entry>
 </search>
