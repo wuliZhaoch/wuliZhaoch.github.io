@@ -69,86 +69,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git 分支管理 (Git_Flow)</title>
-    <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<ul>
-<li><p>主分支Master：</p>
-<pre><code>代码库应该有一个，且仅有一个主分支。(提供给用户的正式版本，都在主分支上发布(有版本标签))</code></pre></li>
-<li><p>开发分支Develop：</p>
-<pre><code>主分支只用来发布重大版本，日常开发应该在另一条分支(即开发分支（Develop))
-Git创建Develop分支命令：
-    git checkout -b develop master
-Develop分支合并到Master分支命令：
-# 切换到Master分支：
-    git checkout master
-# 对Develop分支进行合并
-    git merge --no-ff develop
-（--no-ff参数：默认情况下，Git执行&quot;快进式合并&quot; Fast-Farward merge 直接将Master分支指向Develop分支）</code></pre></li>
-<li><p>临时性分支：</p>
-<pre><code>Master 和 Develop，前者用于正式发布，后者用于日常开发。除了常设分支以外，还有一些临时分支，用于应用一些特定目的的版本开发。临时性分支有三种：
-    功能（feature）分支
-    预发布（release）分支
-    修补bug（fixbug）分支
-（这三种分支属于临时性需要，使用完成之后，应该删除，使得代码库的常设分支始终只有Master和Develop分支）
-
-1. 功能分支：
-    功能分支，是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要合并到Develop分支上。(功能分支的名字，可以采用feature-*的形式命名)
-    Git 创建一个功能分支：
-        git checkout -b feature-x develop
-    开发完成后，将功能分支合并到develop分支：
-        git checkout develop
-        git merge --no-ff feature-x
-    删除featur-x分支：
-        git branch -d feature-x
-
-2. 预发布分支：
-    指发布正式版本之前（即合并Master分支之前），可能需要有一个预发布的版本进行测试。
-    预发布分支是从Develop分支上边分出来的，预发布结束后，必须合并进Develop和Master分支上。
-    命名采用release-*的形式：
-    创建一个预发布分支：
-    git checkout -b release-1.2 develop
-确认没有问题后，合并Master分支：
-    git checkout master
-    git merge --no-ff release-1.2
-    # 对合并生成的新节点，做一个标签
-    git tag -a 1.2
-然后合并到develop分支：
-    git checkout develop
-    git merge --no-ff release-1.2
-最后删除预发布分支：
-    git branch -d release-1.2
-
-3. 修补bug分支：
-        软件正式发布以后，难免回出现bug。这是就需要创建一个分支，进行bug修补.
-        修补bug分支是从Master分支上面分出来的。修补结束后，再合并进Master和Develop分支。
-    命名采用fixbug-*的形式:
-        创建一个修补bug分支：
-            git checkout -b fixbug-0.1 master
-        修补结束后，合并到master分支：
-            git checkout master
-            git merge --no-ff fixbug-0.1
-            git tag -a 0.1.1
-        再合并到develop分支：
-            git checkout develop
-            git merge --no-ff fixbug-0.1
-    最后，删除&quot;修补bug分支&quot;：
-        git branch -d fixbug-0.1</code></pre></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-        <tag>Gitlab</tag>
-        <tag>Gitee</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git 初次运行前的配置</title>
     <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -225,6 +145,11 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
+    <title>Welcome</title>
+    <url>/2020/05/03/Personal_Blog/</url>
+    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
+  </entry>
+  <entry>
     <title>【nRF52832】学习笔记:Flash Data Storage (FDS)存储</title>
     <url>/2020/07/11/Nordic-FDS/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -257,9 +182,36 @@ Develop分支合并到Master分支命令：
 <li>通过灵活选择数据块的大小来最小化的使用内存。</li>
 <li>对数据的内容不加限制 (这意味着它可以包含特殊字符) 。<br>Flash数据存储支持同步读取操作和异步写入。</li>
 </ul>
-<h4 id="2-FDS功能介绍"><a href="#2-FDS功能介绍" class="headerlink" title="2.  FDS功能介绍"></a>2.  FDS功能介绍</h4><h5 id="2-1-Create-Record-创建记录"><a href="#2-1-Create-Record-创建记录" class="headerlink" title="2.1   Create Record (创建记录)"></a>2.1   Create Record (创建记录)</h5><h5 id="2-2-Find-Record-操作记录"><a href="#2-2-Find-Record-操作记录" class="headerlink" title="2.2   Find Record (操作记录)"></a>2.2   Find Record (操作记录)</h5><h5 id="2-3-Read-Record-读取记录"><a href="#2-3-Read-Record-读取记录" class="headerlink" title="2.3   Read Record (读取记录)"></a>2.3   Read Record (读取记录)</h5><h5 id="2-4-Update-Record-更新记录"><a href="#2-4-Update-Record-更新记录" class="headerlink" title="2.4   Update Record (更新记录)"></a>2.4   Update Record (更新记录)</h5><ul>
+<h4 id="2-FDS功能介绍"><a href="#2-FDS功能介绍" class="headerlink" title="2.  FDS功能介绍"></a>2.  FDS功能介绍</h4><h5 id="2-1-Creating-Record-创建记录"><a href="#2-1-Creating-Record-创建记录" class="headerlink" title="2.1   Creating Record (创建记录)"></a>2.1   Creating Record (创建记录)</h5><ul>
+<li>新记录写入Flash时，必须提供Record Key、File ID 和 将要写入的数据。</li>
+<li>更新记录 (写记录)成功后，返回一个记录描述符，可以用它来访问记录。在访问之前，等待表明写入操作成功完成的事件。</li>
+</ul>
+<h5 id="2-2-Manipulating-Record-处理记录"><a href="#2-2-Manipulating-Record-处理记录" class="headerlink" title="2.2   Manipulating Record (处理记录)"></a>2.2   Manipulating Record (处理记录)</h5><ul>
+<li>读取、更新或者删除记录的内容，必须通过记录的描述符访问记录。首次记录写入Flash时，FDS会创建并返回一个此记录的描述符。</li>
+<li>获取记录描述符函数：<ul>
+<li>fds_record_find</li>
+<li>fds_record_find_by_key</li>
+<li>fds_record_find_in_file</li>
+</ul>
+</li>
+<li>以上函数可以根据 Record key 和 File ID 查找记录。 </li>
+<li>FDS 并没有要求 Record Key 或 File ID 是唯一的。因此，在查找记录的时候可能会找到多个匹配的记录。记路查找函数每次返回一个匹配的记录并保存当前查找的进度，返回的 Token 记录了最新匹配的记录位置，通过 Token 在接下来的查找中就可以不必从头开始，直接从 Token 记录的位置开始即可。</li>
+</ul>
+<h5 id="2-3-Reading-Record-读取记录"><a href="#2-3-Reading-Record-读取记录" class="headerlink" title="2.3   Reading Record (读取记录)"></a>2.3   Reading Record (读取记录)</h5><ul>
+<li>读取记录可以直接在Flash中读取内容 (存储数据和元数据)，这意味着应用程序将决定时复制数据，将数据存储在 RAM 中还是在本地使用数据。</li>
+<li>访问记录内容 (读取数据)，需要打开记录以检索指向记录数据和元数据存储在Flash中的位置的指针。使用 <strong>fds_record_open()</strong> 函数打开记录，<strong>fds_record_open()</strong> 函数确保在访问记录时不会修改记录或记录移动到 Flash 中的其他位置。访问记录完成后，必须关闭记录 <strong>fds_record_close()</strong> 以释放对记录的锁定。</li>
+</ul>
+<h5 id="2-4-Updating-Record-更新记录"><a href="#2-4-Updating-Record-更新记录" class="headerlink" title="2.4   Updating Record (更新记录)"></a>2.4   Updating Record (更新记录)</h5><ul>
 <li>FDS 更新记录，即所谓的写数据。FDS 并不是将新数据写到原来的记录中去覆盖旧数据，而是创建一个新记录，然后将原有的记录作废，更新记录时，记录更新函数会返回一个新的记录描述符。</li>
-<li>FDS 更新记录的方式是作废旧记录，创建新记录，更新记录频繁的话，每次都会创建新的记录，这样的话会占用Flash的空间，所以通过碎片整理收集功能来释放Flash。<h5 id="2-5-Delete-Record-删除记录"><a href="#2-5-Delete-Record-删除记录" class="headerlink" title="2.5   Delete Record (删除记录)"></a>2.5   Delete Record (删除记录)</h5><h5 id="2-6-Debris-collection-碎片收集"><a href="#2-6-Debris-collection-碎片收集" class="headerlink" title="2.6    Debris collection (碎片收集)"></a>2.6    Debris collection (碎片收集)</h5><h5 id="2-7-Debris-collection-碎片收集"><a href="#2-7-Debris-collection-碎片收集" class="headerlink" title="2.7    Debris collection (碎片收集)"></a>2.7    Debris collection (碎片收集)</h5></li>
+<li>FDS 更新记录的方式是作废旧记录，创建新记录，更新记录频繁的话，每次都会创建新的记录，这样的话会占用Flash的空间，所以通过碎片整理收集功能来释放Flash。</li>
+</ul>
+<h5 id="2-5-Deleting-Record-删除记录"><a href="#2-5-Deleting-Record-删除记录" class="headerlink" title="2.5   Deleting Record (删除记录)"></a>2.5   Deleting Record (删除记录)</h5><ul>
+<li>记录删除并不是真正的删除记录数据和擦除Flash空间，而是通过设置标志将需要删除的记录作废。每一条被删除的记录，就不能再对它进行打开、读、定位等相关的操作。</li>
+<li>记录删除后，记录所使用的Flash空间不会立即释放，如果想要释放Flash空间，必须通过碎片收集来实现。</li>
+</ul>
+<h5 id="2-6-Garbage-collection-垃圾收集"><a href="#2-6-Garbage-collection-垃圾收集" class="headerlink" title="2.6   Garbage collection (垃圾收集)"></a>2.6   Garbage collection (垃圾收集)</h5><ul>
+<li>不管是更新数据还是擦除数据，都会产生无效数据，这些数据都是实际存在的，占用Flash空间，因此可以调用 <strong>fds_gc()</strong> 函数API进行垃圾回收。通过执行此操作来释放这些占用Flash的无效数据。</li>
+<li>垃圾收集不会自动通过FDS收集。理想情况下，应该在Ble处于低功耗的情况下进行垃圾收集，长期更新记录，产生的无效数据会将内存占满，再一次请求数据更新时，会直接返回 FDS_ERR_NO_SPACE_IN_FLASH (Flash 无空间) 错误，然后必须进行垃圾回收并等待完成后，再更新数据。</li>
 </ul>
 <h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4>]]></content>
       <categories>
@@ -270,11 +222,6 @@ Develop分支合并到Master分支命令：
         <tag>Bluetooth</tag>
         <tag>nRF52</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Welcome</title>
-    <url>/2020/05/03/Personal_Blog/</url>
-    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
   </entry>
   <entry>
     <title>【STM32CubeMX】学习笔记-&gt;STM32CubeMX_Usart</title>
@@ -402,28 +349,6 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>嘉立创JLC元件库+3D封装下载</title>
-    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
-<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
-</ul>
-<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
-<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
-</ul>
-<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
-      <categories>
-        <category>Altium Designer</category>
-      </categories>
-      <tags>
-        <tag>PCB_Design</tag>
-        <tag>Altium Designer</tag>
-        <tag>Layout</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>蓝牙空中升级(BLE OTA)原理与步骤</title>
     <url>/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -487,6 +412,108 @@ Develop分支合并到Master分支命令：
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
         <tag>nRF52</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git 分支管理 (Git_Flow)</title>
+    <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<ul>
+<li><p>主分支Master：</p>
+<pre><code>代码库应该有一个，且仅有一个主分支。(提供给用户的正式版本，都在主分支上发布(有版本标签))</code></pre></li>
+<li><p>开发分支Develop：</p>
+<pre><code>主分支只用来发布重大版本，日常开发应该在另一条分支(即开发分支（Develop))
+Git创建Develop分支命令：
+    git checkout -b develop master
+Develop分支合并到Master分支命令：
+# 切换到Master分支：
+    git checkout master
+# 对Develop分支进行合并
+    git merge --no-ff develop
+（--no-ff参数：默认情况下，Git执行&quot;快进式合并&quot; Fast-Farward merge 直接将Master分支指向Develop分支）</code></pre></li>
+<li><p>临时性分支：</p>
+<pre><code>Master 和 Develop，前者用于正式发布，后者用于日常开发。除了常设分支以外，还有一些临时分支，用于应用一些特定目的的版本开发。临时性分支有三种：
+    功能（feature）分支
+    预发布（release）分支
+    修补bug（fixbug）分支
+（这三种分支属于临时性需要，使用完成之后，应该删除，使得代码库的常设分支始终只有Master和Develop分支）
+
+1. 功能分支：
+    功能分支，是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要合并到Develop分支上。(功能分支的名字，可以采用feature-*的形式命名)
+    Git 创建一个功能分支：
+        git checkout -b feature-x develop
+    开发完成后，将功能分支合并到develop分支：
+        git checkout develop
+        git merge --no-ff feature-x
+    删除featur-x分支：
+        git branch -d feature-x
+
+2. 预发布分支：
+    指发布正式版本之前（即合并Master分支之前），可能需要有一个预发布的版本进行测试。
+    预发布分支是从Develop分支上边分出来的，预发布结束后，必须合并进Develop和Master分支上。
+    命名采用release-*的形式：
+    创建一个预发布分支：
+    git checkout -b release-1.2 develop
+确认没有问题后，合并Master分支：
+    git checkout master
+    git merge --no-ff release-1.2
+    # 对合并生成的新节点，做一个标签
+    git tag -a 1.2
+然后合并到develop分支：
+    git checkout develop
+    git merge --no-ff release-1.2
+最后删除预发布分支：
+    git branch -d release-1.2
+
+3. 修补bug分支：
+        软件正式发布以后，难免回出现bug。这是就需要创建一个分支，进行bug修补.
+        修补bug分支是从Master分支上面分出来的。修补结束后，再合并进Master和Develop分支。
+    命名采用fixbug-*的形式:
+        创建一个修补bug分支：
+            git checkout -b fixbug-0.1 master
+        修补结束后，合并到master分支：
+            git checkout master
+            git merge --no-ff fixbug-0.1
+            git tag -a 0.1.1
+        再合并到develop分支：
+            git checkout develop
+            git merge --no-ff fixbug-0.1
+    最后，删除&quot;修补bug分支&quot;：
+        git branch -d fixbug-0.1</code></pre></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+        <tag>Gitlab</tag>
+        <tag>Gitee</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>嘉立创JLC元件库+3D封装下载</title>
+    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
+<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
+</ul>
+<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
+<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
+</ul>
+<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
+      <categories>
+        <category>Altium Designer</category>
+      </categories>
+      <tags>
+        <tag>PCB_Design</tag>
+        <tag>Altium Designer</tag>
+        <tag>Layout</tag>
       </tags>
   </entry>
 </search>

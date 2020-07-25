@@ -273,9 +273,36 @@
 <li>通过灵活选择数据块的大小来最小化的使用内存。</li>
 <li>对数据的内容不加限制 (这意味着它可以包含特殊字符) 。<br>Flash数据存储支持同步读取操作和异步写入。</li>
 </ul>
-<h4 id="2-FDS功能介绍"><a href="#2-FDS功能介绍" class="headerlink" title="2.  FDS功能介绍"></a>2.  FDS功能介绍</h4><h5 id="2-1-Create-Record-创建记录"><a href="#2-1-Create-Record-创建记录" class="headerlink" title="2.1   Create Record (创建记录)"></a>2.1   Create Record (创建记录)</h5><h5 id="2-2-Find-Record-操作记录"><a href="#2-2-Find-Record-操作记录" class="headerlink" title="2.2   Find Record (操作记录)"></a>2.2   Find Record (操作记录)</h5><h5 id="2-3-Read-Record-读取记录"><a href="#2-3-Read-Record-读取记录" class="headerlink" title="2.3   Read Record (读取记录)"></a>2.3   Read Record (读取记录)</h5><h5 id="2-4-Update-Record-更新记录"><a href="#2-4-Update-Record-更新记录" class="headerlink" title="2.4   Update Record (更新记录)"></a>2.4   Update Record (更新记录)</h5><ul>
+<h4 id="2-FDS功能介绍"><a href="#2-FDS功能介绍" class="headerlink" title="2.  FDS功能介绍"></a>2.  FDS功能介绍</h4><h5 id="2-1-Creating-Record-创建记录"><a href="#2-1-Creating-Record-创建记录" class="headerlink" title="2.1   Creating Record (创建记录)"></a>2.1   Creating Record (创建记录)</h5><ul>
+<li>新记录写入Flash时，必须提供Record Key、File ID 和 将要写入的数据。</li>
+<li>更新记录 (写记录)成功后，返回一个记录描述符，可以用它来访问记录。在访问之前，等待表明写入操作成功完成的事件。</li>
+</ul>
+<h5 id="2-2-Manipulating-Record-处理记录"><a href="#2-2-Manipulating-Record-处理记录" class="headerlink" title="2.2   Manipulating Record (处理记录)"></a>2.2   Manipulating Record (处理记录)</h5><ul>
+<li>读取、更新或者删除记录的内容，必须通过记录的描述符访问记录。首次记录写入Flash时，FDS会创建并返回一个此记录的描述符。</li>
+<li>获取记录描述符函数：<ul>
+<li>fds_record_find</li>
+<li>fds_record_find_by_key</li>
+<li>fds_record_find_in_file</li>
+</ul>
+</li>
+<li>以上函数可以根据 Record key 和 File ID 查找记录。 </li>
+<li>FDS 并没有要求 Record Key 或 File ID 是唯一的。因此，在查找记录的时候可能会找到多个匹配的记录。记路查找函数每次返回一个匹配的记录并保存当前查找的进度，返回的 Token 记录了最新匹配的记录位置，通过 Token 在接下来的查找中就可以不必从头开始，直接从 Token 记录的位置开始即可。</li>
+</ul>
+<h5 id="2-3-Reading-Record-读取记录"><a href="#2-3-Reading-Record-读取记录" class="headerlink" title="2.3   Reading Record (读取记录)"></a>2.3   Reading Record (读取记录)</h5><ul>
+<li>读取记录可以直接在Flash中读取内容 (存储数据和元数据)，这意味着应用程序将决定时复制数据，将数据存储在 RAM 中还是在本地使用数据。</li>
+<li>访问记录内容 (读取数据)，需要打开记录以检索指向记录数据和元数据存储在Flash中的位置的指针。使用 <strong>fds_record_open()</strong> 函数打开记录，<strong>fds_record_open()</strong> 函数确保在访问记录时不会修改记录或记录移动到 Flash 中的其他位置。访问记录完成后，必须关闭记录 <strong>fds_record_close()</strong> 以释放对记录的锁定。</li>
+</ul>
+<h5 id="2-4-Updating-Record-更新记录"><a href="#2-4-Updating-Record-更新记录" class="headerlink" title="2.4   Updating Record (更新记录)"></a>2.4   Updating Record (更新记录)</h5><ul>
 <li>FDS 更新记录，即所谓的写数据。FDS 并不是将新数据写到原来的记录中去覆盖旧数据，而是创建一个新记录，然后将原有的记录作废，更新记录时，记录更新函数会返回一个新的记录描述符。</li>
-<li>FDS 更新记录的方式是作废旧记录，创建新记录，更新记录频繁的话，每次都会创建新的记录，这样的话会占用Flash的空间，所以通过碎片整理收集功能来释放Flash。<h5 id="2-5-Delete-Record-删除记录"><a href="#2-5-Delete-Record-删除记录" class="headerlink" title="2.5   Delete Record (删除记录)"></a>2.5   Delete Record (删除记录)</h5><h5 id="2-6-Debris-collection-碎片收集"><a href="#2-6-Debris-collection-碎片收集" class="headerlink" title="2.6    Debris collection (碎片收集)"></a>2.6    Debris collection (碎片收集)</h5><h5 id="2-7-Debris-collection-碎片收集"><a href="#2-7-Debris-collection-碎片收集" class="headerlink" title="2.7    Debris collection (碎片收集)"></a>2.7    Debris collection (碎片收集)</h5></li>
+<li>FDS 更新记录的方式是作废旧记录，创建新记录，更新记录频繁的话，每次都会创建新的记录，这样的话会占用Flash的空间，所以通过碎片整理收集功能来释放Flash。</li>
+</ul>
+<h5 id="2-5-Deleting-Record-删除记录"><a href="#2-5-Deleting-Record-删除记录" class="headerlink" title="2.5   Deleting Record (删除记录)"></a>2.5   Deleting Record (删除记录)</h5><ul>
+<li>记录删除并不是真正的删除记录数据和擦除Flash空间，而是通过设置标志将需要删除的记录作废。每一条被删除的记录，就不能再对它进行打开、读、定位等相关的操作。</li>
+<li>记录删除后，记录所使用的Flash空间不会立即释放，如果想要释放Flash空间，必须通过碎片收集来实现。</li>
+</ul>
+<h5 id="2-6-Garbage-collection-垃圾收集"><a href="#2-6-Garbage-collection-垃圾收集" class="headerlink" title="2.6   Garbage collection (垃圾收集)"></a>2.6   Garbage collection (垃圾收集)</h5><ul>
+<li>不管是更新数据还是擦除数据，都会产生无效数据，这些数据都是实际存在的，占用Flash空间，因此可以调用 <strong>fds_gc()</strong> 函数API进行垃圾回收。通过执行此操作来释放这些占用Flash的无效数据。</li>
+<li>垃圾收集不会自动通过FDS收集。理想情况下，应该在Ble处于低功耗的情况下进行垃圾收集，长期更新记录，产生的无效数据会将内存占满，再一次请求数据更新时，会直接返回 FDS_ERR_NO_SPACE_IN_FLASH (Flash 无空间) 错误，然后必须进行垃圾回收并等待完成后，再更新数据。</li>
 </ul>
 <h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4>
     </div>
@@ -359,7 +386,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-FDS概述介绍"><span class="nav-text">1.  FDS概述介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-FDS功能介绍"><span class="nav-text">2.  FDS功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Create-Record-创建记录"><span class="nav-text">2.1   Create Record (创建记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-Find-Record-操作记录"><span class="nav-text">2.2   Find Record (操作记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Read-Record-读取记录"><span class="nav-text">2.3   Read Record (读取记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-Update-Record-更新记录"><span class="nav-text">2.4   Update Record (更新记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-Delete-Record-删除记录"><span class="nav-text">2.5   Delete Record (删除记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6-Debris-collection-碎片收集"><span class="nav-text">2.6    Debris collection (碎片收集)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-7-Debris-collection-碎片收集"><span class="nav-text">2.7    Debris collection (碎片收集)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3"><span class="nav-text">3.</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-FDS概述介绍"><span class="nav-text">1.  FDS概述介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-FDS功能介绍"><span class="nav-text">2.  FDS功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Creating-Record-创建记录"><span class="nav-text">2.1   Creating Record (创建记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-Manipulating-Record-处理记录"><span class="nav-text">2.2   Manipulating Record (处理记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Reading-Record-读取记录"><span class="nav-text">2.3   Reading Record (读取记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-Updating-Record-更新记录"><span class="nav-text">2.4   Updating Record (更新记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-Deleting-Record-删除记录"><span class="nav-text">2.5   Deleting Record (删除记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6-Garbage-collection-垃圾收集"><span class="nav-text">2.6   Garbage collection (垃圾收集)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3"><span class="nav-text">3.</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
