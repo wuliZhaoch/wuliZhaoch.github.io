@@ -253,27 +253,44 @@
 </ul>
 <a id="more"></a>
 
-<h4 id="1-FDS概述介绍"><a href="#1-FDS概述介绍" class="headerlink" title="1.  FDS概述介绍"></a>1.  FDS概述介绍</h4><p>FDS (<em>Flash Data Storage</em>) 模块是用于芯片上闪存存储的一个最小文件系统，可以最大限度地降低数据损坏的风险，并简化与持久存储的交互。Nordic芯片内部FLASH的存储官方提供了两种方式，一种是 FS (<em>Flash Storage</em>)、另一种是FDS (<em>Flash Data Storage</em>) 。相对于FS (<em>Flash Storage</em>)来说，FDS (<em>Flash Data Storage</em>)对数据的组织性和安全性更强。</p>
+<h4 id="1-FDS概述介绍"><a href="#1-FDS概述介绍" class="headerlink" title="1.  FDS概述介绍"></a>1.  FDS概述介绍</h4><p>&emsp;&emsp;FDS (<em>Flash Data Storage</em>) 模块是用于芯片上闪存存储的一个最小文件系统，可以最大限度地降低数据损坏的风险，并简化与持久存储的交互。Nordic芯片内部FLASH的存储官方提供了两种方式，一种是 FS (<em>Flash Storage</em>)、另一种是FDS (<em>Flash Data Storage</em>) 。相对于FS (<em>Flash Storage</em>)来说，FDS (<em>Flash Data Storage</em>)对数据的组织性和安全性更强。</p>
 <p>FDS模块的设计也提供了以下优点:</p>
 <ul>
-<li>通过不断验证最小化访问损坏数据的风险: <ul>
+<li><p>通过不断验证最小化访问损坏数据的风险: </p>
+<ul>
 <li>在断电的情况下，数据可能写入不完整。验证确保FDS能够识别无效数据，并且不会将损坏的数据返回给用户。</li>
 </ul>
 </li>
-<li>在打开记录时提供(可选的)CRC验证，以确保数据自写入以后没有改变。</li>
-<li>最小化Flash操作(更新和删除):<ul>
+<li><p>在打开记录时提供(可选的)CRC验证，以确保数据自写入以后没有改变。</p>
+</li>
+<li><p>最小化Flash操作(更新和删除):</p>
+<ul>
 <li>FDS不是删除整个页面，而是存储新数据的副本，并通过一个字写入来使过时的数据失效。</li>
 </ul>
 </li>
-<li>基本损耗均衡:<ul>
+<li><p>基本损耗均衡:</p>
+<ul>
 <li>Flash的使用寿命是有限的，Flash具有最大可擦写次数，一旦对Flash的某个块的擦写超过最大擦写次数，这个块就会损坏。所以对Flash的擦写应该均匀的分布在快上，将块充分利用，减少擦写的次数，提高Flash的使用寿命。</li>
 </ul>
 </li>
-<li>不需要复制数据就可以轻松访问数据，这使得访问数据的影响与数据大小无关。</li>
-<li>通过灵活选择数据块的大小来最小化的使用内存。</li>
-<li>对数据的内容不加限制 (这意味着它可以包含特殊字符) 。<br>Flash数据存储支持同步读取操作和异步写入。</li>
+<li><p>不需要复制数据就可以轻松访问数据，这使得访问数据的影响与数据大小无关。</p>
+</li>
+<li><p>通过灵活选择数据块的大小来最小化的使用内存。</p>
+</li>
+<li><p>对数据的内容不加限制 (这意味着它可以包含特殊字符) 。</p>
+<p><strong>Flash数据存储支持同步读取操作和异步写入。</strong></p>
+</li>
 </ul>
-<h4 id="2-FDS功能介绍"><a href="#2-FDS功能介绍" class="headerlink" title="2.  FDS功能介绍"></a>2.  FDS功能介绍</h4><h5 id="2-1-Creating-Record-创建记录"><a href="#2-1-Creating-Record-创建记录" class="headerlink" title="2.1   Creating Record (创建记录)"></a>2.1   Creating Record (创建记录)</h5><ul>
+<h4 id="2-FDS功能介绍"><a href="#2-FDS功能介绍" class="headerlink" title="2.  FDS功能介绍"></a>2.  FDS功能介绍</h4><p>&emsp;&emsp;Flash Data Storage API 公开了操作文件和记录的功能，文件由一条或多条包含实际数据的记录组成，每一条记录都由一个 <strong>KEY</strong> 标志并通过 <strong>File ID</strong> 关联到文件。File ID 和 Record Key 都不要求必须是唯一的，并且文件可以包含具有相同 Key 的多个记录，可以通过 File ID 和 Record Key 的任意组合访问记录。</p>
+<p>For Example，an application could use the following two files:</p>
+<ul>
+<li><p>File 1 with two record:     0x1111 = “Phone1”,  0x2222 = “data:123456”</p>
+</li>
+<li><p>File 2 with three record:  0x1111 = “Tables1”,  0x2222 = “data:123456”,  0x2222 = “data: adcsdf”</p>
+</li>
+</ul>
+<p>&emsp;&emsp;可以遍历File 1中的所有记录，所有Key为0x2222的记录。可以遍历File 2 中 Key 为0x1111 的记录。</p>
+<h5 id="2-1-Creating-Record-创建记录"><a href="#2-1-Creating-Record-创建记录" class="headerlink" title="2.1   Creating Record (创建记录)"></a>2.1   Creating Record (创建记录)</h5><ul>
 <li>新记录写入Flash时，必须提供Record Key、File ID 和 将要写入的数据。</li>
 <li>更新记录 (写记录)成功后，返回一个记录描述符，可以用它来访问记录。在访问之前，等待表明写入操作成功完成的事件。</li>
 </ul>
