@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Git 初次运行前的配置</title>
+    <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h2 id="Git初次运行配置"><a href="#Git初次运行配置" class="headerlink" title="Git初次运行配置"></a>Git初次运行配置</h2><h3 id="1-用户信息"><a href="#1-用户信息" class="headerlink" title="1.    用户信息"></a>1.    用户信息</h3><ul>
+<li>安装完Git应该做的第一件事就是设置自己的用户名称和邮件地址.</li>
+<li>命令如下:<ul>
+<li><code>$ git config --global user.name &quot;Zhao_ch&quot;</code> </li>
+<li><code>$ git config --global user.email &quot;Zhao_ch@163.com&quot;</code></li>
+</ul>
+</li>
+<li>如果使用了–global选项，那么该命令是需要运行一次，因为之后无论你在系统上做任何事情，Git都会使用这些信息  </li>
+</ul>
+<h3 id="2-文本编辑器"><a href="#2-文本编辑器" class="headerlink" title="2.   文本编辑器"></a>2.   文本编辑器</h3><ul>
+<li>用户信息设置完毕，可以设置默认文本编辑器  </li>
+<li>如果没有设置，Git会使用操作系统默认的文本编辑器，通常是Vim </li>
+<li>例如设置文本编辑器为Notepad++  <ul>
+<li>命令如下：    <ul>
+<li>`$ git config –global core.editor Notepad++</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-检查配置信息"><a href="#3-检查配置信息" class="headerlink" title="3.   检查配置信息"></a>3.   检查配置信息</h3><ul>
+<li>如果查询配置信息可以使用 $ git config –list 命令列出所有配置信息。</li>
+</ul>
+<h3 id="4-生成密钥"><a href="#4-生成密钥" class="headerlink" title="4.   生成密钥"></a>4.   生成密钥</h3><ul>
+<li>命令如下:<ul>
+<li><code>$ ssh-keygen -t rsa -C &quot;Zhao_ch@163.com&quot;</code></li>
+</ul>
+</li>
+<li>如果不设置密码的话 连续 3 个回车。然后生成 id_rsa 和 id_rsa.pub 两个文件。<ul>
+<li><strong>Hosts文件配置 文件位置</strong> <strong>C:\Windows\System32\drivers\etc\hosts</strong>     </li>
+<li>添加 35.231.145.151 <a href="http://gitlab.com/" target="_blank" rel="noopener">gitlab.com</a>   </li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+        <tag>Gitlab</tag>
+        <tag>Gitee</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Altium Designer 导出 Gerber 文件教程</title>
     <url>/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -66,162 +117,6 @@
       <tags>
         <tag>Gerber</tag>
         <tag>PCB_Design</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git 分支管理 (Git_Flow)</title>
-    <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<ul>
-<li><p>主分支Master：</p>
-<pre><code>代码库应该有一个，且仅有一个主分支。(提供给用户的正式版本，都在主分支上发布(有版本标签))</code></pre></li>
-<li><p>开发分支Develop：</p>
-<pre><code>主分支只用来发布重大版本，日常开发应该在另一条分支(即开发分支（Develop))
-Git创建Develop分支命令：
-    git checkout -b develop master
-Develop分支合并到Master分支命令：
-# 切换到Master分支：
-    git checkout master
-# 对Develop分支进行合并
-    git merge --no-ff develop
-（--no-ff参数：默认情况下，Git执行&quot;快进式合并&quot; Fast-Farward merge 直接将Master分支指向Develop分支）</code></pre></li>
-<li><p>临时性分支：</p>
-<pre><code>Master 和 Develop，前者用于正式发布，后者用于日常开发。除了常设分支以外，还有一些临时分支，用于应用一些特定目的的版本开发。临时性分支有三种：
-    功能（feature）分支
-    预发布（release）分支
-    修补bug（fixbug）分支
-（这三种分支属于临时性需要，使用完成之后，应该删除，使得代码库的常设分支始终只有Master和Develop分支）
-
-1. 功能分支：
-    功能分支，是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要合并到Develop分支上。(功能分支的名字，可以采用feature-*的形式命名)
-    Git 创建一个功能分支：
-        git checkout -b feature-x develop
-    开发完成后，将功能分支合并到develop分支：
-        git checkout develop
-        git merge --no-ff feature-x
-    删除featur-x分支：
-        git branch -d feature-x
-
-2. 预发布分支：
-    指发布正式版本之前（即合并Master分支之前），可能需要有一个预发布的版本进行测试。
-    预发布分支是从Develop分支上边分出来的，预发布结束后，必须合并进Develop和Master分支上。
-    命名采用release-*的形式：
-    创建一个预发布分支：
-    git checkout -b release-1.2 develop
-确认没有问题后，合并Master分支：
-    git checkout master
-    git merge --no-ff release-1.2
-    # 对合并生成的新节点，做一个标签
-    git tag -a 1.2
-然后合并到develop分支：
-    git checkout develop
-    git merge --no-ff release-1.2
-最后删除预发布分支：
-    git branch -d release-1.2
-
-3. 修补bug分支：
-        软件正式发布以后，难免回出现bug。这是就需要创建一个分支，进行bug修补.
-        修补bug分支是从Master分支上面分出来的。修补结束后，再合并进Master和Develop分支。
-    命名采用fixbug-*的形式:
-        创建一个修补bug分支：
-            git checkout -b fixbug-0.1 master
-        修补结束后，合并到master分支：
-            git checkout master
-            git merge --no-ff fixbug-0.1
-            git tag -a 0.1.1
-        再合并到develop分支：
-            git checkout develop
-            git merge --no-ff fixbug-0.1
-    最后，删除&quot;修补bug分支&quot;：
-        git branch -d fixbug-0.1</code></pre></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-        <tag>Gitlab</tag>
-        <tag>Gitee</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git 初次运行前的配置</title>
-    <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h2 id="Git初次运行配置"><a href="#Git初次运行配置" class="headerlink" title="Git初次运行配置"></a>Git初次运行配置</h2><h3 id="1-用户信息"><a href="#1-用户信息" class="headerlink" title="1.    用户信息"></a>1.    用户信息</h3><ul>
-<li>安装完Git应该做的第一件事就是设置自己的用户名称和邮件地址.</li>
-<li>命令如下:<ul>
-<li><code>$ git config --global user.name &quot;Zhao_ch&quot;</code> </li>
-<li><code>$ git config --global user.email &quot;Zhao_ch@163.com&quot;</code></li>
-</ul>
-</li>
-<li>如果使用了–global选项，那么该命令是需要运行一次，因为之后无论你在系统上做任何事情，Git都会使用这些信息  </li>
-</ul>
-<h3 id="2-文本编辑器"><a href="#2-文本编辑器" class="headerlink" title="2.   文本编辑器"></a>2.   文本编辑器</h3><ul>
-<li>用户信息设置完毕，可以设置默认文本编辑器  </li>
-<li>如果没有设置，Git会使用操作系统默认的文本编辑器，通常是Vim </li>
-<li>例如设置文本编辑器为Notepad++  <ul>
-<li>命令如下：    <ul>
-<li>`$ git config –global core.editor Notepad++</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-检查配置信息"><a href="#3-检查配置信息" class="headerlink" title="3.   检查配置信息"></a>3.   检查配置信息</h3><ul>
-<li>如果查询配置信息可以使用 $ git config –list 命令列出所有配置信息。</li>
-</ul>
-<h3 id="4-生成密钥"><a href="#4-生成密钥" class="headerlink" title="4.   生成密钥"></a>4.   生成密钥</h3><ul>
-<li>命令如下:<ul>
-<li><code>$ ssh-keygen -t rsa -C &quot;Zhao_ch@163.com&quot;</code></li>
-</ul>
-</li>
-<li>如果不设置密码的话 连续 3 个回车。然后生成 id_rsa 和 id_rsa.pub 两个文件。<ul>
-<li><strong>Hosts文件配置 文件位置</strong> <strong>C:\Windows\System32\drivers\etc\hosts</strong>     </li>
-<li>添加 35.231.145.151 <a href="http://gitlab.com/" target="_blank" rel="noopener">gitlab.com</a>   </li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-        <tag>Gitlab</tag>
-        <tag>Gitee</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
-    <url>/2020/05/06/Nordic-development-environment/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="1-强制安装项"><a href="#1-强制安装项" class="headerlink" title="1. 强制安装项"></a>1. 强制安装项</h3><p>​            如下工具必须安装,否则无法开发 nRF51 &amp; nRF52 Series 产品</p>
-<h4 id="1-1-安装IDE"><a href="#1-1-安装IDE" class="headerlink" title="1.1   安装IDE"></a>1.1   安装IDE</h4><p>​            Nordic nRF51/52支持Keil，GCC，IAR 和 SES（Segger Embedded Studio）四种IDE，大家随便选择其中一种安装即可。</p>
-<h4 id="1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）"><a href="#1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）" class="headerlink" title="1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）"></a>1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）</h4><p>​            nRF Command Line Tools ( Nordic官方自己开发的命令行工具 ) , 安装过程中具体组件包括 J-link驱动、nrfjprog、nrfutil、mergehex等。</p>
-<p>​            下载连接:  <a href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs" target="_blank" rel="noopener">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs</a></p>
-<p>​            选择自己的桌面平台及需要的版本 (推荐最新发布的版本):</p>
-<p><img src="/2020/05/06/Nordic-development-environment/nRF-Command-Line-Tools.png" alt></p>
-]]></content>
-      <categories>
-        <category>Nordic</category>
-      </categories>
-      <tags>
-        <tag>Nordic</tag>
-        <tag>Bluetooth</tag>
-        <tag>nRF connect</tag>
-        <tag>nrfutil</tag>
-        <tag>nRF51</tag>
-        <tag>nRF52</tag>
       </tags>
   </entry>
   <entry>
@@ -305,7 +200,36 @@ Develop分支合并到Master分支命令：
 <li>不管是更新数据还是擦除数据，都会产生无效数据，这些数据都是实际存在的，占用Flash空间，因此可以调用 <strong>fds_gc()</strong> 函数API进行垃圾回收。通过执行此操作来释放这些占用Flash的无效数据。</li>
 <li>垃圾收集不会自动通过FDS收集。理想情况下，应该在Ble处于低功耗的情况下进行垃圾收集，长期更新记录，产生的无效数据会将内存占满，再一次请求数据更新时，会直接返回 FDS_ERR_NO_SPACE_IN_FLASH (Flash 无空间) 错误，然后必须进行垃圾回收并等待完成后，再更新数据。</li>
 </ul>
-<h4 id="3-SDK-Config-FDS配置宏介绍"><a href="#3-SDK-Config-FDS配置宏介绍" class="headerlink" title="3.  SDK_Config  FDS配置宏介绍"></a>3.  SDK_Config  FDS配置宏介绍</h4><h5 id="3-1-FDS-VIRTUAL-PAGES"><a href="#3-1-FDS-VIRTUAL-PAGES" class="headerlink" title="3.1   FDS_VIRTUAL_PAGES"></a>3.1   FDS_VIRTUAL_PAGES</h5><h5 id="3-2-FDS-VIRTUAL-PAGE-SIZE"><a href="#3-2-FDS-VIRTUAL-PAGE-SIZE" class="headerlink" title="3.2   FDS_VIRTUAL_PAGE_SIZE"></a>3.2   FDS_VIRTUAL_PAGE_SIZE</h5><h5 id="3-3-FDS-VIRTUAL-PAGES-RESERVED"><a href="#3-3-FDS-VIRTUAL-PAGES-RESERVED" class="headerlink" title="3.3   FDS_VIRTUAL_PAGES_RESERVED"></a>3.3   FDS_VIRTUAL_PAGES_RESERVED</h5><h5 id="3-4-FDS-OP-QUEUE-SIZE"><a href="#3-4-FDS-OP-QUEUE-SIZE" class="headerlink" title="3.4   FDS_OP_QUEUE_SIZE"></a>3.4   FDS_OP_QUEUE_SIZE</h5><h5 id="3-5-FDS-CRC-CHECK-ON-READ"><a href="#3-5-FDS-CRC-CHECK-ON-READ" class="headerlink" title="3.5   FDS_CRC_CHECK_ON_READ"></a>3.5   FDS_CRC_CHECK_ON_READ</h5><h5 id="3-6-FDS-CRC-CHECK-ON-WRITE"><a href="#3-6-FDS-CRC-CHECK-ON-WRITE" class="headerlink" title="3.6   FDS_CRC_CHECK_ON_WRITE"></a>3.6   FDS_CRC_CHECK_ON_WRITE</h5><h5 id="3-7-FDS-MAX-USERS"><a href="#3-7-FDS-MAX-USERS" class="headerlink" title="3.7  FDS_MAX_USERS"></a>3.7  FDS_MAX_USERS</h5>]]></content>
+<h4 id="3-SDK-Config-FDS配置宏介绍"><a href="#3-SDK-Config-FDS配置宏介绍" class="headerlink" title="3.  SDK_Config  FDS配置宏介绍"></a>3.  SDK_Config  FDS配置宏介绍</h4><h5 id="3-1-FDS-VIRTUAL-PAGES"><a href="#3-1-FDS-VIRTUAL-PAGES" class="headerlink" title="3.1   FDS_VIRTUAL_PAGES"></a>3.1   FDS_VIRTUAL_PAGES</h5><ul>
+<li>配置使用虚拟页的数量及其大小。</li>
+<li>使用的 Flash Memory 总量取决于虚拟页的大小和数量。</li>
+</ul>
+<h5 id="3-2-FDS-VIRTUAL-PAGE-SIZE"><a href="#3-2-FDS-VIRTUAL-PAGE-SIZE" class="headerlink" title="3.2   FDS_VIRTUAL_PAGE_SIZE"></a>3.2   FDS_VIRTUAL_PAGE_SIZE</h5><ul>
+<li>虚拟页的大小。</li>
+<li>默认情况下，虚拟页与物理页大小相同。</li>
+<li>虚拟页的大小必须是物理页大小的倍数。</li>
+<li>已字为单位 (4-Byte)。</li>
+</ul>
+<h5 id="3-3-FDS-VIRTUAL-PAGES-RESERVED"><a href="#3-3-FDS-VIRTUAL-PAGES-RESERVED" class="headerlink" title="3.3   FDS_VIRTUAL_PAGES_RESERVED"></a>3.3   FDS_VIRTUAL_PAGES_RESERVED</h5><ul>
+<li>其他模块使用的虚拟FLASH页数。</li>
+<li>FDS模块将其数据存储在FLASH的最后一页中，通过设置此值，可以移动FDS使用的FLASH结束地地址。保留的空间可以被其他模块使用。</li>
+</ul>
+<h5 id="3-4-FDS-OP-QUEUE-SIZE"><a href="#3-4-FDS-OP-QUEUE-SIZE" class="headerlink" title="3.4   FDS_OP_QUEUE_SIZE"></a>3.4   FDS_OP_QUEUE_SIZE</h5><ul>
+<li>FDS 程序模块内部使用的队列大小，如果FDS用户较多或者应用程序中希望一次排队更多的操作而不等待先前的操作完成，可加大队列的大小。</li>
+<li>一般情况下，如果应用程序中经常接受到错误代码 FDS_ERR_NO_SPACE_IN_QUEUES,则需要增加队列大小。</li>
+</ul>
+<h5 id="3-5-FDS-CRC-CHECK-ON-READ"><a href="#3-5-FDS-CRC-CHECK-ON-READ" class="headerlink" title="3.5   FDS_CRC_CHECK_ON_READ"></a>3.5   FDS_CRC_CHECK_ON_READ</h5><ul>
+<li>如果使能该配置项，FDS 将会启动读取操作的CRC检查 (fds_record_open)。</li>
+</ul>
+<h5 id="3-6-FDS-CRC-CHECK-ON-WRITE"><a href="#3-6-FDS-CRC-CHECK-ON-WRITE" class="headerlink" title="3.6   FDS_CRC_CHECK_ON_WRITE"></a>3.6   FDS_CRC_CHECK_ON_WRITE</h5><ul>
+<li>可选的配置项，如果使能，FDS 写操作会进行校验。</li>
+<li>使能该配置时，FDS_CRC_CHECK_ON_READ 必须打开。</li>
+</ul>
+<h5 id="3-7-FDS-MAX-USERS"><a href="#3-7-FDS-MAX-USERS" class="headerlink" title="3.7   FDS_MAX_USERS"></a>3.7   FDS_MAX_USERS</h5><ul>
+<li>可以注册的最大回调数。</li>
+<li>如果收到 FDS_ERR_USER_LIMIT_REACHED 错误，请增加此数值。</li>
+</ul>
+]]></content>
       <categories>
         <category>Nordic</category>
       </categories>
@@ -313,6 +237,138 @@ Develop分支合并到Master分支命令：
         <tag>Nordic</tag>
         <tag>Bluetooth</tag>
         <tag>nRF52</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git 分支管理 (Git_Flow)</title>
+    <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<ul>
+<li><p>主分支Master：</p>
+<pre><code>代码库应该有一个，且仅有一个主分支。(提供给用户的正式版本，都在主分支上发布(有版本标签))</code></pre></li>
+<li><p>开发分支Develop：</p>
+<pre><code>主分支只用来发布重大版本，日常开发应该在另一条分支(即开发分支（Develop))
+Git创建Develop分支命令：
+    git checkout -b develop master
+Develop分支合并到Master分支命令：
+# 切换到Master分支：
+    git checkout master
+# 对Develop分支进行合并
+    git merge --no-ff develop
+（--no-ff参数：默认情况下，Git执行&quot;快进式合并&quot; Fast-Farward merge 直接将Master分支指向Develop分支）</code></pre></li>
+<li><p>临时性分支：</p>
+<pre><code>Master 和 Develop，前者用于正式发布，后者用于日常开发。除了常设分支以外，还有一些临时分支，用于应用一些特定目的的版本开发。临时性分支有三种：
+    功能（feature）分支
+    预发布（release）分支
+    修补bug（fixbug）分支
+（这三种分支属于临时性需要，使用完成之后，应该删除，使得代码库的常设分支始终只有Master和Develop分支）
+
+1. 功能分支：
+    功能分支，是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要合并到Develop分支上。(功能分支的名字，可以采用feature-*的形式命名)
+    Git 创建一个功能分支：
+        git checkout -b feature-x develop
+    开发完成后，将功能分支合并到develop分支：
+        git checkout develop
+        git merge --no-ff feature-x
+    删除featur-x分支：
+        git branch -d feature-x
+
+2. 预发布分支：
+    指发布正式版本之前（即合并Master分支之前），可能需要有一个预发布的版本进行测试。
+    预发布分支是从Develop分支上边分出来的，预发布结束后，必须合并进Develop和Master分支上。
+    命名采用release-*的形式：
+    创建一个预发布分支：
+    git checkout -b release-1.2 develop
+确认没有问题后，合并Master分支：
+    git checkout master
+    git merge --no-ff release-1.2
+    # 对合并生成的新节点，做一个标签
+    git tag -a 1.2
+然后合并到develop分支：
+    git checkout develop
+    git merge --no-ff release-1.2
+最后删除预发布分支：
+    git branch -d release-1.2
+
+3. 修补bug分支：
+        软件正式发布以后，难免回出现bug。这是就需要创建一个分支，进行bug修补.
+        修补bug分支是从Master分支上面分出来的。修补结束后，再合并进Master和Develop分支。
+    命名采用fixbug-*的形式:
+        创建一个修补bug分支：
+            git checkout -b fixbug-0.1 master
+        修补结束后，合并到master分支：
+            git checkout master
+            git merge --no-ff fixbug-0.1
+            git tag -a 0.1.1
+        再合并到develop分支：
+            git checkout develop
+            git merge --no-ff fixbug-0.1
+    最后，删除&quot;修补bug分支&quot;：
+        git branch -d fixbug-0.1</code></pre></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+        <tag>Gitlab</tag>
+        <tag>Gitee</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
+    <url>/2020/05/06/Nordic-development-environment/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="1-强制安装项"><a href="#1-强制安装项" class="headerlink" title="1. 强制安装项"></a>1. 强制安装项</h3><p>​            如下工具必须安装,否则无法开发 nRF51 &amp; nRF52 Series 产品</p>
+<h4 id="1-1-安装IDE"><a href="#1-1-安装IDE" class="headerlink" title="1.1   安装IDE"></a>1.1   安装IDE</h4><p>​            Nordic nRF51/52支持Keil，GCC，IAR 和 SES（Segger Embedded Studio）四种IDE，大家随便选择其中一种安装即可。</p>
+<h4 id="1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）"><a href="#1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）" class="headerlink" title="1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）"></a>1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）</h4><p>​            nRF Command Line Tools ( Nordic官方自己开发的命令行工具 ) , 安装过程中具体组件包括 J-link驱动、nrfjprog、nrfutil、mergehex等。</p>
+<p>​            下载连接:  <a href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs" target="_blank" rel="noopener">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs</a></p>
+<p>​            选择自己的桌面平台及需要的版本 (推荐最新发布的版本):</p>
+<p><img src="/2020/05/06/Nordic-development-environment/nRF-Command-Line-Tools.png" alt></p>
+]]></content>
+      <categories>
+        <category>Nordic</category>
+      </categories>
+      <tags>
+        <tag>Nordic</tag>
+        <tag>Bluetooth</tag>
+        <tag>nRF52</tag>
+        <tag>nRF connect</tag>
+        <tag>nrfutil</tag>
+        <tag>nRF51</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Welcome</title>
+    <url>/2020/05/03/Personal_Blog/</url>
+    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
+  </entry>
+  <entry>
+    <title>嘉立创JLC元件库+3D封装下载</title>
+    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
+<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
+</ul>
+<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
+<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
+</ul>
+<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
+      <categories>
+        <category>Altium Designer</category>
+      </categories>
+      <tags>
+        <tag>PCB_Design</tag>
+        <tag>Altium Designer</tag>
+        <tag>Layout</tag>
       </tags>
   </entry>
   <entry>
@@ -441,33 +497,6 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>Welcome</title>
-    <url>/2020/05/03/Personal_Blog/</url>
-    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
-  </entry>
-  <entry>
-    <title>嘉立创JLC元件库+3D封装下载</title>
-    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
-<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
-</ul>
-<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
-<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
-</ul>
-<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
-      <categories>
-        <category>Altium Designer</category>
-      </categories>
-      <tags>
-        <tag>PCB_Design</tag>
-        <tag>Altium Designer</tag>
-        <tag>Layout</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>蓝牙空中升级(BLE OTA)原理与步骤</title>
     <url>/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -527,10 +556,10 @@ Develop分支合并到Master分支命令：
       <tags>
         <tag>Nordic</tag>
         <tag>Bluetooth</tag>
+        <tag>nRF52</tag>
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
-        <tag>nRF52</tag>
       </tags>
   </entry>
 </search>

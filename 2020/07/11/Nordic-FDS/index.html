@@ -321,7 +321,36 @@
 <li>不管是更新数据还是擦除数据，都会产生无效数据，这些数据都是实际存在的，占用Flash空间，因此可以调用 <strong>fds_gc()</strong> 函数API进行垃圾回收。通过执行此操作来释放这些占用Flash的无效数据。</li>
 <li>垃圾收集不会自动通过FDS收集。理想情况下，应该在Ble处于低功耗的情况下进行垃圾收集，长期更新记录，产生的无效数据会将内存占满，再一次请求数据更新时，会直接返回 FDS_ERR_NO_SPACE_IN_FLASH (Flash 无空间) 错误，然后必须进行垃圾回收并等待完成后，再更新数据。</li>
 </ul>
-<h4 id="3-SDK-Config-FDS配置宏介绍"><a href="#3-SDK-Config-FDS配置宏介绍" class="headerlink" title="3.  SDK_Config  FDS配置宏介绍"></a>3.  SDK_Config  FDS配置宏介绍</h4><h5 id="3-1-FDS-VIRTUAL-PAGES"><a href="#3-1-FDS-VIRTUAL-PAGES" class="headerlink" title="3.1   FDS_VIRTUAL_PAGES"></a>3.1   FDS_VIRTUAL_PAGES</h5><h5 id="3-2-FDS-VIRTUAL-PAGE-SIZE"><a href="#3-2-FDS-VIRTUAL-PAGE-SIZE" class="headerlink" title="3.2   FDS_VIRTUAL_PAGE_SIZE"></a>3.2   FDS_VIRTUAL_PAGE_SIZE</h5><h5 id="3-3-FDS-VIRTUAL-PAGES-RESERVED"><a href="#3-3-FDS-VIRTUAL-PAGES-RESERVED" class="headerlink" title="3.3   FDS_VIRTUAL_PAGES_RESERVED"></a>3.3   FDS_VIRTUAL_PAGES_RESERVED</h5><h5 id="3-4-FDS-OP-QUEUE-SIZE"><a href="#3-4-FDS-OP-QUEUE-SIZE" class="headerlink" title="3.4   FDS_OP_QUEUE_SIZE"></a>3.4   FDS_OP_QUEUE_SIZE</h5><h5 id="3-5-FDS-CRC-CHECK-ON-READ"><a href="#3-5-FDS-CRC-CHECK-ON-READ" class="headerlink" title="3.5   FDS_CRC_CHECK_ON_READ"></a>3.5   FDS_CRC_CHECK_ON_READ</h5><h5 id="3-6-FDS-CRC-CHECK-ON-WRITE"><a href="#3-6-FDS-CRC-CHECK-ON-WRITE" class="headerlink" title="3.6   FDS_CRC_CHECK_ON_WRITE"></a>3.6   FDS_CRC_CHECK_ON_WRITE</h5><h5 id="3-7-FDS-MAX-USERS"><a href="#3-7-FDS-MAX-USERS" class="headerlink" title="3.7  FDS_MAX_USERS"></a>3.7  FDS_MAX_USERS</h5>
+<h4 id="3-SDK-Config-FDS配置宏介绍"><a href="#3-SDK-Config-FDS配置宏介绍" class="headerlink" title="3.  SDK_Config  FDS配置宏介绍"></a>3.  SDK_Config  FDS配置宏介绍</h4><h5 id="3-1-FDS-VIRTUAL-PAGES"><a href="#3-1-FDS-VIRTUAL-PAGES" class="headerlink" title="3.1   FDS_VIRTUAL_PAGES"></a>3.1   FDS_VIRTUAL_PAGES</h5><ul>
+<li>配置使用虚拟页的数量及其大小。</li>
+<li>使用的 Flash Memory 总量取决于虚拟页的大小和数量。</li>
+</ul>
+<h5 id="3-2-FDS-VIRTUAL-PAGE-SIZE"><a href="#3-2-FDS-VIRTUAL-PAGE-SIZE" class="headerlink" title="3.2   FDS_VIRTUAL_PAGE_SIZE"></a>3.2   FDS_VIRTUAL_PAGE_SIZE</h5><ul>
+<li>虚拟页的大小。</li>
+<li>默认情况下，虚拟页与物理页大小相同。</li>
+<li>虚拟页的大小必须是物理页大小的倍数。</li>
+<li>已字为单位 (4-Byte)。</li>
+</ul>
+<h5 id="3-3-FDS-VIRTUAL-PAGES-RESERVED"><a href="#3-3-FDS-VIRTUAL-PAGES-RESERVED" class="headerlink" title="3.3   FDS_VIRTUAL_PAGES_RESERVED"></a>3.3   FDS_VIRTUAL_PAGES_RESERVED</h5><ul>
+<li>其他模块使用的虚拟FLASH页数。</li>
+<li>FDS模块将其数据存储在FLASH的最后一页中，通过设置此值，可以移动FDS使用的FLASH结束地地址。保留的空间可以被其他模块使用。</li>
+</ul>
+<h5 id="3-4-FDS-OP-QUEUE-SIZE"><a href="#3-4-FDS-OP-QUEUE-SIZE" class="headerlink" title="3.4   FDS_OP_QUEUE_SIZE"></a>3.4   FDS_OP_QUEUE_SIZE</h5><ul>
+<li>FDS 程序模块内部使用的队列大小，如果FDS用户较多或者应用程序中希望一次排队更多的操作而不等待先前的操作完成，可加大队列的大小。</li>
+<li>一般情况下，如果应用程序中经常接受到错误代码 FDS_ERR_NO_SPACE_IN_QUEUES,则需要增加队列大小。</li>
+</ul>
+<h5 id="3-5-FDS-CRC-CHECK-ON-READ"><a href="#3-5-FDS-CRC-CHECK-ON-READ" class="headerlink" title="3.5   FDS_CRC_CHECK_ON_READ"></a>3.5   FDS_CRC_CHECK_ON_READ</h5><ul>
+<li>如果使能该配置项，FDS 将会启动读取操作的CRC检查 (fds_record_open)。</li>
+</ul>
+<h5 id="3-6-FDS-CRC-CHECK-ON-WRITE"><a href="#3-6-FDS-CRC-CHECK-ON-WRITE" class="headerlink" title="3.6   FDS_CRC_CHECK_ON_WRITE"></a>3.6   FDS_CRC_CHECK_ON_WRITE</h5><ul>
+<li>可选的配置项，如果使能，FDS 写操作会进行校验。</li>
+<li>使能该配置时，FDS_CRC_CHECK_ON_READ 必须打开。</li>
+</ul>
+<h5 id="3-7-FDS-MAX-USERS"><a href="#3-7-FDS-MAX-USERS" class="headerlink" title="3.7   FDS_MAX_USERS"></a>3.7   FDS_MAX_USERS</h5><ul>
+<li>可以注册的最大回调数。</li>
+<li>如果收到 FDS_ERR_USER_LIMIT_REACHED 错误，请增加此数值。</li>
+</ul>
+
     </div>
 
     
@@ -403,7 +432,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-FDS概述介绍"><span class="nav-text">1.  FDS概述介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-FDS功能介绍"><span class="nav-text">2.  FDS功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Creating-Record-创建记录"><span class="nav-text">2.1   Creating Record (创建记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-Manipulating-Record-处理记录"><span class="nav-text">2.2   Manipulating Record (处理记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Reading-Record-读取记录"><span class="nav-text">2.3   Reading Record (读取记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-Updating-Record-更新记录"><span class="nav-text">2.4   Updating Record (更新记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-Deleting-Record-删除记录"><span class="nav-text">2.5   Deleting Record (删除记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6-Garbage-collection-垃圾收集"><span class="nav-text">2.6   Garbage collection (垃圾收集)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-SDK-Config-FDS配置宏介绍"><span class="nav-text">3.  SDK_Config  FDS配置宏介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-FDS-VIRTUAL-PAGES"><span class="nav-text">3.1   FDS_VIRTUAL_PAGES</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-FDS-VIRTUAL-PAGE-SIZE"><span class="nav-text">3.2   FDS_VIRTUAL_PAGE_SIZE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-FDS-VIRTUAL-PAGES-RESERVED"><span class="nav-text">3.3   FDS_VIRTUAL_PAGES_RESERVED</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-FDS-OP-QUEUE-SIZE"><span class="nav-text">3.4   FDS_OP_QUEUE_SIZE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-FDS-CRC-CHECK-ON-READ"><span class="nav-text">3.5   FDS_CRC_CHECK_ON_READ</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-FDS-CRC-CHECK-ON-WRITE"><span class="nav-text">3.6   FDS_CRC_CHECK_ON_WRITE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-7-FDS-MAX-USERS"><span class="nav-text">3.7  FDS_MAX_USERS</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-FDS概述介绍"><span class="nav-text">1.  FDS概述介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-FDS功能介绍"><span class="nav-text">2.  FDS功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Creating-Record-创建记录"><span class="nav-text">2.1   Creating Record (创建记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-Manipulating-Record-处理记录"><span class="nav-text">2.2   Manipulating Record (处理记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Reading-Record-读取记录"><span class="nav-text">2.3   Reading Record (读取记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-Updating-Record-更新记录"><span class="nav-text">2.4   Updating Record (更新记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-Deleting-Record-删除记录"><span class="nav-text">2.5   Deleting Record (删除记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6-Garbage-collection-垃圾收集"><span class="nav-text">2.6   Garbage collection (垃圾收集)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-SDK-Config-FDS配置宏介绍"><span class="nav-text">3.  SDK_Config  FDS配置宏介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-FDS-VIRTUAL-PAGES"><span class="nav-text">3.1   FDS_VIRTUAL_PAGES</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-FDS-VIRTUAL-PAGE-SIZE"><span class="nav-text">3.2   FDS_VIRTUAL_PAGE_SIZE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-FDS-VIRTUAL-PAGES-RESERVED"><span class="nav-text">3.3   FDS_VIRTUAL_PAGES_RESERVED</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-FDS-OP-QUEUE-SIZE"><span class="nav-text">3.4   FDS_OP_QUEUE_SIZE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-FDS-CRC-CHECK-ON-READ"><span class="nav-text">3.5   FDS_CRC_CHECK_ON_READ</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-FDS-CRC-CHECK-ON-WRITE"><span class="nav-text">3.6   FDS_CRC_CHECK_ON_WRITE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-7-FDS-MAX-USERS"><span class="nav-text">3.7   FDS_MAX_USERS</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
