@@ -1,57 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Git 初次运行前的配置</title>
-    <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h2 id="Git初次运行配置"><a href="#Git初次运行配置" class="headerlink" title="Git初次运行配置"></a>Git初次运行配置</h2><h3 id="1-用户信息"><a href="#1-用户信息" class="headerlink" title="1.    用户信息"></a>1.    用户信息</h3><ul>
-<li>安装完Git应该做的第一件事就是设置自己的用户名称和邮件地址.</li>
-<li>命令如下:<ul>
-<li><code>$ git config --global user.name &quot;Zhao_ch&quot;</code> </li>
-<li><code>$ git config --global user.email &quot;Zhao_ch@163.com&quot;</code></li>
-</ul>
-</li>
-<li>如果使用了–global选项，那么该命令是需要运行一次，因为之后无论你在系统上做任何事情，Git都会使用这些信息  </li>
-</ul>
-<h3 id="2-文本编辑器"><a href="#2-文本编辑器" class="headerlink" title="2.   文本编辑器"></a>2.   文本编辑器</h3><ul>
-<li>用户信息设置完毕，可以设置默认文本编辑器  </li>
-<li>如果没有设置，Git会使用操作系统默认的文本编辑器，通常是Vim </li>
-<li>例如设置文本编辑器为Notepad++  <ul>
-<li>命令如下：    <ul>
-<li>`$ git config –global core.editor Notepad++</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-检查配置信息"><a href="#3-检查配置信息" class="headerlink" title="3.   检查配置信息"></a>3.   检查配置信息</h3><ul>
-<li>如果查询配置信息可以使用 $ git config –list 命令列出所有配置信息。</li>
-</ul>
-<h3 id="4-生成密钥"><a href="#4-生成密钥" class="headerlink" title="4.   生成密钥"></a>4.   生成密钥</h3><ul>
-<li>命令如下:<ul>
-<li><code>$ ssh-keygen -t rsa -C &quot;Zhao_ch@163.com&quot;</code></li>
-</ul>
-</li>
-<li>如果不设置密码的话 连续 3 个回车。然后生成 id_rsa 和 id_rsa.pub 两个文件。<ul>
-<li><strong>Hosts文件配置 文件位置</strong> <strong>C:\Windows\System32\drivers\etc\hosts</strong>     </li>
-<li>添加 35.231.145.151 <a href="http://gitlab.com/" target="_blank" rel="noopener">gitlab.com</a>   </li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-        <tag>Gitlab</tag>
-        <tag>Gitee</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Altium Designer 导出 Gerber 文件教程</title>
     <url>/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -200,130 +149,6 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>【nRF52832】学习笔记:Flash Data Storage (FDS)存储</title>
-    <url>/2020/07/11/Nordic-FDS/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<p>环境介绍</p>
-<ul>
-<li>操作系统:   Window10 企业版</li>
-<li>IDE开发环境:   ARM_MDK5 (Keil5)</li>
-<li>SDK版本:   SDK_17.0.0 </li>
-<li>硬件开发板:   官方开发板 PCA10040</li>
-</ul>
-<a id="more"></a>
-
-<h4 id="1-FDS概述介绍"><a href="#1-FDS概述介绍" class="headerlink" title="1.  FDS概述介绍"></a>1.  FDS概述介绍</h4><p>&emsp;&emsp;FDS (<em>Flash Data Storage</em>) 模块是用于芯片上闪存存储的一个最小文件系统，可以最大限度地降低数据损坏的风险，并简化与持久存储的交互。Nordic芯片内部FLASH的存储官方提供了两种方式，一种是 FS (<em>Flash Storage</em>)、另一种是FDS (<em>Flash Data Storage</em>) 。相对于FS (<em>Flash Storage</em>)来说，FDS (<em>Flash Data Storage</em>)对数据的组织性和安全性更强。</p>
-<p>FDS模块的设计也提供了以下优点:</p>
-<ul>
-<li><p>通过不断验证最小化访问损坏数据的风险: </p>
-<ul>
-<li>在断电的情况下，数据可能写入不完整。验证确保FDS能够识别无效数据，并且不会将损坏的数据返回给用户。</li>
-</ul>
-</li>
-<li><p>在打开记录时提供(可选的)CRC验证，以确保数据自写入以后没有改变。</p>
-</li>
-<li><p>最小化Flash操作(更新和删除):</p>
-<ul>
-<li>FDS不是删除整个页面，而是存储新数据的副本，并通过一个字写入来使过时的数据失效。</li>
-</ul>
-</li>
-<li><p>基本损耗均衡:</p>
-<ul>
-<li>Flash的使用寿命是有限的，Flash具有最大可擦写次数，一旦对Flash的某个块的擦写超过最大擦写次数，这个块就会损坏。所以对Flash的擦写应该均匀的分布在快上，将块充分利用，减少擦写的次数，提高Flash的使用寿命。</li>
-</ul>
-</li>
-<li><p>不需要复制数据就可以轻松访问数据，这使得访问数据的影响与数据大小无关。</p>
-</li>
-<li><p>通过灵活选择数据块的大小来最小化的使用内存。</p>
-</li>
-<li><p>对数据的内容不加限制 (这意味着它可以包含特殊字符) 。</p>
-<p><strong>Flash数据存储支持同步读取操作和异步写入。</strong></p>
-</li>
-</ul>
-<h4 id="2-FDS功能介绍"><a href="#2-FDS功能介绍" class="headerlink" title="2.  FDS功能介绍"></a>2.  FDS功能介绍</h4><p>&emsp;&emsp;Flash Data Storage API 公开了操作文件和记录的功能，文件由一条或多条包含实际数据的记录组成，每一条记录都由一个 <strong>KEY</strong> 标志并通过 <strong>File ID</strong> 关联到文件。File ID 和 Record Key 都不要求必须是唯一的，并且文件可以包含具有相同 Key 的多个记录，可以通过 File ID 和 Record Key 的任意组合访问记录。</p>
-<p>For Example，an application could use the following two files:</p>
-<ul>
-<li><p>File 1 with two record:     0x1111 = “Phone1”,  0x2222 = “data:123456”</p>
-</li>
-<li><p>File 2 with three record:  0x1111 = “Tables1”,  0x2222 = “data:123456”,  0x2222 = “data: adcsdf”</p>
-</li>
-</ul>
-<p>&emsp;&emsp;可以遍历File 1中的所有记录，所有Key为0x2222的记录。可以遍历File 2 中 Key 为0x1111 的记录。</p>
-<h5 id="2-1-Creating-Record-创建记录"><a href="#2-1-Creating-Record-创建记录" class="headerlink" title="2.1   Creating Record (创建记录)"></a>2.1   Creating Record (创建记录)</h5><ul>
-<li>新记录写入Flash时，必须提供Record Key、File ID 和 将要写入的数据。</li>
-<li>更新记录 (写记录)成功后，返回一个记录描述符，可以用它来访问记录。在访问之前，等待表明写入操作成功完成的事件。</li>
-</ul>
-<h5 id="2-2-Manipulating-Record-处理记录"><a href="#2-2-Manipulating-Record-处理记录" class="headerlink" title="2.2   Manipulating Record (处理记录)"></a>2.2   Manipulating Record (处理记录)</h5><ul>
-<li>读取、更新或者删除记录的内容，必须通过记录的描述符访问记录。首次记录写入Flash时，FDS会创建并返回一个此记录的描述符。</li>
-<li>获取记录描述符函数：<ul>
-<li>fds_record_find</li>
-<li>fds_record_find_by_key</li>
-<li>fds_record_find_in_file</li>
-</ul>
-</li>
-<li>以上函数可以根据 Record key 和 File ID 查找记录。 </li>
-<li>FDS 并没有要求 Record Key 或 File ID 是唯一的。因此，在查找记录的时候可能会找到多个匹配的记录。记路查找函数每次返回一个匹配的记录并保存当前查找的进度，返回的 Token 记录了最新匹配的记录位置，通过 Token 在接下来的查找中就可以不必从头开始，直接从 Token 记录的位置开始即可。</li>
-</ul>
-<h5 id="2-3-Reading-Record-读取记录"><a href="#2-3-Reading-Record-读取记录" class="headerlink" title="2.3   Reading Record (读取记录)"></a>2.3   Reading Record (读取记录)</h5><ul>
-<li>读取记录可以直接在Flash中读取内容 (存储数据和元数据)，这意味着应用程序将决定时复制数据，将数据存储在 RAM 中还是在本地使用数据。</li>
-<li>访问记录内容 (读取数据)，需要打开记录以检索指向记录数据和元数据存储在Flash中的位置的指针。使用 <strong>fds_record_open()</strong> 函数打开记录，<strong>fds_record_open()</strong> 函数确保在访问记录时不会修改记录或记录移动到 Flash 中的其他位置。访问记录完成后，必须关闭记录 <strong>fds_record_close()</strong> 以释放对记录的锁定。</li>
-</ul>
-<h5 id="2-4-Updating-Record-更新记录"><a href="#2-4-Updating-Record-更新记录" class="headerlink" title="2.4   Updating Record (更新记录)"></a>2.4   Updating Record (更新记录)</h5><ul>
-<li>FDS 更新记录，即所谓的写数据。FDS 并不是将新数据写到原来的记录中去覆盖旧数据，而是创建一个新记录，然后将原有的记录作废，更新记录时，记录更新函数会返回一个新的记录描述符。</li>
-<li>FDS 更新记录的方式是作废旧记录，创建新记录，更新记录频繁的话，每次都会创建新的记录，这样的话会占用Flash的空间，所以通过碎片整理收集功能来释放Flash。</li>
-</ul>
-<h5 id="2-5-Deleting-Record-删除记录"><a href="#2-5-Deleting-Record-删除记录" class="headerlink" title="2.5   Deleting Record (删除记录)"></a>2.5   Deleting Record (删除记录)</h5><ul>
-<li>记录删除并不是真正的删除记录数据和擦除Flash空间，而是通过设置标志将需要删除的记录作废。每一条被删除的记录，就不能再对它进行打开、读、定位等相关的操作。</li>
-<li>记录删除后，记录所使用的Flash空间不会立即释放，如果想要释放Flash空间，必须通过碎片收集来实现。</li>
-</ul>
-<h5 id="2-6-Garbage-collection-垃圾收集"><a href="#2-6-Garbage-collection-垃圾收集" class="headerlink" title="2.6   Garbage collection (垃圾收集)"></a>2.6   Garbage collection (垃圾收集)</h5><ul>
-<li>不管是更新数据还是擦除数据，都会产生无效数据，这些数据都是实际存在的，占用Flash空间，因此可以调用 <strong>fds_gc()</strong> 函数API进行垃圾回收。通过执行此操作来释放这些占用Flash的无效数据。</li>
-<li>垃圾收集不会自动通过FDS收集。理想情况下，应该在Ble处于低功耗的情况下进行垃圾收集，长期更新记录，产生的无效数据会将内存占满，再一次请求数据更新时，会直接返回 FDS_ERR_NO_SPACE_IN_FLASH (Flash 无空间) 错误，然后必须进行垃圾回收并等待完成后，再更新数据。</li>
-</ul>
-<h5 id="2-7-Restrictions-on-keys-and-IDs-FDS对-KEY-和-File-ID-的限制"><a href="#2-7-Restrictions-on-keys-and-IDs-FDS对-KEY-和-File-ID-的限制" class="headerlink" title="2.7   Restrictions on keys and IDs (FDS对 KEY 和 File ID 的限制)"></a>2.7   Restrictions on keys and IDs (FDS对 KEY 和 File ID 的限制)</h5><ul>
-<li>Record Key 应在 0x0001 - 0xBFFF 范围内，0x0000 值是由系统保留。从 0xC000 到 0xFFFF 的值保留供Peer Manager模块使用，并且只能在不包含 Peer Manager 的应用程序中使用。</li>
-<li>File ID 的应在0x0000 - 0xBFFF 范围内, 0xFFFF 是被系统使用的，从 0xC000 到 0xFFFE 的值保留供Peer Manager模块使用，并且只能在不包含 Peer Manager 的应用程序中使用</li>
-</ul>
-<h4 id="3-SDK-Config-FDS配置宏介绍"><a href="#3-SDK-Config-FDS配置宏介绍" class="headerlink" title="3.  SDK_Config  FDS配置宏介绍"></a>3.  SDK_Config  FDS配置宏介绍</h4><h5 id="3-1-FDS-VIRTUAL-PAGES"><a href="#3-1-FDS-VIRTUAL-PAGES" class="headerlink" title="3.1   FDS_VIRTUAL_PAGES"></a>3.1   FDS_VIRTUAL_PAGES</h5><ul>
-<li>配置使用虚拟页的数量及其大小。</li>
-<li>使用的 Flash Memory 总量取决于虚拟页的大小和数量。</li>
-</ul>
-<h5 id="3-2-FDS-VIRTUAL-PAGE-SIZE"><a href="#3-2-FDS-VIRTUAL-PAGE-SIZE" class="headerlink" title="3.2   FDS_VIRTUAL_PAGE_SIZE"></a>3.2   FDS_VIRTUAL_PAGE_SIZE</h5><ul>
-<li>虚拟页的大小。</li>
-<li>默认情况下，虚拟页与物理页大小相同。</li>
-<li>虚拟页的大小必须是物理页大小的倍数。</li>
-<li>已字为单位 (4-Byte)。</li>
-</ul>
-<h5 id="3-3-FDS-VIRTUAL-PAGES-RESERVED"><a href="#3-3-FDS-VIRTUAL-PAGES-RESERVED" class="headerlink" title="3.3   FDS_VIRTUAL_PAGES_RESERVED"></a>3.3   FDS_VIRTUAL_PAGES_RESERVED</h5><ul>
-<li>其他模块使用的虚拟FLASH页数。</li>
-<li>FDS模块将其数据存储在FLASH的最后一页中，通过设置此值，可以移动FDS使用的FLASH结束地地址。保留的空间可以被其他模块使用。</li>
-</ul>
-<h5 id="3-4-FDS-OP-QUEUE-SIZE"><a href="#3-4-FDS-OP-QUEUE-SIZE" class="headerlink" title="3.4   FDS_OP_QUEUE_SIZE"></a>3.4   FDS_OP_QUEUE_SIZE</h5><ul>
-<li>FDS 程序模块内部使用的队列大小，如果FDS用户较多或者应用程序中希望一次排队更多的操作而不等待先前的操作完成，可加大队列的大小。</li>
-<li>一般情况下，如果应用程序中经常接受到错误代码 FDS_ERR_NO_SPACE_IN_QUEUES,则需要增加队列大小。</li>
-</ul>
-<h5 id="3-5-FDS-CRC-CHECK-ON-READ"><a href="#3-5-FDS-CRC-CHECK-ON-READ" class="headerlink" title="3.5   FDS_CRC_CHECK_ON_READ"></a>3.5   FDS_CRC_CHECK_ON_READ</h5><ul>
-<li>如果使能该配置项，FDS 将会启动读取操作的CRC检查 (fds_record_open)。</li>
-</ul>
-<h5 id="3-6-FDS-CRC-CHECK-ON-WRITE"><a href="#3-6-FDS-CRC-CHECK-ON-WRITE" class="headerlink" title="3.6   FDS_CRC_CHECK_ON_WRITE"></a>3.6   FDS_CRC_CHECK_ON_WRITE</h5><ul>
-<li>可选的配置项，如果使能，FDS 写操作会进行校验。</li>
-<li>使能该配置时，FDS_CRC_CHECK_ON_READ 必须打开。</li>
-</ul>
-<h5 id="3-7-FDS-MAX-USERS"><a href="#3-7-FDS-MAX-USERS" class="headerlink" title="3.7   FDS_MAX_USERS"></a>3.7   FDS_MAX_USERS</h5><ul>
-<li>可以注册的最大回调数。</li>
-<li>如果收到 FDS_ERR_USER_LIMIT_REACHED 错误，请增加此数值。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Nordic</category>
-      </categories>
-      <tags>
-        <tag>Nordic</tag>
-        <tag>Bluetooth</tag>
-        <tag>nRF52</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
     <url>/2020/05/06/Nordic-development-environment/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -342,16 +167,62 @@ Develop分支合并到Master分支命令：
       <tags>
         <tag>Nordic</tag>
         <tag>Bluetooth</tag>
-        <tag>nRF52</tag>
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
+        <tag>nRF52</tag>
       </tags>
   </entry>
   <entry>
-    <title>Welcome</title>
-    <url>/2020/05/03/Personal_Blog/</url>
-    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
+    <title>Git 初次运行前的配置</title>
+    <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h2 id="Git初次运行配置"><a href="#Git初次运行配置" class="headerlink" title="Git初次运行配置"></a>Git初次运行配置</h2><h3 id="1-用户信息"><a href="#1-用户信息" class="headerlink" title="1.    用户信息"></a>1.    用户信息</h3><ul>
+<li>安装完Git应该做的第一件事就是设置自己的用户名称和邮件地址.</li>
+<li>命令如下:<ul>
+<li><code>$ git config --global user.name &quot;Zhao_ch&quot;</code> </li>
+<li><code>$ git config --global user.email &quot;Zhao_ch@163.com&quot;</code></li>
+</ul>
+</li>
+<li>如果使用了–global选项，那么该命令是需要运行一次，因为之后无论你在系统上做任何事情，Git都会使用这些信息  </li>
+</ul>
+<h3 id="2-文本编辑器"><a href="#2-文本编辑器" class="headerlink" title="2.   文本编辑器"></a>2.   文本编辑器</h3><ul>
+<li>用户信息设置完毕，可以设置默认文本编辑器  </li>
+<li>如果没有设置，Git会使用操作系统默认的文本编辑器，通常是Vim </li>
+<li>例如设置文本编辑器为Notepad++  <ul>
+<li>命令如下：    <ul>
+<li>`$ git config –global core.editor Notepad++</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-检查配置信息"><a href="#3-检查配置信息" class="headerlink" title="3.   检查配置信息"></a>3.   检查配置信息</h3><ul>
+<li>如果查询配置信息可以使用 $ git config –list 命令列出所有配置信息。</li>
+</ul>
+<h3 id="4-生成密钥"><a href="#4-生成密钥" class="headerlink" title="4.   生成密钥"></a>4.   生成密钥</h3><ul>
+<li>命令如下:<ul>
+<li><code>$ ssh-keygen -t rsa -C &quot;Zhao_ch@163.com&quot;</code></li>
+</ul>
+</li>
+<li>如果不设置密码的话 连续 3 个回车。然后生成 id_rsa 和 id_rsa.pub 两个文件。<ul>
+<li><strong>Hosts文件配置 文件位置</strong> <strong>C:\Windows\System32\drivers\etc\hosts</strong>     </li>
+<li>添加 35.231.145.151 <a href="http://gitlab.com/" target="_blank" rel="noopener">gitlab.com</a>   </li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+        <tag>Gitlab</tag>
+        <tag>Gitee</tag>
+      </tags>
   </entry>
   <entry>
     <title>【STM32CubeMX】学习笔记-&gt;STM32CubeMX_Usart</title>
@@ -479,6 +350,143 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
+    <title>Welcome</title>
+    <url>/2020/05/03/Personal_Blog/</url>
+    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
+  </entry>
+  <entry>
+    <title>【nRF52832】学习笔记:Flash Data Storage (FDS)存储</title>
+    <url>/2020/07/11/Nordic-FDS/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<p>环境介绍</p>
+<ul>
+<li>操作系统:   Window10 企业版</li>
+<li>IDE开发环境:   ARM_MDK5 (Keil5)</li>
+<li>SDK版本:   SDK_17.0.0 </li>
+<li>硬件开发板:   官方开发板 PCA10040</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="1-FDS概述介绍"><a href="#1-FDS概述介绍" class="headerlink" title="1.  FDS概述介绍"></a>1.  FDS概述介绍</h4><p>&emsp;&emsp;FDS (<em>Flash Data Storage</em>) 模块是用于芯片上闪存存储的一个最小文件系统，可以最大限度地降低数据损坏的风险，并简化与持久存储的交互。Nordic芯片内部FLASH的存储官方提供了两种方式，一种是 FS (<em>Flash Storage</em>)、另一种是FDS (<em>Flash Data Storage</em>) 。相对于FS (<em>Flash Storage</em>)来说，FDS (<em>Flash Data Storage</em>)对数据的组织性和安全性更强。</p>
+<p>FDS模块的设计也提供了以下优点:</p>
+<ul>
+<li><p>通过不断验证最小化访问损坏数据的风险: </p>
+<ul>
+<li>在断电的情况下，数据可能写入不完整。验证确保FDS能够识别无效数据，并且不会将损坏的数据返回给用户。</li>
+</ul>
+</li>
+<li><p>在打开记录时提供(可选的)CRC验证，以确保数据自写入以后没有改变。</p>
+</li>
+<li><p>最小化Flash操作(更新和删除):</p>
+<ul>
+<li>FDS不是删除整个页面，而是存储新数据的副本，并通过一个字写入来使过时的数据失效。</li>
+</ul>
+</li>
+<li><p>基本损耗均衡:</p>
+<ul>
+<li>Flash的使用寿命是有限的，Flash具有最大可擦写次数，一旦对Flash的某个块的擦写超过最大擦写次数，这个块就会损坏。所以对Flash的擦写应该均匀的分布在快上，将块充分利用，减少擦写的次数，提高Flash的使用寿命。</li>
+</ul>
+</li>
+<li><p>不需要复制数据就可以轻松访问数据，这使得访问数据的影响与数据大小无关。</p>
+</li>
+<li><p>通过灵活选择数据块的大小来最小化的使用内存。</p>
+</li>
+<li><p>对数据的内容不加限制 (这意味着它可以包含特殊字符) 。</p>
+<p><strong>Flash数据存储支持同步读取操作和异步写入。</strong></p>
+</li>
+</ul>
+<h4 id="2-FDS功能介绍"><a href="#2-FDS功能介绍" class="headerlink" title="2.  FDS功能介绍"></a>2.  FDS功能介绍</h4><p>&emsp;&emsp;Flash Data Storage API 公开了操作文件和记录的功能，文件由一条或多条包含实际数据的记录组成，每一条记录都由一个 <strong>KEY</strong> 标志并通过 <strong>File ID</strong> 关联到文件。File ID 和 Record Key 都不要求必须是唯一的，并且文件可以包含具有相同 Key 的多个记录，可以通过 File ID 和 Record Key 的任意组合访问记录。</p>
+<p>For Example，an application could use the following two files:</p>
+<ul>
+<li><p>File 1 with two record:     0x1111 = “Phone1”,  0x2222 = “data:123456”</p>
+</li>
+<li><p>File 2 with three record:  0x1111 = “Tables1”,  0x2222 = “data:123456”,  0x2222 = “data: adcsdf”</p>
+</li>
+</ul>
+<p>&emsp;&emsp;可以遍历File 1中的所有记录，所有Key为0x2222的记录。可以遍历File 2 中 Key 为0x1111 的记录。</p>
+<h5 id="2-1-Creating-Record-创建记录"><a href="#2-1-Creating-Record-创建记录" class="headerlink" title="2.1   Creating Record (创建记录)"></a>2.1   Creating Record (创建记录)</h5><ul>
+<li>新记录写入Flash时，必须提供Record Key、File ID 和 将要写入的数据。</li>
+<li>更新记录 (写记录)成功后，返回一个记录描述符，可以用它来访问记录。在访问之前，等待表明写入操作成功完成的事件。</li>
+</ul>
+<h5 id="2-2-Manipulating-Record-处理记录"><a href="#2-2-Manipulating-Record-处理记录" class="headerlink" title="2.2   Manipulating Record (处理记录)"></a>2.2   Manipulating Record (处理记录)</h5><ul>
+<li>读取、更新或者删除记录的内容，必须通过记录的描述符访问记录。首次记录写入Flash时，FDS会创建并返回一个此记录的描述符。</li>
+<li>获取记录描述符函数：<ul>
+<li>fds_record_find</li>
+<li>fds_record_find_by_key</li>
+<li>fds_record_find_in_file</li>
+</ul>
+</li>
+<li>以上函数可以根据 Record key 和 File ID 查找记录。 </li>
+<li>FDS 并没有要求 Record Key 或 File ID 是唯一的。因此，在查找记录的时候可能会找到多个匹配的记录。记路查找函数每次返回一个匹配的记录并保存当前查找的进度，返回的 Token 记录了最新匹配的记录位置，通过 Token 在接下来的查找中就可以不必从头开始，直接从 Token 记录的位置开始即可。</li>
+</ul>
+<h5 id="2-3-Reading-Record-读取记录"><a href="#2-3-Reading-Record-读取记录" class="headerlink" title="2.3   Reading Record (读取记录)"></a>2.3   Reading Record (读取记录)</h5><ul>
+<li>读取记录可以直接在Flash中读取内容 (存储数据和元数据)，这意味着应用程序将决定时复制数据，将数据存储在 RAM 中还是在本地使用数据。</li>
+<li>访问记录内容 (读取数据)，需要打开记录以检索指向记录数据和元数据存储在Flash中的位置的指针。使用 <strong>fds_record_open()</strong> 函数打开记录，<strong>fds_record_open()</strong> 函数确保在访问记录时不会修改记录或记录移动到 Flash 中的其他位置。访问记录完成后，必须关闭记录 <strong>fds_record_close()</strong> 以释放对记录的锁定。</li>
+</ul>
+<h5 id="2-4-Updating-Record-更新记录"><a href="#2-4-Updating-Record-更新记录" class="headerlink" title="2.4   Updating Record (更新记录)"></a>2.4   Updating Record (更新记录)</h5><ul>
+<li>FDS 更新记录，即所谓的写数据。FDS 并不是将新数据写到原来的记录中去覆盖旧数据，而是创建一个新记录，然后将原有的记录作废，更新记录时，记录更新函数会返回一个新的记录描述符。</li>
+<li>FDS 更新记录的方式是作废旧记录，创建新记录，更新记录频繁的话，每次都会创建新的记录，这样的话会占用Flash的空间，所以通过碎片整理收集功能来释放Flash。</li>
+</ul>
+<h5 id="2-5-Deleting-Record-删除记录"><a href="#2-5-Deleting-Record-删除记录" class="headerlink" title="2.5   Deleting Record (删除记录)"></a>2.5   Deleting Record (删除记录)</h5><ul>
+<li>记录删除并不是真正的删除记录数据和擦除Flash空间，而是通过设置标志将需要删除的记录作废。每一条被删除的记录，就不能再对它进行打开、读、定位等相关的操作。</li>
+<li>记录删除后，记录所使用的Flash空间不会立即释放，如果想要释放Flash空间，必须通过碎片收集来实现。</li>
+</ul>
+<h5 id="2-6-Garbage-collection-垃圾收集"><a href="#2-6-Garbage-collection-垃圾收集" class="headerlink" title="2.6   Garbage collection (垃圾收集)"></a>2.6   Garbage collection (垃圾收集)</h5><ul>
+<li>不管是更新数据还是擦除数据，都会产生无效数据，这些数据都是实际存在的，占用Flash空间，因此可以调用 <strong>fds_gc()</strong> 函数API进行垃圾回收。通过执行此操作来释放这些占用Flash的无效数据。</li>
+<li>垃圾收集不会自动通过FDS收集。理想情况下，应该在Ble处于低功耗的情况下进行垃圾收集，长期更新记录，产生的无效数据会将内存占满，再一次请求数据更新时，会直接返回 FDS_ERR_NO_SPACE_IN_FLASH (Flash 无空间) 错误，然后必须进行垃圾回收并等待完成后，再更新数据。</li>
+</ul>
+<h5 id="2-7-Restrictions-on-keys-and-IDs-FDS对-KEY-和-File-ID-的限制"><a href="#2-7-Restrictions-on-keys-and-IDs-FDS对-KEY-和-File-ID-的限制" class="headerlink" title="2.7   Restrictions on keys and IDs (FDS对 KEY 和 File ID 的限制)"></a>2.7   Restrictions on keys and IDs (FDS对 KEY 和 File ID 的限制)</h5><ul>
+<li><p>Record Key 应在 0x0001 - 0xBFFF 范围内，0x0000 值是由系统保留。从 0xC000 到 0xFFFF 的值保留供Peer Manager模块使用，并且只能在不包含 Peer Manager 的应用程序中使用。</p>
+</li>
+<li><p>File ID 的应在0x0000 - 0xBFFF 范围内, 0xFFFF 是被系统使用的，从 0xC000 到 0xFFFE 的值保留供Peer Manager模块使用，并且只能在不包含 Peer Manager 的应用程序中使用</p>
+</li>
+</ul>
+<h4 id="3-SDK-Config-FDS配置宏介绍"><a href="#3-SDK-Config-FDS配置宏介绍" class="headerlink" title="3.  SDK_Config  FDS配置宏介绍"></a>3.  SDK_Config  FDS配置宏介绍</h4><h5 id="3-1-FDS-VIRTUAL-PAGES"><a href="#3-1-FDS-VIRTUAL-PAGES" class="headerlink" title="3.1   FDS_VIRTUAL_PAGES"></a>3.1   FDS_VIRTUAL_PAGES</h5><ul>
+<li>配置使用虚拟页的数量及其大小。</li>
+<li>使用的 Flash Memory 总量取决于虚拟页的大小和数量。</li>
+</ul>
+<h5 id="3-2-FDS-VIRTUAL-PAGE-SIZE"><a href="#3-2-FDS-VIRTUAL-PAGE-SIZE" class="headerlink" title="3.2   FDS_VIRTUAL_PAGE_SIZE"></a>3.2   FDS_VIRTUAL_PAGE_SIZE</h5><ul>
+<li>虚拟页的大小。</li>
+<li>默认情况下，虚拟页与物理页大小相同。</li>
+<li>虚拟页的大小必须是物理页大小的倍数。</li>
+<li>已字为单位 (4-Byte)。</li>
+</ul>
+<h5 id="3-3-FDS-VIRTUAL-PAGES-RESERVED"><a href="#3-3-FDS-VIRTUAL-PAGES-RESERVED" class="headerlink" title="3.3   FDS_VIRTUAL_PAGES_RESERVED"></a>3.3   FDS_VIRTUAL_PAGES_RESERVED</h5><ul>
+<li>其他模块使用的虚拟FLASH页数。</li>
+<li>FDS模块将其数据存储在FLASH的最后一页中，通过设置此值，可以移动FDS使用的FLASH结束地地址。保留的空间可以被其他模块使用。</li>
+</ul>
+<h5 id="3-4-FDS-OP-QUEUE-SIZE"><a href="#3-4-FDS-OP-QUEUE-SIZE" class="headerlink" title="3.4   FDS_OP_QUEUE_SIZE"></a>3.4   FDS_OP_QUEUE_SIZE</h5><ul>
+<li>FDS 程序模块内部使用的队列大小，如果FDS用户较多或者应用程序中希望一次排队更多的操作而不等待先前的操作完成，可加大队列的大小。</li>
+<li>一般情况下，如果应用程序中经常接受到错误代码 FDS_ERR_NO_SPACE_IN_QUEUES,则需要增加队列大小。</li>
+</ul>
+<h5 id="3-5-FDS-CRC-CHECK-ON-READ"><a href="#3-5-FDS-CRC-CHECK-ON-READ" class="headerlink" title="3.5   FDS_CRC_CHECK_ON_READ"></a>3.5   FDS_CRC_CHECK_ON_READ</h5><ul>
+<li>如果使能该配置项，FDS 将会启动读取操作的CRC检查 (fds_record_open)。</li>
+</ul>
+<h5 id="3-6-FDS-CRC-CHECK-ON-WRITE"><a href="#3-6-FDS-CRC-CHECK-ON-WRITE" class="headerlink" title="3.6   FDS_CRC_CHECK_ON_WRITE"></a>3.6   FDS_CRC_CHECK_ON_WRITE</h5><ul>
+<li>可选的配置项，如果使能，FDS 写操作会进行校验。</li>
+<li>使能该配置时，FDS_CRC_CHECK_ON_READ 必须打开。</li>
+</ul>
+<h5 id="3-7-FDS-MAX-USERS"><a href="#3-7-FDS-MAX-USERS" class="headerlink" title="3.7   FDS_MAX_USERS"></a>3.7   FDS_MAX_USERS</h5><ul>
+<li>可以注册的最大回调数。</li>
+<li>如果收到 FDS_ERR_USER_LIMIT_REACHED 错误，请增加此数值。</li>
+</ul>
+<h4 id="4-Storage-format-存储格式"><a href="#4-Storage-format-存储格式" class="headerlink" title="4.  Storage format (存储格式)"></a>4.  Storage format (存储格式)</h4><p>&emsp;&emsp;FDS 以记录的方式将数据存储到 Flash 中，这些记录被分组到文件中，在大多数用例中我们无需详细了解 FDS 如何将数据存储在 Flash 中。以下是FDS使用的数据格式相关信息，如果你对 FDS 详细信息不感兴趣，可以跳过。</p>
+<h5 id="4-1-Record-layout"><a href="#4-1-Record-layout" class="headerlink" title="4.1   Record layout"></a>4.1   Record layout</h5><p>&emsp;&emsp;Record 由 Record Header (Record 元数据) 和实际内容组成，Record Header 用来标记Record，记录内容是实际存储的数据，它们按照如图所示的顺序连续存储在 Flash 中。</p>
+<p><img src="/2020/07/11/Nordic-FDS/00_Layout_of_a_record.png" alt="Layout of a record"></p>
+<h5 id="4-2-Record-header"><a href="#4-2-Record-header" class="headerlink" title="4.2   Record header"></a>4.2   Record header</h5><p>&emsp;&emsp;Record header 由 3个字 (12个Byte) 组成，各部分描述如下:</p>
+<p><img src="/2020/07/11/Nordic-FDS/01_Record_header.png" alt="Record header"></p>
+<p>&emsp;&emsp;FDS 将 Record Header 写入 Flash 中，首先写入Record Key 和数据长度，接着写入Record ID，最后写入 File ID 和 CRC 校验值，并完成成功的写入操作。检索Record的时候，FDS会忽略掉所有Record Header中第二个字美音写入的 Record，因为缺少Key意味着这条Record没有写入完整。</p>
+<h5 id="4-3-Maximum-length-最大存储数据长度"><a href="#4-3-Maximum-length-最大存储数据长度" class="headerlink" title="4.3   Maximum length (最大存储数据长度)"></a>4.3   Maximum length (最大存储数据长度)</h5>]]></content>
+      <categories>
+        <category>Nordic</category>
+      </categories>
+      <tags>
+        <tag>Nordic</tag>
+        <tag>Bluetooth</tag>
+        <tag>nRF52</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>嘉立创JLC元件库+3D封装下载</title>
     <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -560,10 +568,10 @@ Develop分支合并到Master分支命令：
       <tags>
         <tag>Nordic</tag>
         <tag>Bluetooth</tag>
-        <tag>nRF52</tag>
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
+        <tag>nRF52</tag>
       </tags>
   </entry>
 </search>

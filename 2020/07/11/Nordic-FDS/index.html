@@ -27,6 +27,8 @@
 <meta property="og:site_name" content="Zhao_ch Personal_Blog">
 <meta property="og:description" content="😊 转载请全文转载，并标明文章出处 环境介绍  操作系统:   Window10 企业版 IDE开发环境:   ARM_MDK5 (Keil5) SDK版本:   SDK_17.0.0  硬件开发板:   官方开发板 PCA10040">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/07/11/Nordic-FDS/00_Layout_of_a_record.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/07/11/Nordic-FDS/01_Record_header.png">
 <meta property="article:published_time" content="2020-07-11T07:57:53.000Z">
 <meta property="article:modified_time" content="2020-07-11T07:57:53.000Z">
 <meta property="article:author" content="赵晨辉">
@@ -34,6 +36,7 @@
 <meta property="article:tag" content="Bluetooth">
 <meta property="article:tag" content="nRF52">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wulizhaoch.github.io/2020/07/11/Nordic-FDS/00_Layout_of_a_record.png">
 
 <link rel="canonical" href="https://wulizhaoch.github.io/2020/07/11/Nordic-FDS/">
 
@@ -322,8 +325,10 @@
 <li>垃圾收集不会自动通过FDS收集。理想情况下，应该在Ble处于低功耗的情况下进行垃圾收集，长期更新记录，产生的无效数据会将内存占满，再一次请求数据更新时，会直接返回 FDS_ERR_NO_SPACE_IN_FLASH (Flash 无空间) 错误，然后必须进行垃圾回收并等待完成后，再更新数据。</li>
 </ul>
 <h5 id="2-7-Restrictions-on-keys-and-IDs-FDS对-KEY-和-File-ID-的限制"><a href="#2-7-Restrictions-on-keys-and-IDs-FDS对-KEY-和-File-ID-的限制" class="headerlink" title="2.7   Restrictions on keys and IDs (FDS对 KEY 和 File ID 的限制)"></a>2.7   Restrictions on keys and IDs (FDS对 KEY 和 File ID 的限制)</h5><ul>
-<li>Record Key 应在 0x0001 - 0xBFFF 范围内，0x0000 值是由系统保留。从 0xC000 到 0xFFFF 的值保留供Peer Manager模块使用，并且只能在不包含 Peer Manager 的应用程序中使用。</li>
-<li>File ID 的应在0x0000 - 0xBFFF 范围内, 0xFFFF 是被系统使用的，从 0xC000 到 0xFFFE 的值保留供Peer Manager模块使用，并且只能在不包含 Peer Manager 的应用程序中使用</li>
+<li><p>Record Key 应在 0x0001 - 0xBFFF 范围内，0x0000 值是由系统保留。从 0xC000 到 0xFFFF 的值保留供Peer Manager模块使用，并且只能在不包含 Peer Manager 的应用程序中使用。</p>
+</li>
+<li><p>File ID 的应在0x0000 - 0xBFFF 范围内, 0xFFFF 是被系统使用的，从 0xC000 到 0xFFFE 的值保留供Peer Manager模块使用，并且只能在不包含 Peer Manager 的应用程序中使用</p>
+</li>
 </ul>
 <h4 id="3-SDK-Config-FDS配置宏介绍"><a href="#3-SDK-Config-FDS配置宏介绍" class="headerlink" title="3.  SDK_Config  FDS配置宏介绍"></a>3.  SDK_Config  FDS配置宏介绍</h4><h5 id="3-1-FDS-VIRTUAL-PAGES"><a href="#3-1-FDS-VIRTUAL-PAGES" class="headerlink" title="3.1   FDS_VIRTUAL_PAGES"></a>3.1   FDS_VIRTUAL_PAGES</h5><ul>
 <li>配置使用虚拟页的数量及其大小。</li>
@@ -354,7 +359,13 @@
 <li>可以注册的最大回调数。</li>
 <li>如果收到 FDS_ERR_USER_LIMIT_REACHED 错误，请增加此数值。</li>
 </ul>
-
+<h4 id="4-Storage-format-存储格式"><a href="#4-Storage-format-存储格式" class="headerlink" title="4.  Storage format (存储格式)"></a>4.  Storage format (存储格式)</h4><p>&emsp;&emsp;FDS 以记录的方式将数据存储到 Flash 中，这些记录被分组到文件中，在大多数用例中我们无需详细了解 FDS 如何将数据存储在 Flash 中。以下是FDS使用的数据格式相关信息，如果你对 FDS 详细信息不感兴趣，可以跳过。</p>
+<h5 id="4-1-Record-layout"><a href="#4-1-Record-layout" class="headerlink" title="4.1   Record layout"></a>4.1   Record layout</h5><p>&emsp;&emsp;Record 由 Record Header (Record 元数据) 和实际内容组成，Record Header 用来标记Record，记录内容是实际存储的数据，它们按照如图所示的顺序连续存储在 Flash 中。</p>
+<p><img src="/2020/07/11/Nordic-FDS/00_Layout_of_a_record.png" alt="Layout of a record"></p>
+<h5 id="4-2-Record-header"><a href="#4-2-Record-header" class="headerlink" title="4.2   Record header"></a>4.2   Record header</h5><p>&emsp;&emsp;Record header 由 3个字 (12个Byte) 组成，各部分描述如下:</p>
+<p><img src="/2020/07/11/Nordic-FDS/01_Record_header.png" alt="Record header"></p>
+<p>&emsp;&emsp;FDS 将 Record Header 写入 Flash 中，首先写入Record Key 和数据长度，接着写入Record ID，最后写入 File ID 和 CRC 校验值，并完成成功的写入操作。检索Record的时候，FDS会忽略掉所有Record Header中第二个字美音写入的 Record，因为缺少Key意味着这条Record没有写入完整。</p>
+<h5 id="4-3-Maximum-length-最大存储数据长度"><a href="#4-3-Maximum-length-最大存储数据长度" class="headerlink" title="4.3   Maximum length (最大存储数据长度)"></a>4.3   Maximum length (最大存储数据长度)</h5>
     </div>
 
     
@@ -436,7 +447,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-FDS概述介绍"><span class="nav-text">1.  FDS概述介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-FDS功能介绍"><span class="nav-text">2.  FDS功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Creating-Record-创建记录"><span class="nav-text">2.1   Creating Record (创建记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-Manipulating-Record-处理记录"><span class="nav-text">2.2   Manipulating Record (处理记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Reading-Record-读取记录"><span class="nav-text">2.3   Reading Record (读取记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-Updating-Record-更新记录"><span class="nav-text">2.4   Updating Record (更新记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-Deleting-Record-删除记录"><span class="nav-text">2.5   Deleting Record (删除记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6-Garbage-collection-垃圾收集"><span class="nav-text">2.6   Garbage collection (垃圾收集)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-7-Restrictions-on-keys-and-IDs-FDS对-KEY-和-File-ID-的限制"><span class="nav-text">2.7   Restrictions on keys and IDs (FDS对 KEY 和 File ID 的限制)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-SDK-Config-FDS配置宏介绍"><span class="nav-text">3.  SDK_Config  FDS配置宏介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-FDS-VIRTUAL-PAGES"><span class="nav-text">3.1   FDS_VIRTUAL_PAGES</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-FDS-VIRTUAL-PAGE-SIZE"><span class="nav-text">3.2   FDS_VIRTUAL_PAGE_SIZE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-FDS-VIRTUAL-PAGES-RESERVED"><span class="nav-text">3.3   FDS_VIRTUAL_PAGES_RESERVED</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-FDS-OP-QUEUE-SIZE"><span class="nav-text">3.4   FDS_OP_QUEUE_SIZE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-FDS-CRC-CHECK-ON-READ"><span class="nav-text">3.5   FDS_CRC_CHECK_ON_READ</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-FDS-CRC-CHECK-ON-WRITE"><span class="nav-text">3.6   FDS_CRC_CHECK_ON_WRITE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-7-FDS-MAX-USERS"><span class="nav-text">3.7   FDS_MAX_USERS</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-FDS概述介绍"><span class="nav-text">1.  FDS概述介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-FDS功能介绍"><span class="nav-text">2.  FDS功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Creating-Record-创建记录"><span class="nav-text">2.1   Creating Record (创建记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-Manipulating-Record-处理记录"><span class="nav-text">2.2   Manipulating Record (处理记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Reading-Record-读取记录"><span class="nav-text">2.3   Reading Record (读取记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-Updating-Record-更新记录"><span class="nav-text">2.4   Updating Record (更新记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-Deleting-Record-删除记录"><span class="nav-text">2.5   Deleting Record (删除记录)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6-Garbage-collection-垃圾收集"><span class="nav-text">2.6   Garbage collection (垃圾收集)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-7-Restrictions-on-keys-and-IDs-FDS对-KEY-和-File-ID-的限制"><span class="nav-text">2.7   Restrictions on keys and IDs (FDS对 KEY 和 File ID 的限制)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-SDK-Config-FDS配置宏介绍"><span class="nav-text">3.  SDK_Config  FDS配置宏介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-FDS-VIRTUAL-PAGES"><span class="nav-text">3.1   FDS_VIRTUAL_PAGES</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-FDS-VIRTUAL-PAGE-SIZE"><span class="nav-text">3.2   FDS_VIRTUAL_PAGE_SIZE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-FDS-VIRTUAL-PAGES-RESERVED"><span class="nav-text">3.3   FDS_VIRTUAL_PAGES_RESERVED</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-FDS-OP-QUEUE-SIZE"><span class="nav-text">3.4   FDS_OP_QUEUE_SIZE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-FDS-CRC-CHECK-ON-READ"><span class="nav-text">3.5   FDS_CRC_CHECK_ON_READ</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-FDS-CRC-CHECK-ON-WRITE"><span class="nav-text">3.6   FDS_CRC_CHECK_ON_WRITE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-7-FDS-MAX-USERS"><span class="nav-text">3.7   FDS_MAX_USERS</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Storage-format-存储格式"><span class="nav-text">4.  Storage format (存储格式)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-Record-layout"><span class="nav-text">4.1   Record layout</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-Record-header"><span class="nav-text">4.2   Record header</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-Maximum-length-最大存储数据长度"><span class="nav-text">4.3   Maximum length (最大存储数据长度)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
