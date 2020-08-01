@@ -149,6 +149,57 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
+    <title>Git 初次运行前的配置</title>
+    <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h2 id="Git初次运行配置"><a href="#Git初次运行配置" class="headerlink" title="Git初次运行配置"></a>Git初次运行配置</h2><h3 id="1-用户信息"><a href="#1-用户信息" class="headerlink" title="1.    用户信息"></a>1.    用户信息</h3><ul>
+<li>安装完Git应该做的第一件事就是设置自己的用户名称和邮件地址.</li>
+<li>命令如下:<ul>
+<li><code>$ git config --global user.name &quot;Zhao_ch&quot;</code> </li>
+<li><code>$ git config --global user.email &quot;Zhao_ch@163.com&quot;</code></li>
+</ul>
+</li>
+<li>如果使用了–global选项，那么该命令是需要运行一次，因为之后无论你在系统上做任何事情，Git都会使用这些信息  </li>
+</ul>
+<h3 id="2-文本编辑器"><a href="#2-文本编辑器" class="headerlink" title="2.   文本编辑器"></a>2.   文本编辑器</h3><ul>
+<li>用户信息设置完毕，可以设置默认文本编辑器  </li>
+<li>如果没有设置，Git会使用操作系统默认的文本编辑器，通常是Vim </li>
+<li>例如设置文本编辑器为Notepad++  <ul>
+<li>命令如下：    <ul>
+<li>`$ git config –global core.editor Notepad++</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-检查配置信息"><a href="#3-检查配置信息" class="headerlink" title="3.   检查配置信息"></a>3.   检查配置信息</h3><ul>
+<li>如果查询配置信息可以使用 $ git config –list 命令列出所有配置信息。</li>
+</ul>
+<h3 id="4-生成密钥"><a href="#4-生成密钥" class="headerlink" title="4.   生成密钥"></a>4.   生成密钥</h3><ul>
+<li>命令如下:<ul>
+<li><code>$ ssh-keygen -t rsa -C &quot;Zhao_ch@163.com&quot;</code></li>
+</ul>
+</li>
+<li>如果不设置密码的话 连续 3 个回车。然后生成 id_rsa 和 id_rsa.pub 两个文件。<ul>
+<li><strong>Hosts文件配置 文件位置</strong> <strong>C:\Windows\System32\drivers\etc\hosts</strong>     </li>
+<li>添加 35.231.145.151 <a href="http://gitlab.com/" target="_blank" rel="noopener">gitlab.com</a>   </li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+        <tag>Gitlab</tag>
+        <tag>Gitee</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【nRF52832】学习笔记:Flash Data Storage (FDS)存储</title>
     <url>/2020/07/11/Nordic-FDS/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -265,9 +316,9 @@ Develop分支合并到Master分支命令：
 <li>如果收到 FDS_ERR_USER_LIMIT_REACHED 错误，请增加此数值。</li>
 </ul>
 <h4 id="4-Storage-format-存储格式"><a href="#4-Storage-format-存储格式" class="headerlink" title="4.  Storage format (存储格式)"></a>4.  Storage format (存储格式)</h4><p>&emsp;&emsp;FDS 以记录的方式将数据存储到 Flash 中，这些记录被分组到文件中，在大多数用例中我们无需详细了解 FDS 如何将数据存储在 Flash 中。以下是FDS使用的数据格式相关信息，如果你对 FDS 详细信息不感兴趣，可以跳过。</p>
-<h5 id="4-1-Record-layout"><a href="#4-1-Record-layout" class="headerlink" title="4.1   Record layout"></a>4.1   Record layout</h5><p>&emsp;&emsp;Record 由 Record Header (Record 元数据) 和实际内容组成，Record Header 用来标记Record，记录内容是实际存储的数据，它们按照如图所示的顺序连续存储在 Flash 中。</p>
+<h5 id="4-1-Record-layout-记录布局"><a href="#4-1-Record-layout-记录布局" class="headerlink" title="4.1   Record layout (记录布局)"></a>4.1   Record layout (记录布局)</h5><p>&emsp;&emsp;Record 由 Record Header (Record 元数据) 和实际内容组成，Record Header 用来标记Record，记录内容是实际存储的数据，它们按照如图所示的顺序连续存储在 Flash 中。</p>
 <p><img src="/2020/07/11/Nordic-FDS/00_Layout_of_a_record.png" alt="Layout of a record"></p>
-<h5 id="4-2-Record-header"><a href="#4-2-Record-header" class="headerlink" title="4.2   Record header"></a>4.2   Record header</h5><p>&emsp;&emsp;Record header 由 3个字 (12个Byte) 组成，各部分描述如下:</p>
+<h5 id="4-2-Record-header-记录头"><a href="#4-2-Record-header-记录头" class="headerlink" title="4.2   Record header (记录头)"></a>4.2   Record header (记录头)</h5><p>&emsp;&emsp;Record header 由 3个字 (12个Byte) 组成，各部分描述如下:</p>
 <p><img src="/2020/07/11/Nordic-FDS/01_Record_header.png" alt="Record header"></p>
 <p>&emsp;&emsp;FDS 将 Record Header 写入 Flash 中，首先写入Record Key 和数据长度，接着写入Record ID，最后写入 File ID 和 CRC 校验值，并完成成功的写入操作。检索Record的时候，FDS会忽略掉所有Record Header中第二个字美音写入的 Record，因为缺少Key意味着这条Record没有写入完整。</p>
 <h5 id="4-3-Maximum-length-最大存储数据长度"><a href="#4-3-Maximum-length-最大存储数据长度" class="headerlink" title="4.3   Maximum length (最大存储数据长度)"></a>4.3   Maximum length (最大存储数据长度)</h5><p>Record 的最大长度取决于三个值:</p>
@@ -278,7 +329,12 @@ Develop分支合并到Master分支命令：
 </ul>
 <p>sdk_config.h 中默认的设置是虚拟 Flash 页的大小和物理页大小一样  (对于nRF52832来说是1024个字，即4096个字节)，对于默认值来说去掉页面标记和记录头后，最大数据长度是1019个字。</p>
 <h5 id="4-4-Page-tag-页面标签"><a href="#4-4-Page-tag-页面标签" class="headerlink" title="4.4   Page tag (页面标签)"></a>4.4   Page tag (页面标签)</h5><p>&emsp;&emsp;FDS 使用的每个虚拟页面都标有一个页面标记，系统使用该标记来存储有关该页面的信息。两个字长的页面标签包含了页面用途 ( 数据存储或垃圾收集)以及页面上安装的文件系统版本的信息。</p>
-]]></content>
+<p><img src="/2020/07/11/Nordic-FDS/02_Page_tags.png" alt="Page_tags"></p>
+<h4 id="5-FDS-使用方法"><a href="#5-FDS-使用方法" class="headerlink" title="5.  FDS 使用方法"></a>5.  FDS 使用方法</h4><h5 id="5-1-Initializing-the-module-初始化FDS"><a href="#5-1-Initializing-the-module-初始化FDS" class="headerlink" title="5.1   Initializing the module (初始化FDS)"></a>5.1   Initializing the module (初始化FDS)</h5><p>&emsp;&emsp;Before initializing FDS, you must initialize the SoftDevice and register a callback handler to handle FDS events. (初始化FDS之前，必须初始化SoftDevice并注册回调函数来处理FDS事件。)</p>
+<p>&emsp;&emsp;以下代码区展示了如何注册FDS事件的处理函数以及如何初始化 FDS 模块。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Simple event handler to handle errors during initialization. */</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">fds_evt_handler</span><span class="params">(<span class="keyword">fds_evt_t</span> <span class="keyword">const</span> * p_fds_evt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (p_fds_evt-&gt;id)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> FDS_EVT_INIT:</span><br><span class="line">            <span class="keyword">if</span> (p_fds_evt-&gt;result != NRF_SUCCESS)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">/* Initialization failed. */</span> </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">ret_code_t</span> ret = fds_register(fds_evt_handler);</span><br><span class="line"><span class="keyword">if</span> (ret != NRF_SUCCESS)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Registering of the FDS event handler has failed. */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">ret_code_t</span> ret = fds_init();</span><br><span class="line"><span class="keyword">if</span> (ret != NRF_SUCCESS)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Handle error. */</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-2-Writing-a-record"><a href="#5-2-Writing-a-record" class="headerlink" title="5.2   Writing a record"></a>5.2   Writing a record</h5><h5 id="5-3"><a href="#5-3" class="headerlink" title="5.3"></a>5.3</h5><h5 id="5-4"><a href="#5-4" class="headerlink" title="5.4"></a>5.4</h5><h5 id="5-5"><a href="#5-5" class="headerlink" title="5.5"></a>5.5</h5>]]></content>
       <categories>
         <category>Nordic</category>
       </categories>
@@ -287,6 +343,11 @@ Develop分支合并到Master分支命令：
         <tag>Bluetooth</tag>
         <tag>nRF52</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Welcome</title>
+    <url>/2020/05/03/Personal_Blog/</url>
+    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
   </entry>
   <entry>
     <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
@@ -314,59 +375,25 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>Welcome</title>
-    <url>/2020/05/03/Personal_Blog/</url>
-    <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
-  </entry>
-  <entry>
-    <title>Git 初次运行前的配置</title>
-    <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+    <title>嘉立创JLC元件库+3D封装下载</title>
+    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <a id="more"></a>
 
-<h2 id="Git初次运行配置"><a href="#Git初次运行配置" class="headerlink" title="Git初次运行配置"></a>Git初次运行配置</h2><h3 id="1-用户信息"><a href="#1-用户信息" class="headerlink" title="1.    用户信息"></a>1.    用户信息</h3><ul>
-<li>安装完Git应该做的第一件事就是设置自己的用户名称和邮件地址.</li>
-<li>命令如下:<ul>
-<li><code>$ git config --global user.name &quot;Zhao_ch&quot;</code> </li>
-<li><code>$ git config --global user.email &quot;Zhao_ch@163.com&quot;</code></li>
+<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
+<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
 </ul>
-</li>
-<li>如果使用了–global选项，那么该命令是需要运行一次，因为之后无论你在系统上做任何事情，Git都会使用这些信息  </li>
+<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
+<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
 </ul>
-<h3 id="2-文本编辑器"><a href="#2-文本编辑器" class="headerlink" title="2.   文本编辑器"></a>2.   文本编辑器</h3><ul>
-<li>用户信息设置完毕，可以设置默认文本编辑器  </li>
-<li>如果没有设置，Git会使用操作系统默认的文本编辑器，通常是Vim </li>
-<li>例如设置文本编辑器为Notepad++  <ul>
-<li>命令如下：    <ul>
-<li>`$ git config –global core.editor Notepad++</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-检查配置信息"><a href="#3-检查配置信息" class="headerlink" title="3.   检查配置信息"></a>3.   检查配置信息</h3><ul>
-<li>如果查询配置信息可以使用 $ git config –list 命令列出所有配置信息。</li>
-</ul>
-<h3 id="4-生成密钥"><a href="#4-生成密钥" class="headerlink" title="4.   生成密钥"></a>4.   生成密钥</h3><ul>
-<li>命令如下:<ul>
-<li><code>$ ssh-keygen -t rsa -C &quot;Zhao_ch@163.com&quot;</code></li>
-</ul>
-</li>
-<li>如果不设置密码的话 连续 3 个回车。然后生成 id_rsa 和 id_rsa.pub 两个文件。<ul>
-<li><strong>Hosts文件配置 文件位置</strong> <strong>C:\Windows\System32\drivers\etc\hosts</strong>     </li>
-<li>添加 35.231.145.151 <a href="http://gitlab.com/" target="_blank" rel="noopener">gitlab.com</a>   </li>
-</ul>
-</li>
-</ul>
-]]></content>
+<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
       <categories>
-        <category>Git</category>
+        <category>Altium Designer</category>
       </categories>
       <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-        <tag>Gitlab</tag>
-        <tag>Gitee</tag>
+        <tag>PCB_Design</tag>
+        <tag>Altium Designer</tag>
+        <tag>Layout</tag>
       </tags>
   </entry>
   <entry>
@@ -558,28 +585,6 @@ Develop分支合并到Master分支命令：
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>嘉立创JLC元件库+3D封装下载</title>
-    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
-<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
-</ul>
-<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
-<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
-</ul>
-<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
-      <categories>
-        <category>Altium Designer</category>
-      </categories>
-      <tags>
-        <tag>PCB_Design</tag>
-        <tag>Altium Designer</tag>
-        <tag>Layout</tag>
       </tags>
   </entry>
 </search>
