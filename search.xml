@@ -1,64 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>GPIOTE</title>
-    <url>/2020/08/06/GPIOTE/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<p>环境介绍</p>
-<ul>
-<li>操作系统:   Window10 企业版</li>
-<li>IDE开发环境:   ARM_MDK5 (Keil5)</li>
-<li>SDK版本:   SDK_17.0.0 </li>
-<li>硬件开发板:   官方开发板 PCA10040</li>
-</ul>
-<a id="more"></a>
-
-<h4 id="1-概述介绍"><a href="#1-概述介绍" class="headerlink" title="1. 概述介绍"></a>1. 概述介绍</h4><p>  GPIOTE 驱动控制 GPIO 和 GPIOTE 外设,并配置和控制输出和输入引脚。可以将输出引脚配置玮手动控制或者通过 GPIOTE 任务进行控制。输入引脚可以配置在不同模式下进行控制。</p>
-<h4 id="2-GPIOTE-代码实现"><a href="#2-GPIOTE-代码实现" class="headerlink" title="2. GPIOTE 代码实现"></a>2. GPIOTE 代码实现</h4><h5 id="2-1-Sdk-config-h-配置"><a href="#2-1-Sdk-config-h-配置" class="headerlink" title="2.1   Sdk_config.h 配置"></a>2.1   Sdk_config.h 配置</h5><h6 id="2-1-1-Registers-寄存器版本"><a href="#2-1-1-Registers-寄存器版本" class="headerlink" title="2.1.1   Registers (寄存器版本)"></a>2.1.1   Registers (寄存器版本)</h6><p>  如果配置寄存器版本的话，不许需要在Sdk_config.h文件中配置。</p>
-<h6 id="2-1-2-Library-库版本"><a href="#2-1-2-Library-库版本" class="headerlink" title="2.1.2   Library (库版本)"></a>2.1.2   Library (库版本)</h6><ol>
-<li><p>添加 GPIOTE 驱动文件 nrfx_gpiote.c ，SDK 路径目录：…\modules\nrfx\drivers\src\nrfx_gpiote.c </p>
-</li>
-<li><p>头文件引用 “nrf_drv_gpiote.h”。</p>
-</li>
-<li><p>添加头文件路径:</p>
-<ul>
-<li><strong>…\modules\nrfx\drivers\include</strong></li>
-<li><strong>…\integration\nrfx\legacy</strong></li>
-</ul>
-</li>
-<li><p>Sdk_config.h 文件配置</p>
-<ul>
-<li><p>Text Editor 配置</p>
-<ul>
-<li>GPIOTE_ENABLED   <strong>0</strong></li>
-<li>GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS   <strong>4</strong></li>
-<li>GPIOTE_CONFIG_IRQ_PRIORITY   <strong>1</strong></li>
-<li>NRFX_GPIOTE_ENABLED   <strong>1</strong></li>
-<li>NRFX_GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS   <strong>1</strong></li>
-<li>NRFX_GPIOTE_CONFIG_IRQ_PRIORITY   <strong>1</strong></li>
-<li>NRFX_GPIOTE_CONFIG_LOG_ENABLED   <strong>0</strong></li>
-<li>NRFX_GPIOTE_CONFIG_LOG_LEVEL   <strong>3</strong></li>
-<li>NRFX_GPIOTE_CONFIG_INFO_COLOR   <strong>0</strong></li>
-<li>NRFX_GPIOTE_CONFIG_DEBUG_COLOR   <strong>0</strong></li>
-</ul>
-</li>
-<li><p>Configuration Wizard 配置</p>
-<p><img src="/2020/08/06/GPIOTE/GPIOTE.png" alt="GPIOTE"></p>
-</li>
-</ul>
-</li>
-</ol>
-<pre><code>![NRFX_GPIOTE](GPIOTE/NRFX_GPIOTE.png)</code></pre><h5 id="2-2-GPIOTE-Registers-寄存器版本"><a href="#2-2-GPIOTE-Registers-寄存器版本" class="headerlink" title="2.2   GPIOTE Registers (寄存器版本)"></a>2.2   GPIOTE Registers (寄存器版本)</h5><h5 id="2-3-GPIOTE-Library-库版本"><a href="#2-3-GPIOTE-Library-库版本" class="headerlink" title="2.3   GPIOTE Library (库版本)"></a>2.3   GPIOTE Library (库版本)</h5>]]></content>
-      <categories>
-        <category>Nordic</category>
-      </categories>
-      <tags>
-        <tag>Nordic</tag>
-        <tag>Bluetooth</tag>
-        <tag>nRF52</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git 分支管理 (Git_Flow)</title>
     <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -139,74 +81,6 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>Altium Designer 导出 Gerber 文件教程</title>
-    <url>/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>输出的Gerber不是一个文件，而是一个文件集合，通常需要打包发送给厂家，厂家根据你输出的要求进行打样。基本输出的文件大概有这几个流程 Gerber Files、NC Drill Files(钻孔文件)、BOM(元器件BOM)、Generates Pick and Place Files(坐标文件)，具体步骤如下。</p>
-<h4 id="2-添加钻孔表"><a href="#2-添加钻孔表" class="headerlink" title="2. 添加钻孔表"></a>2. 添加钻孔表</h4><h5 id="2-1-选中-Drill-Drawing-层"><a href="#2-1-选中-Drill-Drawing-层" class="headerlink" title="2.1 选中 Drill Drawing 层"></a>2.1 选中 Drill Drawing 层</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/DrillDrawing.png" alt></p>
-<h5 id="2-2-在此层放置“-legend-”-字符"><a href="#2-2-在此层放置“-legend-”-字符" class="headerlink" title="2.2 在此层放置“ .legend ” 字符"></a>2.2 在此层放置“ .legend ” 字符</h5><ul>
-<li><p>单击放置字符串</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/String.png" alt="String"></p>
-</li>
-<li><p>放置 “ .legend ” 字符 </p>
-<ul>
-<li>放置“ .legend ”字符后，在第一次输出Gerber文件的时候，会自动生产一个钻孔表，效果如 2.4 - 2 图。 </li>
-</ul>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Legend.png" alt="legend"></p>
-</li>
-</ul>
-<h5 id="2-3-字符放置效果"><a href="#2-3-字符放置效果" class="headerlink" title="2.3 字符放置效果"></a>2.3 字符放置效果</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Placetheeffect.png" alt="Place the effect"></p>
-<h5 id="2-4-如果以上方法不行，该如何操作？-具体原因可能是版本问题，毕竟用的破解版的"><a href="#2-4-如果以上方法不行，该如何操作？-具体原因可能是版本问题，毕竟用的破解版的" class="headerlink" title="2.4 如果以上方法不行，该如何操作？(具体原因可能是版本问题，毕竟用的破解版的)"></a>2.4 如果以上方法不行，该如何操作？(具体原因可能是版本问题，毕竟用的破解版的)</h5><p>在Altium Designer 的菜单中选择 Place (放置) -&gt; Dirll Table(钻孔表) 。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/drilltable.png" alt="drilltable"></p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/drilltable1.png" alt="drilltable1"></p>
-<h4 id="3-第一次输出（Gerber-Files）"><a href="#3-第一次输出（Gerber-Files）" class="headerlink" title="3. 第一次输出（Gerber Files）"></a>3. 第一次输出（Gerber Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; Gerber Files。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/File-Fabrication-Gerber.png" alt="File-Fabrication-Gerber"></p>
-<h5 id="3-1-Gerber-Setup-gt-General-设置"><a href="#3-1-Gerber-Setup-gt-General-设置" class="headerlink" title="3.1 Gerber Setup -&gt; General 设置"></a>3.1 Gerber Setup -&gt; General 设置</h5><p>Units (单位) 选择 <strong>Inches (英寸)</strong>；Formal (格式) 选择 <strong>2:5</strong>；根据介绍 <strong>2:3</strong> 分辨率 1mil，<strong>2:4</strong> 分辨率 0.1mil，<strong>2:5</strong> 分辨率 0.01mil；2:5 精度相对较高，本人用这个设置在多个厂家打样都没有任何问题。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/General.png" alt="General"></p>
-<h5 id="3-2-Gerber-Setup-gt-Layers-设置"><a href="#3-2-Gerber-Setup-gt-Layers-设置" class="headerlink" title="3.2 Gerber Setup -&gt; Layers 设置"></a>3.2 Gerber Setup -&gt; Layers 设置</h5><p>​        单击 Plot Layers 选择 Used no 后，只要在 Layers To Plot 栏里的层都会被选中，勾选掉 Top Pad Master、Bottom Pad Master 两层，然后根据自己需要导出的层进行选择 <strong>(嘉立创现在识别版边框为 Mechanical 1 机械1层)</strong>，所以导出要选择 Mechanical 1 层；勾选 <strong>Include unconnected mid-layer pads</strong>。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Layers.png" alt="Layers"></p>
-<h5 id="3-3-Gerber-Setup-gt-Drill-Drawing-设置"><a href="#3-3-Gerber-Setup-gt-Drill-Drawing-设置" class="headerlink" title="3.3 Gerber Setup -&gt; Drill Drawing 设置"></a>3.3 Gerber Setup -&gt; Drill Drawing 设置</h5><p>Drill Drawing选项卡中 需要在 <strong>Drill Drawing Plots</strong> 和 <strong>Drill Guide Plots</strong> 两个区域勾选 <strong>Plot all used drill pairs</strong></p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Drill.png" alt="Drill"></p>
-<h5 id="3-4-Gerber-Setup-gt-Apertures-设置"><a href="#3-4-Gerber-Setup-gt-Apertures-设置" class="headerlink" title="3.4 Gerber Setup -&gt; Apertures 设置"></a>3.4 Gerber Setup -&gt; Apertures 设置</h5><p>在 Apertures (光圈)选项卡中勾选 Embedded apertures (RS274X) 即可。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Apertures.png" alt="Apertures"></p>
-<h5 id="3-5-Gerber-Setup-gt-Advanced-设置"><a href="#3-5-Gerber-Setup-gt-Advanced-设置" class="headerlink" title="3.5 Gerber Setup -&gt; Advanced 设置"></a>3.5 Gerber Setup -&gt; Advanced 设置</h5><p>在 Advanced 选项卡中需要在 Film Size 区域中的每个选项中添加一个0; 其他的默认即合。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Advanced.png" alt="Advanced"></p>
-<h5 id="3-6-Gerber-Files-输出结束后效果"><a href="#3-6-Gerber-Files-输出结束后效果" class="headerlink" title="3.6 Gerber Files 输出结束后效果"></a>3.6 Gerber Files 输出结束后效果</h5><p>第一次输出结束后自动生成 CAMtastic1.Cam*的 CAM加工文件，不用保存可以立即关闭并丢弃。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/CAM.png" alt="CAM"></p>
-<h4 id="4-第二次输出（NC-Drill-Files）"><a href="#4-第二次输出（NC-Drill-Files）" class="headerlink" title="4. 第二次输出（NC Drill Files）"></a>4. 第二次输出（NC Drill Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; NC Drill Files。</p>
-<h5 id="4-1-NC-Drill-Setup-选项卡设置"><a href="#4-1-NC-Drill-Setup-选项卡设置" class="headerlink" title="4.1 NC Drill Setup 选项卡设置"></a>4.1 NC Drill Setup 选项卡设置</h5><p>通常默认设置即可，只有两个地方需要修改 —-&gt; Leading/Trailing Zeroes 区域选择 <strong>Suppress leading zeroes</strong>，默认 Suppress trailing zeroes；Other 区域勾选 <strong>Generate EIA Binary Drill File (.DRL)</strong>。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/NCDrill.png" alt="NC Drill"></p>
-<h5 id="4-2-Import-Drill-Data-导入钻孔数据-窗口"><a href="#4-2-Import-Drill-Data-导入钻孔数据-窗口" class="headerlink" title="4.2 Import Drill Data (导入钻孔数据)窗口"></a>4.2 Import Drill Data (导入钻孔数据)窗口</h5><p>默认即可，不用修改，直接点击OK进行输出</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/ImportDrillData.png" alt="Import Drill Data"></p>
-<h4 id="5-第三次输出（Generates-Pick-and-Place-Files）"><a href="#5-第三次输出（Generates-Pick-and-Place-Files）" class="headerlink" title="5. 第三次输出（Generates Pick and Place Files）"></a>5. 第三次输出（Generates Pick and Place Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Assembly(输出装配文件) -&gt; Generates Pick and Place Files。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates.png" alt="Generates"></p>
-<h5 id="5-1-Pick-and-Place-Setup-设置"><a href="#5-1-Pick-and-Place-Setup-设置" class="headerlink" title="5.1 Pick and Place Setup 设置"></a>5.1 Pick and Place Setup 设置</h5><p>左边选项卡中必须要勾选的几个参数 <strong>Center-X</strong> 、<strong>Center-Y</strong>、<strong>Pad-X</strong>、<strong>Pad-Y</strong>、<strong>Ref-X</strong>、<strong>Ref-Y</strong>、<strong>Rotation</strong>，其他根据需求选择。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates1.png" alt="Generates1"></p>
-<h5 id="5-2-坐标文件-csv-修改"><a href="#5-2-坐标文件-csv-修改" class="headerlink" title="5.2 坐标文件 .csv 修改"></a>5.2 坐标文件 .csv 修改</h5><p>删除表头文件设计信息<strong>（红线以上全部删除Delete）</strong></p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/%E5%9D%90%E6%A0%87csv%E6%96%87%E4%BB%B6.png" alt="坐标csv文件"></p>
-<h4 id="6-第四次输出（PCB-BOM表）"><a href="#6-第四次输出（PCB-BOM表）" class="headerlink" title="6. 第四次输出（PCB BOM表）"></a>6. 第四次输出（PCB BOM表）</h4><p>在 Altium Designer 的菜单中选择 Reports(报告) -&gt; Bill of Materials。</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Reports.png" alt="Reports"></p>
-<h5 id="6-1-Properties-gt-General-设置"><a href="#6-1-Properties-gt-General-设置" class="headerlink" title="6.1 Properties -&gt; General 设置"></a>6.1 Properties -&gt; General 设置</h5><p>设置输出文件格式</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/BOM-General.png" alt="BOM_General"></p>
-<h5 id="6-2-Properties-gt-Columns设置"><a href="#6-2-Properties-gt-Columns设置" class="headerlink" title="6.2 Properties -&gt; Columns设置"></a>6.2 Properties -&gt; Columns设置</h5><p>添加<strong>Pins</strong>参数信息</p>
-<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/BOM-Columns.png" alt="BOM-Columns"></p>
-<h4 id="7-Gerber-文件整理"><a href="#7-Gerber-文件整理" class="headerlink" title="7. Gerber 文件整理"></a>7. Gerber 文件整理</h4><h5 id="7-1-PCB工程文件夹下创建两个文件夹-SMT-、Gerber"><a href="#7-1-PCB工程文件夹下创建两个文件夹-SMT-、Gerber" class="headerlink" title="7.1 PCB工程文件夹下创建两个文件夹 SMT 、Gerber"></a>7.1 PCB工程文件夹下创建两个文件夹 SMT 、Gerber</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/folder.png" alt="folder"></p>
-<h5 id="7-2-输出Gerber文件添加到Gerber文件夹"><a href="#7-2-输出Gerber文件添加到Gerber文件夹" class="headerlink" title="7.2 输出Gerber文件添加到Gerber文件夹"></a>7.2 输出Gerber文件添加到Gerber文件夹</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Gerberfoler.png" alt="Gerberfoler"></p>
-<h5 id="7-3-坐标文件、BOM、钢网层添加到SMT文件夹"><a href="#7-3-坐标文件、BOM、钢网层添加到SMT文件夹" class="headerlink" title="7.3 坐标文件、BOM、钢网层添加到SMT文件夹"></a>7.3 坐标文件、BOM、钢网层添加到SMT文件夹</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/SMTPaste.png" alt="SMTPaste"></p>
-<h4 id="8-Altium-Designer-导出-Gerber文件教程完毕"><a href="#8-Altium-Designer-导出-Gerber文件教程完毕" class="headerlink" title="8. Altium Designer 导出 Gerber文件教程完毕"></a>8. Altium Designer 导出 Gerber文件教程完毕</h4><p> <a href="http://www.linelayout.com/bbs/bbs/uploadfile/image/20140917154916101610.pdf" target="_blank" rel="noopener">参考连接</a></p>
-]]></content>
-      <categories>
-        <category>Altium Designer</category>
-        <category>Gerber</category>
-      </categories>
-      <tags>
-        <tag>Gerber</tag>
-        <tag>PCB_Design</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git 初次运行前的配置</title>
     <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -255,6 +129,189 @@ Develop分支合并到Master分支命令：
         <tag>Github</tag>
         <tag>Gitlab</tag>
         <tag>Gitee</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GPIOTE</title>
+    <url>/2020/08/06/GPIOTE/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<p>环境介绍</p>
+<ul>
+<li>操作系统:   Window10 企业版</li>
+<li>IDE开发环境:   ARM_MDK5 (Keil5)</li>
+<li>SDK版本:   SDK_17.0.0 </li>
+<li>硬件开发板:   官方开发板 PCA10040</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="1-概述介绍"><a href="#1-概述介绍" class="headerlink" title="1. 概述介绍"></a>1. 概述介绍</h4><p>  GPIOTE 驱动控制 GPIO 和 GPIOTE 外设,并配置和控制输出和输入引脚。可以将输出引脚配置玮手动控制或者通过 GPIOTE 任务进行控制。输入引脚可以配置在不同模式下进行控制。</p>
+<h4 id="2-GPIOTE-代码实现"><a href="#2-GPIOTE-代码实现" class="headerlink" title="2. GPIOTE 代码实现"></a>2. GPIOTE 代码实现</h4><h5 id="2-1-Sdk-config-h-配置"><a href="#2-1-Sdk-config-h-配置" class="headerlink" title="2.1   Sdk_config.h 配置"></a>2.1   Sdk_config.h 配置</h5><h6 id="2-1-1-Registers-寄存器版本"><a href="#2-1-1-Registers-寄存器版本" class="headerlink" title="2.1.1   Registers (寄存器版本)"></a>2.1.1   Registers (寄存器版本)</h6><p>  如果配置寄存器版本的话，不许需要在Sdk_config.h文件中配置。</p>
+<h6 id="2-1-2-Library-库版本"><a href="#2-1-2-Library-库版本" class="headerlink" title="2.1.2   Library (库版本)"></a>2.1.2   Library (库版本)</h6><ol>
+<li><p>添加 GPIOTE 驱动文件 nrfx_gpiote.c ，SDK 路径目录：…\modules\nrfx\drivers\src\nrfx_gpiote.c </p>
+</li>
+<li><p>头文件引用 “nrf_drv_gpiote.h”。</p>
+</li>
+<li><p>添加头文件路径:</p>
+<ul>
+<li><strong>…\modules\nrfx\drivers\include</strong></li>
+<li><strong>…\integration\nrfx\legacy</strong></li>
+</ul>
+</li>
+<li><p>Sdk_config.h 文件配置</p>
+<ul>
+<li><p>Text Editor 配置</p>
+<ul>
+<li>GPIOTE_ENABLED   <strong>0</strong></li>
+<li>GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS   <strong>4</strong></li>
+<li>GPIOTE_CONFIG_IRQ_PRIORITY   <strong>1</strong></li>
+<li>NRFX_GPIOTE_ENABLED   <strong>1</strong></li>
+<li>NRFX_GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS   <strong>1</strong></li>
+<li>NRFX_GPIOTE_CONFIG_IRQ_PRIORITY   <strong>1</strong></li>
+<li>NRFX_GPIOTE_CONFIG_LOG_ENABLED   <strong>0</strong></li>
+<li>NRFX_GPIOTE_CONFIG_LOG_LEVEL   <strong>3</strong></li>
+<li>NRFX_GPIOTE_CONFIG_INFO_COLOR   <strong>0</strong></li>
+<li>NRFX_GPIOTE_CONFIG_DEBUG_COLOR   <strong>0</strong></li>
+</ul>
+</li>
+<li><p>Configuration Wizard 配置</p>
+<p><img src="/2020/08/06/GPIOTE/GPIOTE.png" alt="GPIOTE"></p>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>![NRFX_GPIOTE](GPIOTE/NRFX_GPIOTE.png)</code></pre><h5 id="2-2-GPIOTE-Registers-寄存器版本"><a href="#2-2-GPIOTE-Registers-寄存器版本" class="headerlink" title="2.2   GPIOTE Registers (寄存器版本)"></a>2.2   GPIOTE Registers (寄存器版本)</h5><h5 id="2-3-GPIOTE-Library-库版本"><a href="#2-3-GPIOTE-Library-库版本" class="headerlink" title="2.3   GPIOTE Library (库版本)"></a>2.3   GPIOTE Library (库版本)</h5>]]></content>
+      <categories>
+        <category>Nordic</category>
+      </categories>
+      <tags>
+        <tag>Nordic</tag>
+        <tag>Bluetooth</tag>
+        <tag>nRF52</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【STM32CubeMX】学习笔记-&gt;STM32CubeMX_Usart</title>
+    <url>/2020/05/05/STM32CubeMX-Usart/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<p>环境介绍</p>
+<ul>
+<li>操作系统:   Window10 企业版</li>
+<li>IDE开发环境:   STM32CubeIDE 1.2.0</li>
+<li>STM32CubeMX版本:   STM32CubeMX Version 5.4.0</li>
+<li>Mcu and Firmware Package:   STM32Cube FW_H7 V1.5.0</li>
+<li>硬件开发板:   本人自己设计的最小系统</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="1-打开-STM32CubeMX"><a href="#1-打开-STM32CubeMX" class="headerlink" title="1. 打开 STM32CubeMX"></a>1. 打开 STM32CubeMX</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/0.png" alt></p>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/1.png" alt></p>
+<h4 id="2-创建工程Project"><a href="#2-创建工程Project" class="headerlink" title="2. 创建工程Project"></a>2. 创建工程Project</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/2.png" alt></p>
+<h4 id="3-选择自己MCU的型号"><a href="#3-选择自己MCU的型号" class="headerlink" title="3. 选择自己MCU的型号"></a>3. 选择自己MCU的型号</h4><ul>
+<li><strong>本人MCU型号：STM32H743IITx</strong></li>
+<li><strong>双击红色区域直接进入配置界面</strong></li>
+</ul>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/3.png" alt></p>
+<h4 id="4-RCC-配置"><a href="#4-RCC-配置" class="headerlink" title="4. RCC 配置"></a>4. RCC 配置</h4><ul>
+<li>单击 System Core -&gt; 单击RCC<ul>
+<li>RCC Mode and Configuration<ul>
+<li>High Speed Clock (HSE) -&gt; Crystal/Ceramic Resonator</li>
+<li>Low Speed Clock (LSE) -&gt; Crystal/Ceramic Resonator</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/4.png" alt></p>
+<h4 id="5-串口USART配置"><a href="#5-串口USART配置" class="headerlink" title="5. 串口USART配置"></a>5. 串口USART配置</h4><ul>
+<li><p>单击 Connectivity -&gt; 单击 USART1</p>
+<ul>
+<li><p>USART1 Mode</p>
+<ul>
+<li>Mode：Asynchronous</li>
+</ul>
+</li>
+<li><p>USART1 Configuration</p>
+<ul>
+<li>Parameter Settings（基础配置）<ul>
+<li><img src="/2020/05/05/STM32CubeMX-Usart/5.png" alt></li>
+</ul>
+</li>
+<li>NVIC Settings（中断配置）勾选Enabled<ul>
+<li><img src="/2020/05/05/STM32CubeMX-Usart/6.png" alt></li>
+</ul>
+</li>
+<li>GPIO Settings （I/O配置）<ul>
+<li><strong>PA9</strong> -&gt; USART1_TX  /  <strong>PA10</strong> -&gt; UASRT1_RX</li>
+<li>I/O 空闲状态全部上拉（Pull-Up）</li>
+<li><img src="/2020/05/05/STM32CubeMX-Usart/7.png" alt></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-时钟树配置（Clock-Configuration）"><a href="#6-时钟树配置（Clock-Configuration）" class="headerlink" title="6. 时钟树配置（Clock Configuration）"></a>6. 时钟树配置（Clock Configuration）</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/8.png" alt></p>
+<h4 id="7-生成路径及IDE选择配置"><a href="#7-生成路径及IDE选择配置" class="headerlink" title="7. 生成路径及IDE选择配置"></a>7. 生成路径及IDE选择配置</h4><ul>
+<li><p><strong>Project</strong></p>
+<ul>
+<li><p>Project Name：工程名（根据自己要求来写）</p>
+</li>
+<li><p>Project Location：生成工程路径（选择自己常用路径）</p>
+</li>
+<li><p>Toolchain / IDE：开发环境选择（本工程选择STM32CubeIDE开发环境）</p>
+<ul>
+<li>EWARM</li>
+<li>MDK_ARM</li>
+<li>SW4STM32</li>
+<li>TrueSTUDIO</li>
+<li><strong>STM32CubeIDE</strong></li>
+<li>MakeFile</li>
+</ul>
+</li>
+<li><p>Mcu and Firmware Package (STM32Cube FW_H7 V1.5.0)</p>
+<ul>
+<li>MCU Reference：STM32H743IITx</li>
+<li>Firmware Package Name and Version：<strong>STM32Cube FW_H7 V1.5.0</strong> （版本不同，生成的工程可能会有点差异）</li>
+</ul>
+</li>
+<li><p><img src="/2020/05/05/STM32CubeMX-Usart/9.png" alt></p>
+</li>
+</ul>
+</li>
+<li><p><strong>Code Generator 配置选择</strong> </p>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/10.png" alt></p>
+</li>
+</ul>
+<p><strong>至此工程配置基本完成</strong>（单击 GENERATE CODE 生成工程）</p>
+<h4 id="8-打开-STM32CubeIDE-编译生成工程"><a href="#8-打开-STM32CubeIDE-编译生成工程" class="headerlink" title="8. 打开 STM32CubeIDE 编译生成工程"></a>8. 打开 STM32CubeIDE 编译生成工程</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/11.png" alt></p>
+<h4 id="9-Printf-打印配置"><a href="#9-Printf-打印配置" class="headerlink" title="9. Printf 打印配置"></a>9. Printf 打印配置</h4><ul>
+<li><strong>usart.h 添加代码</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>usart.c 添加代码</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Private function prototypes -----------------------------------------------*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __GNUC__</span></span><br><span class="line"><span class="comment">/* With GCC/RAISONANCE, small printf (option LD Linker-&gt;Libraries-&gt;Small printf</span></span><br><span class="line"><span class="comment">   set to 'Yes') calls __io_putchar() */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int __io_putchar(int ch)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __GNUC__ */</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  Retargets the C library printf function to the USART.</span></span><br><span class="line"><span class="comment">  * @param  None</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">PUTCHAR_PROTOTYPE</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Place your implementation of fputc here */</span></span><br><span class="line">    <span class="comment">/* e.g. write a character to the USART1 and Loop until the end of transmission */</span></span><br><span class="line">    HAL_UART_Transmit(&amp;huart1, (<span class="keyword">uint8_t</span> *)&amp;ch, <span class="number">1</span>, <span class="number">0xFFFF</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/05/05/STM32CubeMX-Usart/12.png" alt></p>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/13.png" alt></p>
+<h4 id="10-STM32H743IITx-工程模板"><a href="#10-STM32H743IITx-工程模板" class="headerlink" title="10.  STM32H743IITx 工程模板"></a>10.  STM32H743IITx 工程模板</h4><ul>
+<li>工程模板  <a href="https://gitee.com/Zhao_ch/STM32H743_Template_Cubeide" target="_blank" rel="noopener">下载连接</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>STM32CubeMX</category>
+      </categories>
+      <tags>
+        <tag>STM32CubeMX</tag>
+        <tag>STM32</tag>
+        <tag>HAL</tag>
       </tags>
   </entry>
   <entry>
@@ -419,6 +476,74 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
+    <title>Altium Designer 导出 Gerber 文件教程</title>
+    <url>/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>输出的Gerber不是一个文件，而是一个文件集合，通常需要打包发送给厂家，厂家根据你输出的要求进行打样。基本输出的文件大概有这几个流程 Gerber Files、NC Drill Files(钻孔文件)、BOM(元器件BOM)、Generates Pick and Place Files(坐标文件)，具体步骤如下。</p>
+<h4 id="2-添加钻孔表"><a href="#2-添加钻孔表" class="headerlink" title="2. 添加钻孔表"></a>2. 添加钻孔表</h4><h5 id="2-1-选中-Drill-Drawing-层"><a href="#2-1-选中-Drill-Drawing-层" class="headerlink" title="2.1 选中 Drill Drawing 层"></a>2.1 选中 Drill Drawing 层</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/DrillDrawing.png" alt></p>
+<h5 id="2-2-在此层放置“-legend-”-字符"><a href="#2-2-在此层放置“-legend-”-字符" class="headerlink" title="2.2 在此层放置“ .legend ” 字符"></a>2.2 在此层放置“ .legend ” 字符</h5><ul>
+<li><p>单击放置字符串</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/String.png" alt="String"></p>
+</li>
+<li><p>放置 “ .legend ” 字符 </p>
+<ul>
+<li>放置“ .legend ”字符后，在第一次输出Gerber文件的时候，会自动生产一个钻孔表，效果如 2.4 - 2 图。 </li>
+</ul>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Legend.png" alt="legend"></p>
+</li>
+</ul>
+<h5 id="2-3-字符放置效果"><a href="#2-3-字符放置效果" class="headerlink" title="2.3 字符放置效果"></a>2.3 字符放置效果</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Placetheeffect.png" alt="Place the effect"></p>
+<h5 id="2-4-如果以上方法不行，该如何操作？-具体原因可能是版本问题，毕竟用的破解版的"><a href="#2-4-如果以上方法不行，该如何操作？-具体原因可能是版本问题，毕竟用的破解版的" class="headerlink" title="2.4 如果以上方法不行，该如何操作？(具体原因可能是版本问题，毕竟用的破解版的)"></a>2.4 如果以上方法不行，该如何操作？(具体原因可能是版本问题，毕竟用的破解版的)</h5><p>在Altium Designer 的菜单中选择 Place (放置) -&gt; Dirll Table(钻孔表) 。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/drilltable.png" alt="drilltable"></p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/drilltable1.png" alt="drilltable1"></p>
+<h4 id="3-第一次输出（Gerber-Files）"><a href="#3-第一次输出（Gerber-Files）" class="headerlink" title="3. 第一次输出（Gerber Files）"></a>3. 第一次输出（Gerber Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; Gerber Files。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/File-Fabrication-Gerber.png" alt="File-Fabrication-Gerber"></p>
+<h5 id="3-1-Gerber-Setup-gt-General-设置"><a href="#3-1-Gerber-Setup-gt-General-设置" class="headerlink" title="3.1 Gerber Setup -&gt; General 设置"></a>3.1 Gerber Setup -&gt; General 设置</h5><p>Units (单位) 选择 <strong>Inches (英寸)</strong>；Formal (格式) 选择 <strong>2:5</strong>；根据介绍 <strong>2:3</strong> 分辨率 1mil，<strong>2:4</strong> 分辨率 0.1mil，<strong>2:5</strong> 分辨率 0.01mil；2:5 精度相对较高，本人用这个设置在多个厂家打样都没有任何问题。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/General.png" alt="General"></p>
+<h5 id="3-2-Gerber-Setup-gt-Layers-设置"><a href="#3-2-Gerber-Setup-gt-Layers-设置" class="headerlink" title="3.2 Gerber Setup -&gt; Layers 设置"></a>3.2 Gerber Setup -&gt; Layers 设置</h5><p>​        单击 Plot Layers 选择 Used no 后，只要在 Layers To Plot 栏里的层都会被选中，勾选掉 Top Pad Master、Bottom Pad Master 两层，然后根据自己需要导出的层进行选择 <strong>(嘉立创现在识别版边框为 Mechanical 1 机械1层)</strong>，所以导出要选择 Mechanical 1 层；勾选 <strong>Include unconnected mid-layer pads</strong>。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Layers.png" alt="Layers"></p>
+<h5 id="3-3-Gerber-Setup-gt-Drill-Drawing-设置"><a href="#3-3-Gerber-Setup-gt-Drill-Drawing-设置" class="headerlink" title="3.3 Gerber Setup -&gt; Drill Drawing 设置"></a>3.3 Gerber Setup -&gt; Drill Drawing 设置</h5><p>Drill Drawing选项卡中 需要在 <strong>Drill Drawing Plots</strong> 和 <strong>Drill Guide Plots</strong> 两个区域勾选 <strong>Plot all used drill pairs</strong></p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Drill.png" alt="Drill"></p>
+<h5 id="3-4-Gerber-Setup-gt-Apertures-设置"><a href="#3-4-Gerber-Setup-gt-Apertures-设置" class="headerlink" title="3.4 Gerber Setup -&gt; Apertures 设置"></a>3.4 Gerber Setup -&gt; Apertures 设置</h5><p>在 Apertures (光圈)选项卡中勾选 Embedded apertures (RS274X) 即可。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Apertures.png" alt="Apertures"></p>
+<h5 id="3-5-Gerber-Setup-gt-Advanced-设置"><a href="#3-5-Gerber-Setup-gt-Advanced-设置" class="headerlink" title="3.5 Gerber Setup -&gt; Advanced 设置"></a>3.5 Gerber Setup -&gt; Advanced 设置</h5><p>在 Advanced 选项卡中需要在 Film Size 区域中的每个选项中添加一个0; 其他的默认即合。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Advanced.png" alt="Advanced"></p>
+<h5 id="3-6-Gerber-Files-输出结束后效果"><a href="#3-6-Gerber-Files-输出结束后效果" class="headerlink" title="3.6 Gerber Files 输出结束后效果"></a>3.6 Gerber Files 输出结束后效果</h5><p>第一次输出结束后自动生成 CAMtastic1.Cam*的 CAM加工文件，不用保存可以立即关闭并丢弃。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/CAM.png" alt="CAM"></p>
+<h4 id="4-第二次输出（NC-Drill-Files）"><a href="#4-第二次输出（NC-Drill-Files）" class="headerlink" title="4. 第二次输出（NC Drill Files）"></a>4. 第二次输出（NC Drill Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Fabrication(输出制造文件) -&gt; NC Drill Files。</p>
+<h5 id="4-1-NC-Drill-Setup-选项卡设置"><a href="#4-1-NC-Drill-Setup-选项卡设置" class="headerlink" title="4.1 NC Drill Setup 选项卡设置"></a>4.1 NC Drill Setup 选项卡设置</h5><p>通常默认设置即可，只有两个地方需要修改 —-&gt; Leading/Trailing Zeroes 区域选择 <strong>Suppress leading zeroes</strong>，默认 Suppress trailing zeroes；Other 区域勾选 <strong>Generate EIA Binary Drill File (.DRL)</strong>。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/NCDrill.png" alt="NC Drill"></p>
+<h5 id="4-2-Import-Drill-Data-导入钻孔数据-窗口"><a href="#4-2-Import-Drill-Data-导入钻孔数据-窗口" class="headerlink" title="4.2 Import Drill Data (导入钻孔数据)窗口"></a>4.2 Import Drill Data (导入钻孔数据)窗口</h5><p>默认即可，不用修改，直接点击OK进行输出</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/ImportDrillData.png" alt="Import Drill Data"></p>
+<h4 id="5-第三次输出（Generates-Pick-and-Place-Files）"><a href="#5-第三次输出（Generates-Pick-and-Place-Files）" class="headerlink" title="5. 第三次输出（Generates Pick and Place Files）"></a>5. 第三次输出（Generates Pick and Place Files）</h4><p>打开要导出的PCB，在 Altium Designer 的菜单中选择 File(文件) -&gt; Assembly(输出装配文件) -&gt; Generates Pick and Place Files。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates.png" alt="Generates"></p>
+<h5 id="5-1-Pick-and-Place-Setup-设置"><a href="#5-1-Pick-and-Place-Setup-设置" class="headerlink" title="5.1 Pick and Place Setup 设置"></a>5.1 Pick and Place Setup 设置</h5><p>左边选项卡中必须要勾选的几个参数 <strong>Center-X</strong> 、<strong>Center-Y</strong>、<strong>Pad-X</strong>、<strong>Pad-Y</strong>、<strong>Ref-X</strong>、<strong>Ref-Y</strong>、<strong>Rotation</strong>，其他根据需求选择。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Generates1.png" alt="Generates1"></p>
+<h5 id="5-2-坐标文件-csv-修改"><a href="#5-2-坐标文件-csv-修改" class="headerlink" title="5.2 坐标文件 .csv 修改"></a>5.2 坐标文件 .csv 修改</h5><p>删除表头文件设计信息<strong>（红线以上全部删除Delete）</strong></p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/%E5%9D%90%E6%A0%87csv%E6%96%87%E4%BB%B6.png" alt="坐标csv文件"></p>
+<h4 id="6-第四次输出（PCB-BOM表）"><a href="#6-第四次输出（PCB-BOM表）" class="headerlink" title="6. 第四次输出（PCB BOM表）"></a>6. 第四次输出（PCB BOM表）</h4><p>在 Altium Designer 的菜单中选择 Reports(报告) -&gt; Bill of Materials。</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Reports.png" alt="Reports"></p>
+<h5 id="6-1-Properties-gt-General-设置"><a href="#6-1-Properties-gt-General-设置" class="headerlink" title="6.1 Properties -&gt; General 设置"></a>6.1 Properties -&gt; General 设置</h5><p>设置输出文件格式</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/BOM-General.png" alt="BOM_General"></p>
+<h5 id="6-2-Properties-gt-Columns设置"><a href="#6-2-Properties-gt-Columns设置" class="headerlink" title="6.2 Properties -&gt; Columns设置"></a>6.2 Properties -&gt; Columns设置</h5><p>添加<strong>Pins</strong>参数信息</p>
+<p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/BOM-Columns.png" alt="BOM-Columns"></p>
+<h4 id="7-Gerber-文件整理"><a href="#7-Gerber-文件整理" class="headerlink" title="7. Gerber 文件整理"></a>7. Gerber 文件整理</h4><h5 id="7-1-PCB工程文件夹下创建两个文件夹-SMT-、Gerber"><a href="#7-1-PCB工程文件夹下创建两个文件夹-SMT-、Gerber" class="headerlink" title="7.1 PCB工程文件夹下创建两个文件夹 SMT 、Gerber"></a>7.1 PCB工程文件夹下创建两个文件夹 SMT 、Gerber</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/folder.png" alt="folder"></p>
+<h5 id="7-2-输出Gerber文件添加到Gerber文件夹"><a href="#7-2-输出Gerber文件添加到Gerber文件夹" class="headerlink" title="7.2 输出Gerber文件添加到Gerber文件夹"></a>7.2 输出Gerber文件添加到Gerber文件夹</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/Gerberfoler.png" alt="Gerberfoler"></p>
+<h5 id="7-3-坐标文件、BOM、钢网层添加到SMT文件夹"><a href="#7-3-坐标文件、BOM、钢网层添加到SMT文件夹" class="headerlink" title="7.3 坐标文件、BOM、钢网层添加到SMT文件夹"></a>7.3 坐标文件、BOM、钢网层添加到SMT文件夹</h5><p><img src="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/SMTPaste.png" alt="SMTPaste"></p>
+<h4 id="8-Altium-Designer-导出-Gerber文件教程完毕"><a href="#8-Altium-Designer-导出-Gerber文件教程完毕" class="headerlink" title="8. Altium Designer 导出 Gerber文件教程完毕"></a>8. Altium Designer 导出 Gerber文件教程完毕</h4><p> <a href="http://www.linelayout.com/bbs/bbs/uploadfile/image/20140917154916101610.pdf" target="_blank" rel="noopener">参考连接</a></p>
+]]></content>
+      <categories>
+        <category>Altium Designer</category>
+        <category>Gerber</category>
+      </categories>
+      <tags>
+        <tag>Gerber</tag>
+        <tag>PCB_Design</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
     <url>/2020/05/06/Nordic-development-environment/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -441,153 +566,6 @@ Develop分支合并到Master分支命令：
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【STM32CubeMX】学习笔记-&gt;STM32CubeMX_Usart</title>
-    <url>/2020/05/05/STM32CubeMX-Usart/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<p>环境介绍</p>
-<ul>
-<li>操作系统:   Window10 企业版</li>
-<li>IDE开发环境:   STM32CubeIDE 1.2.0</li>
-<li>STM32CubeMX版本:   STM32CubeMX Version 5.4.0</li>
-<li>Mcu and Firmware Package:   STM32Cube FW_H7 V1.5.0</li>
-<li>硬件开发板:   本人自己设计的最小系统</li>
-</ul>
-<a id="more"></a>
-
-<h4 id="1-打开-STM32CubeMX"><a href="#1-打开-STM32CubeMX" class="headerlink" title="1. 打开 STM32CubeMX"></a>1. 打开 STM32CubeMX</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/0.png" alt></p>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/1.png" alt></p>
-<h4 id="2-创建工程Project"><a href="#2-创建工程Project" class="headerlink" title="2. 创建工程Project"></a>2. 创建工程Project</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/2.png" alt></p>
-<h4 id="3-选择自己MCU的型号"><a href="#3-选择自己MCU的型号" class="headerlink" title="3. 选择自己MCU的型号"></a>3. 选择自己MCU的型号</h4><ul>
-<li><strong>本人MCU型号：STM32H743IITx</strong></li>
-<li><strong>双击红色区域直接进入配置界面</strong></li>
-</ul>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/3.png" alt></p>
-<h4 id="4-RCC-配置"><a href="#4-RCC-配置" class="headerlink" title="4. RCC 配置"></a>4. RCC 配置</h4><ul>
-<li>单击 System Core -&gt; 单击RCC<ul>
-<li>RCC Mode and Configuration<ul>
-<li>High Speed Clock (HSE) -&gt; Crystal/Ceramic Resonator</li>
-<li>Low Speed Clock (LSE) -&gt; Crystal/Ceramic Resonator</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/4.png" alt></p>
-<h4 id="5-串口USART配置"><a href="#5-串口USART配置" class="headerlink" title="5. 串口USART配置"></a>5. 串口USART配置</h4><ul>
-<li><p>单击 Connectivity -&gt; 单击 USART1</p>
-<ul>
-<li><p>USART1 Mode</p>
-<ul>
-<li>Mode：Asynchronous</li>
-</ul>
-</li>
-<li><p>USART1 Configuration</p>
-<ul>
-<li>Parameter Settings（基础配置）<ul>
-<li><img src="/2020/05/05/STM32CubeMX-Usart/5.png" alt></li>
-</ul>
-</li>
-<li>NVIC Settings（中断配置）勾选Enabled<ul>
-<li><img src="/2020/05/05/STM32CubeMX-Usart/6.png" alt></li>
-</ul>
-</li>
-<li>GPIO Settings （I/O配置）<ul>
-<li><strong>PA9</strong> -&gt; USART1_TX  /  <strong>PA10</strong> -&gt; UASRT1_RX</li>
-<li>I/O 空闲状态全部上拉（Pull-Up）</li>
-<li><img src="/2020/05/05/STM32CubeMX-Usart/7.png" alt></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="6-时钟树配置（Clock-Configuration）"><a href="#6-时钟树配置（Clock-Configuration）" class="headerlink" title="6. 时钟树配置（Clock Configuration）"></a>6. 时钟树配置（Clock Configuration）</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/8.png" alt></p>
-<h4 id="7-生成路径及IDE选择配置"><a href="#7-生成路径及IDE选择配置" class="headerlink" title="7. 生成路径及IDE选择配置"></a>7. 生成路径及IDE选择配置</h4><ul>
-<li><p><strong>Project</strong></p>
-<ul>
-<li><p>Project Name：工程名（根据自己要求来写）</p>
-</li>
-<li><p>Project Location：生成工程路径（选择自己常用路径）</p>
-</li>
-<li><p>Toolchain / IDE：开发环境选择（本工程选择STM32CubeIDE开发环境）</p>
-<ul>
-<li>EWARM</li>
-<li>MDK_ARM</li>
-<li>SW4STM32</li>
-<li>TrueSTUDIO</li>
-<li><strong>STM32CubeIDE</strong></li>
-<li>MakeFile</li>
-</ul>
-</li>
-<li><p>Mcu and Firmware Package (STM32Cube FW_H7 V1.5.0)</p>
-<ul>
-<li>MCU Reference：STM32H743IITx</li>
-<li>Firmware Package Name and Version：<strong>STM32Cube FW_H7 V1.5.0</strong> （版本不同，生成的工程可能会有点差异）</li>
-</ul>
-</li>
-<li><p><img src="/2020/05/05/STM32CubeMX-Usart/9.png" alt></p>
-</li>
-</ul>
-</li>
-<li><p><strong>Code Generator 配置选择</strong> </p>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/10.png" alt></p>
-</li>
-</ul>
-<p><strong>至此工程配置基本完成</strong>（单击 GENERATE CODE 生成工程）</p>
-<h4 id="8-打开-STM32CubeIDE-编译生成工程"><a href="#8-打开-STM32CubeIDE-编译生成工程" class="headerlink" title="8. 打开 STM32CubeIDE 编译生成工程"></a>8. 打开 STM32CubeIDE 编译生成工程</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/11.png" alt></p>
-<h4 id="9-Printf-打印配置"><a href="#9-Printf-打印配置" class="headerlink" title="9. Printf 打印配置"></a>9. Printf 打印配置</h4><ul>
-<li><strong>usart.h 添加代码</strong></li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><strong>usart.c 添加代码</strong></li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Private function prototypes -----------------------------------------------*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __GNUC__</span></span><br><span class="line"><span class="comment">/* With GCC/RAISONANCE, small printf (option LD Linker-&gt;Libraries-&gt;Small printf</span></span><br><span class="line"><span class="comment">   set to 'Yes') calls __io_putchar() */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int __io_putchar(int ch)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __GNUC__ */</span></span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  Retargets the C library printf function to the USART.</span></span><br><span class="line"><span class="comment">  * @param  None</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">PUTCHAR_PROTOTYPE</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Place your implementation of fputc here */</span></span><br><span class="line">    <span class="comment">/* e.g. write a character to the USART1 and Loop until the end of transmission */</span></span><br><span class="line">    HAL_UART_Transmit(&amp;huart1, (<span class="keyword">uint8_t</span> *)&amp;ch, <span class="number">1</span>, <span class="number">0xFFFF</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/05/05/STM32CubeMX-Usart/12.png" alt></p>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/13.png" alt></p>
-<h4 id="10-STM32H743IITx-工程模板"><a href="#10-STM32H743IITx-工程模板" class="headerlink" title="10.  STM32H743IITx 工程模板"></a>10.  STM32H743IITx 工程模板</h4><ul>
-<li>工程模板  <a href="https://gitee.com/Zhao_ch/STM32H743_Template_Cubeide" target="_blank" rel="noopener">下载连接</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>STM32CubeMX</category>
-      </categories>
-      <tags>
-        <tag>STM32CubeMX</tag>
-        <tag>STM32</tag>
-        <tag>HAL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>嘉立创JLC元件库+3D封装下载</title>
-    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
-<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
-</ul>
-<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
-<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
-</ul>
-<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
-      <categories>
-        <category>Altium Designer</category>
-      </categories>
-      <tags>
-        <tag>PCB_Design</tag>
-        <tag>Altium Designer</tag>
-        <tag>Layout</tag>
       </tags>
   </entry>
   <entry>
@@ -654,6 +632,28 @@ Develop分支合并到Master分支命令：
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>嘉立创JLC元件库+3D封装下载</title>
+    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
+<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
+</ul>
+<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
+<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
+</ul>
+<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
+      <categories>
+        <category>Altium Designer</category>
+      </categories>
+      <tags>
+        <tag>PCB_Design</tag>
+        <tag>Altium Designer</tag>
+        <tag>Layout</tag>
       </tags>
   </entry>
 </search>
