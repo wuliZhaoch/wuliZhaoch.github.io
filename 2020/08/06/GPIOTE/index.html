@@ -22,12 +22,13 @@
 
   <meta name="description" content="😊 转载请全文转载，并标明文章出处 环境介绍  操作系统:   Window10 企业版 IDE开发环境:   ARM_MDK5 (Keil5) SDK版本:   SDK_17.0.0  硬件开发板:   官方开发板 PCA10040">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GPIOTE">
+<meta property="og:title" content="【nRF52832】学习笔记:GPIOTE (TASK&#x2F;EVENT)">
 <meta property="og:url" content="https://wulizhaoch.github.io/2020/08/06/GPIOTE/index.html">
 <meta property="og:site_name" content="Zhao_ch Personal_Blog">
 <meta property="og:description" content="😊 转载请全文转载，并标明文章出处 环境介绍  操作系统:   Window10 企业版 IDE开发环境:   ARM_MDK5 (Keil5) SDK版本:   SDK_17.0.0  硬件开发板:   官方开发板 PCA10040">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://wulizhaoch.github.io/2020/08/06/GPIOTE/GPIOTE.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/08/06/GPIOTE/NRFX_GPIOTE.png">
 <meta property="article:published_time" content="2020-08-06T14:39:57.000Z">
 <meta property="article:modified_time" content="2020-08-06T14:39:57.000Z">
 <meta property="article:author" content="赵晨辉">
@@ -50,7 +51,7 @@
   };
 </script>
 
-  <title>GPIOTE | Zhao_ch Personal_Blog</title>
+  <title>【nRF52832】学习笔记:GPIOTE (TASK/EVENT) | Zhao_ch Personal_Blog</title>
   
 
 
@@ -212,7 +213,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          GPIOTE
+          【nRF52832】学习笔记:GPIOTE (TASK/EVENT)
         </h1>
 
         <div class="post-meta">
@@ -286,11 +287,12 @@
 </li>
 <li><p>Configuration Wizard 配置</p>
 <p><img src="/2020/08/06/GPIOTE/GPIOTE.png" alt="GPIOTE"></p>
+<p><img src="/2020/08/06/GPIOTE/NRFX_GPIOTE.png" alt="NRFX_GPIOTE"></p>
 </li>
 </ul>
 </li>
 </ol>
-<pre><code>![NRFX_GPIOTE](GPIOTE/NRFX_GPIOTE.png)</code></pre><h5 id="2-2-GPIOTE-Registers-寄存器版本"><a href="#2-2-GPIOTE-Registers-寄存器版本" class="headerlink" title="2.2   GPIOTE Registers (寄存器版本)"></a>2.2   GPIOTE Registers (寄存器版本)</h5><h5 id="2-3-GPIOTE-Library-库版本"><a href="#2-3-GPIOTE-Library-库版本" class="headerlink" title="2.3   GPIOTE Library (库版本)"></a>2.3   GPIOTE Library (库版本)</h5>
+<h5 id="2-2-GPIOTE-Registers-寄存器版本"><a href="#2-2-GPIOTE-Registers-寄存器版本" class="headerlink" title="2.2   GPIOTE Registers (寄存器版本)"></a>2.2   GPIOTE Registers (寄存器版本)</h5><h5 id="2-3-GPIOTE-Library-库版本"><a href="#2-3-GPIOTE-Library-库版本" class="headerlink" title="2.3   GPIOTE Library (库版本)"></a>2.3   GPIOTE Library (库版本)</h5>
     </div>
 
     

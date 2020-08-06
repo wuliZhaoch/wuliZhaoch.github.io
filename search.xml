@@ -132,7 +132,7 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>GPIOTE</title>
+    <title>【nRF52832】学习笔记:GPIOTE (TASK/EVENT)</title>
     <url>/2020/08/06/GPIOTE/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <p>环境介绍</p>
@@ -175,11 +175,12 @@ Develop分支合并到Master分支命令：
 </li>
 <li><p>Configuration Wizard 配置</p>
 <p><img src="/2020/08/06/GPIOTE/GPIOTE.png" alt="GPIOTE"></p>
+<p><img src="/2020/08/06/GPIOTE/NRFX_GPIOTE.png" alt="NRFX_GPIOTE"></p>
 </li>
 </ul>
 </li>
 </ol>
-<pre><code>![NRFX_GPIOTE](GPIOTE/NRFX_GPIOTE.png)</code></pre><h5 id="2-2-GPIOTE-Registers-寄存器版本"><a href="#2-2-GPIOTE-Registers-寄存器版本" class="headerlink" title="2.2   GPIOTE Registers (寄存器版本)"></a>2.2   GPIOTE Registers (寄存器版本)</h5><h5 id="2-3-GPIOTE-Library-库版本"><a href="#2-3-GPIOTE-Library-库版本" class="headerlink" title="2.3   GPIOTE Library (库版本)"></a>2.3   GPIOTE Library (库版本)</h5>]]></content>
+<h5 id="2-2-GPIOTE-Registers-寄存器版本"><a href="#2-2-GPIOTE-Registers-寄存器版本" class="headerlink" title="2.2   GPIOTE Registers (寄存器版本)"></a>2.2   GPIOTE Registers (寄存器版本)</h5><h5 id="2-3-GPIOTE-Library-库版本"><a href="#2-3-GPIOTE-Library-库版本" class="headerlink" title="2.3   GPIOTE Library (库版本)"></a>2.3   GPIOTE Library (库版本)</h5>]]></content>
       <categories>
         <category>Nordic</category>
       </categories>
