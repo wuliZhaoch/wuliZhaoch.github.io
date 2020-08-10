@@ -256,7 +256,7 @@
 </ul>
 <a id="more"></a>
 
-<h4 id="1-概述介绍"><a href="#1-概述介绍" class="headerlink" title="1. 概述介绍"></a>1. 概述介绍</h4><p>  GPIOTE 驱动控制 GPIO 和 GPIOTE 外设,并配置和控制输出和输入引脚。可以将输出引脚配置玮手动控制或者通过 GPIOTE 任务进行控制。输入引脚可以配置在不同模式下进行控制。</p>
+<h4 id="1-概述介绍"><a href="#1-概述介绍" class="headerlink" title="1. 概述介绍"></a>1. 概述介绍</h4><p>  GPIOTE 驱动控制 GPIO 和 GPIOTE 外设,并配置和控制输出和输入引脚。可以将输出引脚配置为手动控制或者通过 GPIOTE 任务进行控制。输入引脚可以配置在不同模式下进行控制。</p>
 <h4 id="2-GPIOTE-功能"><a href="#2-GPIOTE-功能" class="headerlink" title="2. GPIOTE 功能"></a>2. GPIOTE 功能</h4><p>&emsp;&emsp;nRF52832 的GPIOTE共有8个通道，每个通道否可以分配给一个引脚，分配的引脚可以配置为任务模式或时间模式。不能将某个引脚同事分配给多个GPIOTE通道，否则会导致无法预料的错误。</p>
 <ul>
 <li>GPIOTE 每个通道有Set、Clear和Out三个任务，Set和Clear任务对引脚时固定操作，Out 任务可以引脚PIN执行以下操作：<ul>
