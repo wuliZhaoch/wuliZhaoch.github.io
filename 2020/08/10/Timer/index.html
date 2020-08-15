@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wulizhaoch.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="😊 转载请全文转载，并标明文章出处 环境介绍  操作系统:   Window10 企业版 IDE开发环境:   ARM_MDK5 (Keil5) SDK版本:   SDK_17.0.0  硬件开发板:   官方开发板 PCA10040">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【nRF52832】学习笔记:TIMER-Timer&#x2F;Counter (定时器&#x2F;计数器)">
+<meta property="og:url" content="https://wulizhaoch.github.io/2020/08/10/Timer/index.html">
+<meta property="og:site_name" content="Zhao_ch Personal_Blog">
+<meta property="og:description" content="😊 转载请全文转载，并标明文章出处 环境介绍  操作系统:   Window10 企业版 IDE开发环境:   ARM_MDK5 (Keil5) SDK版本:   SDK_17.0.0  硬件开发板:   官方开发板 PCA10040">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/08/10/Timer/timer_counter.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/08/10/Timer/Timer.png">
+<meta property="article:published_time" content="2020-08-10T14:14:57.000Z">
+<meta property="article:modified_time" content="2020-08-10T14:14:57.000Z">
+<meta property="article:author" content="赵晨辉">
+<meta property="article:tag" content="Nordic">
+<meta property="article:tag" content="Bluetooth">
+<meta property="article:tag" content="nRF52">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wulizhaoch.github.io/2020/08/10/Timer/timer_counter.png">
+
+<link rel="canonical" href="https://wulizhaoch.github.io/2020/08/10/Timer/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【nRF52832】学习笔记:TIMER-Timer/Counter (定时器/计数器) | Zhao_ch Personal_Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Zhao_ch Personal_Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个沉淀自我的地方!!!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-活动">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>活动</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wulizhaoch.github.io/2020/08/10/Timer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Author.png">
+      <meta itemprop="name" content="赵晨辉">
+      <meta itemprop="description" content="嵌入式硬件工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhao_ch Personal_Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【nRF52832】学习笔记:TIMER-Timer/Counter (定时器/计数器)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-10 22:14:57" itemprop="dateCreated datePublished" datetime="2020-08-10T22:14:57+08:00">2020-08-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Nordic/" itemprop="url" rel="index"><span itemprop="name">Nordic</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>😊 转载请全文转载，并标明文章出处</p>
+<p>环境介绍</p>
+<ul>
+<li>操作系统:   Window10 企业版</li>
+<li>IDE开发环境:   ARM_MDK5 (Keil5)</li>
+<li>SDK版本:   SDK_17.0.0 </li>
+<li>硬件开发板:   官方开发板 PCA10040</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="1-概述介绍"><a href="#1-概述介绍" class="headerlink" title="1. 概述介绍"></a>1. 概述介绍</h4><p>&emsp;&emsp;定时器有两种模式：<strong>定时器</strong> 和 <strong>计数器</strong>。定时器和计数器内部结构框图如下：</p>
+<p><img src="/2020/08/10/Timer/timer_counter.png" alt="timer_counter"></p>
+<p>&emsp;&emsp;不管使用什么 MCU 处理器，都必定含有定时器和计数器，针对Nordic芯片，nRF52xx系列的Timer定时器页十分强大，其内部含有5个定时器，Timer0、Timer1、Timer2、Timer3、Timer4。如果使用蓝牙的话，Timer0是被 BLE 占有的，所以只能使用后边4个定时器，Timer1、Timer2、Timer3、Timer4。</p>
+<p><img src="/2020/08/10/Timer/Timer.png" alt="Timer"></p>
+<h4 id="2-Timer-Counter-原理分析"><a href="#2-Timer-Counter-原理分析" class="headerlink" title="2. Timer / Counter 原理分析"></a>2. Timer / Counter 原理分析</h4><h5 id="2-1-Timer-Counter-定时器和计数器的区别"><a href="#2-1-Timer-Counter-定时器和计数器的区别" class="headerlink" title="2.1   Timer / Counter 定时器和计数器的区别"></a>2.1   Timer / Counter 定时器和计数器的区别</h5><ul>
+<li>定时器和计数器实际都是通过计数器来计数。</li>
+<li>定时器是对周期不变的脉冲计数 (一般来自系统时钟)，由计数的个数和脉冲的周期即可计算出时间。同时，通过一个给定的预期值 (即比较值)，当计数值达到预期值时产生中断，这实现了定时，应用程序通过设置不同的预期值实现不同时间的定时。</li>
+<li>计数器时对某一事件进行计数，此事件没发生一次，计数值加/减1，事件的产生可能时没有规律的，计数器的用途是对事件发生的次数进行计数，由计数值来反映事件产生的次数。</li>
+</ul>
+<h5 id="2-2-Timer-时钟源"><a href="#2-2-Timer-时钟源" class="headerlink" title="2.2   Timer 时钟源"></a>2.2   Timer 时钟源</h5><p>&emsp;&emsp;Timer时钟源主要来源是 PCLK1M 或 PCLK16M，系统会自动根据Timer时钟设置的频率 f 自动选择使用哪一种时钟源，时钟源的设置是无需软件操作的，当我们设置好Timer时钟频率后，系统会根据时钟频率自动选择时钟源。</p>
+<ul>
+<li><p><strong>f <sub>TIMER = 16MHz  /  2<sup>PRESCALER</sup></sub></strong> </p>
+</li>
+<li><p><strong>f <sub>TIMER &gt; 1MHz</sub></strong>，定时器使用 <strong>PCLK16M</strong> 作为时钟源。</p>
+</li>
+<li><p><strong>f <sub>TIMER &lt;= 1MHz</sub></strong>，定时器使用 <strong>PCLK1M</strong> 代替 <strong>PCLK16M</strong>，降低功耗。</p>
+</li>
+</ul>
+<h5 id="2-3-Timer-时钟频率"><a href="#2-3-Timer-时钟频率" class="headerlink" title="2.3   Timer 时钟频率"></a>2.3   Timer 时钟频率</h5><p>&emsp;&emsp;Timer 的时钟频率 f <sub>TIMER 计算公式: <strong>f <sub>TIMER = 16MHz  /  2<sup>PRESCALER</sup></sub></strong>，无论时钟源使用的是 PCLK1M 或 PCLK16M ，时钟频率计算都以 <strong>16MHz</strong> 为基准。</sub></p>
+<table>
+<thead>
+<tr>
+<th align="center">分频系数</th>
+<th align="center">时钟频率</th>
+<th align="center">系统时钟源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">16MHz</td>
+<td align="center">PCLK16M</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">8MHz</td>
+<td align="center">PCLK16M</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">4MHz</td>
+<td align="center">PCLK16M</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">2MHz</td>
+<td align="center">PCLK16M</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">1MHz</td>
+<td align="center">PCLK1M</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">500KHz</td>
+<td align="center">PCLK1M</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">250KHz</td>
+<td align="center">PCLK1M</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">125KHz</td>
+<td align="center">PCLK1M</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">62.5KHz</td>
+<td align="center">PCLK1M</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">31.25KHz</td>
+<td align="center">PCLK1M</td>
+</tr>
+</tbody></table>
+<h5 id="2-4-Timer-位宽"><a href="#2-4-Timer-位宽" class="headerlink" title="2.4   Timer 位宽"></a>2.4   Timer 位宽</h5><p>&emsp;&emsp;nRF52832 5个定时器最大位宽都是 32 Bit， BITMODE 寄存器可以设置定时器的位宽。</p>
+<table>
+<thead>
+<tr>
+<th align="center">Bit Width ID</th>
+<th align="center">Bit Width Select</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">16Bit</td>
+<td align="center">0</td>
+<td align="center">16 bit timer bit width</td>
+</tr>
+<tr>
+<td align="center">8Bit</td>
+<td align="center">1</td>
+<td align="center">8 bit timer bit width</td>
+</tr>
+<tr>
+<td align="center">24Bit</td>
+<td align="center">2</td>
+<td align="center">24 bit timer bit width</td>
+</tr>
+<tr>
+<td align="center">32Bit</td>
+<td align="center">3</td>
+<td align="center">32 bit timer bit width</td>
+</tr>
+</tbody></table>
+<p>定时器频率和定时器位宽建议设置 16MHz 和 32Bit (本人比较懒不想去算了)，也可以根据自己的定时时间及频率来选择合适的值。</p>
+<h5 id="2-5-Timer-捕获"><a href="#2-5-Timer-捕获" class="headerlink" title="2.5 Timer 捕获"></a>2.5 Timer 捕获</h5><p>&emsp;&emsp;Timer 中的每一个CC[n]寄存器都对应一个捕获任务 TASKS_CAPTURE，每次出发任务寄存器 CAPTURE[n]，捕获值会被存储到对应的CC[n]寄存器。</p>
+<h5 id="2-6-Timer-溢出和清零"><a href="#2-6-Timer-溢出和清零" class="headerlink" title="2.6 Timer 溢出和清零"></a>2.6 Timer 溢出和清零</h5><p>&emsp;&emsp;Timer 计数寄存器的值增加到最大值时，计数寄存器溢出，计数寄存器的数值会清零并自动从零开始计数。出发任务寄存器 CLEAR，计数寄存器的值也会被清零。</p>
+<h5 id="2-7-Timer-比较"><a href="#2-7-Timer-比较" class="headerlink" title="2.7 Timer 比较"></a>2.7 Timer 比较</h5><p>&emsp;&emsp;Timer 中每一个CC[n]寄存器都对应一个比较事件 COMPARE，计数值增加到和CC[n]寄存器设置的数值一样时，会产生比较事件 COMPARE[n]。</p>
+<h5 id="2-8-Timer-任务延迟和任务优先级"><a href="#2-8-Timer-任务延迟和任务优先级" class="headerlink" title="2.8 Timer 任务延迟和任务优先级"></a>2.8 Timer 任务延迟和任务优先级</h5><ul>
+<li>任务延迟：Timer 启动后，CLEAR 任务、COUNT任务、STOP任务会在PCLK16M 的一个时钟周期内生效。</li>
+<li>任务优先级：START 任务和 STOP 任务在同一个时钟周期内同时触发时，STOP 任务优先执行。</li>
+</ul>
+<h4 id="3-Timer-Counter-定时器-计数器-代码实现"><a href="#3-Timer-Counter-定时器-计数器-代码实现" class="headerlink" title="3. Timer/Counter (定时器/计数器) 代码实现"></a>3. Timer/Counter (定时器/计数器) 代码实现</h4><h5 id="3-1-Timer-c-配置"><a href="#3-1-Timer-c-配置" class="headerlink" title="3.1 Timer.c 配置"></a>3.1 Timer.c 配置</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * timer.c</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *   Created on: 2020-7-17</span></span><br><span class="line"><span class="comment"> *       Author: wuliZhao_ch</span></span><br><span class="line"><span class="comment"> *  Description: library function versions implement timers</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"timer.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TIMER0      0</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TIMER_MS</span></span><br><span class="line"><span class="comment">//#define TIMER_US</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">nrf_drv_timer_t</span> TIMER_TASK = NRF_DRV_TIMER_INSTANCE(<span class="number">0</span>);            <span class="comment">/* Create Timer0 Instance */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief Handler for timer events.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">timer_task_event_handler</span><span class="params">(<span class="keyword">nrf_timer_event_t</span> event_type, <span class="keyword">void</span>* p_context)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (event_type)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> NRF_TIMER_EVENT_COMPARE0:          <span class="comment">/* CC[0] Compare event match */</span></span><br><span class="line">            LED_Toggle(LED2);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"><span class="comment">//        case NRF_TIMER_EVENT_COMPARE1:          /* CC[1] Compare event match */</span></span><br><span class="line"><span class="comment">//            break;</span></span><br><span class="line"><span class="comment">//        case NRF_TIMER_EVENT_COMPARE2:          /* CC[2] Compare event match */</span></span><br><span class="line"><span class="comment">//            break;</span></span><br><span class="line"><span class="comment">//        case NRF_TIMER_EVENT_COMPARE3:          /* CC[3] Compare event match */</span></span><br><span class="line"><span class="comment">//            break;</span></span><br><span class="line"><span class="comment">//        case NRF_TIMER_EVENT_COMPARE4:          /* CC[4] Compare event match */</span></span><br><span class="line"><span class="comment">//            break;</span></span><br><span class="line"><span class="comment">//        case NRF_TIMER_EVENT_COMPARE5:          /* CC[5] Compare event match */</span></span><br><span class="line"><span class="comment">//            break;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="comment">// Do nothing.</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief  HardWare Timer Initialization.</span></span><br><span class="line"><span class="comment"> * @param  Times : timing time</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hardWare_timer_init</span><span class="params">(<span class="keyword">uint32_t</span> times)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">uint32_t</span> time_ticks;</span><br><span class="line">    <span class="keyword">uint32_t</span> err_code = NRF_SUCCESS;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined (TIMER_MS)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">nrf_drv_timer_config_t</span> timer_cfg = NRF_DRV_TIMER_DEFAULT_CONFIG;</span><br><span class="line"></span><br><span class="line">    err_code = nrf_drv_timer_init(&amp;TIMER_TASK, &amp;timer_cfg, timer_task_event_handler);</span><br><span class="line">    APP_ERROR_CHECK(err_code);</span><br><span class="line"></span><br><span class="line">    time_ticks = nrf_drv_timer_ms_to_ticks(&amp;TIMER_TASK, times);</span><br><span class="line"></span><br><span class="line">    nrf_drv_timer_extended_compare(&amp;TIMER_TASK, NRF_TIMER_CC_CHANNEL0, time_ticks, NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    nrf_drv_timer_enable(&amp;TIMER_TASK);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined (TIMER_US)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">nrf_drv_timer_config_t</span> timer_cfg = NRF_DRV_TIMER_DEFAULT_CONFIG;</span><br><span class="line"></span><br><span class="line">    err_code = nrf_drv_timer_init(&amp;TIMER_TASK, &amp;timer_cfg, timer_task_event_handler);</span><br><span class="line">    APP_ERROR_CHECK(err_code);</span><br><span class="line"></span><br><span class="line">    time_ticks = nrf_drv_timer_us_to_ticks(&amp;TIMER_TASK, Times);</span><br><span class="line"></span><br><span class="line">    nrf_drv_timer_extended_compare(&amp;TIMER_TASK, NRF_TIMER_CC_CHANNEL0, time_ticks, NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    nrf_drv_timer_enable(&amp;TIMER_TASK);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3-2-Timer-h-配置"><a href="#3-2-Timer-h-配置" class="headerlink" title="3.2 Timer.h 配置"></a>3.2 Timer.h 配置</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * timer.h</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *   Created on: 2020-7-17</span></span><br><span class="line"><span class="comment"> *       Author: wuliZhao_ch</span></span><br><span class="line"><span class="comment"> *  Description: library function versions implement timers</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> TIMER_H__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TIMER_H__</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"nrf_drv_timer.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"app_error.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"nrf_gpio.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"led.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">timer_task_event_handler</span><span class="params">(<span class="keyword">nrf_timer_event_t</span> event_type, <span class="keyword">void</span>* p_context)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hardWare_timer_init</span><span class="params">(<span class="keyword">uint32_t</span> times)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* TIMER_H__ */</span></span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Nordic/" rel="tag"># Nordic</a>
+              <a href="/tags/Bluetooth/" rel="tag"># Bluetooth</a>
+              <a href="/tags/nRF52/" rel="tag"># nRF52</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/06/GPIOTE/" rel="prev" title="【nRF52832】学习笔记:GPIOTE (TASK/EVENT)">
+      <i class="fa fa-chevron-left"></i> 【nRF52832】学习笔记:GPIOTE (TASK/EVENT)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-概述介绍"><span class="nav-text">1. 概述介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Timer-Counter-原理分析"><span class="nav-text">2. Timer &#x2F; Counter 原理分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Timer-Counter-定时器和计数器的区别"><span class="nav-text">2.1   Timer &#x2F; Counter 定时器和计数器的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-Timer-时钟源"><span class="nav-text">2.2   Timer 时钟源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Timer-时钟频率"><span class="nav-text">2.3   Timer 时钟频率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-Timer-位宽"><span class="nav-text">2.4   Timer 位宽</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-Timer-捕获"><span class="nav-text">2.5 Timer 捕获</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6-Timer-溢出和清零"><span class="nav-text">2.6 Timer 溢出和清零</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-7-Timer-比较"><span class="nav-text">2.7 Timer 比较</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-8-Timer-任务延迟和任务优先级"><span class="nav-text">2.8 Timer 任务延迟和任务优先级</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Timer-Counter-定时器-计数器-代码实现"><span class="nav-text">3. Timer&#x2F;Counter (定时器&#x2F;计数器) 代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-Timer-c-配置"><span class="nav-text">3.1 Timer.c 配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-Timer-h-配置"><span class="nav-text">3.2 Timer.h 配置</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="赵晨辉"
+      src="/images/Author.png">
+  <p class="site-author-name" itemprop="name">赵晨辉</p>
+  <div class="site-description" itemprop="description">嵌入式硬件工程师</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wuliZhaoch" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wuliZhaoch" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:Pingan951120@gmail.com" title="E-Mail → mailto:Pingan951120@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/PianAn924" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;PianAn924" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/sdnm7ktnIzlYHSg" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;sdnm7ktnIzlYHSg" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵晨辉</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
