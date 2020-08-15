@@ -69,6 +69,111 @@
       </tags>
   </entry>
   <entry>
+    <title>Git 分支管理 (Git_Flow)</title>
+    <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<ul>
+<li><p>主分支Master：</p>
+<pre><code>代码库应该有一个，且仅有一个主分支。(提供给用户的正式版本，都在主分支上发布(有版本标签))</code></pre></li>
+<li><p>开发分支Develop：</p>
+<pre><code>主分支只用来发布重大版本，日常开发应该在另一条分支(即开发分支（Develop))
+Git创建Develop分支命令：
+    git checkout -b develop master
+Develop分支合并到Master分支命令：
+# 切换到Master分支：
+    git checkout master
+# 对Develop分支进行合并
+    git merge --no-ff develop
+（--no-ff参数：默认情况下，Git执行&quot;快进式合并&quot; Fast-Farward merge 直接将Master分支指向Develop分支）</code></pre></li>
+<li><p>临时性分支：</p>
+<pre><code>Master 和 Develop，前者用于正式发布，后者用于日常开发。除了常设分支以外，还有一些临时分支，用于应用一些特定目的的版本开发。临时性分支有三种：
+    功能（feature）分支
+    预发布（release）分支
+    修补bug（fixbug）分支
+（这三种分支属于临时性需要，使用完成之后，应该删除，使得代码库的常设分支始终只有Master和Develop分支）
+
+1. 功能分支：
+    功能分支，是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要合并到Develop分支上。(功能分支的名字，可以采用feature-*的形式命名)
+    Git 创建一个功能分支：
+        git checkout -b feature-x develop
+    开发完成后，将功能分支合并到develop分支：
+        git checkout develop
+        git merge --no-ff feature-x
+    删除featur-x分支：
+        git branch -d feature-x
+
+2. 预发布分支：
+    指发布正式版本之前（即合并Master分支之前），可能需要有一个预发布的版本进行测试。
+    预发布分支是从Develop分支上边分出来的，预发布结束后，必须合并进Develop和Master分支上。
+    命名采用release-*的形式：
+    创建一个预发布分支：
+    git checkout -b release-1.2 develop
+确认没有问题后，合并Master分支：
+    git checkout master
+    git merge --no-ff release-1.2
+    # 对合并生成的新节点，做一个标签
+    git tag -a 1.2
+然后合并到develop分支：
+    git checkout develop
+    git merge --no-ff release-1.2
+最后删除预发布分支：
+    git branch -d release-1.2
+
+3. 修补bug分支：
+        软件正式发布以后，难免回出现bug。这是就需要创建一个分支，进行bug修补.
+        修补bug分支是从Master分支上面分出来的。修补结束后，再合并进Master和Develop分支。
+    命名采用fixbug-*的形式:
+        创建一个修补bug分支：
+            git checkout -b fixbug-0.1 master
+        修补结束后，合并到master分支：
+            git checkout master
+            git merge --no-ff fixbug-0.1
+            git tag -a 0.1.1
+        再合并到develop分支：
+            git checkout develop
+            git merge --no-ff fixbug-0.1
+    最后，删除&quot;修补bug分支&quot;：
+        git branch -d fixbug-0.1</code></pre></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+        <tag>Gitlab</tag>
+        <tag>Gitee</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
+    <url>/2020/05/06/Nordic-development-environment/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="1-强制安装项"><a href="#1-强制安装项" class="headerlink" title="1. 强制安装项"></a>1. 强制安装项</h3><p>​            如下工具必须安装,否则无法开发 nRF51 &amp; nRF52 Series 产品</p>
+<h4 id="1-1-安装IDE"><a href="#1-1-安装IDE" class="headerlink" title="1.1   安装IDE"></a>1.1   安装IDE</h4><p>​            Nordic nRF51/52支持Keil，GCC，IAR 和 SES（Segger Embedded Studio）四种IDE，大家随便选择其中一种安装即可。</p>
+<h4 id="1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）"><a href="#1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）" class="headerlink" title="1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）"></a>1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）</h4><p>​            nRF Command Line Tools ( Nordic官方自己开发的命令行工具 ) , 安装过程中具体组件包括 J-link驱动、nrfjprog、nrfutil、mergehex等。</p>
+<p>​            下载连接:  <a href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs" target="_blank" rel="noopener">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs</a></p>
+<p>​            选择自己的桌面平台及需要的版本 (推荐最新发布的版本):</p>
+<p><img src="/2020/05/06/Nordic-development-environment/nRF-Command-Line-Tools.png" alt></p>
+]]></content>
+      <categories>
+        <category>Nordic</category>
+      </categories>
+      <tags>
+        <tag>Nordic</tag>
+        <tag>Bluetooth</tag>
+        <tag>nRF connect</tag>
+        <tag>nrfutil</tag>
+        <tag>nRF51</tag>
+        <tag>nRF52</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【nRF52832】学习笔记:GPIOTE (TASK/EVENT)</title>
     <url>/2020/08/06/GPIOTE/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -218,86 +323,6 @@
 <li>添加 35.231.145.151 <a href="http://gitlab.com/" target="_blank" rel="noopener">gitlab.com</a>   </li>
 </ul>
 </li>
-</ul>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-        <tag>Gitlab</tag>
-        <tag>Gitee</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git 分支管理 (Git_Flow)</title>
-    <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<ul>
-<li><p>主分支Master：</p>
-<pre><code>代码库应该有一个，且仅有一个主分支。(提供给用户的正式版本，都在主分支上发布(有版本标签))</code></pre></li>
-<li><p>开发分支Develop：</p>
-<pre><code>主分支只用来发布重大版本，日常开发应该在另一条分支(即开发分支（Develop))
-Git创建Develop分支命令：
-    git checkout -b develop master
-Develop分支合并到Master分支命令：
-# 切换到Master分支：
-    git checkout master
-# 对Develop分支进行合并
-    git merge --no-ff develop
-（--no-ff参数：默认情况下，Git执行&quot;快进式合并&quot; Fast-Farward merge 直接将Master分支指向Develop分支）</code></pre></li>
-<li><p>临时性分支：</p>
-<pre><code>Master 和 Develop，前者用于正式发布，后者用于日常开发。除了常设分支以外，还有一些临时分支，用于应用一些特定目的的版本开发。临时性分支有三种：
-    功能（feature）分支
-    预发布（release）分支
-    修补bug（fixbug）分支
-（这三种分支属于临时性需要，使用完成之后，应该删除，使得代码库的常设分支始终只有Master和Develop分支）
-
-1. 功能分支：
-    功能分支，是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要合并到Develop分支上。(功能分支的名字，可以采用feature-*的形式命名)
-    Git 创建一个功能分支：
-        git checkout -b feature-x develop
-    开发完成后，将功能分支合并到develop分支：
-        git checkout develop
-        git merge --no-ff feature-x
-    删除featur-x分支：
-        git branch -d feature-x
-
-2. 预发布分支：
-    指发布正式版本之前（即合并Master分支之前），可能需要有一个预发布的版本进行测试。
-    预发布分支是从Develop分支上边分出来的，预发布结束后，必须合并进Develop和Master分支上。
-    命名采用release-*的形式：
-    创建一个预发布分支：
-    git checkout -b release-1.2 develop
-确认没有问题后，合并Master分支：
-    git checkout master
-    git merge --no-ff release-1.2
-    # 对合并生成的新节点，做一个标签
-    git tag -a 1.2
-然后合并到develop分支：
-    git checkout develop
-    git merge --no-ff release-1.2
-最后删除预发布分支：
-    git branch -d release-1.2
-
-3. 修补bug分支：
-        软件正式发布以后，难免回出现bug。这是就需要创建一个分支，进行bug修补.
-        修补bug分支是从Master分支上面分出来的。修补结束后，再合并进Master和Develop分支。
-    命名采用fixbug-*的形式:
-        创建一个修补bug分支：
-            git checkout -b fixbug-0.1 master
-        修补结束后，合并到master分支：
-            git checkout master
-            git merge --no-ff fixbug-0.1
-            git tag -a 0.1.1
-        再合并到develop分支：
-            git checkout develop
-            git merge --no-ff fixbug-0.1
-    最后，删除&quot;修补bug分支&quot;：
-        git branch -d fixbug-0.1</code></pre></li>
 </ul>
 ]]></content>
       <categories>
@@ -470,31 +495,6 @@ Develop分支合并到Master分支命令：
     <title>Welcome</title>
     <url>/2020/05/03/Personal_Blog/</url>
     <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
-  </entry>
-  <entry>
-    <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
-    <url>/2020/05/06/Nordic-development-environment/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="1-强制安装项"><a href="#1-强制安装项" class="headerlink" title="1. 强制安装项"></a>1. 强制安装项</h3><p>​            如下工具必须安装,否则无法开发 nRF51 &amp; nRF52 Series 产品</p>
-<h4 id="1-1-安装IDE"><a href="#1-1-安装IDE" class="headerlink" title="1.1   安装IDE"></a>1.1   安装IDE</h4><p>​            Nordic nRF51/52支持Keil，GCC，IAR 和 SES（Segger Embedded Studio）四种IDE，大家随便选择其中一种安装即可。</p>
-<h4 id="1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）"><a href="#1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）" class="headerlink" title="1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）"></a>1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）</h4><p>​            nRF Command Line Tools ( Nordic官方自己开发的命令行工具 ) , 安装过程中具体组件包括 J-link驱动、nrfjprog、nrfutil、mergehex等。</p>
-<p>​            下载连接:  <a href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs" target="_blank" rel="noopener">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs</a></p>
-<p>​            选择自己的桌面平台及需要的版本 (推荐最新发布的版本):</p>
-<p><img src="/2020/05/06/Nordic-development-environment/nRF-Command-Line-Tools.png" alt></p>
-]]></content>
-      <categories>
-        <category>Nordic</category>
-      </categories>
-      <tags>
-        <tag>Nordic</tag>
-        <tag>Bluetooth</tag>
-        <tag>nRF52</tag>
-        <tag>nRF connect</tag>
-        <tag>nrfutil</tag>
-        <tag>nRF51</tag>
-      </tags>
   </entry>
   <entry>
     <title>【STM32CubeMX】学习笔记-&gt;STM32CubeMX_Usart</title>
@@ -774,9 +774,9 @@ Develop分支合并到Master分支命令：
 </ul>
 <h4 id="3-Timer-Counter-定时器-计数器-代码实现"><a href="#3-Timer-Counter-定时器-计数器-代码实现" class="headerlink" title="3. Timer/Counter (定时器/计数器) 代码实现"></a>3. Timer/Counter (定时器/计数器) 代码实现</h4><h5 id="3-1-Timer-c-配置"><a href="#3-1-Timer-c-配置" class="headerlink" title="3.1 Timer.c 配置"></a>3.1 Timer.c 配置</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * timer.c</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *   Created on: 2020-7-17</span></span><br><span class="line"><span class="comment"> *       Author: wuliZhao_ch</span></span><br><span class="line"><span class="comment"> *  Description: library function versions implement timers</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"timer.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TIMER0      0</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TIMER_MS</span></span><br><span class="line"><span class="comment">//#define TIMER_US</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">nrf_drv_timer_t</span> TIMER_TASK = NRF_DRV_TIMER_INSTANCE(<span class="number">0</span>);            <span class="comment">/* Create Timer0 Instance */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief Handler for timer events.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">timer_task_event_handler</span><span class="params">(<span class="keyword">nrf_timer_event_t</span> event_type, <span class="keyword">void</span>* p_context)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (event_type)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> NRF_TIMER_EVENT_COMPARE0:          <span class="comment">/* CC[0] Compare event match */</span></span><br><span class="line">            LED_Toggle(LED2);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"><span class="comment">//        case NRF_TIMER_EVENT_COMPARE1:          /* CC[1] Compare event match */</span></span><br><span class="line"><span class="comment">//            break;</span></span><br><span class="line"><span class="comment">//        case NRF_TIMER_EVENT_COMPARE2:          /* CC[2] Compare event match */</span></span><br><span class="line"><span class="comment">//            break;</span></span><br><span class="line"><span class="comment">//        case NRF_TIMER_EVENT_COMPARE3:          /* CC[3] Compare event match */</span></span><br><span class="line"><span class="comment">//            break;</span></span><br><span class="line"><span class="comment">//        case NRF_TIMER_EVENT_COMPARE4:          /* CC[4] Compare event match */</span></span><br><span class="line"><span class="comment">//            break;</span></span><br><span class="line"><span class="comment">//        case NRF_TIMER_EVENT_COMPARE5:          /* CC[5] Compare event match */</span></span><br><span class="line"><span class="comment">//            break;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="comment">// Do nothing.</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief  HardWare Timer Initialization.</span></span><br><span class="line"><span class="comment"> * @param  Times : timing time</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hardWare_timer_init</span><span class="params">(<span class="keyword">uint32_t</span> times)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">uint32_t</span> time_ticks;</span><br><span class="line">    <span class="keyword">uint32_t</span> err_code = NRF_SUCCESS;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined (TIMER_MS)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">nrf_drv_timer_config_t</span> timer_cfg = NRF_DRV_TIMER_DEFAULT_CONFIG;</span><br><span class="line"></span><br><span class="line">    err_code = nrf_drv_timer_init(&amp;TIMER_TASK, &amp;timer_cfg, timer_task_event_handler);</span><br><span class="line">    APP_ERROR_CHECK(err_code);</span><br><span class="line"></span><br><span class="line">    time_ticks = nrf_drv_timer_ms_to_ticks(&amp;TIMER_TASK, times);</span><br><span class="line"></span><br><span class="line">    nrf_drv_timer_extended_compare(&amp;TIMER_TASK, NRF_TIMER_CC_CHANNEL0, time_ticks, NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    nrf_drv_timer_enable(&amp;TIMER_TASK);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined (TIMER_US)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">nrf_drv_timer_config_t</span> timer_cfg = NRF_DRV_TIMER_DEFAULT_CONFIG;</span><br><span class="line"></span><br><span class="line">    err_code = nrf_drv_timer_init(&amp;TIMER_TASK, &amp;timer_cfg, timer_task_event_handler);</span><br><span class="line">    APP_ERROR_CHECK(err_code);</span><br><span class="line"></span><br><span class="line">    time_ticks = nrf_drv_timer_us_to_ticks(&amp;TIMER_TASK, Times);</span><br><span class="line"></span><br><span class="line">    nrf_drv_timer_extended_compare(&amp;TIMER_TASK, NRF_TIMER_CC_CHANNEL0, time_ticks, NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    nrf_drv_timer_enable(&amp;TIMER_TASK);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
 <h5 id="3-2-Timer-h-配置"><a href="#3-2-Timer-h-配置" class="headerlink" title="3.2 Timer.h 配置"></a>3.2 Timer.h 配置</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * timer.h</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *   Created on: 2020-7-17</span></span><br><span class="line"><span class="comment"> *       Author: wuliZhao_ch</span></span><br><span class="line"><span class="comment"> *  Description: library function versions implement timers</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> TIMER_H__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TIMER_H__</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"nrf_drv_timer.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"app_error.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"nrf_gpio.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"led.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">timer_task_event_handler</span><span class="params">(<span class="keyword">nrf_timer_event_t</span> event_type, <span class="keyword">void</span>* p_context)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hardWare_timer_init</span><span class="params">(<span class="keyword">uint32_t</span> times)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* TIMER_H__ */</span></span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-3-Main-c-配置"><a href="#3-3-Main-c-配置" class="headerlink" title="3.3 Main.c 配置"></a>3.3 Main.c 配置</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief Function for application main entry.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    nrf_drv_clock_hfclk_request(<span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span>(nrf_drv_clock_hfclk_is_running())</span><br><span class="line">    &#123;</span><br><span class="line">        NRF_LOG_INFO(<span class="string">"hfclk_clock_init_succeed!!!\r\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LED_Init();                      <span class="comment">/* Initialize LED */</span></span><br><span class="line">    hardWare_timer_init(<span class="number">1000</span>);       <span class="comment">/* HardWare Timer Initialization */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** @&#125; */</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -848,10 +848,10 @@ Develop分支合并到Master分支命令：
       <tags>
         <tag>Nordic</tag>
         <tag>Bluetooth</tag>
-        <tag>nRF52</tag>
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
+        <tag>nRF52</tag>
       </tags>
   </entry>
 </search>
