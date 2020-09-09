@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"wulizhaoch.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="嵌入式硬件工程师">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zhao_ch Personal_Blog">
-<meta property="og:url" content="https://wulizhaoch.github.io/tags/PCB-Design/index.html">
+  <meta name="description" content="😊 转载请全文转载，并标明文章出处 环境介绍  操作系统:   Window10 企业版 IDE开发环境:   RT-Thread Studio (Version: 1.1.3) SDK版本:   STM32H7 (Released V0.1.9) 硬件开发板:   STM32H743IITx 最小系统 (本人自己设计的最小系统)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【RT-Thread】学习笔记 --&gt;RT-Thread Studio Project Import">
+<meta property="og:url" content="https://wulizhaoch.github.io/2020/09/09/RT-Threadad-Project-import/index.html">
 <meta property="og:site_name" content="Zhao_ch Personal_Blog">
-<meta property="og:description" content="嵌入式硬件工程师">
+<meta property="og:description" content="😊 转载请全文转载，并标明文章出处 环境介绍  操作系统:   Window10 企业版 IDE开发环境:   RT-Thread Studio (Version: 1.1.3) SDK版本:   STM32H7 (Released V0.1.9) 硬件开发板:   STM32H743IITx 最小系统 (本人自己设计的最小系统)">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-09T14:32:31.000Z">
+<meta property="article:modified_time" content="2020-09-09T14:32:31.000Z">
 <meta property="article:author" content="赵晨辉">
+<meta property="article:tag" content="RTOS">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://wulizhaoch.github.io/tags/PCB-Design/">
+<link rel="canonical" href="https://wulizhaoch.github.io/2020/09/09/RT-Threadad-Project-import/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: PCB_Design | Zhao_ch Personal_Blog</title>
+  <title>【RT-Thread】学习笔记 -->RT-Thread Studio Project Import | Zhao_ch Personal_Blog</title>
   
 
 
@@ -185,71 +188,97 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">PCB_Design
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wulizhaoch.github.io/2020/09/09/RT-Threadad-Project-import/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Author.png">
+      <meta itemprop="name" content="赵晨辉">
+      <meta itemprop="description" content="嵌入式硬件工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhao_ch Personal_Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【RT-Thread】学习笔记 -->RT-Thread Studio Project Import
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-09 22:32:31" itemprop="dateCreated datePublished" datetime="2020-09-09T22:32:31+08:00">2020-09-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/RT-Thread/" itemprop="url" rel="index"><span itemprop="name">RT-Thread</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <p>😊 转载请全文转载，并标明文章出处</p>
+<p>环境介绍</p>
+<ul>
+<li>操作系统:   Window10 企业版</li>
+<li>IDE开发环境:   RT-Thread Studio (Version: 1.1.3)</li>
+<li>SDK版本:   STM32H7 (Released V0.1.9)</li>
+<li>硬件开发板:   STM32H743IITx 最小系统 (本人自己设计的最小系统)</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="RT-Thread-Studio-Project-Import-导入工程"><a href="#RT-Thread-Studio-Project-Import-导入工程" class="headerlink" title="RT-Thread Studio Project Import (导入工程)"></a>RT-Thread Studio Project Import (导入工程)</h1><h4 id="1-RT-Thread-Studio-项目导入"><a href="#1-RT-Thread-Studio-项目导入" class="headerlink" title="1. RT-Thread Studio 项目导入"></a>1. RT-Thread Studio 项目导入</h4><h5 id="1-1-RT-Thread-Studio-资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。"><a href="#1-1-RT-Thread-Studio-资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。" class="headerlink" title="1.1 RT-Thread Studio 资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。"></a>1.1 RT-Thread Studio 资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。</h5><h5 id="1-2-打开导入功能向导，选择导入RT-Thread-Studio-工程，点击下一步。"><a href="#1-2-打开导入功能向导，选择导入RT-Thread-Studio-工程，点击下一步。" class="headerlink" title="1.2 打开导入功能向导，选择导入RT-Thread Studio 工程，点击下一步。"></a>1.2 打开导入功能向导，选择导入RT-Thread Studio 工程，点击下一步。</h5><h5 id="1-3-点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。"><a href="#1-3-点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。" class="headerlink" title="1.3 点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。"></a>1.3 点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。</h5><h4 id="2-MDK-IAR-项目导入"><a href="#2-MDK-IAR-项目导入" class="headerlink" title="2. MDK/IAR 项目导入"></a>2. MDK/IAR 项目导入</h4><h5 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h5><h5 id="2-2"><a href="#2-2" class="headerlink" title="2.2"></a>2.2</h5><h5 id="2-3"><a href="#2-3" class="headerlink" title="2.3"></a>2.3</h5>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-28T14:31:01+08:00"
-              content="2020-06-28">
-          06-28
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/RTOS/" rel="tag"># RTOS</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/" itemprop="url">
-            <span itemprop="name">【Altium Designer】学习笔记 --> Altium Designer 导出 Gerber 文件教程</span>
-          </a>
-      </div>
+        
 
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-04T08:07:17+08:00"
-              content="2020-05-04">
-          05-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/" itemprop="url">
-            <span itemprop="name">嘉立创JLC元件库+3D封装下载</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/10/Timer/" rel="prev" title="【nRF52832】学习笔记 --> TIMER-Timer/Counter (定时器/计数器)">
+      <i class="fa fa-chevron-left"></i> 【nRF52832】学习笔记 --> TIMER-Timer/Counter (定时器/计数器)
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-  </div>
+      </footer>
+    
+  </article>
   
   
-  
-
   
 
 
@@ -302,6 +331,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RT-Thread-Studio-Project-Import-导入工程"><span class="nav-text">RT-Thread Studio Project Import (导入工程)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-RT-Thread-Studio-项目导入"><span class="nav-text">1. RT-Thread Studio 项目导入</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-RT-Thread-Studio-资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。"><span class="nav-text">1.1 RT-Thread Studio 资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-打开导入功能向导，选择导入RT-Thread-Studio-工程，点击下一步。"><span class="nav-text">1.2 打开导入功能向导，选择导入RT-Thread Studio 工程，点击下一步。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。"><span class="nav-text">1.3 点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-MDK-IAR-项目导入"><span class="nav-text">2. MDK&#x2F;IAR 项目导入</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1"><span class="nav-text">2.1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2"><span class="nav-text">2.2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3"><span class="nav-text">2.3</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

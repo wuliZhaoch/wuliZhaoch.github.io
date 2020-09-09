@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Altium Designer 导出 Gerber 文件教程</title>
+    <title>【Altium Designer】学习笔记 --&gt; Altium Designer 导出 Gerber 文件教程</title>
     <url>/2020/06/28/AltiumDesigner-Gerber%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <a id="more"></a>
@@ -69,7 +69,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Git 分支管理 (Git_Flow)</title>
+    <title>【Git】学习笔记 --&gt; Git 分支管理 (Git_Flow)</title>
     <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <a id="more"></a>
@@ -149,7 +149,58 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>【nRF52832】学习笔记:GPIOTE (TASK/EVENT)</title>
+    <title>【Git】学习笔记 --&gt; Git 初次运行前的配置</title>
+    <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h2 id="Git初次运行配置"><a href="#Git初次运行配置" class="headerlink" title="Git初次运行配置"></a>Git初次运行配置</h2><h3 id="1-用户信息"><a href="#1-用户信息" class="headerlink" title="1.    用户信息"></a>1.    用户信息</h3><ul>
+<li>安装完Git应该做的第一件事就是设置自己的用户名称和邮件地址.</li>
+<li>命令如下:<ul>
+<li><code>$ git config --global user.name &quot;Zhao_ch&quot;</code> </li>
+<li><code>$ git config --global user.email &quot;Zhao_ch@163.com&quot;</code></li>
+</ul>
+</li>
+<li>如果使用了–global选项，那么该命令是需要运行一次，因为之后无论你在系统上做任何事情，Git都会使用这些信息  </li>
+</ul>
+<h3 id="2-文本编辑器"><a href="#2-文本编辑器" class="headerlink" title="2.   文本编辑器"></a>2.   文本编辑器</h3><ul>
+<li>用户信息设置完毕，可以设置默认文本编辑器  </li>
+<li>如果没有设置，Git会使用操作系统默认的文本编辑器，通常是Vim </li>
+<li>例如设置文本编辑器为Notepad++  <ul>
+<li>命令如下：    <ul>
+<li>`$ git config –global core.editor Notepad++</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-检查配置信息"><a href="#3-检查配置信息" class="headerlink" title="3.   检查配置信息"></a>3.   检查配置信息</h3><ul>
+<li>如果查询配置信息可以使用 $ git config –list 命令列出所有配置信息。</li>
+</ul>
+<h3 id="4-生成密钥"><a href="#4-生成密钥" class="headerlink" title="4.   生成密钥"></a>4.   生成密钥</h3><ul>
+<li>命令如下:<ul>
+<li><code>$ ssh-keygen -t rsa -C &quot;Zhao_ch@163.com&quot;</code></li>
+</ul>
+</li>
+<li>如果不设置密码的话 连续 3 个回车。然后生成 id_rsa 和 id_rsa.pub 两个文件。<ul>
+<li><strong>Hosts文件配置 文件位置</strong> <strong>C:\Windows\System32\drivers\etc\hosts</strong>     </li>
+<li>添加 35.231.145.151 <a href="http://gitlab.com/" target="_blank" rel="noopener">gitlab.com</a>   </li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+        <tag>Gitlab</tag>
+        <tag>Gitee</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【nRF52832】学习笔记 --&gt; GPIOTE (TASK/EVENT)</title>
     <url>/2020/08/06/GPIOTE/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <p>环境介绍</p>
@@ -260,83 +311,7 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>Git 初次运行前的配置</title>
-    <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h2 id="Git初次运行配置"><a href="#Git初次运行配置" class="headerlink" title="Git初次运行配置"></a>Git初次运行配置</h2><h3 id="1-用户信息"><a href="#1-用户信息" class="headerlink" title="1.    用户信息"></a>1.    用户信息</h3><ul>
-<li>安装完Git应该做的第一件事就是设置自己的用户名称和邮件地址.</li>
-<li>命令如下:<ul>
-<li><code>$ git config --global user.name &quot;Zhao_ch&quot;</code> </li>
-<li><code>$ git config --global user.email &quot;Zhao_ch@163.com&quot;</code></li>
-</ul>
-</li>
-<li>如果使用了–global选项，那么该命令是需要运行一次，因为之后无论你在系统上做任何事情，Git都会使用这些信息  </li>
-</ul>
-<h3 id="2-文本编辑器"><a href="#2-文本编辑器" class="headerlink" title="2.   文本编辑器"></a>2.   文本编辑器</h3><ul>
-<li>用户信息设置完毕，可以设置默认文本编辑器  </li>
-<li>如果没有设置，Git会使用操作系统默认的文本编辑器，通常是Vim </li>
-<li>例如设置文本编辑器为Notepad++  <ul>
-<li>命令如下：    <ul>
-<li>`$ git config –global core.editor Notepad++</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-检查配置信息"><a href="#3-检查配置信息" class="headerlink" title="3.   检查配置信息"></a>3.   检查配置信息</h3><ul>
-<li>如果查询配置信息可以使用 $ git config –list 命令列出所有配置信息。</li>
-</ul>
-<h3 id="4-生成密钥"><a href="#4-生成密钥" class="headerlink" title="4.   生成密钥"></a>4.   生成密钥</h3><ul>
-<li>命令如下:<ul>
-<li><code>$ ssh-keygen -t rsa -C &quot;Zhao_ch@163.com&quot;</code></li>
-</ul>
-</li>
-<li>如果不设置密码的话 连续 3 个回车。然后生成 id_rsa 和 id_rsa.pub 两个文件。<ul>
-<li><strong>Hosts文件配置 文件位置</strong> <strong>C:\Windows\System32\drivers\etc\hosts</strong>     </li>
-<li>添加 35.231.145.151 <a href="http://gitlab.com/" target="_blank" rel="noopener">gitlab.com</a>   </li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-        <tag>Gitlab</tag>
-        <tag>Gitee</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
-    <url>/2020/05/06/Nordic-development-environment/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="1-强制安装项"><a href="#1-强制安装项" class="headerlink" title="1. 强制安装项"></a>1. 强制安装项</h3><p>​            如下工具必须安装,否则无法开发 nRF51 &amp; nRF52 Series 产品</p>
-<h4 id="1-1-安装IDE"><a href="#1-1-安装IDE" class="headerlink" title="1.1   安装IDE"></a>1.1   安装IDE</h4><p>​            Nordic nRF51/52支持Keil，GCC，IAR 和 SES（Segger Embedded Studio）四种IDE，大家随便选择其中一种安装即可。</p>
-<h4 id="1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）"><a href="#1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）" class="headerlink" title="1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）"></a>1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）</h4><p>​            nRF Command Line Tools ( Nordic官方自己开发的命令行工具 ) , 安装过程中具体组件包括 J-link驱动、nrfjprog、nrfutil、mergehex等。</p>
-<p>​            下载连接:  <a href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs" target="_blank" rel="noopener">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs</a></p>
-<p>​            选择自己的桌面平台及需要的版本 (推荐最新发布的版本):</p>
-<p><img src="/2020/05/06/Nordic-development-environment/nRF-Command-Line-Tools.png" alt></p>
-]]></content>
-      <categories>
-        <category>Nordic</category>
-      </categories>
-      <tags>
-        <tag>Nordic</tag>
-        <tag>Bluetooth</tag>
-        <tag>nRF52</tag>
-        <tag>nRF connect</tag>
-        <tag>nrfutil</tag>
-        <tag>nRF51</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【nRF52832】学习笔记:Flash Data Storage (FDS)存储</title>
+    <title>【nRF52832】学习笔记 --&gt; Flash Data Storage (FDS)存储</title>
     <url>/2020/07/11/Nordic-FDS/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <p>环境介绍</p>
@@ -492,134 +467,34 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
+    <title>【Nordic】学习笔记 --&gt; Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
+    <url>/2020/05/06/Nordic-development-environment/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="1-强制安装项"><a href="#1-强制安装项" class="headerlink" title="1. 强制安装项"></a>1. 强制安装项</h3><p>​            如下工具必须安装,否则无法开发 nRF51 &amp; nRF52 Series 产品</p>
+<h4 id="1-1-安装IDE"><a href="#1-1-安装IDE" class="headerlink" title="1.1   安装IDE"></a>1.1   安装IDE</h4><p>​            Nordic nRF51/52支持Keil，GCC，IAR 和 SES（Segger Embedded Studio）四种IDE，大家随便选择其中一种安装即可。</p>
+<h4 id="1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）"><a href="#1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）" class="headerlink" title="1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）"></a>1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）</h4><p>​            nRF Command Line Tools ( Nordic官方自己开发的命令行工具 ) , 安装过程中具体组件包括 J-link驱动、nrfjprog、nrfutil、mergehex等。</p>
+<p>​            下载连接:  <a href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs" target="_blank" rel="noopener">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs</a></p>
+<p>​            选择自己的桌面平台及需要的版本 (推荐最新发布的版本):</p>
+<p><img src="/2020/05/06/Nordic-development-environment/nRF-Command-Line-Tools.png" alt></p>
+]]></content>
+      <categories>
+        <category>Nordic</category>
+      </categories>
+      <tags>
+        <tag>Nordic</tag>
+        <tag>Bluetooth</tag>
+        <tag>nRF52</tag>
+        <tag>nRF connect</tag>
+        <tag>nrfutil</tag>
+        <tag>nRF51</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Welcome</title>
     <url>/2020/05/03/Personal_Blog/</url>
     <content><![CDATA[<h1 id="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"><a href="#青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。" class="headerlink" title="青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。"></a>青春，人生最美好的年华，相信自己，要知道你内心深处的某些东西是比任何困难都要强大。</h1>]]></content>
-  </entry>
-  <entry>
-    <title>【STM32CubeMX】学习笔记-&gt;STM32CubeMX_Usart</title>
-    <url>/2020/05/05/STM32CubeMX-Usart/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<p>环境介绍</p>
-<ul>
-<li>操作系统:   Window10 企业版</li>
-<li>IDE开发环境:   STM32CubeIDE 1.2.0</li>
-<li>STM32CubeMX版本:   STM32CubeMX Version 5.4.0</li>
-<li>Mcu and Firmware Package:   STM32Cube FW_H7 V1.5.0</li>
-<li>硬件开发板:   本人自己设计的最小系统</li>
-</ul>
-<a id="more"></a>
-
-<h4 id="1-打开-STM32CubeMX"><a href="#1-打开-STM32CubeMX" class="headerlink" title="1. 打开 STM32CubeMX"></a>1. 打开 STM32CubeMX</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/0.png" alt></p>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/1.png" alt></p>
-<h4 id="2-创建工程Project"><a href="#2-创建工程Project" class="headerlink" title="2. 创建工程Project"></a>2. 创建工程Project</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/2.png" alt></p>
-<h4 id="3-选择自己MCU的型号"><a href="#3-选择自己MCU的型号" class="headerlink" title="3. 选择自己MCU的型号"></a>3. 选择自己MCU的型号</h4><ul>
-<li><strong>本人MCU型号：STM32H743IITx</strong></li>
-<li><strong>双击红色区域直接进入配置界面</strong></li>
-</ul>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/3.png" alt></p>
-<h4 id="4-RCC-配置"><a href="#4-RCC-配置" class="headerlink" title="4. RCC 配置"></a>4. RCC 配置</h4><ul>
-<li>单击 System Core -&gt; 单击RCC<ul>
-<li>RCC Mode and Configuration<ul>
-<li>High Speed Clock (HSE) -&gt; Crystal/Ceramic Resonator</li>
-<li>Low Speed Clock (LSE) -&gt; Crystal/Ceramic Resonator</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/4.png" alt></p>
-<h4 id="5-串口USART配置"><a href="#5-串口USART配置" class="headerlink" title="5. 串口USART配置"></a>5. 串口USART配置</h4><ul>
-<li><p>单击 Connectivity -&gt; 单击 USART1</p>
-<ul>
-<li><p>USART1 Mode</p>
-<ul>
-<li>Mode：Asynchronous</li>
-</ul>
-</li>
-<li><p>USART1 Configuration</p>
-<ul>
-<li>Parameter Settings（基础配置）<ul>
-<li><img src="/2020/05/05/STM32CubeMX-Usart/5.png" alt></li>
-</ul>
-</li>
-<li>NVIC Settings（中断配置）勾选Enabled<ul>
-<li><img src="/2020/05/05/STM32CubeMX-Usart/6.png" alt></li>
-</ul>
-</li>
-<li>GPIO Settings （I/O配置）<ul>
-<li><strong>PA9</strong> -&gt; USART1_TX  /  <strong>PA10</strong> -&gt; UASRT1_RX</li>
-<li>I/O 空闲状态全部上拉（Pull-Up）</li>
-<li><img src="/2020/05/05/STM32CubeMX-Usart/7.png" alt></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="6-时钟树配置（Clock-Configuration）"><a href="#6-时钟树配置（Clock-Configuration）" class="headerlink" title="6. 时钟树配置（Clock Configuration）"></a>6. 时钟树配置（Clock Configuration）</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/8.png" alt></p>
-<h4 id="7-生成路径及IDE选择配置"><a href="#7-生成路径及IDE选择配置" class="headerlink" title="7. 生成路径及IDE选择配置"></a>7. 生成路径及IDE选择配置</h4><ul>
-<li><p><strong>Project</strong></p>
-<ul>
-<li><p>Project Name：工程名（根据自己要求来写）</p>
-</li>
-<li><p>Project Location：生成工程路径（选择自己常用路径）</p>
-</li>
-<li><p>Toolchain / IDE：开发环境选择（本工程选择STM32CubeIDE开发环境）</p>
-<ul>
-<li>EWARM</li>
-<li>MDK_ARM</li>
-<li>SW4STM32</li>
-<li>TrueSTUDIO</li>
-<li><strong>STM32CubeIDE</strong></li>
-<li>MakeFile</li>
-</ul>
-</li>
-<li><p>Mcu and Firmware Package (STM32Cube FW_H7 V1.5.0)</p>
-<ul>
-<li>MCU Reference：STM32H743IITx</li>
-<li>Firmware Package Name and Version：<strong>STM32Cube FW_H7 V1.5.0</strong> （版本不同，生成的工程可能会有点差异）</li>
-</ul>
-</li>
-<li><p><img src="/2020/05/05/STM32CubeMX-Usart/9.png" alt></p>
-</li>
-</ul>
-</li>
-<li><p><strong>Code Generator 配置选择</strong> </p>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/10.png" alt></p>
-</li>
-</ul>
-<p><strong>至此工程配置基本完成</strong>（单击 GENERATE CODE 生成工程）</p>
-<h4 id="8-打开-STM32CubeIDE-编译生成工程"><a href="#8-打开-STM32CubeIDE-编译生成工程" class="headerlink" title="8. 打开 STM32CubeIDE 编译生成工程"></a>8. 打开 STM32CubeIDE 编译生成工程</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/11.png" alt></p>
-<h4 id="9-Printf-打印配置"><a href="#9-Printf-打印配置" class="headerlink" title="9. Printf 打印配置"></a>9. Printf 打印配置</h4><ul>
-<li><strong>usart.h 添加代码</strong></li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><strong>usart.c 添加代码</strong></li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Private function prototypes -----------------------------------------------*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __GNUC__</span></span><br><span class="line"><span class="comment">/* With GCC/RAISONANCE, small printf (option LD Linker-&gt;Libraries-&gt;Small printf</span></span><br><span class="line"><span class="comment">   set to 'Yes') calls __io_putchar() */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int __io_putchar(int ch)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __GNUC__ */</span></span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  Retargets the C library printf function to the USART.</span></span><br><span class="line"><span class="comment">  * @param  None</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">PUTCHAR_PROTOTYPE</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Place your implementation of fputc here */</span></span><br><span class="line">    <span class="comment">/* e.g. write a character to the USART1 and Loop until the end of transmission */</span></span><br><span class="line">    HAL_UART_Transmit(&amp;huart1, (<span class="keyword">uint8_t</span> *)&amp;ch, <span class="number">1</span>, <span class="number">0xFFFF</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/05/05/STM32CubeMX-Usart/12.png" alt></p>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/13.png" alt></p>
-<h4 id="10-STM32H743IITx-工程模板"><a href="#10-STM32H743IITx-工程模板" class="headerlink" title="10.  STM32H743IITx 工程模板"></a>10.  STM32H743IITx 工程模板</h4><ul>
-<li>工程模板  <a href="https://gitee.com/Zhao_ch/STM32H743_Template_Cubeide" target="_blank" rel="noopener">下载连接</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>STM32CubeMX</category>
-      </categories>
-      <tags>
-        <tag>STM32CubeMX</tag>
-        <tag>STM32</tag>
-        <tag>HAL</tag>
-      </tags>
   </entry>
   <entry>
     <title>嘉立创JLC元件库+3D封装下载</title>
@@ -644,7 +519,7 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>【nRF52832】学习笔记:TIMER-Timer/Counter (定时器/计数器)</title>
+    <title>【nRF52832】学习笔记 --&gt; TIMER-Timer/Counter (定时器/计数器)</title>
     <url>/2020/08/10/Timer/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <p>环境介绍</p>
@@ -789,7 +664,132 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>蓝牙空中升级(BLE OTA)原理与步骤</title>
+    <title>【STM32CubeMX】学习笔记 --&gt; STM32CubeMX_Usart</title>
+    <url>/2020/05/05/STM32CubeMX-Usart/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<p>环境介绍</p>
+<ul>
+<li>操作系统:   Window10 企业版</li>
+<li>IDE开发环境:   STM32CubeIDE 1.2.0</li>
+<li>STM32CubeMX版本:   STM32CubeMX Version 5.4.0</li>
+<li>Mcu and Firmware Package:   STM32Cube FW_H7 V1.5.0</li>
+<li>硬件开发板:   本人自己设计的最小系统</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="1-打开-STM32CubeMX"><a href="#1-打开-STM32CubeMX" class="headerlink" title="1. 打开 STM32CubeMX"></a>1. 打开 STM32CubeMX</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/0.png" alt></p>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/1.png" alt></p>
+<h4 id="2-创建工程Project"><a href="#2-创建工程Project" class="headerlink" title="2. 创建工程Project"></a>2. 创建工程Project</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/2.png" alt></p>
+<h4 id="3-选择自己MCU的型号"><a href="#3-选择自己MCU的型号" class="headerlink" title="3. 选择自己MCU的型号"></a>3. 选择自己MCU的型号</h4><ul>
+<li><strong>本人MCU型号：STM32H743IITx</strong></li>
+<li><strong>双击红色区域直接进入配置界面</strong></li>
+</ul>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/3.png" alt></p>
+<h4 id="4-RCC-配置"><a href="#4-RCC-配置" class="headerlink" title="4. RCC 配置"></a>4. RCC 配置</h4><ul>
+<li>单击 System Core -&gt; 单击RCC<ul>
+<li>RCC Mode and Configuration<ul>
+<li>High Speed Clock (HSE) -&gt; Crystal/Ceramic Resonator</li>
+<li>Low Speed Clock (LSE) -&gt; Crystal/Ceramic Resonator</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/4.png" alt></p>
+<h4 id="5-串口USART配置"><a href="#5-串口USART配置" class="headerlink" title="5. 串口USART配置"></a>5. 串口USART配置</h4><ul>
+<li><p>单击 Connectivity -&gt; 单击 USART1</p>
+<ul>
+<li><p>USART1 Mode</p>
+<ul>
+<li>Mode：Asynchronous</li>
+</ul>
+</li>
+<li><p>USART1 Configuration</p>
+<ul>
+<li>Parameter Settings（基础配置）<ul>
+<li><img src="/2020/05/05/STM32CubeMX-Usart/5.png" alt></li>
+</ul>
+</li>
+<li>NVIC Settings（中断配置）勾选Enabled<ul>
+<li><img src="/2020/05/05/STM32CubeMX-Usart/6.png" alt></li>
+</ul>
+</li>
+<li>GPIO Settings （I/O配置）<ul>
+<li><strong>PA9</strong> -&gt; USART1_TX  /  <strong>PA10</strong> -&gt; UASRT1_RX</li>
+<li>I/O 空闲状态全部上拉（Pull-Up）</li>
+<li><img src="/2020/05/05/STM32CubeMX-Usart/7.png" alt></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-时钟树配置（Clock-Configuration）"><a href="#6-时钟树配置（Clock-Configuration）" class="headerlink" title="6. 时钟树配置（Clock Configuration）"></a>6. 时钟树配置（Clock Configuration）</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/8.png" alt></p>
+<h4 id="7-生成路径及IDE选择配置"><a href="#7-生成路径及IDE选择配置" class="headerlink" title="7. 生成路径及IDE选择配置"></a>7. 生成路径及IDE选择配置</h4><ul>
+<li><p><strong>Project</strong></p>
+<ul>
+<li><p>Project Name：工程名（根据自己要求来写）</p>
+</li>
+<li><p>Project Location：生成工程路径（选择自己常用路径）</p>
+</li>
+<li><p>Toolchain / IDE：开发环境选择（本工程选择STM32CubeIDE开发环境）</p>
+<ul>
+<li>EWARM</li>
+<li>MDK_ARM</li>
+<li>SW4STM32</li>
+<li>TrueSTUDIO</li>
+<li><strong>STM32CubeIDE</strong></li>
+<li>MakeFile</li>
+</ul>
+</li>
+<li><p>Mcu and Firmware Package (STM32Cube FW_H7 V1.5.0)</p>
+<ul>
+<li>MCU Reference：STM32H743IITx</li>
+<li>Firmware Package Name and Version：<strong>STM32Cube FW_H7 V1.5.0</strong> （版本不同，生成的工程可能会有点差异）</li>
+</ul>
+</li>
+<li><p><img src="/2020/05/05/STM32CubeMX-Usart/9.png" alt></p>
+</li>
+</ul>
+</li>
+<li><p><strong>Code Generator 配置选择</strong> </p>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/10.png" alt></p>
+</li>
+</ul>
+<p><strong>至此工程配置基本完成</strong>（单击 GENERATE CODE 生成工程）</p>
+<h4 id="8-打开-STM32CubeIDE-编译生成工程"><a href="#8-打开-STM32CubeIDE-编译生成工程" class="headerlink" title="8. 打开 STM32CubeIDE 编译生成工程"></a>8. 打开 STM32CubeIDE 编译生成工程</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/11.png" alt></p>
+<h4 id="9-Printf-打印配置"><a href="#9-Printf-打印配置" class="headerlink" title="9. Printf 打印配置"></a>9. Printf 打印配置</h4><ul>
+<li><strong>usart.h 添加代码</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>usart.c 添加代码</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Private function prototypes -----------------------------------------------*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __GNUC__</span></span><br><span class="line"><span class="comment">/* With GCC/RAISONANCE, small printf (option LD Linker-&gt;Libraries-&gt;Small printf</span></span><br><span class="line"><span class="comment">   set to 'Yes') calls __io_putchar() */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int __io_putchar(int ch)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __GNUC__ */</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  Retargets the C library printf function to the USART.</span></span><br><span class="line"><span class="comment">  * @param  None</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">PUTCHAR_PROTOTYPE</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Place your implementation of fputc here */</span></span><br><span class="line">    <span class="comment">/* e.g. write a character to the USART1 and Loop until the end of transmission */</span></span><br><span class="line">    HAL_UART_Transmit(&amp;huart1, (<span class="keyword">uint8_t</span> *)&amp;ch, <span class="number">1</span>, <span class="number">0xFFFF</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/05/05/STM32CubeMX-Usart/12.png" alt></p>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/13.png" alt></p>
+<h4 id="10-STM32H743IITx-工程模板"><a href="#10-STM32H743IITx-工程模板" class="headerlink" title="10.  STM32H743IITx 工程模板"></a>10.  STM32H743IITx 工程模板</h4><ul>
+<li>工程模板  <a href="https://gitee.com/Zhao_ch/STM32H743_Template_Cubeide" target="_blank" rel="noopener">下载连接</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>STM32CubeMX</category>
+      </categories>
+      <tags>
+        <tag>STM32CubeMX</tag>
+        <tag>STM32</tag>
+        <tag>HAL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Bluetooth】学习笔记 --&gt; 蓝牙空中升级(BLE OTA)原理与步骤</title>
     <url>/2020/06/06/%E8%93%9D%E7%89%99%E7%A9%BA%E4%B8%AD%E5%8D%87%E7%BA%A7/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <a id="more"></a>
@@ -852,6 +852,27 @@ Develop分支合并到Master分支命令：
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【RT-Thread】学习笔记 --&gt;RT-Thread Studio Project Import</title>
+    <url>/2020/09/09/RT-Threadad-Project-import/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<p>环境介绍</p>
+<ul>
+<li>操作系统:   Window10 企业版</li>
+<li>IDE开发环境:   RT-Thread Studio (Version: 1.1.3)</li>
+<li>SDK版本:   STM32H7 (Released V0.1.9)</li>
+<li>硬件开发板:   STM32H743IITx 最小系统 (本人自己设计的最小系统)</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="RT-Thread-Studio-Project-Import-导入工程"><a href="#RT-Thread-Studio-Project-Import-导入工程" class="headerlink" title="RT-Thread Studio Project Import (导入工程)"></a>RT-Thread Studio Project Import (导入工程)</h1><h4 id="1-RT-Thread-Studio-项目导入"><a href="#1-RT-Thread-Studio-项目导入" class="headerlink" title="1. RT-Thread Studio 项目导入"></a>1. RT-Thread Studio 项目导入</h4><h5 id="1-1-RT-Thread-Studio-资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。"><a href="#1-1-RT-Thread-Studio-资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。" class="headerlink" title="1.1 RT-Thread Studio 资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。"></a>1.1 RT-Thread Studio 资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。</h5><h5 id="1-2-打开导入功能向导，选择导入RT-Thread-Studio-工程，点击下一步。"><a href="#1-2-打开导入功能向导，选择导入RT-Thread-Studio-工程，点击下一步。" class="headerlink" title="1.2 打开导入功能向导，选择导入RT-Thread Studio 工程，点击下一步。"></a>1.2 打开导入功能向导，选择导入RT-Thread Studio 工程，点击下一步。</h5><h5 id="1-3-点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。"><a href="#1-3-点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。" class="headerlink" title="1.3 点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。"></a>1.3 点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。</h5><h4 id="2-MDK-IAR-项目导入"><a href="#2-MDK-IAR-项目导入" class="headerlink" title="2. MDK/IAR 项目导入"></a>2. MDK/IAR 项目导入</h4><h5 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h5><h5 id="2-2"><a href="#2-2" class="headerlink" title="2.2"></a>2.2</h5><h5 id="2-3"><a href="#2-3" class="headerlink" title="2.3"></a>2.3</h5>]]></content>
+      <categories>
+        <category>RT-Thread</category>
+      </categories>
+      <tags>
+        <tag>RTOS</tag>
       </tags>
   </entry>
 </search>
