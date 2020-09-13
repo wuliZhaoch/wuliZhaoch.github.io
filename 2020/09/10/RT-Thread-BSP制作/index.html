@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wulizhaoch.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="😊 转载请全文转载，并标明文章出处 环境介绍  操作系统:   Window10 企业版 IDE开发环境:   RT-Thread Studio (Version: 1.1.3) SDK版本:   STM32H7 (Released V0.1.9) STM32CubeMX 版本：Version 6.0.1 硬件开发板:   STM32H743IITx 最小系统开发板 (本人自己设计的最小系统)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【RT-Thread】学习笔记 --&gt; STM32 Series BSP Production(BSP制作)">
+<meta property="og:url" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/index.html">
+<meta property="og:site_name" content="Zhao_ch Personal_Blog">
+<meta property="og:description" content="😊 转载请全文转载，并标明文章出处 环境介绍  操作系统:   Window10 企业版 IDE开发环境:   RT-Thread Studio (Version: 1.1.3) SDK版本:   STM32H7 (Released V0.1.9) STM32CubeMX 版本：Version 6.0.1 硬件开发板:   STM32H743IITx 最小系统开发板 (本人自己设计的最小系统)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/RT-Thread_Source_code.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/03.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/04.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/05.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/06.PNG">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/07.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/08.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/09.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/10.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/11.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/12.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/13.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/14.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/15.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/16.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/17.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/18.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/19.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/20.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/21.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/22.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/23.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/24.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/25.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/26.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/27.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/28.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/29.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/34.png">
+<meta property="og:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/35.png">
+<meta property="article:published_time" content="2020-09-10T14:54:15.000Z">
+<meta property="article:modified_time" content="2020-09-10T14:54:15.000Z">
+<meta property="article:author" content="赵晨辉">
+<meta property="article:tag" content="RTOS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/RT-Thread_Source_code.png">
+
+<link rel="canonical" href="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【RT-Thread】学习笔记 --> STM32 Series BSP Production(BSP制作) | Zhao_ch Personal_Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Zhao_ch Personal_Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个沉淀自我的地方!!!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-活动">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>活动</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wulizhaoch.github.io/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Author.png">
+      <meta itemprop="name" content="赵晨辉">
+      <meta itemprop="description" content="嵌入式硬件工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhao_ch Personal_Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【RT-Thread】学习笔记 --> STM32 Series BSP Production(BSP制作)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-10 22:54:15" itemprop="dateCreated datePublished" datetime="2020-09-10T22:54:15+08:00">2020-09-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/RT-Thread/" itemprop="url" rel="index"><span itemprop="name">RT-Thread</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>😊 转载请全文转载，并标明文章出处</p>
+<p>环境介绍</p>
+<ul>
+<li>操作系统:   Window10 企业版</li>
+<li>IDE开发环境:   RT-Thread Studio (Version: 1.1.3)</li>
+<li>SDK版本:   STM32H7 (Released V0.1.9)</li>
+<li>STM32CubeMX 版本：Version 6.0.1</li>
+<li>硬件开发板:   STM32H743IITx 最小系统开发板 (本人自己设计的最小系统)</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="STM32-Series-BSP-Production-BSP制作教程"><a href="#STM32-Series-BSP-Production-BSP制作教程" class="headerlink" title="STM32 Series BSP Production(BSP制作教程)"></a>STM32 Series BSP Production(BSP制作教程)</h1><h4 id="STM32-Series-BSP-Production-制作方法"><a href="#STM32-Series-BSP-Production-制作方法" class="headerlink" title="STM32 Series BSP Production 制作方法"></a>STM32 Series BSP Production 制作方法</h4><p>BSP 的制作过程分为以下五个步骤：</p>
+<ul>
+<li>复制通用模板</li>
+<li>使用STM32CubeMX工具配置工程</li>
+<li>修改 BSP 中的 Kconfig 文件</li>
+<li>修改构建工程相关文件</li>
+<li>重新生成工程</li>
+</ul>
+<h4 id="1-复制通用模板"><a href="#1-复制通用模板" class="headerlink" title="1.   复制通用模板"></a>1.   复制通用模板</h4><h5 id="1-1-下载-RT-Thread-源代码"><a href="#1-1-下载-RT-Thread-源代码" class="headerlink" title="1.1 下载 RT-Thread 源代码"></a>1.1 下载 RT-Thread 源代码</h5><p>&emsp;<strong><a href="https://www.rt-thread.org/page/download.html" target="_blank" rel="noopener">下载请点击这里哦 ! ! !</a></strong></p>
+<p>&emsp;本人采用 Gitee (码云) 下载方式</p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/RT-Thread_Source_code.png" alt="RT-Thread_Source_code_download_address"></p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/03.png" alt="RT-Thread_Source_code"></p>
+<h5 id="1-2-打开源代码模板路径-rt-thread-bsp-stm32-libraries-templates-stm32h7xx。"><a href="#1-2-打开源代码模板路径-rt-thread-bsp-stm32-libraries-templates-stm32h7xx。" class="headerlink" title="1.2 打开源代码模板路径  rt-thread\bsp\stm32\libraries\templates\stm32h7xx。"></a>1.2 打开源代码模板路径  rt-thread\bsp\stm32\libraries\templates\stm32h7xx。</h5><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/04.png" alt="RT-Thread_Source_code_template"></p>
+<h5 id="1-3-创建-01-STM32H743-BSP-文件夹，将官方提供的模板-stm32h7xx-拷贝进来。"><a href="#1-3-创建-01-STM32H743-BSP-文件夹，将官方提供的模板-stm32h7xx-拷贝进来。" class="headerlink" title="1.3  创建 01_STM32H743_BSP 文件夹，将官方提供的模板 (stm32h7xx) 拷贝进来。"></a>1.3  创建 01_STM32H743_BSP 文件夹，将官方提供的模板 (stm32h7xx) 拷贝进来。</h5><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/05.png" alt="RT-Thread_Source_code_template"></p>
+<h6 id="1-3-1-Board-文件夹下修改的内容"><a href="#1-3-1-Board-文件夹下修改的内容" class="headerlink" title="1.3.1 Board 文件夹下修改的内容"></a>1.3.1 Board 文件夹下修改的内容</h6><table>
+<thead>
+<tr>
+<th align="center">Board 下文件夹/文件</th>
+<th align="center">内容修改说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">CubeMX_Config</td>
+<td align="center">STM32CubeMX工程</td>
+</tr>
+<tr>
+<td align="center">linker_scripts</td>
+<td align="center">工程构建相关文件(链接脚本)</td>
+</tr>
+<tr>
+<td align="center">board.c / board.h</td>
+<td align="center">SystemClock_Config、Flash Memory Size、RAM Size</td>
+</tr>
+<tr>
+<td align="center">Kconfig</td>
+<td align="center">System peripheral resources Configuration</td>
+</tr>
+<tr>
+<td align="center">SConscript</td>
+<td align="center">System Chip Startup File</td>
+</tr>
+</tbody></table>
+<h4 id="2-STM32CubeMX-工程配置"><a href="#2-STM32CubeMX-工程配置" class="headerlink" title="2.  STM32CubeMX 工程配置"></a>2.  STM32CubeMX 工程配置</h4><h5 id="2-1-打开-CubeMX-Config-ioc-工程文件"><a href="#2-1-打开-CubeMX-Config-ioc-工程文件" class="headerlink" title="2.1 打开 CubeMX_Config.ioc 工程文件"></a>2.1 打开 CubeMX_Config.ioc 工程文件</h5><p>CubeMX_Config.ioc 工程文件路径：*<em>01_STM32H743_BSP\board\CubeMX_Config\CubeMX_Config.ioc *</em></p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/06.PNG" alt="STM32CubeMX"></p>
+<h5 id="2-2-STM32CubeMX-工程生成"><a href="#2-2-STM32CubeMX-工程生成" class="headerlink" title="2.2 STM32CubeMX 工程生成"></a>2.2 STM32CubeMX 工程生成</h5><h6 id="2-2-1-打开外部时钟设置"><a href="#2-2-1-打开外部时钟设置" class="headerlink" title="2.2.1   打开外部时钟设置"></a>2.2.1   打开外部时钟设置</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/07.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-2-下载方式配置-SWD"><a href="#2-2-2-下载方式配置-SWD" class="headerlink" title="2.2.2   下载方式配置 (SWD)"></a>2.2.2   下载方式配置 (SWD)</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/08.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-3-调试串口配置-UASRT1"><a href="#2-2-3-调试串口配置-UASRT1" class="headerlink" title="2.2.3   调试串口配置 (UASRT1)"></a>2.2.3   调试串口配置 (UASRT1)</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/09.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-4-EEPROM-配置-IIC"><a href="#2-2-4-EEPROM-配置-IIC" class="headerlink" title="2.2.4   EEPROM 配置 (IIC)"></a>2.2.4   EEPROM 配置 (IIC)</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/10.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-5-系统时钟配置"><a href="#2-2-5-系统时钟配置" class="headerlink" title="2.2.5   系统时钟配置"></a>2.2.5   系统时钟配置</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/11.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-6-Project-Manager-设置-基本不需要修改"><a href="#2-2-6-Project-Manager-设置-基本不需要修改" class="headerlink" title="2.2.6   Project Manager 设置 (基本不需要修改)"></a>2.2.6   Project Manager 设置 (基本不需要修改)</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/12.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-7-点击-GENERAYE-CODE-直接生成工程"><a href="#2-2-7-点击-GENERAYE-CODE-直接生成工程" class="headerlink" title="2.2.7   点击 GENERAYE CODE 直接生成工程"></a>2.2.7   点击 GENERAYE CODE 直接生成工程</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/13.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-8-CubeMX-Config目录下生成的文件如下"><a href="#2-2-8-CubeMX-Config目录下生成的文件如下" class="headerlink" title="2.2.8   CubeMX_Config目录下生成的文件如下"></a>2.2.8   CubeMX_Config目录下生成的文件如下</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/14.png" alt="STM32CubeMX"></p>
+<h4 id="3-Board-c-Board-h-文件修改"><a href="#3-Board-c-Board-h-文件修改" class="headerlink" title="3.   Board.c / Board.h 文件修改"></a>3.   Board.c / Board.h 文件修改</h4><h5 id="3-1-SystemClock-Config-函数拷贝-整个系统唯一拷贝的函数"><a href="#3-1-SystemClock-Config-函数拷贝-整个系统唯一拷贝的函数" class="headerlink" title="3.1 SystemClock_Config() 函数拷贝 (整个系统唯一拷贝的函数)"></a>3.1 SystemClock_Config() 函数拷贝 (整个系统唯一拷贝的函数)</h5><p>&emsp;&emsp;board.c 文件中存放了<strong>SystemClock_Config()</strong>函数，该函数负责初始化系统时钟。如果 STM32CubeMX 对系统时钟重新配置，需要重新更新 <strong>SystemClock_Config()</strong> 函数。</p>
+<p>&emsp;&emsp;STM32CubeMX工具生成的 <strong>SystemClock_Config()</strong> 函数默认在 CubeMX_Config\Src\main.c，所以我们将main.c 文件中的 <strong>SystemClock_Config()</strong> 函数拷贝到 board.c 中。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief System Clock Configuration</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SystemClock_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  RCC_OscInitTypeDef RCC_OscInitStruct = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">  RCC_ClkInitTypeDef RCC_ClkInitStruct = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**Supply configuration update enable</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  MODIFY_REG(PWR-&gt;CR3, PWR_CR3_SCUEN, <span class="number">0</span>);</span><br><span class="line">  <span class="comment">/**Configure the main internal regulator output voltage</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> ((PWR-&gt;D3CR &amp; (PWR_D3CR_VOSRDY)) != PWR_D3CR_VOSRDY)</span><br><span class="line">  &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/**Initializes the CPU, AHB and APB busses clocks</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;</span><br><span class="line">  RCC_OscInitStruct.HSEState = RCC_HSE_ON;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLM = <span class="number">5</span>;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLN = <span class="number">160</span>;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLP = <span class="number">2</span>;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLQ = <span class="number">2</span>;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLR = <span class="number">2</span>;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_2;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLFRACN = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (HAL_RCC_OscConfig(&amp;RCC_OscInitStruct) != HAL_OK)</span><br><span class="line">  &#123;</span><br><span class="line">    Error_Handler();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/**Initializes the CPU, AHB and APB busses clocks</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK</span><br><span class="line">                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2</span><br><span class="line">                              |RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;</span><br><span class="line">  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;</span><br><span class="line">  RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;</span><br><span class="line">  RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV2;</span><br><span class="line">  RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;</span><br><span class="line">  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;</span><br><span class="line">  RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;</span><br><span class="line">  RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (HAL_RCC_ClockConfig(&amp;RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)</span><br><span class="line">  &#123;</span><br><span class="line">    Error_Handler();</span><br><span class="line">  &#125;</span><br><span class="line">  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_I2C2;</span><br><span class="line">  PeriphClkInitStruct.Usart16ClockSelection = RCC_USART16CLKSOURCE_D2PCLK2;</span><br><span class="line">  PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_D2PCLK1;</span><br><span class="line">  <span class="keyword">if</span> (HAL_RCCEx_PeriphCLKConfig(&amp;PeriphClkInitStruct) != HAL_OK)</span><br><span class="line">  &#123;</span><br><span class="line">    Error_Handler();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-2-系统芯片-Flash-和-RAM-相关参数配置"><a href="#3-2-系统芯片-Flash-和-RAM-相关参数配置" class="headerlink" title="3.2 系统芯片 Flash 和 RAM 相关参数配置"></a>3.2 系统芯片 Flash 和 RAM 相关参数配置</h5><ul>
+<li>STM32_FLASH_SIZE 和 STM32_SRAM_SIZE 两个参数需要修改 (针对实际芯片大小设置)</li>
+<li>本 BSP 使用的芯片为 STM32H743IITx 系列，Flash 大小 2024kBytes, RAM 大小 1024kBytes</li>
+</ul>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/15.png" alt="board.h"></p>
+<h4 id="4-Kconfig-文件修改-初次制作BSP先不着急修改，后续根据Kconfig语法在修改"><a href="#4-Kconfig-文件修改-初次制作BSP先不着急修改，后续根据Kconfig语法在修改" class="headerlink" title="4.  Kconfig 文件修改 (初次制作BSP先不着急修改，后续根据Kconfig语法在修改)"></a>4.  Kconfig 文件修改 (初次制作BSP先不着急修改，后续根据Kconfig语法在修改)</h4><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/16.png" alt="Kconfig"></p>
+<h4 id="5-工程构建相关文件修改"><a href="#5-工程构建相关文件修改" class="headerlink" title="5.  工程构建相关文件修改"></a>5.  工程构建相关文件修改</h4><h5 id="5-1-linker-scripts-链接脚本修改"><a href="#5-1-linker-scripts-链接脚本修改" class="headerlink" title="5.1   linker_scripts 链接脚本修改"></a>5.1   linker_scripts 链接脚本修改</h5><p>linker_scripts 文件夹下包含链接脚本，如图下图所示：</p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/17.png" alt="linker_scripts"></p>
+<h6 id="5-1-1-MDK-链接脚本修改"><a href="#5-1-1-MDK-链接脚本修改" class="headerlink" title="5.1.1   MDK 链接脚本修改"></a>5.1.1   MDK 链接脚本修改</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/18.png" alt="linker_scripts"></p>
+<h6 id="5-1-2-IAR-链接脚本修改"><a href="#5-1-2-IAR-链接脚本修改" class="headerlink" title="5.1.2   IAR 链接脚本修改"></a>5.1.2   IAR 链接脚本修改</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/19.png" alt="linker_scripts"></p>
+<h6 id="5-1-3-GCC-链接脚本修改"><a href="#5-1-3-GCC-链接脚本修改" class="headerlink" title="5.1.3   GCC 链接脚本修改"></a>5.1.3   GCC 链接脚本修改</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/20.png" alt="linker_scripts"></p>
+<h5 id="5-2-SConscript-脚本修改"><a href="#5-2-SConscript-脚本修改" class="headerlink" title="5.2 SConscript 脚本修改"></a>5.2 SConscript 脚本修改</h5><p>&emsp;&emsp;SConscript 脚本决定 MDK/IAR 工程的生成以及编译过程中要添加文件。</p>
+<p>&emsp;&emsp;修改芯片型号以及芯片启动文件的地址：</p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/21.png" alt="SConscript"></p>
+<p>&emsp;&emsp;注意：如果在文件夹中找不到相应系列的 .s 文件，可能是多个系列的芯片重用了相同的启动文件，此时可以在 CubeMX 中生成目标芯片的工程，查看使用了哪个启动文件，然后再修改启动文件名。</p>
+<h5 id="5-3-工程模板修改"><a href="#5-3-工程模板修改" class="headerlink" title="5.3 工程模板修改"></a>5.3 工程模板修改</h5><h6 id="5-3-1-打开-template-uvprojx-工程"><a href="#5-3-1-打开-template-uvprojx-工程" class="headerlink" title="5.3.1   打开 template.uvprojx 工程"></a>5.3.1   打开 template.uvprojx 工程</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/22.png" alt="MDK"></p>
+<h6 id="5-3-2-选择-BSP-使用的芯片型号"><a href="#5-3-2-选择-BSP-使用的芯片型号" class="headerlink" title="5.3.2   选择 BSP 使用的芯片型号"></a>5.3.2   选择 BSP 使用的芯片型号</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/23.png" alt="MDK"></p>
+<h6 id="5-3-3-选择并配置下载方式"><a href="#5-3-3-选择并配置下载方式" class="headerlink" title="5.3.3   选择并配置下载方式"></a>5.3.3   选择并配置下载方式</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/24.png" alt="MDK"></p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/25.png" alt="MDK"></p>
+<h5 id="5-4-基于Env重新生成工程"><a href="#5-4-基于Env重新生成工程" class="headerlink" title="5.4   基于Env重新生成工程"></a>5.4   基于Env重新生成工程</h5><p><a href="https://github.com/RT-Thread/rtthread-manual-doc/blob/master/env/env.md" target="_blank" rel="noopener">Env 工具使用及配置，请点这里！！！</a></p>
+<p>Env Tools 的路径必须是英文并且路径文件夹不能有空格！！！</p>
+<h6 id="5-4-1-重新生成-rtconfig-h-文件"><a href="#5-4-1-重新生成-rtconfig-h-文件" class="headerlink" title="5.4.1 重新生成 rtconfig.h 文件"></a>5.4.1 重新生成 rtconfig.h 文件</h6><p>输入menuconfig 命令后出现如下图所示的情况：</p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/26.png" alt="Env"></p>
+<p><strong>注意：针对以上情况如何处理，出现这样的情况是因为脱离了官方源代码 rt-thread\bsp\stm 路径。</strong></p>
+<ul>
+<li><p>首先，要知道自己下载 RT-Thread 源代码的路径 (本人 RT-Thread 源代码路径：D:\00_RT-Thread\00_RT-Thread_Source_code\rt-thread) </p>
+</li>
+<li><p>修改第一个 Kconfig 文件</p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/27.png" alt="Env"></p>
+<ul>
+<li><pre><code class="c"><span class="built_in">config</span> RTT_DIR
+    <span class="built_in">string</span>
+    option env=<span class="string">"RTT_ROOT"</span>
+    <span class="keyword">default</span> <span class="string">"../../.."</span>
+<span class="comment">/*-----------------------------------------------------------*/</span>
+<span class="built_in">config</span> RTT_DIR
+    <span class="built_in">string</span>
+    option env=<span class="string">"RTT_ROOT"</span>
+    <span class="keyword">default</span> <span class="string">"D:/00_RT-Thread/00_RT-Thread_Source_code/rt-thread"</span>
+&lt;!--￼<span class="number">1</span>--&gt;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/28.png" alt="Env"></p>
+<ul>
+<li><p>修改第二个 Kconfig 文件</p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/29.png" alt="Env"></p>
+<ul>
+<li><pre><code class="C">source <span class="string">"../libraries/HAL_Drivers/Kconfig"</span>
+<span class="comment">/*-----------------------------------------------------------*/</span>
+source <span class="string">"D:/00_RT-Thread/00_RT-Thread_Source_code/rt-thread/bsp/stm32/libraries/HAL_Drivers/Kconfig"</span>
+&lt;!--￼<span class="number">2</span>--&gt;</code></pre>
+</li>
+<li><pre><code class="python">SDK_ROOT = os.path.abspath(<span class="string">'./'</span>)
+
+<span class="keyword">if</span> os.path.exists(SDK_ROOT + <span class="string">'/libraries'</span>):
+    libraries_path_prefix = SDK_ROOT + <span class="string">'/libraries'</span>
+<span class="keyword">else</span>:
+    libraries_path_prefix = os.path.dirname(SDK_ROOT) + <span class="string">'/libraries'</span>
+
+SDK_LIB = libraries_path_prefix
+Export(<span class="string">'SDK_LIB'</span>)
+
+<span class="comment"># prepare building environment</span>
+objs = PrepareBuilding(env, RTT_ROOT, has_libcpu=<span class="literal">False</span>)
+
+stm32_library = <span class="string">'STM32H7xx_HAL'</span>
+rtconfig.BSP_LIBRARY_TYPE = stm32_library
+
+<span class="comment"># include drivers</span>
+objs.extend(SConscript(os.path.join(libraries_path_prefix, stm32_library, <span class="string">'SConscript'</span>)))
+
+<span class="comment"># include libraries</span>
+objs.extend(SConscript(os.path.join(libraries_path_prefix, <span class="string">'HAL_Drivers'</span>, <span class="string">'SConscript'</span>)))
+
+/*-----------------------------------------------------------*/ 
+
+SDK_ROOT = os.path.abspath(<span class="string">'D:/00_RT-Thread/00_RT-Thread_Source_code/rt-thread/bsp/stm32'</span>)
+
+<span class="keyword">if</span> os.path.exists(SDK_ROOT + <span class="string">'/libraries'</span>):
+    libraries_path_prefix = SDK_ROOT + <span class="string">'/libraries'</span>
+<span class="keyword">else</span>:
+    libraries_path_prefix = os.path.dirname(SDK_ROOT) + <span class="string">'/libraries'</span>
+
+SDK_LIB = libraries_path_prefix
+Export(<span class="string">'SDK_LIB'</span>)
+
+<span class="comment"># prepare building environment</span>
+objs = PrepareBuilding(env, RTT_ROOT, has_libcpu=<span class="literal">False</span>)
+
+stm32_library = <span class="string">'D:/00_RT-Thread/00_RT-Thread_Source_code/rt-thread/bsp/stm32/libraries/STM32H7xx_HAL'</span>
+rtconfig.BSP_LIBRARY_TYPE = stm32_library
+
+<span class="comment"># include drivers</span>
+objs.extend(SConscript(os.path.join(libraries_path_prefix, stm32_library, <span class="string">'SConscript'</span>)))
+
+<span class="comment"># include libraries</span>
+objs.extend(SConscript(os.path.join(libraries_path_prefix, <span class="string">'D:/00_RT-Thread/00_RT-Thread_Source_code/rt-thread/bsp/stm32/libraries/HAL_Drivers'</span>, <span class="string">'SConscript'</span>)))</code></pre>
+</li>
+</ul>
+<p>然后在Env界面再次输入 <strong>scons –target=mdk5</strong> 命令重新生成工程。</p>
+</li>
+</ul>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/34.png" alt="Env"></p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/35.png" alt="Env"></p>
+<p>如果出现以上结果，新的 BSP 已经制作成功了，可以使用了 。 </p>
+<h4 id="6-文档参考"><a href="#6-文档参考" class="headerlink" title="6. 文档参考"></a>6. 文档参考</h4><ul>
+<li><p><a href="https://github.com/RT-Thread/rt-thread/blob/master/bsp/stm32/docs/STM32%E7%B3%BB%E5%88%97BSP%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B.md" target="_blank" rel="noopener">STM32系列BSP制作教程</a></p>
+</li>
+<li><p><a href="https://github.com/RT-Thread/rtthread-manual-doc/blob/master/env/env.md" target="_blank" rel="noopener">User Manual of Env</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/RTOS/" rel="tag"># RTOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/09/RT-Threadad-Project-import/" rel="prev" title="【RT-Thread】学习笔记 --> RT-Thread Studio Project Import">
+      <i class="fa fa-chevron-left"></i> 【RT-Thread】学习笔记 --> RT-Thread Studio Project Import
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#STM32-Series-BSP-Production-BSP制作教程"><span class="nav-text">STM32 Series BSP Production(BSP制作教程)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#STM32-Series-BSP-Production-制作方法"><span class="nav-text">STM32 Series BSP Production 制作方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-复制通用模板"><span class="nav-text">1.   复制通用模板</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-下载-RT-Thread-源代码"><span class="nav-text">1.1 下载 RT-Thread 源代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-打开源代码模板路径-rt-thread-bsp-stm32-libraries-templates-stm32h7xx。"><span class="nav-text">1.2 打开源代码模板路径  rt-thread\bsp\stm32\libraries\templates\stm32h7xx。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-创建-01-STM32H743-BSP-文件夹，将官方提供的模板-stm32h7xx-拷贝进来。"><span class="nav-text">1.3  创建 01_STM32H743_BSP 文件夹，将官方提供的模板 (stm32h7xx) 拷贝进来。</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-3-1-Board-文件夹下修改的内容"><span class="nav-text">1.3.1 Board 文件夹下修改的内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-STM32CubeMX-工程配置"><span class="nav-text">2.  STM32CubeMX 工程配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-打开-CubeMX-Config-ioc-工程文件"><span class="nav-text">2.1 打开 CubeMX_Config.ioc 工程文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-STM32CubeMX-工程生成"><span class="nav-text">2.2 STM32CubeMX 工程生成</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-2-1-打开外部时钟设置"><span class="nav-text">2.2.1   打开外部时钟设置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-2-2-下载方式配置-SWD"><span class="nav-text">2.2.2   下载方式配置 (SWD)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-2-3-调试串口配置-UASRT1"><span class="nav-text">2.2.3   调试串口配置 (UASRT1)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-2-4-EEPROM-配置-IIC"><span class="nav-text">2.2.4   EEPROM 配置 (IIC)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-2-5-系统时钟配置"><span class="nav-text">2.2.5   系统时钟配置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-2-6-Project-Manager-设置-基本不需要修改"><span class="nav-text">2.2.6   Project Manager 设置 (基本不需要修改)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-2-7-点击-GENERAYE-CODE-直接生成工程"><span class="nav-text">2.2.7   点击 GENERAYE CODE 直接生成工程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-2-8-CubeMX-Config目录下生成的文件如下"><span class="nav-text">2.2.8   CubeMX_Config目录下生成的文件如下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Board-c-Board-h-文件修改"><span class="nav-text">3.   Board.c &#x2F; Board.h 文件修改</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-SystemClock-Config-函数拷贝-整个系统唯一拷贝的函数"><span class="nav-text">3.1 SystemClock_Config() 函数拷贝 (整个系统唯一拷贝的函数)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-系统芯片-Flash-和-RAM-相关参数配置"><span class="nav-text">3.2 系统芯片 Flash 和 RAM 相关参数配置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Kconfig-文件修改-初次制作BSP先不着急修改，后续根据Kconfig语法在修改"><span class="nav-text">4.  Kconfig 文件修改 (初次制作BSP先不着急修改，后续根据Kconfig语法在修改)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-工程构建相关文件修改"><span class="nav-text">5.  工程构建相关文件修改</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-linker-scripts-链接脚本修改"><span class="nav-text">5.1   linker_scripts 链接脚本修改</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#5-1-1-MDK-链接脚本修改"><span class="nav-text">5.1.1   MDK 链接脚本修改</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-1-2-IAR-链接脚本修改"><span class="nav-text">5.1.2   IAR 链接脚本修改</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-1-3-GCC-链接脚本修改"><span class="nav-text">5.1.3   GCC 链接脚本修改</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2-SConscript-脚本修改"><span class="nav-text">5.2 SConscript 脚本修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-3-工程模板修改"><span class="nav-text">5.3 工程模板修改</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#5-3-1-打开-template-uvprojx-工程"><span class="nav-text">5.3.1   打开 template.uvprojx 工程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-3-2-选择-BSP-使用的芯片型号"><span class="nav-text">5.3.2   选择 BSP 使用的芯片型号</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-3-3-选择并配置下载方式"><span class="nav-text">5.3.3   选择并配置下载方式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-4-基于Env重新生成工程"><span class="nav-text">5.4   基于Env重新生成工程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#5-4-1-重新生成-rtconfig-h-文件"><span class="nav-text">5.4.1 重新生成 rtconfig.h 文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-文档参考"><span class="nav-text">6. 文档参考</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="赵晨辉"
+      src="/images/Author.png">
+  <p class="site-author-name" itemprop="name">赵晨辉</p>
+  <div class="site-description" itemprop="description">嵌入式硬件工程师</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wuliZhaoch" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wuliZhaoch" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:Pingan951120@gmail.com" title="E-Mail → mailto:Pingan951120@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/PianAn924" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;PianAn924" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/sdnm7ktnIzlYHSg" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;sdnm7ktnIzlYHSg" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵晨辉</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+

@@ -69,86 +69,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【Git】学习笔记 --&gt; Git 分支管理 (Git_Flow)</title>
-    <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<ul>
-<li><p>主分支Master：</p>
-<pre><code>代码库应该有一个，且仅有一个主分支。(提供给用户的正式版本，都在主分支上发布(有版本标签))</code></pre></li>
-<li><p>开发分支Develop：</p>
-<pre><code>主分支只用来发布重大版本，日常开发应该在另一条分支(即开发分支（Develop))
-Git创建Develop分支命令：
-    git checkout -b develop master
-Develop分支合并到Master分支命令：
-# 切换到Master分支：
-    git checkout master
-# 对Develop分支进行合并
-    git merge --no-ff develop
-（--no-ff参数：默认情况下，Git执行&quot;快进式合并&quot; Fast-Farward merge 直接将Master分支指向Develop分支）</code></pre></li>
-<li><p>临时性分支：</p>
-<pre><code>Master 和 Develop，前者用于正式发布，后者用于日常开发。除了常设分支以外，还有一些临时分支，用于应用一些特定目的的版本开发。临时性分支有三种：
-    功能（feature）分支
-    预发布（release）分支
-    修补bug（fixbug）分支
-（这三种分支属于临时性需要，使用完成之后，应该删除，使得代码库的常设分支始终只有Master和Develop分支）
-
-1. 功能分支：
-    功能分支，是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要合并到Develop分支上。(功能分支的名字，可以采用feature-*的形式命名)
-    Git 创建一个功能分支：
-        git checkout -b feature-x develop
-    开发完成后，将功能分支合并到develop分支：
-        git checkout develop
-        git merge --no-ff feature-x
-    删除featur-x分支：
-        git branch -d feature-x
-
-2. 预发布分支：
-    指发布正式版本之前（即合并Master分支之前），可能需要有一个预发布的版本进行测试。
-    预发布分支是从Develop分支上边分出来的，预发布结束后，必须合并进Develop和Master分支上。
-    命名采用release-*的形式：
-    创建一个预发布分支：
-    git checkout -b release-1.2 develop
-确认没有问题后，合并Master分支：
-    git checkout master
-    git merge --no-ff release-1.2
-    # 对合并生成的新节点，做一个标签
-    git tag -a 1.2
-然后合并到develop分支：
-    git checkout develop
-    git merge --no-ff release-1.2
-最后删除预发布分支：
-    git branch -d release-1.2
-
-3. 修补bug分支：
-        软件正式发布以后，难免回出现bug。这是就需要创建一个分支，进行bug修补.
-        修补bug分支是从Master分支上面分出来的。修补结束后，再合并进Master和Develop分支。
-    命名采用fixbug-*的形式:
-        创建一个修补bug分支：
-            git checkout -b fixbug-0.1 master
-        修补结束后，合并到master分支：
-            git checkout master
-            git merge --no-ff fixbug-0.1
-            git tag -a 0.1.1
-        再合并到develop分支：
-            git checkout develop
-            git merge --no-ff fixbug-0.1
-    最后，删除&quot;修补bug分支&quot;：
-        git branch -d fixbug-0.1</code></pre></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-        <tag>Gitlab</tag>
-        <tag>Gitee</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【nRF52832】学习笔记 --&gt; GPIOTE (TASK/EVENT)</title>
     <url>/2020/08/06/GPIOTE/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -260,6 +180,86 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
+    <title>【Git】学习笔记 --&gt; Git 分支管理 (Git_Flow)</title>
+    <url>/2020/05/08/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-Git-Flow/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<ul>
+<li><p>主分支Master：</p>
+<pre><code>代码库应该有一个，且仅有一个主分支。(提供给用户的正式版本，都在主分支上发布(有版本标签))</code></pre></li>
+<li><p>开发分支Develop：</p>
+<pre><code>主分支只用来发布重大版本，日常开发应该在另一条分支(即开发分支（Develop))
+Git创建Develop分支命令：
+    git checkout -b develop master
+Develop分支合并到Master分支命令：
+# 切换到Master分支：
+    git checkout master
+# 对Develop分支进行合并
+    git merge --no-ff develop
+（--no-ff参数：默认情况下，Git执行&quot;快进式合并&quot; Fast-Farward merge 直接将Master分支指向Develop分支）</code></pre></li>
+<li><p>临时性分支：</p>
+<pre><code>Master 和 Develop，前者用于正式发布，后者用于日常开发。除了常设分支以外，还有一些临时分支，用于应用一些特定目的的版本开发。临时性分支有三种：
+    功能（feature）分支
+    预发布（release）分支
+    修补bug（fixbug）分支
+（这三种分支属于临时性需要，使用完成之后，应该删除，使得代码库的常设分支始终只有Master和Develop分支）
+
+1. 功能分支：
+    功能分支，是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要合并到Develop分支上。(功能分支的名字，可以采用feature-*的形式命名)
+    Git 创建一个功能分支：
+        git checkout -b feature-x develop
+    开发完成后，将功能分支合并到develop分支：
+        git checkout develop
+        git merge --no-ff feature-x
+    删除featur-x分支：
+        git branch -d feature-x
+
+2. 预发布分支：
+    指发布正式版本之前（即合并Master分支之前），可能需要有一个预发布的版本进行测试。
+    预发布分支是从Develop分支上边分出来的，预发布结束后，必须合并进Develop和Master分支上。
+    命名采用release-*的形式：
+    创建一个预发布分支：
+    git checkout -b release-1.2 develop
+确认没有问题后，合并Master分支：
+    git checkout master
+    git merge --no-ff release-1.2
+    # 对合并生成的新节点，做一个标签
+    git tag -a 1.2
+然后合并到develop分支：
+    git checkout develop
+    git merge --no-ff release-1.2
+最后删除预发布分支：
+    git branch -d release-1.2
+
+3. 修补bug分支：
+        软件正式发布以后，难免回出现bug。这是就需要创建一个分支，进行bug修补.
+        修补bug分支是从Master分支上面分出来的。修补结束后，再合并进Master和Develop分支。
+    命名采用fixbug-*的形式:
+        创建一个修补bug分支：
+            git checkout -b fixbug-0.1 master
+        修补结束后，合并到master分支：
+            git checkout master
+            git merge --no-ff fixbug-0.1
+            git tag -a 0.1.1
+        再合并到develop分支：
+            git checkout develop
+            git merge --no-ff fixbug-0.1
+    最后，删除&quot;修补bug分支&quot;：
+        git branch -d fixbug-0.1</code></pre></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+        <tag>Gitlab</tag>
+        <tag>Gitee</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Git】学习笔记 --&gt; Git 初次运行前的配置</title>
     <url>/2020/05/07/Git%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
@@ -308,6 +308,31 @@ Develop分支合并到Master分支命令：
         <tag>Github</tag>
         <tag>Gitlab</tag>
         <tag>Gitee</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Nordic】学习笔记 --&gt; Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
+    <url>/2020/05/06/Nordic-development-environment/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="1-强制安装项"><a href="#1-强制安装项" class="headerlink" title="1. 强制安装项"></a>1. 强制安装项</h3><p>​            如下工具必须安装,否则无法开发 nRF51 &amp; nRF52 Series 产品</p>
+<h4 id="1-1-安装IDE"><a href="#1-1-安装IDE" class="headerlink" title="1.1   安装IDE"></a>1.1   安装IDE</h4><p>​            Nordic nRF51/52支持Keil，GCC，IAR 和 SES（Segger Embedded Studio）四种IDE，大家随便选择其中一种安装即可。</p>
+<h4 id="1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）"><a href="#1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）" class="headerlink" title="1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）"></a>1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）</h4><p>​            nRF Command Line Tools ( Nordic官方自己开发的命令行工具 ) , 安装过程中具体组件包括 J-link驱动、nrfjprog、nrfutil、mergehex等。</p>
+<p>​            下载连接:  <a href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs" target="_blank" rel="noopener">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs</a></p>
+<p>​            选择自己的桌面平台及需要的版本 (推荐最新发布的版本):</p>
+<p><img src="/2020/05/06/Nordic-development-environment/nRF-Command-Line-Tools.png" alt></p>
+]]></content>
+      <categories>
+        <category>Nordic</category>
+      </categories>
+      <tags>
+        <tag>Nordic</tag>
+        <tag>Bluetooth</tag>
+        <tag>nRF52</tag>
+        <tag>nRF connect</tag>
+        <tag>nrfutil</tag>
+        <tag>nRF51</tag>
       </tags>
   </entry>
   <entry>
@@ -472,52 +497,320 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>【Nordic】学习笔记 --&gt; Nordic_development_environment(nRF51 &amp; nRF52 Series)</title>
-    <url>/2020/05/06/Nordic-development-environment/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="1-强制安装项"><a href="#1-强制安装项" class="headerlink" title="1. 强制安装项"></a>1. 强制安装项</h3><p>​            如下工具必须安装,否则无法开发 nRF51 &amp; nRF52 Series 产品</p>
-<h4 id="1-1-安装IDE"><a href="#1-1-安装IDE" class="headerlink" title="1.1   安装IDE"></a>1.1   安装IDE</h4><p>​            Nordic nRF51/52支持Keil，GCC，IAR 和 SES（Segger Embedded Studio）四种IDE，大家随便选择其中一种安装即可。</p>
-<h4 id="1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）"><a href="#1-2-安装-nRF-Command-Line-Tools-（支持-Windows-Linux-Mac）" class="headerlink" title="1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）"></a>1.2   安装 nRF Command Line Tools （支持 Windows / Linux / Mac）</h4><p>​            nRF Command Line Tools ( Nordic官方自己开发的命令行工具 ) , 安装过程中具体组件包括 J-link驱动、nrfjprog、nrfutil、mergehex等。</p>
-<p>​            下载连接:  <a href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs" target="_blank" rel="noopener">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs</a></p>
-<p>​            选择自己的桌面平台及需要的版本 (推荐最新发布的版本):</p>
-<p><img src="/2020/05/06/Nordic-development-environment/nRF-Command-Line-Tools.png" alt></p>
-]]></content>
-      <categories>
-        <category>Nordic</category>
-      </categories>
-      <tags>
-        <tag>Nordic</tag>
-        <tag>Bluetooth</tag>
-        <tag>nRF52</tag>
-        <tag>nRF connect</tag>
-        <tag>nrfutil</tag>
-        <tag>nRF51</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【RT-Thread】学习笔记 --&gt; RT-Thread Studio Project Import</title>
-    <url>/2020/09/09/RT-Threadad-Project-import/</url>
+    <title>【RT-Thread】学习笔记 --&gt; STM32 Series BSP Production(BSP制作)</title>
+    <url>/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <p>环境介绍</p>
 <ul>
 <li>操作系统:   Window10 企业版</li>
 <li>IDE开发环境:   RT-Thread Studio (Version: 1.1.3)</li>
 <li>SDK版本:   STM32H7 (Released V0.1.9)</li>
-<li>硬件开发板:   STM32H743IITx 最小系统 (本人自己设计的最小系统)</li>
+<li>STM32CubeMX 版本：Version 6.0.1</li>
+<li>硬件开发板:   STM32H743IITx 最小系统开发板 (本人自己设计的最小系统)</li>
 </ul>
 <a id="more"></a>
 
-<h1 id="RT-Thread-Studio-Project-Import-导入工程"><a href="#RT-Thread-Studio-Project-Import-导入工程" class="headerlink" title="RT-Thread Studio Project Import (导入工程)"></a>RT-Thread Studio Project Import (导入工程)</h1><h4 id="1-RT-Thread-Studio-项目导入"><a href="#1-RT-Thread-Studio-项目导入" class="headerlink" title="1. RT-Thread Studio 项目导入"></a>1. RT-Thread Studio 项目导入</h4><h5 id="1-1-RT-Thread-Studio-资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。"><a href="#1-1-RT-Thread-Studio-资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。" class="headerlink" title="1.1 RT-Thread Studio 资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。"></a>1.1 RT-Thread Studio 资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。</h5><p><img src="/2020/09/09/RT-Threadad-Project-import/Import.png" alt="Import"></p>
-<h5 id="1-2-打开导入功能向导，选择导入RT-Thread-Studio-工程，点击下一步。"><a href="#1-2-打开导入功能向导，选择导入RT-Thread-Studio-工程，点击下一步。" class="headerlink" title="1.2 打开导入功能向导，选择导入RT-Thread Studio 工程，点击下一步。"></a>1.2 打开导入功能向导，选择导入RT-Thread Studio 工程，点击下一步。</h5><p><img src="/2020/09/09/RT-Threadad-Project-import/Import_project_select.png" alt="Import project select"></p>
-<h5 id="1-3-点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。"><a href="#1-3-点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。" class="headerlink" title="1.3 点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。"></a>1.3 点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。</h5><p><img src="/2020/09/09/RT-Threadad-Project-import/Import_project.png" alt="Import project"></p>
-<h4 id="2-MDK-IAR-项目导入"><a href="#2-MDK-IAR-项目导入" class="headerlink" title="2. MDK/IAR 项目导入"></a>2. MDK/IAR 项目导入</h4>]]></content>
+<h1 id="STM32-Series-BSP-Production-BSP制作教程"><a href="#STM32-Series-BSP-Production-BSP制作教程" class="headerlink" title="STM32 Series BSP Production(BSP制作教程)"></a>STM32 Series BSP Production(BSP制作教程)</h1><h4 id="STM32-Series-BSP-Production-制作方法"><a href="#STM32-Series-BSP-Production-制作方法" class="headerlink" title="STM32 Series BSP Production 制作方法"></a>STM32 Series BSP Production 制作方法</h4><p>BSP 的制作过程分为以下五个步骤：</p>
+<ul>
+<li>复制通用模板</li>
+<li>使用STM32CubeMX工具配置工程</li>
+<li>修改 BSP 中的 Kconfig 文件</li>
+<li>修改构建工程相关文件</li>
+<li>重新生成工程</li>
+</ul>
+<h4 id="1-复制通用模板"><a href="#1-复制通用模板" class="headerlink" title="1.   复制通用模板"></a>1.   复制通用模板</h4><h5 id="1-1-下载-RT-Thread-源代码"><a href="#1-1-下载-RT-Thread-源代码" class="headerlink" title="1.1 下载 RT-Thread 源代码"></a>1.1 下载 RT-Thread 源代码</h5><p>&emsp;<strong><a href="https://www.rt-thread.org/page/download.html" target="_blank" rel="noopener">下载请点击这里哦 ! ! !</a></strong></p>
+<p>&emsp;本人采用 Gitee (码云) 下载方式</p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/RT-Thread_Source_code.png" alt="RT-Thread_Source_code_download_address"></p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/03.png" alt="RT-Thread_Source_code"></p>
+<h5 id="1-2-打开源代码模板路径-rt-thread-bsp-stm32-libraries-templates-stm32h7xx。"><a href="#1-2-打开源代码模板路径-rt-thread-bsp-stm32-libraries-templates-stm32h7xx。" class="headerlink" title="1.2 打开源代码模板路径  rt-thread\bsp\stm32\libraries\templates\stm32h7xx。"></a>1.2 打开源代码模板路径  rt-thread\bsp\stm32\libraries\templates\stm32h7xx。</h5><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/04.png" alt="RT-Thread_Source_code_template"></p>
+<h5 id="1-3-创建-01-STM32H743-BSP-文件夹，将官方提供的模板-stm32h7xx-拷贝进来。"><a href="#1-3-创建-01-STM32H743-BSP-文件夹，将官方提供的模板-stm32h7xx-拷贝进来。" class="headerlink" title="1.3  创建 01_STM32H743_BSP 文件夹，将官方提供的模板 (stm32h7xx) 拷贝进来。"></a>1.3  创建 01_STM32H743_BSP 文件夹，将官方提供的模板 (stm32h7xx) 拷贝进来。</h5><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/05.png" alt="RT-Thread_Source_code_template"></p>
+<h6 id="1-3-1-Board-文件夹下修改的内容"><a href="#1-3-1-Board-文件夹下修改的内容" class="headerlink" title="1.3.1 Board 文件夹下修改的内容"></a>1.3.1 Board 文件夹下修改的内容</h6><table>
+<thead>
+<tr>
+<th align="center">Board 下文件夹/文件</th>
+<th align="center">内容修改说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">CubeMX_Config</td>
+<td align="center">STM32CubeMX工程</td>
+</tr>
+<tr>
+<td align="center">linker_scripts</td>
+<td align="center">工程构建相关文件(链接脚本)</td>
+</tr>
+<tr>
+<td align="center">board.c / board.h</td>
+<td align="center">SystemClock_Config、Flash Memory Size、RAM Size</td>
+</tr>
+<tr>
+<td align="center">Kconfig</td>
+<td align="center">System peripheral resources Configuration</td>
+</tr>
+<tr>
+<td align="center">SConscript</td>
+<td align="center">System Chip Startup File</td>
+</tr>
+</tbody></table>
+<h4 id="2-STM32CubeMX-工程配置"><a href="#2-STM32CubeMX-工程配置" class="headerlink" title="2.  STM32CubeMX 工程配置"></a>2.  STM32CubeMX 工程配置</h4><h5 id="2-1-打开-CubeMX-Config-ioc-工程文件"><a href="#2-1-打开-CubeMX-Config-ioc-工程文件" class="headerlink" title="2.1 打开 CubeMX_Config.ioc 工程文件"></a>2.1 打开 CubeMX_Config.ioc 工程文件</h5><p>CubeMX_Config.ioc 工程文件路径：*<em>01_STM32H743_BSP\board\CubeMX_Config\CubeMX_Config.ioc *</em></p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/06.PNG" alt="STM32CubeMX"></p>
+<h5 id="2-2-STM32CubeMX-工程生成"><a href="#2-2-STM32CubeMX-工程生成" class="headerlink" title="2.2 STM32CubeMX 工程生成"></a>2.2 STM32CubeMX 工程生成</h5><h6 id="2-2-1-打开外部时钟设置"><a href="#2-2-1-打开外部时钟设置" class="headerlink" title="2.2.1   打开外部时钟设置"></a>2.2.1   打开外部时钟设置</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/07.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-2-下载方式配置-SWD"><a href="#2-2-2-下载方式配置-SWD" class="headerlink" title="2.2.2   下载方式配置 (SWD)"></a>2.2.2   下载方式配置 (SWD)</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/08.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-3-调试串口配置-UASRT1"><a href="#2-2-3-调试串口配置-UASRT1" class="headerlink" title="2.2.3   调试串口配置 (UASRT1)"></a>2.2.3   调试串口配置 (UASRT1)</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/09.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-4-EEPROM-配置-IIC"><a href="#2-2-4-EEPROM-配置-IIC" class="headerlink" title="2.2.4   EEPROM 配置 (IIC)"></a>2.2.4   EEPROM 配置 (IIC)</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/10.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-5-系统时钟配置"><a href="#2-2-5-系统时钟配置" class="headerlink" title="2.2.5   系统时钟配置"></a>2.2.5   系统时钟配置</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/11.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-6-Project-Manager-设置-基本不需要修改"><a href="#2-2-6-Project-Manager-设置-基本不需要修改" class="headerlink" title="2.2.6   Project Manager 设置 (基本不需要修改)"></a>2.2.6   Project Manager 设置 (基本不需要修改)</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/12.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-7-点击-GENERAYE-CODE-直接生成工程"><a href="#2-2-7-点击-GENERAYE-CODE-直接生成工程" class="headerlink" title="2.2.7   点击 GENERAYE CODE 直接生成工程"></a>2.2.7   点击 GENERAYE CODE 直接生成工程</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/13.png" alt="STM32CubeMX"></p>
+<h6 id="2-2-8-CubeMX-Config目录下生成的文件如下"><a href="#2-2-8-CubeMX-Config目录下生成的文件如下" class="headerlink" title="2.2.8   CubeMX_Config目录下生成的文件如下"></a>2.2.8   CubeMX_Config目录下生成的文件如下</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/14.png" alt="STM32CubeMX"></p>
+<h4 id="3-Board-c-Board-h-文件修改"><a href="#3-Board-c-Board-h-文件修改" class="headerlink" title="3.   Board.c / Board.h 文件修改"></a>3.   Board.c / Board.h 文件修改</h4><h5 id="3-1-SystemClock-Config-函数拷贝-整个系统唯一拷贝的函数"><a href="#3-1-SystemClock-Config-函数拷贝-整个系统唯一拷贝的函数" class="headerlink" title="3.1 SystemClock_Config() 函数拷贝 (整个系统唯一拷贝的函数)"></a>3.1 SystemClock_Config() 函数拷贝 (整个系统唯一拷贝的函数)</h5><p>&emsp;&emsp;board.c 文件中存放了<strong>SystemClock_Config()</strong>函数，该函数负责初始化系统时钟。如果 STM32CubeMX 对系统时钟重新配置，需要重新更新 <strong>SystemClock_Config()</strong> 函数。</p>
+<p>&emsp;&emsp;STM32CubeMX工具生成的 <strong>SystemClock_Config()</strong> 函数默认在 CubeMX_Config\Src\main.c，所以我们将main.c 文件中的 <strong>SystemClock_Config()</strong> 函数拷贝到 board.c 中。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief System Clock Configuration</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SystemClock_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  RCC_OscInitTypeDef RCC_OscInitStruct = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">  RCC_ClkInitTypeDef RCC_ClkInitStruct = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**Supply configuration update enable</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  MODIFY_REG(PWR-&gt;CR3, PWR_CR3_SCUEN, <span class="number">0</span>);</span><br><span class="line">  <span class="comment">/**Configure the main internal regulator output voltage</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> ((PWR-&gt;D3CR &amp; (PWR_D3CR_VOSRDY)) != PWR_D3CR_VOSRDY)</span><br><span class="line">  &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/**Initializes the CPU, AHB and APB busses clocks</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;</span><br><span class="line">  RCC_OscInitStruct.HSEState = RCC_HSE_ON;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLM = <span class="number">5</span>;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLN = <span class="number">160</span>;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLP = <span class="number">2</span>;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLQ = <span class="number">2</span>;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLR = <span class="number">2</span>;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_2;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;</span><br><span class="line">  RCC_OscInitStruct.PLL.PLLFRACN = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (HAL_RCC_OscConfig(&amp;RCC_OscInitStruct) != HAL_OK)</span><br><span class="line">  &#123;</span><br><span class="line">    Error_Handler();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/**Initializes the CPU, AHB and APB busses clocks</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK</span><br><span class="line">                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2</span><br><span class="line">                              |RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;</span><br><span class="line">  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;</span><br><span class="line">  RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;</span><br><span class="line">  RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV2;</span><br><span class="line">  RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;</span><br><span class="line">  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;</span><br><span class="line">  RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;</span><br><span class="line">  RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (HAL_RCC_ClockConfig(&amp;RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)</span><br><span class="line">  &#123;</span><br><span class="line">    Error_Handler();</span><br><span class="line">  &#125;</span><br><span class="line">  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_I2C2;</span><br><span class="line">  PeriphClkInitStruct.Usart16ClockSelection = RCC_USART16CLKSOURCE_D2PCLK2;</span><br><span class="line">  PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_D2PCLK1;</span><br><span class="line">  <span class="keyword">if</span> (HAL_RCCEx_PeriphCLKConfig(&amp;PeriphClkInitStruct) != HAL_OK)</span><br><span class="line">  &#123;</span><br><span class="line">    Error_Handler();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-2-系统芯片-Flash-和-RAM-相关参数配置"><a href="#3-2-系统芯片-Flash-和-RAM-相关参数配置" class="headerlink" title="3.2 系统芯片 Flash 和 RAM 相关参数配置"></a>3.2 系统芯片 Flash 和 RAM 相关参数配置</h5><ul>
+<li>STM32_FLASH_SIZE 和 STM32_SRAM_SIZE 两个参数需要修改 (针对实际芯片大小设置)</li>
+<li>本 BSP 使用的芯片为 STM32H743IITx 系列，Flash 大小 2024kBytes, RAM 大小 1024kBytes</li>
+</ul>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/15.png" alt="board.h"></p>
+<h4 id="4-Kconfig-文件修改-初次制作BSP先不着急修改，后续根据Kconfig语法在修改"><a href="#4-Kconfig-文件修改-初次制作BSP先不着急修改，后续根据Kconfig语法在修改" class="headerlink" title="4.  Kconfig 文件修改 (初次制作BSP先不着急修改，后续根据Kconfig语法在修改)"></a>4.  Kconfig 文件修改 (初次制作BSP先不着急修改，后续根据Kconfig语法在修改)</h4><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/16.png" alt="Kconfig"></p>
+<h4 id="5-工程构建相关文件修改"><a href="#5-工程构建相关文件修改" class="headerlink" title="5.  工程构建相关文件修改"></a>5.  工程构建相关文件修改</h4><h5 id="5-1-linker-scripts-链接脚本修改"><a href="#5-1-linker-scripts-链接脚本修改" class="headerlink" title="5.1   linker_scripts 链接脚本修改"></a>5.1   linker_scripts 链接脚本修改</h5><p>linker_scripts 文件夹下包含链接脚本，如图下图所示：</p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/17.png" alt="linker_scripts"></p>
+<h6 id="5-1-1-MDK-链接脚本修改"><a href="#5-1-1-MDK-链接脚本修改" class="headerlink" title="5.1.1   MDK 链接脚本修改"></a>5.1.1   MDK 链接脚本修改</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/18.png" alt="linker_scripts"></p>
+<h6 id="5-1-2-IAR-链接脚本修改"><a href="#5-1-2-IAR-链接脚本修改" class="headerlink" title="5.1.2   IAR 链接脚本修改"></a>5.1.2   IAR 链接脚本修改</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/19.png" alt="linker_scripts"></p>
+<h6 id="5-1-3-GCC-链接脚本修改"><a href="#5-1-3-GCC-链接脚本修改" class="headerlink" title="5.1.3   GCC 链接脚本修改"></a>5.1.3   GCC 链接脚本修改</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/20.png" alt="linker_scripts"></p>
+<h5 id="5-2-SConscript-脚本修改"><a href="#5-2-SConscript-脚本修改" class="headerlink" title="5.2 SConscript 脚本修改"></a>5.2 SConscript 脚本修改</h5><p>&emsp;&emsp;SConscript 脚本决定 MDK/IAR 工程的生成以及编译过程中要添加文件。</p>
+<p>&emsp;&emsp;修改芯片型号以及芯片启动文件的地址：</p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/21.png" alt="SConscript"></p>
+<p>&emsp;&emsp;注意：如果在文件夹中找不到相应系列的 .s 文件，可能是多个系列的芯片重用了相同的启动文件，此时可以在 CubeMX 中生成目标芯片的工程，查看使用了哪个启动文件，然后再修改启动文件名。</p>
+<h5 id="5-3-工程模板修改"><a href="#5-3-工程模板修改" class="headerlink" title="5.3 工程模板修改"></a>5.3 工程模板修改</h5><h6 id="5-3-1-打开-template-uvprojx-工程"><a href="#5-3-1-打开-template-uvprojx-工程" class="headerlink" title="5.3.1   打开 template.uvprojx 工程"></a>5.3.1   打开 template.uvprojx 工程</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/22.png" alt="MDK"></p>
+<h6 id="5-3-2-选择-BSP-使用的芯片型号"><a href="#5-3-2-选择-BSP-使用的芯片型号" class="headerlink" title="5.3.2   选择 BSP 使用的芯片型号"></a>5.3.2   选择 BSP 使用的芯片型号</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/23.png" alt="MDK"></p>
+<h6 id="5-3-3-选择并配置下载方式"><a href="#5-3-3-选择并配置下载方式" class="headerlink" title="5.3.3   选择并配置下载方式"></a>5.3.3   选择并配置下载方式</h6><p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/24.png" alt="MDK"></p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/25.png" alt="MDK"></p>
+<h5 id="5-4-基于Env重新生成工程"><a href="#5-4-基于Env重新生成工程" class="headerlink" title="5.4   基于Env重新生成工程"></a>5.4   基于Env重新生成工程</h5><p><a href="https://github.com/RT-Thread/rtthread-manual-doc/blob/master/env/env.md" target="_blank" rel="noopener">Env 工具使用及配置，请点这里！！！</a></p>
+<p>Env Tools 的路径必须是英文并且路径文件夹不能有空格！！！</p>
+<h6 id="5-4-1-重新生成-rtconfig-h-文件"><a href="#5-4-1-重新生成-rtconfig-h-文件" class="headerlink" title="5.4.1 重新生成 rtconfig.h 文件"></a>5.4.1 重新生成 rtconfig.h 文件</h6><p>输入menuconfig 命令后出现如下图所示的情况：</p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/26.png" alt="Env"></p>
+<p><strong>注意：针对以上情况如何处理，出现这样的情况是因为脱离了官方源代码 rt-thread\bsp\stm 路径。</strong></p>
+<ul>
+<li><p>首先，要知道自己下载 RT-Thread 源代码的路径 (本人 RT-Thread 源代码路径：D:\00_RT-Thread\00_RT-Thread_Source_code\rt-thread) </p>
+</li>
+<li><p>修改第一个 Kconfig 文件</p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/27.png" alt="Env"></p>
+<ul>
+<li><pre><code class="c"><span class="built_in">config</span> RTT_DIR
+    <span class="built_in">string</span>
+    option env=<span class="string">"RTT_ROOT"</span>
+    <span class="keyword">default</span> <span class="string">"../../.."</span>
+<span class="comment">/*-----------------------------------------------------------*/</span>
+<span class="built_in">config</span> RTT_DIR
+    <span class="built_in">string</span>
+    option env=<span class="string">"RTT_ROOT"</span>
+    <span class="keyword">default</span> <span class="string">"D:/00_RT-Thread/00_RT-Thread_Source_code/rt-thread"</span>
+&lt;!--￼<span class="number">1</span>--&gt;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/28.png" alt="Env"></p>
+<ul>
+<li><p>修改第二个 Kconfig 文件</p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/29.png" alt="Env"></p>
+<ul>
+<li><pre><code class="C">source <span class="string">"../libraries/HAL_Drivers/Kconfig"</span>
+<span class="comment">/*-----------------------------------------------------------*/</span>
+source <span class="string">"D:/00_RT-Thread/00_RT-Thread_Source_code/rt-thread/bsp/stm32/libraries/HAL_Drivers/Kconfig"</span>
+&lt;!--￼<span class="number">2</span>--&gt;</code></pre>
+</li>
+<li><pre><code class="python">SDK_ROOT = os.path.abspath(<span class="string">'./'</span>)
+
+<span class="keyword">if</span> os.path.exists(SDK_ROOT + <span class="string">'/libraries'</span>):
+    libraries_path_prefix = SDK_ROOT + <span class="string">'/libraries'</span>
+<span class="keyword">else</span>:
+    libraries_path_prefix = os.path.dirname(SDK_ROOT) + <span class="string">'/libraries'</span>
+
+SDK_LIB = libraries_path_prefix
+Export(<span class="string">'SDK_LIB'</span>)
+
+<span class="comment"># prepare building environment</span>
+objs = PrepareBuilding(env, RTT_ROOT, has_libcpu=<span class="literal">False</span>)
+
+stm32_library = <span class="string">'STM32H7xx_HAL'</span>
+rtconfig.BSP_LIBRARY_TYPE = stm32_library
+
+<span class="comment"># include drivers</span>
+objs.extend(SConscript(os.path.join(libraries_path_prefix, stm32_library, <span class="string">'SConscript'</span>)))
+
+<span class="comment"># include libraries</span>
+objs.extend(SConscript(os.path.join(libraries_path_prefix, <span class="string">'HAL_Drivers'</span>, <span class="string">'SConscript'</span>)))
+
+/*-----------------------------------------------------------*/ 
+
+SDK_ROOT = os.path.abspath(<span class="string">'D:/00_RT-Thread/00_RT-Thread_Source_code/rt-thread/bsp/stm32'</span>)
+
+<span class="keyword">if</span> os.path.exists(SDK_ROOT + <span class="string">'/libraries'</span>):
+    libraries_path_prefix = SDK_ROOT + <span class="string">'/libraries'</span>
+<span class="keyword">else</span>:
+    libraries_path_prefix = os.path.dirname(SDK_ROOT) + <span class="string">'/libraries'</span>
+
+SDK_LIB = libraries_path_prefix
+Export(<span class="string">'SDK_LIB'</span>)
+
+<span class="comment"># prepare building environment</span>
+objs = PrepareBuilding(env, RTT_ROOT, has_libcpu=<span class="literal">False</span>)
+
+stm32_library = <span class="string">'D:/00_RT-Thread/00_RT-Thread_Source_code/rt-thread/bsp/stm32/libraries/STM32H7xx_HAL'</span>
+rtconfig.BSP_LIBRARY_TYPE = stm32_library
+
+<span class="comment"># include drivers</span>
+objs.extend(SConscript(os.path.join(libraries_path_prefix, stm32_library, <span class="string">'SConscript'</span>)))
+
+<span class="comment"># include libraries</span>
+objs.extend(SConscript(os.path.join(libraries_path_prefix, <span class="string">'D:/00_RT-Thread/00_RT-Thread_Source_code/rt-thread/bsp/stm32/libraries/HAL_Drivers'</span>, <span class="string">'SConscript'</span>)))</code></pre>
+</li>
+</ul>
+<p>然后在Env界面再次输入 <strong>scons –target=mdk5</strong> 命令重新生成工程。</p>
+</li>
+</ul>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/34.png" alt="Env"></p>
+<p><img src="/2020/09/10/RT-Thread-BSP%E5%88%B6%E4%BD%9C/35.png" alt="Env"></p>
+<p>如果出现以上结果，新的 BSP 已经制作成功了，可以使用了 。 </p>
+<h4 id="6-文档参考"><a href="#6-文档参考" class="headerlink" title="6. 文档参考"></a>6. 文档参考</h4><ul>
+<li><p><a href="https://github.com/RT-Thread/rt-thread/blob/master/bsp/stm32/docs/STM32%E7%B3%BB%E5%88%97BSP%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B.md" target="_blank" rel="noopener">STM32系列BSP制作教程</a></p>
+</li>
+<li><p><a href="https://github.com/RT-Thread/rtthread-manual-doc/blob/master/env/env.md" target="_blank" rel="noopener">User Manual of Env</a></p>
+</li>
+</ul>
+]]></content>
       <categories>
         <category>RT-Thread</category>
       </categories>
       <tags>
         <tag>RTOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【STM32CubeMX】学习笔记 --&gt; STM32CubeMX_Usart</title>
+    <url>/2020/05/05/STM32CubeMX-Usart/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<p>环境介绍</p>
+<ul>
+<li>操作系统:   Window10 企业版</li>
+<li>IDE开发环境:   STM32CubeIDE 1.2.0</li>
+<li>STM32CubeMX版本:   STM32CubeMX Version 5.4.0</li>
+<li>Mcu and Firmware Package:   STM32Cube FW_H7 V1.5.0</li>
+<li>硬件开发板:   本人自己设计的最小系统</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="1-打开-STM32CubeMX"><a href="#1-打开-STM32CubeMX" class="headerlink" title="1. 打开 STM32CubeMX"></a>1. 打开 STM32CubeMX</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/0.png" alt></p>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/1.png" alt></p>
+<h4 id="2-创建工程Project"><a href="#2-创建工程Project" class="headerlink" title="2. 创建工程Project"></a>2. 创建工程Project</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/2.png" alt></p>
+<h4 id="3-选择自己MCU的型号"><a href="#3-选择自己MCU的型号" class="headerlink" title="3. 选择自己MCU的型号"></a>3. 选择自己MCU的型号</h4><ul>
+<li><strong>本人MCU型号：STM32H743IITx</strong></li>
+<li><strong>双击红色区域直接进入配置界面</strong></li>
+</ul>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/3.png" alt></p>
+<h4 id="4-RCC-配置"><a href="#4-RCC-配置" class="headerlink" title="4. RCC 配置"></a>4. RCC 配置</h4><ul>
+<li>单击 System Core -&gt; 单击RCC<ul>
+<li>RCC Mode and Configuration<ul>
+<li>High Speed Clock (HSE) -&gt; Crystal/Ceramic Resonator</li>
+<li>Low Speed Clock (LSE) -&gt; Crystal/Ceramic Resonator</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/4.png" alt></p>
+<h4 id="5-串口USART配置"><a href="#5-串口USART配置" class="headerlink" title="5. 串口USART配置"></a>5. 串口USART配置</h4><ul>
+<li><p>单击 Connectivity -&gt; 单击 USART1</p>
+<ul>
+<li><p>USART1 Mode</p>
+<ul>
+<li>Mode：Asynchronous</li>
+</ul>
+</li>
+<li><p>USART1 Configuration</p>
+<ul>
+<li>Parameter Settings（基础配置）<ul>
+<li><img src="/2020/05/05/STM32CubeMX-Usart/5.png" alt></li>
+</ul>
+</li>
+<li>NVIC Settings（中断配置）勾选Enabled<ul>
+<li><img src="/2020/05/05/STM32CubeMX-Usart/6.png" alt></li>
+</ul>
+</li>
+<li>GPIO Settings （I/O配置）<ul>
+<li><strong>PA9</strong> -&gt; USART1_TX  /  <strong>PA10</strong> -&gt; UASRT1_RX</li>
+<li>I/O 空闲状态全部上拉（Pull-Up）</li>
+<li><img src="/2020/05/05/STM32CubeMX-Usart/7.png" alt></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-时钟树配置（Clock-Configuration）"><a href="#6-时钟树配置（Clock-Configuration）" class="headerlink" title="6. 时钟树配置（Clock Configuration）"></a>6. 时钟树配置（Clock Configuration）</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/8.png" alt></p>
+<h4 id="7-生成路径及IDE选择配置"><a href="#7-生成路径及IDE选择配置" class="headerlink" title="7. 生成路径及IDE选择配置"></a>7. 生成路径及IDE选择配置</h4><ul>
+<li><p><strong>Project</strong></p>
+<ul>
+<li><p>Project Name：工程名（根据自己要求来写）</p>
+</li>
+<li><p>Project Location：生成工程路径（选择自己常用路径）</p>
+</li>
+<li><p>Toolchain / IDE：开发环境选择（本工程选择STM32CubeIDE开发环境）</p>
+<ul>
+<li>EWARM</li>
+<li>MDK_ARM</li>
+<li>SW4STM32</li>
+<li>TrueSTUDIO</li>
+<li><strong>STM32CubeIDE</strong></li>
+<li>MakeFile</li>
+</ul>
+</li>
+<li><p>Mcu and Firmware Package (STM32Cube FW_H7 V1.5.0)</p>
+<ul>
+<li>MCU Reference：STM32H743IITx</li>
+<li>Firmware Package Name and Version：<strong>STM32Cube FW_H7 V1.5.0</strong> （版本不同，生成的工程可能会有点差异）</li>
+</ul>
+</li>
+<li><p><img src="/2020/05/05/STM32CubeMX-Usart/9.png" alt></p>
+</li>
+</ul>
+</li>
+<li><p><strong>Code Generator 配置选择</strong> </p>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/10.png" alt></p>
+</li>
+</ul>
+<p><strong>至此工程配置基本完成</strong>（单击 GENERATE CODE 生成工程）</p>
+<h4 id="8-打开-STM32CubeIDE-编译生成工程"><a href="#8-打开-STM32CubeIDE-编译生成工程" class="headerlink" title="8. 打开 STM32CubeIDE 编译生成工程"></a>8. 打开 STM32CubeIDE 编译生成工程</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/11.png" alt></p>
+<h4 id="9-Printf-打印配置"><a href="#9-Printf-打印配置" class="headerlink" title="9. Printf 打印配置"></a>9. Printf 打印配置</h4><ul>
+<li><strong>usart.h 添加代码</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>usart.c 添加代码</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Private function prototypes -----------------------------------------------*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __GNUC__</span></span><br><span class="line"><span class="comment">/* With GCC/RAISONANCE, small printf (option LD Linker-&gt;Libraries-&gt;Small printf</span></span><br><span class="line"><span class="comment">   set to 'Yes') calls __io_putchar() */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int __io_putchar(int ch)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __GNUC__ */</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  Retargets the C library printf function to the USART.</span></span><br><span class="line"><span class="comment">  * @param  None</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">PUTCHAR_PROTOTYPE</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Place your implementation of fputc here */</span></span><br><span class="line">    <span class="comment">/* e.g. write a character to the USART1 and Loop until the end of transmission */</span></span><br><span class="line">    HAL_UART_Transmit(&amp;huart1, (<span class="keyword">uint8_t</span> *)&amp;ch, <span class="number">1</span>, <span class="number">0xFFFF</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/05/05/STM32CubeMX-Usart/12.png" alt></p>
+<p><img src="/2020/05/05/STM32CubeMX-Usart/13.png" alt></p>
+<h4 id="10-STM32H743IITx-工程模板"><a href="#10-STM32H743IITx-工程模板" class="headerlink" title="10.  STM32H743IITx 工程模板"></a>10.  STM32H743IITx 工程模板</h4><ul>
+<li>工程模板  <a href="https://gitee.com/Zhao_ch/STM32H743_Template_Cubeide" target="_blank" rel="noopener">下载连接</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>STM32CubeMX</category>
+      </categories>
+      <tags>
+        <tag>STM32CubeMX</tag>
+        <tag>STM32</tag>
+        <tag>HAL</tag>
       </tags>
   </entry>
   <entry>
@@ -666,150 +959,27 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>【STM32CubeMX】学习笔记 --&gt; STM32CubeMX_Usart</title>
-    <url>/2020/05/05/STM32CubeMX-Usart/</url>
+    <title>【RT-Thread】学习笔记 --&gt; RT-Thread Studio Project Import</title>
+    <url>/2020/09/09/RT-Threadad-Project-import/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <p>环境介绍</p>
 <ul>
 <li>操作系统:   Window10 企业版</li>
-<li>IDE开发环境:   STM32CubeIDE 1.2.0</li>
-<li>STM32CubeMX版本:   STM32CubeMX Version 5.4.0</li>
-<li>Mcu and Firmware Package:   STM32Cube FW_H7 V1.5.0</li>
-<li>硬件开发板:   本人自己设计的最小系统</li>
+<li>IDE开发环境:   RT-Thread Studio (Version: 1.1.3)</li>
+<li>SDK版本:   STM32H7 (Released V0.1.9)</li>
+<li>硬件开发板:   STM32H743IITx 最小系统 (本人自己设计的最小系统)</li>
 </ul>
 <a id="more"></a>
 
-<h4 id="1-打开-STM32CubeMX"><a href="#1-打开-STM32CubeMX" class="headerlink" title="1. 打开 STM32CubeMX"></a>1. 打开 STM32CubeMX</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/0.png" alt></p>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/1.png" alt></p>
-<h4 id="2-创建工程Project"><a href="#2-创建工程Project" class="headerlink" title="2. 创建工程Project"></a>2. 创建工程Project</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/2.png" alt></p>
-<h4 id="3-选择自己MCU的型号"><a href="#3-选择自己MCU的型号" class="headerlink" title="3. 选择自己MCU的型号"></a>3. 选择自己MCU的型号</h4><ul>
-<li><strong>本人MCU型号：STM32H743IITx</strong></li>
-<li><strong>双击红色区域直接进入配置界面</strong></li>
-</ul>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/3.png" alt></p>
-<h4 id="4-RCC-配置"><a href="#4-RCC-配置" class="headerlink" title="4. RCC 配置"></a>4. RCC 配置</h4><ul>
-<li>单击 System Core -&gt; 单击RCC<ul>
-<li>RCC Mode and Configuration<ul>
-<li>High Speed Clock (HSE) -&gt; Crystal/Ceramic Resonator</li>
-<li>Low Speed Clock (LSE) -&gt; Crystal/Ceramic Resonator</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/4.png" alt></p>
-<h4 id="5-串口USART配置"><a href="#5-串口USART配置" class="headerlink" title="5. 串口USART配置"></a>5. 串口USART配置</h4><ul>
-<li><p>单击 Connectivity -&gt; 单击 USART1</p>
-<ul>
-<li><p>USART1 Mode</p>
-<ul>
-<li>Mode：Asynchronous</li>
-</ul>
-</li>
-<li><p>USART1 Configuration</p>
-<ul>
-<li>Parameter Settings（基础配置）<ul>
-<li><img src="/2020/05/05/STM32CubeMX-Usart/5.png" alt></li>
-</ul>
-</li>
-<li>NVIC Settings（中断配置）勾选Enabled<ul>
-<li><img src="/2020/05/05/STM32CubeMX-Usart/6.png" alt></li>
-</ul>
-</li>
-<li>GPIO Settings （I/O配置）<ul>
-<li><strong>PA9</strong> -&gt; USART1_TX  /  <strong>PA10</strong> -&gt; UASRT1_RX</li>
-<li>I/O 空闲状态全部上拉（Pull-Up）</li>
-<li><img src="/2020/05/05/STM32CubeMX-Usart/7.png" alt></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="6-时钟树配置（Clock-Configuration）"><a href="#6-时钟树配置（Clock-Configuration）" class="headerlink" title="6. 时钟树配置（Clock Configuration）"></a>6. 时钟树配置（Clock Configuration）</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/8.png" alt></p>
-<h4 id="7-生成路径及IDE选择配置"><a href="#7-生成路径及IDE选择配置" class="headerlink" title="7. 生成路径及IDE选择配置"></a>7. 生成路径及IDE选择配置</h4><ul>
-<li><p><strong>Project</strong></p>
-<ul>
-<li><p>Project Name：工程名（根据自己要求来写）</p>
-</li>
-<li><p>Project Location：生成工程路径（选择自己常用路径）</p>
-</li>
-<li><p>Toolchain / IDE：开发环境选择（本工程选择STM32CubeIDE开发环境）</p>
-<ul>
-<li>EWARM</li>
-<li>MDK_ARM</li>
-<li>SW4STM32</li>
-<li>TrueSTUDIO</li>
-<li><strong>STM32CubeIDE</strong></li>
-<li>MakeFile</li>
-</ul>
-</li>
-<li><p>Mcu and Firmware Package (STM32Cube FW_H7 V1.5.0)</p>
-<ul>
-<li>MCU Reference：STM32H743IITx</li>
-<li>Firmware Package Name and Version：<strong>STM32Cube FW_H7 V1.5.0</strong> （版本不同，生成的工程可能会有点差异）</li>
-</ul>
-</li>
-<li><p><img src="/2020/05/05/STM32CubeMX-Usart/9.png" alt></p>
-</li>
-</ul>
-</li>
-<li><p><strong>Code Generator 配置选择</strong> </p>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/10.png" alt></p>
-</li>
-</ul>
-<p><strong>至此工程配置基本完成</strong>（单击 GENERATE CODE 生成工程）</p>
-<h4 id="8-打开-STM32CubeIDE-编译生成工程"><a href="#8-打开-STM32CubeIDE-编译生成工程" class="headerlink" title="8. 打开 STM32CubeIDE 编译生成工程"></a>8. 打开 STM32CubeIDE 编译生成工程</h4><p><img src="/2020/05/05/STM32CubeMX-Usart/11.png" alt></p>
-<h4 id="9-Printf-打印配置"><a href="#9-Printf-打印配置" class="headerlink" title="9. Printf 打印配置"></a>9. Printf 打印配置</h4><ul>
-<li><strong>usart.h 添加代码</strong></li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><strong>usart.c 添加代码</strong></li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Private function prototypes -----------------------------------------------*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __GNUC__</span></span><br><span class="line"><span class="comment">/* With GCC/RAISONANCE, small printf (option LD Linker-&gt;Libraries-&gt;Small printf</span></span><br><span class="line"><span class="comment">   set to 'Yes') calls __io_putchar() */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int __io_putchar(int ch)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __GNUC__ */</span></span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  Retargets the C library printf function to the USART.</span></span><br><span class="line"><span class="comment">  * @param  None</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">PUTCHAR_PROTOTYPE</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Place your implementation of fputc here */</span></span><br><span class="line">    <span class="comment">/* e.g. write a character to the USART1 and Loop until the end of transmission */</span></span><br><span class="line">    HAL_UART_Transmit(&amp;huart1, (<span class="keyword">uint8_t</span> *)&amp;ch, <span class="number">1</span>, <span class="number">0xFFFF</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/05/05/STM32CubeMX-Usart/12.png" alt></p>
-<p><img src="/2020/05/05/STM32CubeMX-Usart/13.png" alt></p>
-<h4 id="10-STM32H743IITx-工程模板"><a href="#10-STM32H743IITx-工程模板" class="headerlink" title="10.  STM32H743IITx 工程模板"></a>10.  STM32H743IITx 工程模板</h4><ul>
-<li>工程模板  <a href="https://gitee.com/Zhao_ch/STM32H743_Template_Cubeide" target="_blank" rel="noopener">下载连接</a></li>
-</ul>
-]]></content>
+<h1 id="RT-Thread-Studio-Project-Import-导入工程"><a href="#RT-Thread-Studio-Project-Import-导入工程" class="headerlink" title="RT-Thread Studio Project Import (导入工程)"></a>RT-Thread Studio Project Import (导入工程)</h1><h4 id="1-RT-Thread-Studio-项目导入"><a href="#1-RT-Thread-Studio-项目导入" class="headerlink" title="1. RT-Thread Studio 项目导入"></a>1. RT-Thread Studio 项目导入</h4><h5 id="1-1-RT-Thread-Studio-资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。"><a href="#1-1-RT-Thread-Studio-资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。" class="headerlink" title="1.1 RT-Thread Studio 资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。"></a>1.1 RT-Thread Studio 资源管理器窗口中点击右键，在下拉在下拉菜单中选择导入功能。</h5><p><img src="/2020/09/09/RT-Threadad-Project-import/Import.png" alt="Import"></p>
+<h5 id="1-2-打开导入功能向导，选择导入RT-Thread-Studio-工程，点击下一步。"><a href="#1-2-打开导入功能向导，选择导入RT-Thread-Studio-工程，点击下一步。" class="headerlink" title="1.2 打开导入功能向导，选择导入RT-Thread Studio 工程，点击下一步。"></a>1.2 打开导入功能向导，选择导入RT-Thread Studio 工程，点击下一步。</h5><p><img src="/2020/09/09/RT-Threadad-Project-import/Import_project_select.png" alt="Import project select"></p>
+<h5 id="1-3-点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。"><a href="#1-3-点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。" class="headerlink" title="1.3 点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。"></a>1.3 点击浏览按钮选择要导入项目所在的工程目录，导入程序自动扫描目录下所有可导入的工程，将结果列出在项目列表中，然后点击完成。</h5><p><img src="/2020/09/09/RT-Threadad-Project-import/Import_project.png" alt="Import project"></p>
+<h4 id="2-MDK-IAR-项目导入"><a href="#2-MDK-IAR-项目导入" class="headerlink" title="2. MDK/IAR 项目导入"></a>2. MDK/IAR 项目导入</h4>]]></content>
       <categories>
-        <category>STM32CubeMX</category>
+        <category>RT-Thread</category>
       </categories>
       <tags>
-        <tag>STM32CubeMX</tag>
-        <tag>STM32</tag>
-        <tag>HAL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>嘉立创JLC元件库+3D封装下载</title>
-    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
-    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
-<a id="more"></a>
-
-<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
-<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
-</ul>
-<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
-<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
-</ul>
-<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
-      <categories>
-        <category>Altium Designer</category>
-      </categories>
-      <tags>
-        <tag>PCB_Design</tag>
-        <tag>Altium Designer</tag>
-        <tag>Layout</tag>
+        <tag>RTOS</tag>
       </tags>
   </entry>
   <entry>
@@ -876,6 +1046,28 @@ Develop分支合并到Master分支命令：
         <tag>nRF connect</tag>
         <tag>nrfutil</tag>
         <tag>nRF51</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>嘉立创JLC元件库+3D封装下载</title>
+    <url>/2020/05/04/%E5%98%89%E7%AB%8B%E5%88%9BJLC%E5%85%83%E4%BB%B6%E5%BA%93-3D%E5%B0%81%E8%A3%85%E4%B8%8B%E8%BD%BD/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<a id="more"></a>
+
+<h3 id="嘉立创JLC元件库-3D封装下载三种方法"><a href="#嘉立创JLC元件库-3D封装下载三种方法" class="headerlink" title="嘉立创JLC元件库+3D封装下载三种方法"></a>嘉立创JLC元件库+3D封装下载三种方法</h3><h4 id="1-下载方法1-使用Git-无需密码"><a href="#1-下载方法1-使用Git-无需密码" class="headerlink" title="1. 下载方法1:  使用Git   无需密码"></a>1. 下载方法1:  使用Git   <strong>无需密码</strong></h4><ul>
+<li>Altium Designer:   <a href="https://gitee.com/JLC_SMT/JLCSMT_LIB.git" target="_blank" rel="noopener">https://gitee.com/JLC_SMT/JLCSMT_LIB.git</a>    </li>
+</ul>
+<h4 id="2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码"><a href="#2-下载方法2：使用SVN方式-可联网同步-检出需要注册-gitee-的账号密码" class="headerlink" title="2. 下载方法2：使用SVN方式,可联网同步 检出需要注册 gitee 的账号密码"></a>2. 下载方法2：使用SVN方式,可联网同步 <strong>检出需要注册 gitee 的账号密码</strong></h4><ul>
+<li>SVN端口:   <a href="svn://gitee.com/JLC_SMT/JLCSMT_LIB">svn://gitee.com/JLC_SMT/JLCSMT_LIB</a></li>
+</ul>
+<h4 id="3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载"><a href="#3-下载方法3：手动下载-不能同步-错误无法及时修正-但可以下载" class="headerlink" title="3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载"></a>3.  下载方法3：手动下载 不能同步,错误无法及时修正, 但可以下载</h4>]]></content>
+      <categories>
+        <category>Altium Designer</category>
+      </categories>
+      <tags>
+        <tag>PCB_Design</tag>
+        <tag>Altium Designer</tag>
+        <tag>Layout</tag>
       </tags>
   </entry>
 </search>
