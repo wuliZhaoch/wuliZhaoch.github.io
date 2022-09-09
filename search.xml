@@ -1026,4 +1026,20 @@ Develop分支合并到Master分支命令：
         <tag>Layout</tag>
       </tags>
   </entry>
+  <entry>
+    <title>【ZYNQ】Study notes --&gt; Vivado Complete installation instructions</title>
+    <url>/2022/09/10/Zynq-Installation-Notes/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<p>环境介绍</p>
+<ul>
+<li>操作系统:   Window11企业版</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Zynq</category>
+      </categories>
+      <tags>
+        <tag>Vivado</tag>
+      </tags>
+  </entry>
 </search>
