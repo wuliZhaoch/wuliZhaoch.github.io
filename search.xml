@@ -1027,13 +1027,17 @@ Develop分支合并到Master分支命令：
       </tags>
   </entry>
   <entry>
-    <title>【ZYNQ】Study notes --&gt; Vivado Complete installation instructions</title>
+    <title>【ZYNQ】学习笔记 --&gt; Install Vivado under Windows（Windows下安装Vivado）</title>
     <url>/2022/09/10/Zynq-Installation-Notes/</url>
     <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
 <p>环境介绍</p>
 <ul>
-<li>操作系统:   Window11企业版</li>
+<li>操作系统：Window11 企业版</li>
+<li>软件版本：Vivado 2022.1</li>
 </ul>
+<a id="more"></a>
+
+<h1 id="Vivado-Installation-Tutorial-Vivado安装教程"><a href="#Vivado-Installation-Tutorial-Vivado安装教程" class="headerlink" title="Vivado Installation Tutorial(Vivado安装教程)"></a>Vivado Installation Tutorial(Vivado安装教程)</h1><h4 id="Xilinx-官网下载-Vivado-地址："><a href="#Xilinx-官网下载-Vivado-地址：" class="headerlink" title="Xilinx 官网下载 Vivado 地址："></a>Xilinx 官网下载 Vivado 地址：</h4><p><strong><a href="https://china.xilinx.com/support/download.html" target="_blank" rel="noopener">下载请点击这里哦!!!</a></strong></p>
 ]]></content>
       <categories>
         <category>Zynq</category>
