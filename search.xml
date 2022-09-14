@@ -1062,7 +1062,11 @@ Develop分支合并到Master分支命令：
 
 <h5 id="3-2-选择-”xilinx-ise-vivado-lic“文件，许可文件下载-提取码-bvol"><a href="#3-2-选择-”xilinx-ise-vivado-lic“文件，许可文件下载-提取码-bvol" class="headerlink" title="3.2 选择 ”xilinx_ise_vivado.lic“文件，许可文件下载  提取码: bvol"></a>3.2 选择 ”xilinx_ise_vivado.lic“文件，许可文件下载  <strong><a href="https://pan.baidu.com/s/1wwczHot-cfgQt6XV-ZZblw" target="_blank" rel="noopener">提取码: bvol</a></strong></h5><h5 id="3-3-安装成功提示，点击-“确认”"><a href="#3-3-安装成功提示，点击-“确认”" class="headerlink" title="3.3 安装成功提示，点击 “确认”"></a>3.3 安装成功提示，点击 <font color="red">“确认”</font></h5><img src="/2022/09/10/Zynq-Installation-Notes/License2.png">
 
-<h4 id="4-USB-Serial-Converter-驱动安装"><a href="#4-USB-Serial-Converter-驱动安装" class="headerlink" title="4. USB Serial Converter 驱动安装"></a>4. USB Serial Converter 驱动安装</h4>]]></content>
+<h4 id="4-USB-Serial-Converter-驱动安装"><a href="#4-USB-Serial-Converter-驱动安装" class="headerlink" title="4. USB Serial Converter 驱动安装"></a>4. USB Serial Converter 驱动安装</h4><h5 id="4-1-安装-Vivado-的过程中，会安装下载器驱动，如果没有此驱动需安装下载器驱动，驱动路径：“C-Xilinx-Vivado-2022-1-data-xicom-cable-drivers-nt64-digilent-install-digilent-exe”"><a href="#4-1-安装-Vivado-的过程中，会安装下载器驱动，如果没有此驱动需安装下载器驱动，驱动路径：“C-Xilinx-Vivado-2022-1-data-xicom-cable-drivers-nt64-digilent-install-digilent-exe”" class="headerlink" title="4.1 安装 Vivado 的过程中，会安装下载器驱动，如果没有此驱动需安装下载器驱动，驱动路径：“C:\Xilinx\Vivado\2022.1\data\xicom\cable_drivers\nt64\digilent\install_digilent.exe”"></a>4.1 安装 Vivado 的过程中，会安装下载器驱动，如果没有此驱动需安装下载器驱动，驱动路径：<font color="red">“C:\Xilinx\Vivado\2022.1\data\xicom\cable_drivers\nt64\digilent\install_digilent.exe”</font></h5><img src="/2022/09/10/Zynq-Installation-Notes/USB_Serial_Converter1.png">
+
+<h5 id="4-2-双击-“install-digilent-exe”-安装，安装成功之后，连接下载器，打开设备管理器出现-“USB-Serial-Converter”-此时证明安装成功"><a href="#4-2-双击-“install-digilent-exe”-安装，安装成功之后，连接下载器，打开设备管理器出现-“USB-Serial-Converter”-此时证明安装成功" class="headerlink" title="4.2 双击 “install_digilent.exe” 安装，安装成功之后，连接下载器，打开设备管理器出现 “USB Serial Converter”,此时证明安装成功"></a>4.2 双击 <font color="red">“install_digilent.exe”</font> 安装，安装成功之后，连接下载器，打开设备管理器出现 <font color="red">“USB Serial Converter”</font>,此时证明安装成功</h5><img src="/2022/09/10/Zynq-Installation-Notes/USB_Serial_Converter.png">
+
+<h4 id="整个安装过程如上述描述！！！"><a href="#整个安装过程如上述描述！！！" class="headerlink" title="整个安装过程如上述描述！！！"></a><font color="blue" size="10" face="楷体">整个安装过程如上述描述！！！</font></h4>]]></content>
       <categories>
         <category>Zynq</category>
       </categories>
