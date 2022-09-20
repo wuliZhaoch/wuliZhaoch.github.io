@@ -1074,4 +1074,35 @@ Develop分支合并到Master分支命令：
         <tag>Vivado</tag>
       </tags>
   </entry>
+  <entry>
+    <title>【ZYNQ】学习笔记 --&gt; Serial Port Prints &quot;Hello World&quot;</title>
+    <url>/2022/09/19/Zynq-Uart-Hello-World/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<p>环境介绍</p>
+<ul>
+<li>操作系统：Window11 企业版</li>
+<li>软件版本：Vivado 2022.1</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="Serial-Port-Prints-“Hello-World”-串口打印”HelloWorld”"><a href="#Serial-Port-Prints-“Hello-World”-串口打印”HelloWorld”" class="headerlink" title="Serial Port Prints “Hello World”(串口打印”HelloWorld”)"></a>Serial Port Prints “Hello World”(串口打印”HelloWorld”)</h1><h4 id="1-Create-Project-创建工程"><a href="#1-Create-Project-创建工程" class="headerlink" title="1. Create Project (创建工程)"></a>1. Create Project (创建工程)</h4><h5 id="1-1-打开-Vivado-软件，点击-“Quick-Start”-标题栏下-“Create-Project”，进入创建-Vivado-工程向导界面，点击-“Next”-进行下一步。"><a href="#1-1-打开-Vivado-软件，点击-“Quick-Start”-标题栏下-“Create-Project”，进入创建-Vivado-工程向导界面，点击-“Next”-进行下一步。" class="headerlink" title="1.1 打开 Vivado 软件，点击 “Quick Start” 标题栏下 “Create Project”，进入创建 Vivado 工程向导界面，点击 “Next” 进行下一步。"></a>1.1 打开 Vivado 软件，点击 <font color="red">“Quick Start”</font> 标题栏下 <font color="red">“Create Project”</font>，进入创建 Vivado 工程向导界面，点击 <font color="red">“Next”</font> 进行下一步。</h5><img src="/2022/09/19/Zynq-Uart-Hello-World/CreateProject.png" style="zoom:45%;">
+
+<img src="/2022/09/19/Zynq-Uart-Hello-World/CreateProject0.png" style="zoom:68%;">
+
+<h5 id="1-2-进入-Project-Name-界面，填写工程名字，工程保存路径，勾选-“Create-project-subdirectory”-会创建本次工程的子目录（工程名和路径只能由英文字母、数字下划线构成，不能包含特殊字符、中文及空格），点击-“Next”-进行下一步。"><a href="#1-2-进入-Project-Name-界面，填写工程名字，工程保存路径，勾选-“Create-project-subdirectory”-会创建本次工程的子目录（工程名和路径只能由英文字母、数字下划线构成，不能包含特殊字符、中文及空格），点击-“Next”-进行下一步。" class="headerlink" title="1.2 进入 Project Name 界面，填写工程名字，工程保存路径，勾选 “Create project subdirectory” , 会创建本次工程的子目录（工程名和路径只能由英文字母、数字下划线构成，不能包含特殊字符、中文及空格），点击 “Next” 进行下一步。"></a>1.2 进入 Project Name 界面，填写工程名字，工程保存路径，勾选 <font color="red">“Create project subdirectory”</font> , 会创建本次工程的子目录（工程名和路径只能由英文字母、数字下划线构成，不能包含特殊字符、中文及空格），点击 <font color="red">“Next”</font> 进行下一步。</h5><img src="/2022/09/19/Zynq-Uart-Hello-World/CreateProject1.png" style="zoom:68%;">
+
+<h5 id="1-3-进入-Project-Type-界面，勾选-“RTL-Project”，本次实验不许添加源文件和约束文件，勾选-“Do-not-specify-sources-at-this-time”-即可，点击-“Next”-进行下一步。"><a href="#1-3-进入-Project-Type-界面，勾选-“RTL-Project”，本次实验不许添加源文件和约束文件，勾选-“Do-not-specify-sources-at-this-time”-即可，点击-“Next”-进行下一步。" class="headerlink" title="1.3 进入 Project Type 界面，勾选 “RTL Project”，本次实验不许添加源文件和约束文件，勾选 “Do not specify sources at this time” 即可，点击 “Next” 进行下一步。"></a>1.3 进入 Project Type 界面，勾选 <font color="red">“RTL Project”</font>，本次实验不许添加源文件和约束文件，勾选 <font color="red">“Do not specify sources at this time”</font> 即可，点击 <font color="red">“Next”</font> 进行下一步。</h5><img src="/2022/09/19/Zynq-Uart-Hello-World/CreateProject2.png" style="zoom:68%;">
+
+<h5 id="1-4-进入-Chip-selection-界面，本实验使用的是-“XC7Z020CLG400”，这里和自己使用的芯片型号保持一致即可，点击-“Next”-进行下一步。"><a href="#1-4-进入-Chip-selection-界面，本实验使用的是-“XC7Z020CLG400”，这里和自己使用的芯片型号保持一致即可，点击-“Next”-进行下一步。" class="headerlink" title="1.4 进入 Chip selection 界面，本实验使用的是 “XC7Z020CLG400”，这里和自己使用的芯片型号保持一致即可，点击 “Next” 进行下一步。"></a>1.4 进入 Chip selection 界面，本实验使用的是 <font color="red">“XC7Z020CLG400”</font>，这里和自己使用的芯片型号保持一致即可，点击 <font color="red">“Next”</font> 进行下一步。</h5><img src="/2022/09/19/Zynq-Uart-Hello-World/CreateProject3.png" style="zoom:68%;">
+
+<h5 id="1-5-进入-Engineering-Summary-工程摘要-界面，显示创建工程的相关信息，点击-“Finish”-完成工程创建。"><a href="#1-5-进入-Engineering-Summary-工程摘要-界面，显示创建工程的相关信息，点击-“Finish”-完成工程创建。" class="headerlink" title="1.5 进入 Engineering Summary(工程摘要)界面，显示创建工程的相关信息，点击 “Finish” 完成工程创建。"></a>1.5 进入 Engineering Summary(工程摘要)界面，显示创建工程的相关信息，点击 <font color="red">“Finish”</font> 完成工程创建。</h5><img src="/2022/09/19/Zynq-Uart-Hello-World/CreateProject4.png" style="zoom:68%;">
+
+<img src="/2022/09/19/Zynq-Uart-Hello-World/CreateProject5.png" style="zoom:68%;">]]></content>
+      <categories>
+        <category>Zynq</category>
+      </categories>
+      <tags>
+        <tag>Vivado</tag>
+      </tags>
+  </entry>
 </search>
