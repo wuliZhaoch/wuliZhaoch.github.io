@@ -1111,4 +1111,67 @@ Develop分支合并到Master分支命令：
         <tag>Vivado</tag>
       </tags>
   </entry>
+  <entry>
+    <title>【FatFs】学习笔记 --&gt; FatFs APIs</title>
+    <url>/2022/10/03/FatFs-APIs/</url>
+    <content><![CDATA[<p>😊 转载请全文转载，并标明文章出处</p>
+<p>环境介绍</p>
+<ul>
+<li>操作系统：Window11 企业版</li>
+<li>IED开发环境：STM32CubeIDE 1.2.0</li>
+<li>STM32CubeMX版本：STM32CubeMX Version 6.3.0</li>
+<li>Mcu and Firmware Package：STM32CubeF7 Firmware Package V1.16.2 / 08-December-2021</li>
+<li>硬件开发板：STM32F746G-DISCO        </li>
+</ul>
+<a id="more"></a>
+
+<h1 id="FatFs-APIs"><a href="#FatFs-APIs" class="headerlink" title="FatFs APIs"></a>FatFs APIs</h1><h5 id="The-set-of-APIs-is-divided-into-four-groups："><a href="#The-set-of-APIs-is-divided-into-four-groups：" class="headerlink" title="The set of APIs is divided into four groups："></a>The set of APIs is divided into four groups：</h5><ul>
+<li>Group of APIs that operates with logical volume or partition (逻辑卷或者分区操作API组).</li>
+<li>Group of APIs that operates with directory (目录操作API组).</li>
+<li>Group of APIs that operates with file (文件操作API组).</li>
+<li>Group of APIs that operates with both file and directory (文件和目录操作API组).</li>
+</ul>
+<h5 id="The-following-list-describes-what-FatFs-can-do-to-access-the-FAT-volumes："><a href="#The-following-list-describes-what-FatFs-can-do-to-access-the-FAT-volumes：" class="headerlink" title="The following list describes what FatFs can do to access the FAT volumes："></a>The following list describes what FatFs can do to access the FAT volumes：</h5><ul>
+<li>f_mount(): Register/Unregister a work area (<font color="red">注册/取消注册工作区</font>).</li>
+<li>f_open(): Open/Create a file (<font color="red">打开/创建文件</font>).</li>
+<li>f_close(): Close a file (<font color="red">关闭文件</font>).</li>
+<li>f_read(): Read a file (<font color="red">读文件</font>).</li>
+<li>f_write(): Write a file(<font color="red">写文件</font>).</li>
+<li>f_lseek(): Move read/write pointer, Expand a file size (<font color="red">移动读/写指针，扩展文件大小</font>).</li>
+<li>f_truncate(): Truncate a file size (<font color="red">截断文件大小</font>).</li>
+<li>f_sync(): Flush cached data (<font color="red">刷新缓存数据</font>).</li>
+<li>f_opendir(): Open a directory (<font color="red">打开一个目录</font>).</li>
+<li>f_readdir(): Read a directory item (<font color="red">读取目录项</font>).</li>
+<li>f_getfree(): Get free clusters (<font color="red">获取可用容量</font>).</li>
+<li>f_stat(): Check if the object is exist and get status (<font color="red">检查对象是否存在并获取状态</font>).</li>
+<li>f_mkdir(): Create a directory (<font color="red">创建目录</font>).</li>
+<li>f_unlink(): Remove a file or directory (<font color="red">删除文件或目录</font>).</li>
+<li>f_chmod(): Change an attribute (<font color="red">更改属性</font>).</li>
+<li>f_utime(): Change timestamp (<font color="red">更改时间戳</font>).</li>
+<li>f_rename(): Rename/Move a file or directory (<font color="red">重命名/移动文件或目录</font>).</li>
+<li>f_chdir(): Change the current directory (<font color="red">更改当前目录</font>).</li>
+<li>f_chdrive(): Change the current drive (<font color="red">更改当前驱动器</font>).</li>
+<li>f_getcwd(): Retrieve the current directory (<font color="red">检索当前目录</font>).</li>
+<li>f_getlabel(): Get volume label (<font color="red">获取卷标</font>).</li>
+<li>f_setlabel(): Set volume label (<font color="red">设置卷标</font>).</li>
+<li>f_forward(): Forward file data to the stream directly (<font color="red">直接将文件数据转移到数据流中</font>).</li>
+<li>f_mkfs(): Create a file system on the drive (<font color="red">在驱动器上创建文件系统</font>).</li>
+<li>f_fdisk(): Devide a physical drive (<font color="red">分割物理驱动器</font>).</li>
+<li>f_gets(): Read a string (<font color="red">读取字符串</font>).</li>
+<li>f_putc(): Write a character (<font color="red">写一个字</font>).</li>
+<li>f_puts(): Write a string (<font color="red">写字符串</font>).</li>
+<li>f_printf(): Write a formatted string (<font color="red">写格式化字符串</font>).</li>
+<li>f_tell(): Get the current read/write pointer (<font color="red">获取当前读/写指针</font>).</li>
+<li>f_eof(): Test for end-of-file on a file (<font color="red">测试文件的文件结束符</font>).</li>
+<li>f_size(): Get the size of a file (<font color="red">获取文件大小</font>).</li>
+<li>f_error(): Test for an error on a file (<font color="red">测试文件上的错误</font>).</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Fatfs</category>
+      </categories>
+      <tags>
+        <tag>Fatfs</tag>
+      </tags>
+  </entry>
 </search>
